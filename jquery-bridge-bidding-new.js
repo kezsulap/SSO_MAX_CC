@@ -111,7 +111,7 @@ $('div.bidding:contains(::)').append(" &#9888;");
 $('i:contains( (odwrotny schemat odpowiedzi))').attr('title', 'odwrotny schemat odpowiedzi<br/>dla odzywek 4♧ i 4♢<br/> stosujemy gdy jest dwukolorówka<br/>starszy z młodszym');
 $('div.bidding:contains(***)').addClass('newred');
 $('div.bidding:contains(:.)').append("<i> (lepsza ręka w ramach minimum)</i>");
-$('ul.topmenu').append("<li><a href='javascript:history.back()' class='topmenu' title='Powrót do poprzedniej<br/>strony'>←</a></li><li><a href='#' class='topmenu' title=''>&nbsp;Wkrótce (początek 2021) nowy adres strony internetowej&nbsp;</a></li>");
+// $('ul.topmenu').append("<li><a href='javascript:history.back()' class='topmenu' title='Powrót do poprzedniej<br/>strony'>←</a></li><li><a href='#' class='topmenu' title=''>&nbsp;Wkrótce (początek 2021) nowy adres strony internetowej&nbsp;</a></li>");
 });
 
 // Ustawienie balonów
