@@ -16,26 +16,26 @@ document.getElementById("content").innerHTML = res;
 
 
 $(function() {
-  $('div#bidding>div').addClass('bidding');
-  $("div.bidding").addClass('level00').attr('level', 0);
-  $("div.bidding:contains('	')").removeClass('level00').addClass('level01').attr('level', 1);
-  $("div.bidding:contains('		')").removeClass('level01').addClass('level02').attr('level', 2);
-  $("div.bidding:contains('			')").removeClass('level02').addClass('level03').attr('level', 3);
-  $("div.bidding:contains('				')").removeClass('level03').addClass('level04').attr('level', 4);
-  $("div.bidding:contains('					')").removeClass('level04').addClass('level05').attr('level', 5);
-  $("div.bidding:contains('						')").removeClass('level05').addClass('level06').attr('level', 6);
-  $("div.bidding:contains('							')").removeClass('level06').addClass('level07').attr('level', 7);
-  $("div.bidding:contains('								')").removeClass('level07').addClass('level08').attr('level', 8);
-  $("div.bidding:contains('									')").removeClass('level08').addClass('level09').attr('level', 9);
-  $("div.bidding:contains('										')").removeClass('level09').addClass('level10').attr('level', 10);
-  $("div.bidding:contains('											')").removeClass('level10').addClass('level11').attr('level', 11);
-  $("div.bidding:contains('												')").removeClass('level11').addClass('level12').attr('level', 12);
-  $("div.bidding:contains('													')").removeClass('level12').addClass('level13').attr('level', 13);
-  $("div.bidding:contains('														')").removeClass('level13').addClass('level14').attr('level', 14);
-  $("div.bidding:contains('															')").removeClass('level14').addClass('level15').attr('level', 15);
-  $("div.bidding:contains('																')").removeClass('level15').addClass('level16').attr('level', 16);
-  $("div.bidding:contains('																	')").removeClass('level16').addClass('level17').attr('level', 17);
-  $("div.bidding:not('.level00')").hide();
+  // $('div#bidding>div').addClass('bidding');
+  // $("div.bidding").addClass('level00').attr('level', 0);
+  // $("div.bidding:contains('	')").removeClass('level00').addClass('level01').attr('level', 1);
+  // $("div.bidding:contains('		')").removeClass('level01').addClass('level02').attr('level', 2);
+  // $("div.bidding:contains('			')").removeClass('level02').addClass('level03').attr('level', 3);
+  // $("div.bidding:contains('				')").removeClass('level03').addClass('level04').attr('level', 4);
+  // $("div.bidding:contains('					')").removeClass('level04').addClass('level05').attr('level', 5);
+  // $("div.bidding:contains('						')").removeClass('level05').addClass('level06').attr('level', 6);
+  // $("div.bidding:contains('							')").removeClass('level06').addClass('level07').attr('level', 7);
+  // $("div.bidding:contains('								')").removeClass('level07').addClass('level08').attr('level', 8);
+  // $("div.bidding:contains('									')").removeClass('level08').addClass('level09').attr('level', 9);
+  // $("div.bidding:contains('										')").removeClass('level09').addClass('level10').attr('level', 10);
+  // $("div.bidding:contains('											')").removeClass('level10').addClass('level11').attr('level', 11);
+  // $("div.bidding:contains('												')").removeClass('level11').addClass('level12').attr('level', 12);
+  // $("div.bidding:contains('													')").removeClass('level12').addClass('level13').attr('level', 13);
+  // $("div.bidding:contains('														')").removeClass('level13').addClass('level14').attr('level', 14);
+  // $("div.bidding:contains('															')").removeClass('level14').addClass('level15').attr('level', 15);
+  // $("div.bidding:contains('																')").removeClass('level15').addClass('level16').attr('level', 16);
+  // $("div.bidding:contains('																	')").removeClass('level16').addClass('level17').attr('level', 17);
+  // $("div.bidding:not('.level00')").hide();
   
   $( "div.bidding" ).each(function() {
 	level = parseInt($(this).attr("level"));
