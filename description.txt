@@ -877,8 +877,8 @@ pa 13+ PC, any distribution
 			3h preemptive or invitational
 			3s preemptive or invitational
 
-			Competitive bidding after 2♣ response
-			DB
+#			Competitive bidding after 2♣ response
+			(DB)
 				pa NF
 				re ,,at least one of us has got clubs - let’s double them’’
 				2d signoff
@@ -907,8 +907,8 @@ pa 13+ PC, any distribution
 			3h natural, preemptive or invitational
 			3s natural, preemptive or invitational
 
-			Competitive bidding after 2♦ response
-			DB
+#			Competitive bidding after 2♦ response
+			(DB)
 				pa correct
 				re penalty
 				2h signoff
@@ -1000,36 +1000,36 @@ pa 13+ PC, any distribution
 		3h natural, preemptive or invitational
 		3s natural, preemptive or invitational
 
-		Competitive bidding after 1♦ response
-		DB
+#		Competitive bidding after 1♦ response
+		(DB)
 			pa 3+ ♦
 			re SOS or strong (18+ PC)
 			1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-				DB
+				(DB)
 					pa
-						PA
+						(PA)
 							1s 4 ♣, 4 ♠
 							re 5 ♣, 3 ♠
-				PA
+				(PA)
 					pa
-						DB
+						(DB)
 							1s 4 ♣, 4 ♠
 							re 5 ♣, 3 ♠
 			1n 55+ distribution		
-		PA
+		(PA)
 			pa
-				DB
+				(DB)
 					pa 2+ ♦
 					re SOS or strong (18+ PC)
 					1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-						DB
+						(DB)
 							pa
-								PA
+								(PA)
 									1s 4 ♣, 4 ♠
 									re 5 ♣, 3 ♠
-						PA
+						(PA)
 							pa
-								DB
+								(DB)
 									1s 4 ♣, 4 ♠
 									re 5 ♣, 3 ♠   
 					1n 55+ distribution
@@ -1528,8 +1528,8 @@ pa 13+ PC, any distribution
 		3h preemptive or invitational
 		3s preemptive or invitational
 
-		Competitive bidding after 2♣ response
-		DB
+#		Competitive bidding after 2♣ response
+		(DB)
 			pa NF
 			re ,,at least one of us has got clubs - let’s double them’’
 			2d signoff
@@ -1558,8 +1558,8 @@ pa 13+ PC, any distribution
 		3h natural, preemptive or invitational
 		3s natural, preemptive or invitational
 
-		Competitive bidding after 2♦ response
-		DB
+#		Competitive bidding after 2♦ response
+		(DB)
 			pa correct
 			re penalty
 			2h signoff
@@ -1903,35 +1903,35 @@ pa 13+ PC, any distribution
 	3h natural, preemptive or invitational
 	3s natural, preemptive or invitational
 
-	Competitive bidding after 1♦ opening
-	DB
+#	Competitive bidding after 1♦ opening
+	(DB)
 		pa 3+ ♦
 		re SOS or strong (18+ PC)
 		1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-			DB
+			(DB)
 				pa
-					PA
+					(PA)
 						1s 4 ♣, 4 ♠
 						re 5 ♣, 3 ♠
-			PA
+			(PA)
 				pa
-					DB
+					(DB)
 						1s 4 ♣, 4 ♠
 						re 5 ♣, 3 ♠
-	PA
+	(PA)
 		pa
-			DB
+			(DB)
 				pa 2+ ♦
 				re SOS or strong (17+ PC)
 				1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-					DB
+					(DB)
 						pa
-							PA
+							(PA)
 								1s 4 ♣, 4 ♠
 								re 5 ♣, 3 ♠
-					PA
+					(PA)
 						pa
-							DB
+							(DB)
 								1s 4 ♣, 4 ♠
 								re 5 ♣, 3 ♠   
 				1n 55+ distribution
@@ -2430,8 +2430,8 @@ pa 13+ PC, any distribution
 	3h preemptive or invitational
 	3s preemptive or invitational
 
-	Competitive bidding after 2♣ opening
-	DB
+#	Competitive bidding after 2♣ opening
+	(DB)
 		pa NF
 		re ,,at least one of us has got clubs - let’s double them’’
 		2d signoff
@@ -2501,7 +2501,7 @@ pa 13+ PC, any distribution
 		3d 5 ♦, 13-14 PC
 			3h pass or correct
 			3s pass or correct
-			3ns signoff
+			3nt signoff
 		3h 5 ♥, 15+ PC	
 			3n signoff
 		3s 5 ♠, 15+ PC
