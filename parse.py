@@ -1,4 +1,10 @@
 import sys
+import html
+suits = {'♠' : '<font color="blue">♠</font>', '♥' : '<font color="red">♥</font>', '♦' : '<font color="#ff6600">♦</font>', '♣' : '<font color="#005416">♣</font>'}
+def paint_suits(s, escape = False):
+	for k, v in suits.items():
+		s = s.replace(k, html.escape(v) if escape else v)
+	return s
 top = (
 '<!DOCTYPE html>\n'
 '<!-- saved from url=(0042)https://mimuw.edu.pl/~km371194/System.html -->\n'
@@ -191,7 +197,8 @@ class Div:
 		self.last_bid = auction.content[-1]
 	def __str__(self):
 		display = " style=\"display: none;\"" if self.level >= 1 else ""
-		return f'<div class="bidding level{self.level:02d}{" relay" if self.relay else ""}" level="{self.level}" title="{self.title}"{display}{self.divid}>{self.last_bid}: {self.description}</div>'
+		div = f'<div class="bidding level{self.level:02d}{" relay" if self.relay else ""}" level="{self.level}" title="{paint_suits(self.title, True)}"{display}{self.divid}>{paint_suits(str(self.last_bid))}: {paint_suits(self.description)}</div>'
+		return div
 	
 	
 def main():
@@ -300,7 +307,7 @@ def main():
 		pass
 	if current_function is not None:
 		raise Exception(f'Function started at line {current_function[3]} not ended')
-	print(top)
+	print(paint_suits(top))
 	for d in divs:
 		print(d)
 	print(bottom)
