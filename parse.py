@@ -1,9 +1,8 @@
 import sys
-import html
-suits = {'♠' : '<font color="blue">♠</font>', '♥' : '<font color="red">♥</font>', '♦' : '<font color="#ff6600">♦</font>', '♣' : '<font color="#005416">♣</font>'}
-def paint_suits(s, escape = False):
+suits = {'♠' : '<sp></sp>', '♥' : '<he></he>', '♦' : '<di></di>', '♣' : '<cl></cl>'}
+def paint_suits(s):
 	for k, v in suits.items():
-		s = s.replace(k, html.escape(v) if escape else v)
+		s = s.replace(k, v)
 	return s
 top = (
 '<!DOCTYPE html>\n'
@@ -12,6 +11,7 @@ top = (
 '	\n'
 '	<title>System MAX by Lech Ohrysko</title>\n'
 '	<meta name="description" content="">\n'
+'	<link rel="stylesheet" href="test.css">\n'
 '	<link rel="stylesheet" href="https://kezsulap.github.io/SSO_MAX_CC/bridge-bidding-styl-new.css">\n'
 '	<script src="https://kezsulap.github.io/SSO_MAX_CC/jquery.min.js"></script>\n'
 '	<script src="https://kezsulap.github.io/SSO_MAX_CC/jquery-bridge-bidding-new.js"></script>\n'
@@ -197,7 +197,7 @@ class Div:
 		self.last_bid = auction.content[-1]
 	def __str__(self):
 		display = " style=\"display: none;\"" if self.level >= 1 else ""
-		div = f'<div class="bidding level{self.level:02d}{" relay" if self.relay else ""}" level="{self.level}" title="{paint_suits(self.title, True)}"{display}{self.divid}>{paint_suits(str(self.last_bid))}: {paint_suits(self.description)}</div>'
+		div = f'<div class="bidding level{self.level:02d}{" relay" if self.relay else ""}" level="{self.level}" title="{paint_suits(self.title)}"{display}{self.divid}>{paint_suits(str(self.last_bid))}: {paint_suits(self.description)}</div>'
 		return div
 	
 	

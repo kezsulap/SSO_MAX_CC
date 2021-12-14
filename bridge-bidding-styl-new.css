@@ -360,4 +360,19 @@ background-color: #009900; font-weight: normal;
 }
 .ramkaalert {
 background-color: #ffff00; font-size: 90%;
+}cl:after {
+	content: "\2663";
+	color: #005416;
+}
+di:after {
+	content: "\2666";
+	color: #ff6600;
+}
+he:after {
+	content: "\2665";
+	color: red;
+}
+sp:after {
+	content: "\2660";
+	color: blue;
 }
