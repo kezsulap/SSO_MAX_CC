@@ -199,32 +199,107 @@ def main():
 	line_id = 0
 	seen_sequences = {}
 	divs = []
+	functions = {} #tuple (name, vars, body, line)
+	current_function = None
+	call_stack = []
+	def process_line(line, line_id, vars = {}, offset = 0):
+		nonlocal current_sequence
+		nonlocal seen_sequences
+		nonlocal divs
+		nonlocal current_function
+		nonlocal functions
+		nonlocal call_stack
+		if current_function is not None:
+			if line.strip() == 'end':
+				name = current_function[0]
+				if name in functions:
+					raise Exception(f'Function {name} redefined on line {current_function[3]}, previously defined on line {functions[name][3]}')
+				functions[current_function[0]] = current_function
+				current_function = None
+				return
+			else:
+				if line.strip():
+					if line[0] != '\t':
+						raise Exception(f'Missing indentation in function definition on line {line_id}')
+					current_function[2].append(line[1:])
+			return
+		if line.startswith('function '):
+			invalid_declaration = Exception(f'Invalid function declaration syntax on line {line_id}')
+			f, rest = line.split(' ', 1)
+			name, *rest = rest.split('(');
+			if len(rest) != 1:
+				raise invalid_declaration
+			rest = '(' + rest[0]
+			rest = rest.strip()
+			if rest[0] != '(' or rest[-1] != ')':
+				raise invalid_declaration
+			args = rest[1:-1].split(',')
+			args = [v.strip() for v in args]
+			if args == ['']:
+				args = []
+			for i, x in enumerate(args):
+				if x in args[:i]:
+					raise Exception(f'Variable named {x} passed twice to {name} on line {line_id}')
+			name = name.strip()
+			current_function = (name, args, [], line_id)
+			return
+		if not line or line.isspace() or line[0] == '#':
+			return
+		indent = 0
+		while indent < len(line) and line[indent] == '\t':
+			indent += 1
+		if indent > len(current_sequence):
+			raise Exception(f'Line: {line_id} Error: too large indentation')
+		line = line[indent:]
+		indent += offset
+		if line[0] == ':':
+			invalid_call = Exception(f'Line: {line_id} invalid function call syntax')
+			name, *rest = line[1:].split('(')
+			if len(rest) != 1:
+				raise invalid_call
+			args, *rest = rest[0].split(')')
+			if len(rest) != 1 or rest[0].strip():
+				raise invalid_call
+			parameters = args.split(', ')
+			name = name.strip()
+			if name not in functions:
+				raise Exception(f'Unknown function {name} at {line_id}')
+			[name, parameters, body, function_line] = functions[name]
+			if name in call_stack:
+				raise Exception(f'Recursive function call at {line_id}')
+			args = args.split(',') if args.strip() else []
+			if len(args) != len(parameters):
+				raise Exception(f'Wrong number of parameters for {name} at {line_id}, expected {len(parameters)}, got {len(args)}')
+			new_vars = vars.copy()
+			for var, repl in zip(parameters, args):
+				new_vars[var] = repl
+			call_stack.append(name)
+			for i, content in enumerate(body):
+				for key, value in new_vars.items():
+					content = content.replace('$(' + key + ')', value)
+				process_line(content, (line_id if isinstance(line_id, list) else [line_id]) + [i + function_line + 1], new_vars, indent)
+			call_stack.pop()
+			return
+		current_sequence = current_sequence[:indent]
+		if current_sequence:
+			seen_sequences[Auction(current_sequence)][1].relay = True
+		bid, *meaning = line.split(' ')
+		current_sequence.append(bid.strip())
+		current_auction = Auction(current_sequence, line=line_id)
+		if current_auction in seen_sequences:
+			raise Exception(f'Line: {line_id} Error: sequence {current_auction} defined twice (previously on line {seen_sequences[current_auction][0]})')
+		div = Div(current_sequence, ' '.join(meaning))
+		seen_sequences[current_auction] = [line_id, div]
+		divs.append(div)
 	try:
 		while True:
 			line = input()
 			line_id += 1;
-			if not line or line.isspace() or line[0] == '#':
-				continue
-			indent = 0
-			while indent < len(line) and line[indent] == '\t':
-				indent += 1
-			if indent > len(current_sequence):
-				raise Exception(f'Line: {line_id} Error: too large indentation')
-			line = line[indent:]
-			current_sequence = current_sequence[:indent]
-			if current_sequence:
-				seen_sequences[Auction(current_sequence)][1].relay = True
-			bid, *meaning = line.split(' ')
-			current_sequence.append(bid.strip())
-			current_auction = Auction(current_sequence, line=line_id)
-			if current_auction in seen_sequences:
-				raise Exception(f'Line: {line_id} Error: sequence {current_auction} defined twice (previously on line {seen_sequences[current_auction][0]})')
-			div = Div(current_sequence, ' '.join(meaning))
-			seen_sequences[current_auction] = [line_id, div]
-			divs.append(div)
-			
+			process_line(line, line_id)
 	except EOFError:
 		pass
+	if current_function is not None:
+		raise Exception(f'Function started at line {current_function[3]} not ended')
 	print(top)
 	for d in divs:
 		print(d)
