@@ -827,16 +827,16 @@ function 2cbalanced_relay()
 								4c minimum
 						3s 4234 minimum
 						3n 4324, minimum
-				3c 4+ ♦, minimum
+				3c 4+ ♦, maximum
 					3d relay
 						3h 4252
 						3s 4243
 						3n 4342
-				3d 4 ♦, maximum
+				3d 4 ♦, minimum
 					3h relay
 						3s 4243
 						3n 4342
-				3h 4252, maximum
+				3h 4252, minimum
 				3s 4333, maximum
 				3n 4333, minimum
 		2s 5-card minor, maximum
