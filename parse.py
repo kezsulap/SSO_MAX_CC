@@ -11,7 +11,6 @@ top = (
 '	\n'
 '	<title>System MAX by Lech Ohrysko</title>\n'
 '	<meta name="description" content="">\n'
-'	<link rel="stylesheet" href="test.css">\n'
 '	<link rel="stylesheet" href="https://kezsulap.github.io/SSO_MAX_CC/bridge-bidding-styl-new.css">\n'
 '	<script src="https://kezsulap.github.io/SSO_MAX_CC/jquery.min.js"></script>\n'
 '	<script src="https://kezsulap.github.io/SSO_MAX_CC/jquery-bridge-bidding-new.js"></script>\n'

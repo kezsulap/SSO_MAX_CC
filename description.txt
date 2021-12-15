@@ -874,11 +874,11 @@ function 2cbalanced_relay()
 			3h relay
 				3s 2353
 				3n 3253
-					4c 3352
+				4c 3352
 		3h 33(43), minimum
 			3s relay
 				3n 3334
-					4c 3343
+				4c 3343
 		3s 2344, minimum
 		3n 3244, minimum
 end
