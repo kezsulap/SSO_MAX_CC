@@ -1,3 +1,16 @@
+function 1hSOS()
+	1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
+		(DB)
+			pa
+				(PA)
+					1s 4 ♣, 4 ♠
+					re 5 ♣, 3 ♠
+		(PA)
+			pa
+				(DB)
+					1s 4 ♣, 4 ♠
+					re 5 ♣, 3 ♠
+end
 function negative1d(r1, r2, r3)
 	1d $(r1) PC, any distribution
 		1h natural, NF
@@ -24,35 +37,19 @@ function negative1d(r1, r2, r3)
 		3s natural, preemptive or invitational
 		(DB)
 			pa 3+ ♦
+				(pa)
+					:1hSOS()
 			re SOS or strong (18+ PC)
-			1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-				(DB)
-					pa
-						(PA)
-							1s 4 ♣, 4 ♠
-							re 5 ♣, 3 ♠
-				(PA)
-					pa
-						(DB)
-							1s 4 ♣, 4 ♠
-							re 5 ♣, 3 ♠
-			1n 55+ distribution		
+			1n 55+ distribution
+			:1hSOS()
 		(PA)
 			pa
 				(DB)
 					pa 2+ ♦
+						(pa)
+							:1hSOS()
 					re SOS
-					1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-						(DB)
-							pa
-								(PA)
-									1s 4 ♣, 4 ♠
-									re 5 ♣, 3 ♠
-						(PA)
-							pa
-								(DB)
-									1s 4 ♣, 4 ♠
-									re 5 ♣, 3 ♠   
+					:1hSOS()
 					1n 55+ distribution
 end
 function open1h(open_strength, relay_strength)
