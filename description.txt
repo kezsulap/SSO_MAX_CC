@@ -39,9 +39,9 @@ function negative1d(r1, r2, r3)
 			pa 3+ ♦
 				(pa)
 					:1hSOS()
-			re SOS or strong (18+ PC)
-			1n 55+ distribution
+			re SOS
 			:1hSOS()
+			1n system on
 		(PA)
 			pa
 				(DB)
