@@ -716,13 +716,16 @@ function open2h(open_strength, relay_strength, which_relay)
 			:$(which_relay)()
 		3c pass or correct
 		3d pass or correct
-		3h signoff
-		3s signoff
+		3h preemptive or invitational
+		3s preemptive or invitational
 		3n “bid your minor”
 		4c three-suiter with ♥ shortness
 		4d three-suiter with ♠ shortness 
 		4h signoff
 		4s signoff
+		(dbl)
+			pass pass or correct
+			rdbl one of us has ♥, let's double them
 end
 function 2sbaserelay()
 	3c 5 ♦   
@@ -769,12 +772,15 @@ function open2s(open_strength, relay_strength, which_relay)
 			3h 6 ♣
 			3s 5 ♣
 		3h pass or correct
-		3s signoff
+		3s preemptive or invitational
 		3n “bid your minor”
 		4c three-suiter with ♠ shortness
 		4d three-suiter with ♥ shortness
 		4h signoff
 		4s signoff
+		(dbl)
+			pass pass or correct
+			rdbl one of us has ♠, let's double them
 end
 function 2cbalanced_relay()
 	2c relay, GF
