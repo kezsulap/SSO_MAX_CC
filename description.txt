@@ -566,12 +566,9 @@ function old2d(open_strength, relay_strength)
 		2h pass or correct
 		2s signoff
 		2n relay, $(relay_strength) PC
-			3c 5 ♥   
+			3c 5 ♥  (except 3514 maximum)
 				3d relay
-					3h 3514 
-						3s relay
-							3n maximum
-							4c minimum
+					3h 3514, minimum
 					3s 3541, maximum                          
 					3n 3541, minimum
 			3d 5 ♠, minimum 
@@ -580,6 +577,7 @@ function old2d(open_strength, relay_strength)
 					3n 5341 
 			3h 5314 maximum
 			3s 5341 maximum 
+			3n 3514 maximum
 		3c pass or correct, preemptive
 		3d with supports in majors, preemptive or invitational 
 		3h natural, preemptive or invitational
@@ -849,13 +847,13 @@ function 2cbalanced_relay()
 						3h 2335
 						3s 3235
 						3n 3325
-				3d 33)5(2
+				3d (32)53
 					3h relay
 						3s 2353
 						3n 3253
-						4c 3352
 				3h 2245
 				3s 2254
+				3n 3352
 		2n no 4-card major, no (5332), maximum
 			3c relay
 				3d 22(54) 
@@ -1094,7 +1092,7 @@ pa 13+ PC, any distribution
 						4c minimum
 				3s 2542, maximum
 				3n 2542, minimum
-		2d 5 ♠ 
+		2d 5 ♠ (except 5(332) maximum)
 			2h artificial, at least invitational
 				2s minimum
 					2n NF
@@ -1119,9 +1117,9 @@ pa 13+ PC, any distribution
 						4c minimum
 				3s 5242, maximum
 				3n 5242, minimum
-				4c 5233, maximum
 		2h 5323, maximum
 		2s 5332, maximum 
+		2n 5233, maximum
 	1h 4+ ♥, NF
 	1s 4+ ♠, NF
 	1n natural, NF
