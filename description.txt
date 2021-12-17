@@ -608,13 +608,13 @@ function new2d()
 				3c relay
 					3d 5 ♣, 5 ♠, (excluding 5215, min) 
 						3h relay
-							3s 0535
+							3s 5035
 								3n relay
 									4c maximum
 									4d minimum
-							3n 1525, max
-							4c 1525, min
-							4d 2515, max 
+							3n 5125, max
+							4c 5125, min
+							4d 5215, max 
 					3h 5053
 						3s relay
 							3n maximum
