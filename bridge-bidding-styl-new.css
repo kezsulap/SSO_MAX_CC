@@ -19,9 +19,11 @@ margin-bottom: 2em;
 }
 
 title {font-size: 200%;}
+div.bidding {
+	border: solid #ADD6FF 2px;
+}
 .level {
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em .2em;
 border-radius: 5px;
 font-size: 100%;
@@ -29,7 +31,6 @@ font-size: 100%;
 .level00 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em .2em;
 border-radius: 5px;
 font-size: 100%;
@@ -37,7 +38,6 @@ font-size: 100%;
 .level01 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 2.2em;
 border-radius: 5px;
 font-size: 97%;
@@ -45,7 +45,6 @@ font-size: 97%;
 .level02 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 4.2em;
 border-radius: 5px;
 font-size: 94%;
@@ -53,7 +52,6 @@ font-size: 94%;
 .level03 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 6.2em;
 border-radius: 5px;
 font-size: 91%;
@@ -61,7 +59,6 @@ font-size: 91%;
 .level04 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 8.2em;
 border-radius: 5px;
 font-size: 88%;
@@ -69,7 +66,6 @@ font-size: 88%;
 .level05 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 10.2em;
 border-radius: 5px;
 font-size: 85%;
@@ -77,7 +73,6 @@ font-size: 85%;
 .level06 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 12.2em;
 border-radius: 5px;
 font-size: 82%;
@@ -85,7 +80,6 @@ font-size: 82%;
 .level07 {
 text-indent: -1.4em;
 padding-left: 1.9em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 14.2em;
 border-radius: 5px;
 font-size: 79%;
@@ -93,7 +87,6 @@ font-size: 79%;
 .level08 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 16.2em;
 border-radius: 5px;
 font-size: 76%;
@@ -101,7 +94,6 @@ font-size: 76%;
 .level09 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 18.2em;
 border-radius: 5px;
 font-size: 73%;
@@ -109,7 +101,6 @@ font-size: 73%;
 .level10 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 20.2em;
 border-radius: 5px;
 font-size: 70%;
@@ -117,7 +108,6 @@ font-size: 70%;
 .level11 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 22.2em;
 border-radius: 5px;
 font-size: 67%;
@@ -125,7 +115,6 @@ font-size: 67%;
 .level12 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 24.2em;
 border-radius: 5px;
 font-size: 64%;
@@ -133,7 +122,6 @@ font-size: 64%;
 .level13 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 26.2em;
 border-radius: 5px;
 font-size: 61%;
@@ -141,7 +129,6 @@ font-size: 61%;
 .level14 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 28.2em;
 border-radius: 5px;
 font-size: 58%;
@@ -149,7 +136,6 @@ font-size: 58%;
 .level15 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 30.2em;
 border-radius: 5px;
 font-size: 57%;
@@ -157,7 +143,6 @@ font-size: 57%;
 .level16 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 32.2em;
 border-radius: 5px;
 font-size: 56%;
@@ -165,7 +150,6 @@ font-size: 56%;
 .level17 {
 text-indent: -1.4em;
 padding-left: 1.8em;
-border: solid #ADD6FF 2px;
 margin: .2em .2em .2em 34.2em;
 border-radius: 5px;
 font-size: 55%;
@@ -190,6 +174,12 @@ background-color: #ADD6FF;
 background-color: #FF5C33;
 border-color: #FF5C33;
 cursor: n-resize;
+}
+.bidding.diff, .bidding.subtreediff:not(.rozwiniete) {
+	border-color:orange;
+}
+.bidding.diff.relay, .bidding.subtreediff.relay:not(.rozwiniete) {
+	background-color:orange;
 }
 
 .OtherPage {
