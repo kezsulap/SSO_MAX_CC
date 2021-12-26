@@ -1,0 +1,6 @@
+pa 13+
+	1♣ 6-10
+		1♦ 13-16 balanced
+			1♥ 4+♥
+1♥ 8-12 singleton or 6+
+	1♠ relay, 13+
