@@ -14,6 +14,12 @@ function load(url) {
 	xhr.send(null);
 	return xhr.responseText;
 }
+class ParsingError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ParsingError";
+  }
+}
 const initial_sequence = [0, 0, 0];
 function append_call(state, call) {
 	if (state === undefined) {
@@ -55,10 +61,29 @@ function call_to_str(x, braces = true) {
 			return Math.floor((x + 4) / 5) + ['♣', '♦', '♥', '♠', 'NT'][(x + 4) % 5];
 		}
 	}
-	throw 'invalid call ' + x;
+	throw new ParsingError('invalid call ' + x);
+}
+function auction_to_str(auction, separator) {
+	let ret = '';
+	for (let i = 0; i < auction.length; ++i) {
+		let our = i % 2 == 0;
+		if (our) {
+			if (i) {
+				if (i % 4) ret += '-';
+				else ret += separator;
+			}
+			ret += call_to_str(auction[i], false);
+		}
+		else {
+			if (auction[i] !== 0) {
+				ret += '-(' + call_to_str(auction[i]) + ')';
+			}
+		}
+	}
+	return ret;
 }
 class Node {
-	constructor(call, possible_states, meaning, current_auction) {
+	constructor(call, possible_states, meaning, current_auction, line = '') {
 		if (call === undefined) {
 			this.current_auction = [];
 			this.possible_states = [initial_sequence]
@@ -91,10 +116,10 @@ class Node {
 		if (new_states.length == 0) {
 			if (errors.size == 1) {
 				let [error] = errors;
-				throw error + ': ' + call_to_str(call);
+				throw new ParsingError(error + ': ' + call_to_str(call) + (line ? ' on line ' + line : ''));
 			}
 			else {
-				throw 'invalid call: ' + call_to_str(call);
+				throw new ParsingError('invalid call: ' + call_to_str(call) + (line ? ' on line ' + line : ''));
 			}
 		}
 		this.current_auction = new_auction;
@@ -103,17 +128,17 @@ class Node {
 		this.children = [];
 		this.otherClasses = new Set();
 	}
-	append_call_to_node(call, meaning, throw_if_exists) {
+	append_call_to_node(call, meaning, throw_if_exists, line) {
 		let current_node = this.getChild(call);
 		if (current_node !== undefined) {
 			if (throw_if_exists || (meaning && current_node.meaning)) {
-				throw 'Redefined sequence ' + current_node.current_auction;
+				throw new ParsingError('Redefined sequence ' + auction_to_str(current_node.current_auction, '-') + (line ? 'on line ' + line : ''));
 			}
 			else {
 				return current_node;
 			}
 		}
-		let ret = new Node(call, this.possible_states, meaning, this.current_auction);
+		let ret = new Node(call, this.possible_states, meaning, this.current_auction, line);
 		this.children.push([call, ret]);
 		return ret;
 	}
@@ -151,24 +176,24 @@ function parse_call(x) {
 	}
 	return undefined;
 }
-function parse_function(content, invalid_str, is_definition) {
+function parse_function(content, exception, is_definition) {
 	content = content.trim();
 	let openings = [...content.matchAll('\\(', 'g')]
 	let closings = [...content.matchAll('\\)', 'g')]
-	if (openings.length != 1 || closings.length != 1) throw invalid_str;
+	if (openings.length != 1 || closings.length != 1) throw exception;
 	let opening_id = openings[0].index;
 	let closing_id = closings[0].index;
-	if (opening_id > closing_id) throw invalid_str;
+	if (opening_id > closing_id) throw exception;
 	let name = content.slice(0, opening_id).trim();
 	let R = /^[a-zA-Z0-9_]*$/;
-	if (!name.match(R)) throw invalid_str;
+	if (!name.match(R)) throw exception;
 	let args = content.slice(opening_id + 1, closing_id).trim();
 	let rest = content.slice(closing_id + 1).trim();
-	if (rest) throw invalid_str;
+	if (rest) throw exception;
 	args = args ? args.split(',') : [];
 	for (let i = 0; i < args.length; ++i)
 		args[i] = args[i].trim();
-	if (is_definition) for (let a of args) if (!a.match(R)) throw invalid_str;
+	if (is_definition) for (let a of args) if (!a.match(R)) throw exception;
 	return [name, args];
 }
 function parse_line(content, line_id) {
@@ -217,19 +242,19 @@ function parse_file(file) {
 			if (content.trim() === 'end') {
 				let name = current_function['name'];
 				if (name in functions) {
-					throw 'Redefinition of function ' + name + ' on line '+  line_id;
+					throw new ParsingError('Redefinition of function ' + name + ' on line '+  line_id);
 				}
 				functions[name] = current_function;
 				current_function = undefined;
 				return;
 			}
-			if (content[0] != '\t') throw 'Missing indentation in function definition on line ' + line_id;
+			if (content[0] != '\t') throw new ParsingError('Missing indentation in function definition on line ' + line_id);
 			current_function['body'].push([line_id, content.slice(1)])
 			return;
 		}
 		if (content.startsWith('function')) {
 			let invalid_str = 'Invalid function declaration syntax on line ' + line_id;
-			let [name, args] = parse_function(content.slice('function'.length), invalid_str, true);
+			let [name, args] = parse_function(content.slice('function'.length), new ParsingError(invalid_str), true);
 			current_function = {name : name, body : [], args : args};
 			return;
 		}
@@ -241,12 +266,12 @@ function parse_file(file) {
 		indent += offset;
 		if (content[0] == ':') {
 			let invalid_str = 'Invalid function call syntax on line ' + line_id;
-			let [name, args] = parse_function(content.slice(1), invalid_str, false);
+			let [name, args] = parse_function(content.slice(1), new ParsingError(invalid_str), false);
 			if (name in functions) {
 				let body = functions[name]['body'];
 				let fun_args = functions[name]['args'];
 				if (args.length != fun_args.length) {
-					throw 'Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length;
+					throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length);
 				}
 				for (let [num, code] of body) {
 					for (let i = 0; i < args.length; ++i) {
@@ -256,31 +281,28 @@ function parse_file(file) {
 				}
 			}
 			else {
-				throw 'Unknown function: ' + name + ' on line ' + line_id; 
+				throw new ParsingError('Unknown function: ' + name + ' on line ' + line_id); 
 			}
 			return;
 		}
 		if (indent > nodes_stack.length) {
-			throw 'Unexpected indentation on line ' + line_id;
+			throw new ParsingError('Unexpected indentation on line ' + line_id);
 		}
 		nodes_stack = nodes_stack.slice(0, indent + 1);
 		[call, ours, meaning] = parse_line(content, line_id);
 		let current_node = nodes_stack[indent];
 		if (!ours && current_node.current_auction.length % 2 == 0) {
-			throw 'Bidding missing our call on line ' + line_id;
+			throw new ParsingError('Bidding missing our call on line ' + line_id);
 		}
 		if (ours && current_node.current_auction.length % 2)
-			current_node = current_node.append_call_to_node(0, '', false);
-		current_node = current_node.append_call_to_node(call, meaning, call !== 0);
+			current_node = current_node.append_call_to_node(0, '', false, line_id);
+		current_node = current_node.append_call_to_node(call, meaning, call !== 0, line_id);
 		nodes_stack.push(current_node);
 	}
 	for (let line_id = 0; line_id < lines.length; ++line_id) {
 		process_line(lines[line_id], line_id + 1);
 	}
 	return nodes_stack[0];
-}
-function bidding_to_title(bidding) { //TODO
-	return '';
 }
 function wrap_if(call, our) {
 	if (our) return call;
@@ -321,7 +343,7 @@ function display(node) {
 			// if (depth == 0) {
 			//TODO: toplist menu
 			// }
-			a.setAttribute('title', bidding_to_title(node.current_auction));
+			a.setAttribute('title', auction_to_str(node.current_auction, '\n'));
 			content.appendChild(a);
 		}
 		for (let [call, subnode] of node.children) {
@@ -388,52 +410,57 @@ function get_url(owner, repo, version = 'main', file = 'description.txt') {
 }
 function init() {
 	window.onload = function() {
-		if (hardcoded !== undefined) {
-			nodes = [];
-			for (let i = 0; i < hardcoded.length; ++i) {
-				nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
-			}
-			display(compare(nodes));
-		}
-		else {
-			let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
-			repo = undefined, owner = undefined;
-			if (protocol === 'http:' || protocol === 'https:') {
-				if (domain.match('^[a-z]*.github.io$')) {
-					repo = path.split('/')[1];
-					owner = domain.split('.')[0];
-				}
-			}
-			let keys = [...params.keys()];
-			let params_list = [];
-			let paste = repo === undefined;
-			for (let k of keys) {
-				if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
-				if (k === 'paste') {
-					paste = true;
-					continue;
-				}
-				params_list.push([k, params.get(k)]);
-			}
-			if (paste) {
-				document.querySelector('#paste').style.display = '';
-				if (repo === undefined) {
-					document.querySelector('#compare_origin_div').style.display='none';
-				}
-			}
-			else if (params_list.length) {
-				let nodes = [];
-				for (let [name, url] of params_list) {
-					let [a, b] = url.split(':');
-					version = a ? a : 'main';
-					file = b ? b : 'description.txt';
-					nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
+		try {
+			if (hardcoded !== undefined) {
+				nodes = [];
+				for (let i = 0; i < hardcoded.length; ++i) {
+					nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
 				}
 				display(compare(nodes));
 			}
 			else {
-				display(parse_file(load(get_url(owner, repo))));
+				let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
+				repo = undefined, owner = undefined;
+				if (protocol === 'http:' || protocol === 'https:') {
+					if (domain.match('^[a-z]*.github.io$')) {
+						repo = path.split('/')[1];
+						owner = domain.split('.')[0];
+					}
+				}
+				let keys = [...params.keys()];
+				let params_list = [];
+				let paste = repo === undefined;
+				for (let k of keys) {
+					if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
+					if (k === 'paste') {
+						paste = true;
+						continue;
+					}
+					params_list.push([k, params.get(k)]);
+				}
+				if (paste) {
+					document.querySelector('#paste').style.display = '';
+					if (repo === undefined) {
+						document.querySelector('#compare_origin_div').style.display='none';
+					}
+				}
+				else if (params_list.length) {
+					let nodes = [];
+					for (let [name, url] of params_list) {
+						let [a, b] = url.split(':');
+						version = a ? a : 'main';
+						file = b ? b : 'description.txt';
+						nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
+					}
+					display(compare(nodes));
+				}
+				else {
+					display(parse_file(load(get_url(owner, repo))));
+				}
 			}
+		}
+		catch (e) {
+			display_error(e);
 		}
 	}
 }
@@ -442,25 +469,39 @@ function paste_update() {
 	document.querySelector('#input2').style.display = mode === 'compare_two' ? '' : 'none';
 }
 function render_from_paste() {
-	document.querySelector('#paste').style = 'display: none';
-	let mode = document.querySelector('input[name="mode"]:checked').value;
-	let file1 = undefined, file2 = undefined;
-	if (mode === 'display_one') {
-		file1 = document.querySelector('#input1').value;
+	try {
+		document.querySelector('#paste').style = 'display: none';
+		let mode = document.querySelector('input[name="mode"]:checked').value;
+		let file1 = undefined, file2 = undefined;
+		if (mode === 'display_one') {
+			file1 = document.querySelector('#input1').value;
+		}
+		else if (mode === 'compare_two') {
+			file1 = document.querySelector('#input1').value;
+			file2 = document.querySelector('#input2').value;
+		}
+		else if (mode === 'compare_origin') {
+			file1 = document.querySelector('#input1').value;
+			file2 = load(get_url(owner, repo));
+		}
+		if (file2 === undefined) {
+			display(parse_file(file1));
+		}
+		else {
+			display(compare([['V1', parse_file(file1)], ['V2', parse_file(file2)]]));
+		}
 	}
-	else if (mode === 'compare_two') {
-		file1 = document.querySelector('#input1').value;
-		file2 = document.querySelector('#input2').value;
+	catch (e) {
+		display_error(e);
 	}
-	else if (mode === 'compare_origin') {
-		file1 = document.querySelector('#input1').value;
-		file2 = load(get_url(owner, repo));
+}
+function display_error(e) {
+	if (e instanceof ParsingError) {
+		let errorNode = document.createElement('div');
+		errorNode.classList.add('error');
+		errorNode.innerText = 'Error: ' + e.message;
+		document.querySelector('#bidding').appendChild(errorNode);
 	}
-	if (file2 === undefined) {
-		display(parse_file(file1));
-	}
-	else {
-		display(compare([['V1', parse_file(file1)], ['V2', parse_file(file2)]]));
-	}
+	else throw e;
 }
 init();
