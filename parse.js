@@ -88,7 +88,7 @@ class Node {
 				else errors.add(next);
 			}
 		}
-		if (new_states.size == 0) {
+		if (new_states.length == 0) {
 			if (errors.size == 1) {
 				let [error] = errors;
 				throw error + ': ' + call_to_str(call);
