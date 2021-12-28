@@ -385,43 +385,52 @@ function get_url(owner, repo, version = 'main', file = 'description.txt') {
 }
 function init() {
 	window.onload = function() {
-		let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
-		repo = undefined, owner = undefined;
-		if (protocol === 'http:' || protocol === 'https:') {
-			if (domain.match('^[a-z]*.github.io$')) {
-				repo = path.split('/')[1];
-				owner = domain.split('.')[0];
-			}
-		}
-		let keys = [...params.keys()];
-		let params_list = [];
-		let paste = repo === undefined;
-		for (let k of keys) {
-			if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
-			if (k === 'paste') {
-				paste = true;
-				continue;
-			}
-			params_list.push([k, params.get(k)]);
-		}
-		if (paste) {
-			document.querySelector('#paste').style.display = '';
-			if (repo === undefined) {
-				document.querySelector('#compare_origin_div').style.display='none';
-			}
-		}
-		else if (params_list.length) {
-			let nodes = [];
-			for (let [name, url] of params_list) {
-				let [a, b] = url.split(':');
-				version = a ? a : 'main';
-				file = b ? b : 'description.txt';
-				nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
+		if (hardcoded !== undefined) {
+			nodes = [];
+			for (let i = 0; i < hardcoded.length; ++i) {
+				nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
 			}
 			display(compare(nodes));
 		}
 		else {
-			display(parse_file(load(get_url(owner, repo))));
+			let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
+			repo = undefined, owner = undefined;
+			if (protocol === 'http:' || protocol === 'https:') {
+				if (domain.match('^[a-z]*.github.io$')) {
+					repo = path.split('/')[1];
+					owner = domain.split('.')[0];
+				}
+			}
+			let keys = [...params.keys()];
+			let params_list = [];
+			let paste = repo === undefined;
+			for (let k of keys) {
+				if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
+				if (k === 'paste') {
+					paste = true;
+					continue;
+				}
+				params_list.push([k, params.get(k)]);
+			}
+			if (paste) {
+				document.querySelector('#paste').style.display = '';
+				if (repo === undefined) {
+					document.querySelector('#compare_origin_div').style.display='none';
+				}
+			}
+			else if (params_list.length) {
+				let nodes = [];
+				for (let [name, url] of params_list) {
+					let [a, b] = url.split(':');
+					version = a ? a : 'main';
+					file = b ? b : 'description.txt';
+					nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
+				}
+				display(compare(nodes));
+			}
+			else {
+				display(parse_file(load(get_url(owner, repo))));
+			}
 		}
 	}
 }
