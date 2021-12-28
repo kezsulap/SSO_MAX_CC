@@ -1,0 +1,5 @@
+1c 12+
+	1d 0-7
+	1h 7+
+		1d 18+ with support
+	1s 7+
