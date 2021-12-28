@@ -266,6 +266,9 @@ function parse_file(file) {
 		nodes_stack = nodes_stack.slice(0, indent + 1);
 		[call, ours, meaning] = parse_line(content, line_id);
 		let current_node = nodes_stack[indent];
+		if (!ours && current_node.current_auction.length % 2 == 0) {
+			throw 'Bidding missing our call on line ' + line_id;
+		}
 		if (ours && current_node.current_auction.length % 2)
 			current_node = current_node.append_call_to_node(0, '', false);
 		current_node = current_node.append_call_to_node(call, meaning, call !== 0);
