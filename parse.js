@@ -43,9 +43,9 @@ function append_call(state, call) {
 		return [true, [call, 0, 0]]
 	}
 }
-function call_to_str(x) {
+function call_to_str(x, braces = true) {
 	if (typeof(x) == 'string') {
-		return '{' + x + '}';
+		return braces ? '{' + x + '}' : x;
 	}
 	if (typeof(x) == 'number') {
 		if (x === -2) return 'rdbl';
@@ -305,7 +305,7 @@ function display(node) {
 			a.classList.add('bidding');
 			a.setAttribute('level', depth);
 			a.classList.add('level' + String(depth).padStart(2, '0'));
-			a.innerHTML = format_str(wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1]), node.current_auction.length % 2) + ': ' + node.meaning);
+			a.innerHTML = format_str(wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1], false), node.current_auction.length % 2) + ': ' + node.meaning);
 			if (depth) {
 				a.setAttribute('style', "display: none;");
 			}
