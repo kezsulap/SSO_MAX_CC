@@ -380,43 +380,75 @@ function compare(starting_nodes) {
 	dfs(starting_nodes, ret);
 	return ret;
 }
-window.onload = function() {
-	let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
-	if (protocol === 'file:') {
-		var repo = 'SSO_MAX_CC';
-		var owner = 'kezsulap';
-	}
-	else {
-		var repo = path.split('/')[1];
-		var owner = domain.split('.')[0];
-	}
-	let keys = [...params.keys()];
-	let params_list = [];
-	for (let k of keys) {
-		params_list.push([k, params.get(k)]);
-	}
-	if (params_list.length) {
-		let nodes = [];
-		for (let [name, url] of params_list) {
-			let [a, b] = url.split(':');
-			version = a ? a : 'main';
-			file = b ? b : 'description.txt';
-			nodes.push([name, parse_file(load('https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + version + '/' + file))]);
-		}
-		display(compare(nodes));
-	}
-	else {
-		display(parse_file(load('https://raw.githubusercontent.com/' + owner + '/' + repo + '/main/description.txt')));
-	}
-	// old_content = load('https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/main/description.txt')
-	// new_content = load('https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/fix-4c-responses/description.txt')
-	// old_node = parse_file(old_content)
-	// new_node = parse_file(new_content)
-	// cmp_node = compare([['OLD', old_node], ['NEW', new_node]])
-	// test1 = load('https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/test-descriptions/test1.txt');
-	// test2 = load('https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/test-descriptions/test2.txt');
-	// node1 = parse_file(test1)
-	// node2 = parse_file(test2)
-	// cmp_node = compare([['OLD', node1], ['NEW', node2]])
-	// display(cmp_node)
+function get_url(owner, repo, version = 'main', file = 'description.txt') {
+	return ('https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + version + '/' + file);
 }
+function init() {
+	window.onload = function() {
+		let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
+		repo = undefined, owner = undefined;
+		if (protocol === 'http:' || protocol === 'https:') {
+			if (domain.match('^[a-z]*.github.io$')) {
+				repo = path.split('/')[1];
+				owner = domain.split('.')[0];
+			}
+		}
+		let keys = [...params.keys()];
+		let params_list = [];
+		let paste = repo === undefined;
+		for (let k of keys) {
+			if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
+			if (k === 'paste') {
+				paste = true;
+				continue;
+			}
+			params_list.push([k, params.get(k)]);
+		}
+		if (paste) {
+			document.querySelector('#paste').style.display = '';
+			if (repo === undefined) {
+				document.querySelector('#compare_origin_div').style.display='none';
+			}
+		}
+		else if (params_list.length) {
+			let nodes = [];
+			for (let [name, url] of params_list) {
+				let [a, b] = url.split(':');
+				version = a ? a : 'main';
+				file = b ? b : 'description.txt';
+				nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
+			}
+			display(compare(nodes));
+		}
+		else {
+			display(parse_file(load(get_url(owner, repo))));
+		}
+	}
+}
+function paste_update() {
+	let mode = document.querySelector('input[name="mode"]:checked').value;
+	document.querySelector('#input2').style.display = mode === 'compare_two' ? '' : 'none';
+}
+function render_from_paste() {
+	document.querySelector('#paste').style = 'display: none';
+	let mode = document.querySelector('input[name="mode"]:checked').value;
+	let file1 = undefined, file2 = undefined;
+	if (mode === 'display_one') {
+		file1 = document.querySelector('#input1').value;
+	}
+	else if (mode === 'compare_two') {
+		file1 = document.querySelector('#input1').value;
+		file2 = document.querySelector('#input2').value;
+	}
+	else if (mode === 'compare_origin') {
+		file1 = document.querySelector('#input1').value;
+		file2 = load(get_url(owner, repo));
+	}
+	if (file2 === undefined) {
+		display(parse_file(file1));
+	}
+	else {
+		display(compare([['V1', parse_file(file1)], ['V2', parse_file(file2)]]));
+	}
+}
+init();
