@@ -64,6 +64,8 @@ function call_to_str(x, braces = true) {
 	throw new ParsingError('invalid call ' + x);
 }
 function auction_to_str(auction, separator) {
+	let competitive = false;
+	for (let i = 1; i < auction.length; i += 2) if (auction[i] !== 0) competitive = true;
 	let ret = '';
 	for (let i = 0; i < auction.length; ++i) {
 		let our = i % 2 == 0;
@@ -75,7 +77,7 @@ function auction_to_str(auction, separator) {
 			ret += call_to_str(auction[i], false);
 		}
 		else {
-			if (auction[i] !== 0) {
+			if (competitive) {
 				ret += '-(' + call_to_str(auction[i]) + ')';
 			}
 		}
@@ -343,8 +345,11 @@ function display(node) {
 			// if (depth == 0) {
 			//TODO: toplist menu
 			// }
-			a.setAttribute('title', auction_to_str(node.current_auction, '\n'));
+			let title = document.createElement('span');
+			title.classList.add('tooltip');
+			title.innerHTML = format_str(auction_to_str(node.current_auction, '<br>'));
 			content.appendChild(a);
+			a.appendChild(title);
 		}
 		for (let [call, subnode] of node.children) {
 			// console.log(call, typeof(call), call_to_str(call), subnode);

@@ -366,3 +366,27 @@ sp:after {
 	content: "\2660";
 	color: blue;
 }
+.bidding {
+	position: relative;
+}
+.bidding .tooltip {
+ visibility: hidden;
+  width: fit-content;
+  background-color: #ddd;
+  color: black;
+  text-align: justify;
+/*  padding: 5px 0; */
+/*  border-radius: 6px;*/
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: +1;
+/*  top: -5px;*/
+	text-indent:0px;
+  right: 105%;
+}
+
+.bidding:hover .tooltip {
+  visibility: visible;
+}
+
