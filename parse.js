@@ -323,6 +323,7 @@ function format_str(s) {
 function display(node) {
 	let content = document.querySelector('#bidding')
 	let topmenu = document.querySelector('#topmenulist')
+	let no = 0;
 	function dfs(node, depth) {
 		let skip = node.current_auction.length == 0 ||
 			(node.current_auction[node.current_auction.length - 1] === 0 && node.current_auction.length % 2 == 0 && node.meaning.trim() === '');
@@ -341,9 +342,17 @@ function display(node) {
 			for (let otherClass of node.otherClasses) {
 				a.classList.add(otherClass);
 			}
-			// if (depth == 0) {
-			//TODO: toplist menu
-			// }
+			if (depth == 0) {
+				a.setAttribute('id', 'open' + no);
+				let topmenu_node = document.createElement('li');
+				let link = document.createElement('a');
+				topmenu_node.appendChild(link);
+				link.innerHTML = format_str(call_to_str(node.current_auction[0], false));
+				link.setAttribute('href', '#open' + no);
+				link.classList.add('topmenu');
+				topmenu.appendChild(topmenu_node);
+				no++;
+			}
 			let title = document.createElement('span');
 			title.classList.add('tooltip');
 			title.innerHTML = format_str(auction_to_str(node.current_auction, '<br>'));
