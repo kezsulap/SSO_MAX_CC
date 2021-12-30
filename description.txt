@@ -111,13 +111,13 @@ function open1h(open_strength, relay_strength)
 							3h 3037
 							3s 3127
 							3n 3136
-					3d 6+ ♦, maximum 
+					3d 7 ♦, maximum 
 						3h relay
 							3s 3073
 							3n 3172
-							4c 3163
-					3h 3055, maximum
-					3s 3055, minimum 
+					3h 3163, maximum
+					3s 3055, maximum
+					3n 3055, minimum 
 			2d 5 ♠
 				2h relay, GF
 					2s 4+ ♣, ♥ singleton
@@ -276,13 +276,13 @@ function open1s(open_strength, relay_strength)
 							3h 0337
 							3s 1327
 							3n 1336
-					3d 6+ ♦, maximum 
+					3d 7 ♦, maximum 
 						3h relay
 							3s 0373
 							3n 1372
-							4c 1363
-					3h 0355, maximum
-					3s 0355, minimum 
+					3h 1363, maximum
+					3s 0355, maximum
+					3n 0355, minimum 
 			2d 5 ♥
 				2h relay, GF
 					2s 4+ ♣, ♠ singleton
