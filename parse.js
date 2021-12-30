@@ -80,6 +80,7 @@ function auction_to_str(auction, separator) {
 			}
 		}
 	}
+	if (auction.length == 1) ret = 'Open ' + ret;
 	return ret;
 }
 class Node {
