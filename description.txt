@@ -78,10 +78,12 @@ function open1h(open_strength, relay_strength)
 						2n relay 
 							3c 4 ♣, 3 ♠   
 								3d relay
-									3h 3064, maximum
-									3s 3064, minimum
-									3n 3154, maximum
-									4c 3154, minimum
+									3h 3064
+										3s relay
+											3n maximum
+											4c minimum
+									3s 3154, maximum
+									3n 3154, minimum
 							3d 4063
 								3h relay
 									3s maximum
@@ -241,10 +243,12 @@ function open1s(open_strength, relay_strength)
 						2n relay 
 							3c 4 ♣, 3 ♥   
 								3d relay
-									3h 0364, maximum
-									3s 0364, minimum
-									3n 1354, maximum
-									4c 1354, minimum
+									3h 0364
+										3s relay
+											3n maximum
+											4c minimum
+									3s 1354, maximum
+									3n 1354, minimum
 							3d 0463
 								3h relay
 									3s maximum
