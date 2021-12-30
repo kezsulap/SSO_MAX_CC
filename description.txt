@@ -508,40 +508,40 @@ end
 function open2c(open_strength, relay_strength)
 	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness (except 3307, 3370)
 		2d relay, $(relay_strength) PC
-			2h 5+ ♣, 4 ♥  or 5+ ♦, 4 ♠ or 4414 or 4405 (except 3415 maximum) 
+			2h 5+ ♣, 4 ♥  or 5+ ♦, 4 ♠ or 4414 or 4405     
 				2s relay
-					2n 4414 or 4405
+					2n 4414 or 4405 or 3415 minimum
 						3c relay
-							3d 4405, maximum
-							3h 4405, minimum
+							3d 5♣ minimum
+								3h relay
+									3s 4405 minimum
+									3n 3415 minimum
+							3h 4405, maximum
 							3s 4414, maximum
 							3n 4414, minimum
-					3c 5+ ♣, 4 ♥     
+					3c 5+ ♣, 4 ♥  (except 3415 minimum) 
 						3d relay
 							3h 3406, maximum
 							3s 3406, minimum
-							3n 3415, minimum
+							3n 3415, maximum 
 					3d 4360, maximum
 					3h 4360, minimum
 					3s 4351, maximum
 					3n 4351, minimum
-			2s 5+ ♣, 4 ♠ or 5+ ♦, 4 ♥   (except 3451 maximum) 
+			2s 5+ ♣, 4 ♠ or 5+ ♦, 4 ♥   (except 4315, maximum) 
 				2n relay
-					3c 5+ ♦, 4 ♥      
+					3c 5+ ♣, 4 ♠      
 						3d relay
-							3h 3460, maximum
-							3s 3460, minimum
-							3n 3451, minimum
-					3d 4306, maximum
-					3h 4306, minimum
-					3s 4315, maximum
-					3n 4315, minimum 
-			2n 4441 or 4450 or 3451 maximum
+							3h 4306, maximum
+							3s 4306, minimum
+							3n 4315, minimum
+					3d 3460, maximum
+					3h 3460, minimum
+					3s 3451, maximum
+					3n 3451, minimum 
+			2n 4441 or 4450
 				3c relay
-					3d 5♦ maximum
-						3h relay
-							3s 4450, maximum
-							3n 3451 maximum
+					3d 4450, maximum
 					3h 4450, minimum
 					3s 4441, maximum
 					3n 4441, minimum
@@ -549,7 +549,7 @@ function open2c(open_strength, relay_strength)
 			3d 3361, minimum
 			3h 3316, maximum
 			3s 3361, maximum
-			3n 3415, maximum 
+			3n 4315, maximum 
 		2h signoff
 		2s signoff  
 		2n 44+ minors, weakly invitational 
