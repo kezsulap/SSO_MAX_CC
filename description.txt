@@ -672,24 +672,26 @@ function new2d()
 			2h own suit
 end
 function 2hbaserelay()
-	3c 5 ♣
+	3c ♣+♥ (except 1516 maximum) 
 		3d relay
-			3h 3505, maximum
-			3s 3505, minimum
-			3n 2515, maximum
-			4c 2515, minimum
-	3d 5 ♦ (excluding 5251, minimum)
+			3h 2515
+				3s relay
+					3n maximum
+					4c minimum
+			3s 3505 maximum
+			3n 3505 minimum
+			4c 1516 minimum
+	3d ♦+♠ minimum
 		3h relay
-			3s 5350, maximum
-			3n 5350, minimum
-			4c 5251, maximum
-	3h 1516
+			3s 5350
+			3n 5161
+			4c 5251
+	3h 5♦, maximum
 		3s relay
-			3n maximum
-			4c minimum
-	3s 5251, minimum
+			3n 5350
+			4c 5251
+	3s 1516, maximum
 	3n 5161, maximum
-	4c 5161, minimum
 end
 function 2hpassedrelay()
 	3c 3505
@@ -728,24 +730,27 @@ function open2h(open_strength, relay_strength, which_relay)
 			rdbl one of us has ♥, let's double them
 end
 function 2sbaserelay()
-	3c 5 ♦   
+	3c ♦+♥ (except 1561 maximum) 
 		3d relay
-			3h 3550, maximum
-			3s 3550, minimum
-			3n 2551, maximum
-			4c 2551, minimum
-	3d 5 ♣ (excluding 5215, minimum)
+			3h 2551
+				3s relay
+					3n maximum
+					4c minimum
+			3s 3550 maximum
+			3n 3550 minimum
+			4c 1561 minimum
+	3d ♣+♠ minimum
 		3h relay
-			3s 5305, maximum
-			3n 5305, minimum
-			4c 5215, maximum 
-	3h 5116 
-		3s relay 
-			3n maximum
-			4c minimum
-	3s 5215, minimum
-	3n 1561, maximum
-	4c 1561, minimum
+			3s 5305
+			3n 5116
+			4c 5215
+	3h 5♣, maximum
+		3s relay
+			3n 5305
+			4c 5215
+	3s 1561, maximum
+	3n 5116, maximum
+
 end
 function 2spassedrelay()
 	3c 3550
