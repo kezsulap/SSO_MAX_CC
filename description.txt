@@ -70,12 +70,10 @@ function open1h(open_strength, relay_strength)
 								3d relay
 									3h maximum
 									3s minimum
-							3d 4126
-								3h relay
-									3s maximum
-									3n minimum
-							3h 4135, maximum
-							3s 4135, minimum
+							3d 4126, maximum
+							3h 4126, minimum
+							3s 4135, maximum
+							3n 4135, minimum
 					2s 5+ ♦
 						2n relay 
 							3c 4 ♣, 3 ♠   
@@ -136,12 +134,10 @@ function open1h(open_strength, relay_strength)
 						3d relay
 							3h maximum
 							3s minimum
-					3d 5053
-						3h relay
-							3s maximum
-							3n minimum
-					3h 5044, maximum
-					3s 5044, minimum
+					3d 5053, maximum
+					3h 5053, minimum
+					3s 5044, maximum
+					3n 5044, minimum
 			2h 6 ♥, 4 ♣ or 2623, maximum or 2722, maximum  
 				2s relay, GF
 					2n ♦ shortness
@@ -159,10 +155,12 @@ function open1h(open_strength, relay_strength)
 				2n relay, GF
 					3c ♣ shortness
 						3d relay
-							3h 3640, maximum
-							3s 3640, minimum
-							3n 2641, maximum
-							4c 2641, minimum
+							3h 3640
+								3s relay
+									3n maximum
+									4c minimum
+							3s 2641, maximum
+							3n 2641, minimum
 					3d 0643, maximum
 					3h 0643, minimum
 					3s 1642, maximum
@@ -235,12 +233,10 @@ function open1s(open_strength, relay_strength)
 								3d relay
 									3h maximum
 									3s minimum
-							3d 1426
-								3h relay
-									3s maximum
-									3n minimum
-							3h 1435, maximum
-							3s 1435, minimum
+							3d 1426, maximum
+							3h 1426, minimum
+							3s 1435, maximum
+							3n 1435, minimum
 					2s 5+ ♦
 						2n relay 
 							3c 4 ♣, 3 ♥   
@@ -301,12 +297,10 @@ function open1s(open_strength, relay_strength)
 						3d relay
 							3h maximum
 							3s minimum
-					3d 0553
-						3h relay
-							3s maximum
-							3n minimum
-					3h 0544, maximum
-					3s 0544, minimum
+					3d 0553, maximum
+					3h 0553, minimum
+					3s 0544, maximum
+					3n 0544, minimum
 			2h 6 ♠, 4 ♣ or 6223, maximum or 7222, maximum  
 				2s relay, GF
 					2n ♦ shortness
@@ -324,10 +318,12 @@ function open1s(open_strength, relay_strength)
 				2n relay, GF
 					3c ♣ shortness
 						3d relay
-							3h 6340, maximum
-							3s 6340, minimum
-							3n 6241, maximum
-							4c 6241, minimum
+							3h 6340
+								3s relay
+									3n maximum
+									4c minimum
+							3s 6241, maximum
+							3n 6241, minimum
 					3d 6043, maximum
 					3h 6043, minimum
 					3s 6142, maximum
@@ -889,43 +885,35 @@ function 2dclubs_relay()
 	2d relay, GF
 		2h (42)16 
 			2s relay 
-				2n 2416
-					3c relay
-						3d maximum
-						3h minimum
+				2n 2416, maximum
 				3c 4216, maximum
-				3d 4216, minimum
+				3d 2416, minimum
+				3h 4216, minimum
 		2s 2236
 			2n relay
 				3c maximum
 				3d minimum
-		2n 2326
-			3c relay
-				3d maximum
-				3h minimum
+		2n 2326, maximum
 		3c 3226, maximum
-		3d 3226, minimum
+		3d 2326, minimum
+		3h 3226, minimum
 end
 function 2hdiamonds_relay()
 	2h relay, GF
 		2s (42)61 
 			2n relay 
-				3c 2461
-					3d relay
-						3h maximum
-						3s minimum
+				3c 2461, maximum
 				3d 4261, maximum
-				3h 4261, minimum
+				3h 2461, minimum
+				3s 4261, minimum
 		2n 2263
 			3c relay
 				3d maximum
 				3h minimum
-		3c 2362
-			3d relay
-				3h maximum
-				3s minimum
+		3c 2362, maximum
 		3d 3262, maximum
-		3h 3262, minimum
+		3h 2362, minimum
+		3s 3262, minimum
 end
 function 2shearts_relay()
 	2s relay, GF
@@ -939,12 +927,10 @@ function 2shearts_relay()
 				3h 2533
 				3s 3523
 				3n 3532
-		3d 2524
-			3h relay
-				3s maximum
-				3n minimum
+		3d 2524, maximum
 		3h 2542, maximum
-		3s 2542, minimum
+		3s 2524, minimum
+		3n 2542, minimum
 end
 function 2nspades_relay()
 	2n relay, GF
