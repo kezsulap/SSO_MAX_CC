@@ -5,8 +5,6 @@ function load(url) {
 	xhr.onload = function () {
 			if (xhr.readyState === xhr.DONE) {
 					if (xhr.status === 200) {
-							console.log(xhr.response);
-							console.log(xhr.responseText);
 					}
 			}
 	};
@@ -352,7 +350,6 @@ function display(node) {
 			a.appendChild(title);
 		}
 		for (let [call, subnode] of node.children) {
-			// console.log(call, typeof(call), call_to_str(call), subnode);
 			dfs(subnode, depth + !skip);
 		}
 	}
