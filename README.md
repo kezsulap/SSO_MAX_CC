@@ -63,7 +63,7 @@ Call example:
 ```
 This would expand to
 ```
-1c 12-14 balanced/15+ 5+♣/18+ an
+1c 12-14 balanced/15+ 5+♣/18+ any
 	1d
 		1nt 18-21 balanced
 			2c Stayman
@@ -76,7 +76,7 @@ This would expand to
 	2d 5+♥
 	2h 5+♠
 ```
-and then be processed accordingly.
+and then be processed accordingly. Functions are allowed to have multiple comma-seperated parameters, or no parameters at all.
 ### Suit symbols
 Any ♣/♦/♥/♠/!c/!d/!h/!s in call meaning gets automatically replaced with an appropriate symbol and coloured.
 ### Comments
@@ -102,3 +102,5 @@ Example:
 	({2 level overcall})
 		1NT #clearly not what you intended, but no way for the parser to know it
 ```
+## Future updates
+Main branch of this repository will contain changes both to the code and to the system. If you're setting up your own instance merge changes to the code only from code branch.
