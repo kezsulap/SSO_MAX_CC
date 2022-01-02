@@ -391,13 +391,13 @@ function open1n(open_strength, relay_strength)
 						2n relay
 							3c ♣ shortness
 								3d relay
-									3h 4531
+									3h 4540
 										3s relay
 											3n maximum
 											4c minimum
-									3s 4540, maximum
-									3n 4540, minimum
-							3d 4522
+									3s 4531, maximum
+									3n 4531, minimum
+							3d 4504
 								3h relay
 									3s maximum
 									3n minimum
@@ -405,8 +405,8 @@ function open1n(open_strength, relay_strength)
 								3s relay
 									3n maximum
 									4c minimum
-							3s 4504, maximum
-							3n 4504, minimum 
+							3s 4522, maximum
+							3n 4522, minimum 
 					2n 55, ♣ shortness
 						3c relay
 							3d 5530, maximum
@@ -415,13 +415,13 @@ function open1n(open_strength, relay_strength)
 							3n 5521, minimum 
 					3c 5 ♠, 4 ♥, ♣ shortness
 						3d relay
-							3h 5431
+							3h 5440
 								3s relay
 									3n maximum
 									4c minimum
-							3s 5440, maximum
-							3n 5440, minimum 
-					3d 5422 
+							3s 5431, maximum
+							3n 5431, minimum 
+					3d 5404 
 						3h relay
 							3s maximum
 							3n minimum
@@ -429,8 +429,8 @@ function open1n(open_strength, relay_strength)
 						3s relay
 							3n maximum
 							4c minimum
-					3s 5404, maximum
-					3n 5404, minimum
+					3s 5422, maximum
+					3n 5422, minimum
 			2h 55 with ♦ shortness or 6 ♥ 
 				2s relay
 					2n 55 with ♦ shortness
