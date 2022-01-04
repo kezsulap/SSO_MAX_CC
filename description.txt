@@ -520,16 +520,16 @@ function open2c(open_strength, relay_strength)
 		2d relay, $(relay_strength) PC
 			2h 5+ ♣, 4 ♥  or 5+ ♦, 4 ♠ or 4414 or 4405     
 				2s relay
-					2n 4414 or 4405 or 3415 minimum
+					2n 4414 or 4405 or 3415, minimum
 						3c relay
-							3d 5♣ minimum
+							3d 5♣, minimum
 								3h relay
-									3s 4405 minimum
-									3n 3415 minimum
+									3s 4405, minimum
+									3n 3415, minimum
 							3h 4405, maximum
 							3s 4414, maximum
 							3n 4414, minimum
-					3c 5+ ♣, 4 ♥  (except 3415 minimum) 
+					3c 5+ ♣, 4 ♥  (except 3415, minimum) 
 						3d relay
 							3h 3406, maximum
 							3s 3406, minimum
@@ -578,7 +578,7 @@ function old2d(open_strength, relay_strength)
 		2h pass or correct
 		2s signoff
 		2n relay, $(relay_strength) PC
-			3c 5 ♥  (except 3541 maximum)
+			3c 5 ♥  (except 3541, maximum)
 				3d relay
 					3h 3514, maximum
 					3s 3514, minimum
@@ -587,9 +587,9 @@ function old2d(open_strength, relay_strength)
 				3h relay
 					3s 5314 
 					3n 5341 
-			3h 5314 maximum
-			3s 5341 maximum 
-			3n 3541 maximum
+			3h 5314, maximum
+			3s 5341, maximum 
+			3n 3541, maximum
 		3c pass or correct, preemptive
 		3d with supports in majors, preemptive or invitational 
 		3h natural, preemptive or invitational
@@ -682,16 +682,16 @@ function new2d()
 			2h own suit
 end
 function 2hbaserelay()
-	3c ♣+♥ (except 1516 maximum) 
+	3c ♣+♥ (except 1516, maximum) 
 		3d relay
 			3h 2515
 				3s relay
 					3n maximum
 					4c minimum
-			3s 3505 maximum
-			3n 3505 minimum
-			4c 1516 minimum
-	3d ♦+♠ minimum
+			3s 3505, maximum
+			3n 3505, minimum
+			4c 1516, minimum
+	3d ♦+♠, minimum
 		3h relay
 			3s 5350
 			3n 5161
@@ -740,16 +740,16 @@ function open2h(open_strength, relay_strength, which_relay)
 			rdbl one of us has ♥, let's double them
 end
 function 2sbaserelay()
-	3c ♦+♥ (except 1561 maximum) 
+	3c ♦+♥ (except 1561, maximum) 
 		3d relay
 			3h 2551
 				3s relay
 					3n maximum
 					4c minimum
-			3s 3550 maximum
-			3n 3550 minimum
-			4c 1561 minimum
-	3d ♣+♠ minimum
+			3s 3550, maximum
+			3n 3550, minimum
+			4c 1561, minimum
+	3d ♣+♠, minimum
 		3h relay
 			3s 5305
 			3n 5116
@@ -843,7 +843,7 @@ function 2cbalanced_relay()
 							3s relay
 								3n maximum
 								4c minimum
-						3s 4234 minimum
+						3s 4234, minimum
 						3n 4324, minimum
 				3c 4+ ♦, maximum
 					3d relay
@@ -871,18 +871,18 @@ function 2cbalanced_relay()
 				3h 2245
 				3s 2254
 				3n 3352
-		2n no 4-card major, 5-card minor maximum, or 22(54) minimum
+		2n no 4-card major, 5-card minor, maximum, or 22(54), minimum
 			3c relay
-				3d 22(54) minimum
+				3d 22(54), minimum
 					3h relay
 						3s 2245
 						3n 2254
-				3h 33(43) maximum
+				3h 33(43), maximum
 					3s relay
 						3n 3334
 						4c 3343
-				3s 2344 maximum
-				3n 3244 maximum
+				3s 2344, maximum
+				3n 3244, maximum
 		3c (332)5, minimum
 			3d relay
 				3h 2335
@@ -1099,7 +1099,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						4c minimum
 				3s 2542, maximum
 				3n 2542, minimum
-		2d 5 ♠ (except 5(332) maximum)
+		2d 5 ♠ (except 5(332), maximum)
 			2h artificial, at least invitational
 				2s minimum
 					2n NF
