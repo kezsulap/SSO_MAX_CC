@@ -692,8 +692,8 @@ function 2hbaserelay()
 			4c 5251
 	3h 5♦, maximum
 		3s relay
-			3n 5350
-			4c 5251
+			3n 5251
+			4c 5350
 	3s 1516, maximum
 	3n 5161, maximum
 end
@@ -750,8 +750,8 @@ function 2sbaserelay()
 			4c 5215
 	3h 5♣, maximum
 		3s relay
-			3n 5305
-			4c 5215
+			3n 5215
+			4c 5305
 	3s 1561, maximum
 	3n 5116, maximum
 
