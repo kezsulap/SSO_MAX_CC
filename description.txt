@@ -431,6 +431,12 @@ function open1n(open_strength, relay_strength)
 							4c minimum
 					3s 5422, maximum
 					3n 5422, minimum
+				2n nat, inv
+					pass minimum, usually 54
+					3c 55, minimum
+					3d 55, maximum
+					3h 5♠ 4♥, maximum
+					3s 5♥ 4♠, maximum
 			2h 55 with ♦ shortness or 6 ♥ 
 				2s relay
 					2n 55 with ♦ shortness
