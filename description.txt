@@ -58,7 +58,7 @@ function open1h(open_strength, relay_strength)
 		1n relay, $(relay_strength) PC
 			2c ♥ shortness, 3-4 ♠ (but see 3♣/♦)
 				2d relay  
-					2h 5+ ♣ 
+					2h 5+ ♣, but see 3♣
 						2s relay 
 							2n 4 ♦, 3 ♠   
 								3c relay
@@ -74,7 +74,7 @@ function open1h(open_strength, relay_strength)
 							3h 4126, minimum
 							3s 4135, maximum
 							3n 4135, minimum
-					2s 5+ ♦
+					2s 5+ ♦, but see 3♦/♥
 						2n relay 
 							3c 4 ♣, 3 ♠   
 								3d relay
@@ -106,7 +106,7 @@ function open1h(open_strength, relay_strength)
 									4c minimum
 							3s 4144, maximum
 							3n 4144, minimum
-					3c 6+ ♣, maximum
+					3c 6+ ♣ without 4-card, maximum
 						3d relay
 							3h 3037
 							3s 3127
@@ -223,7 +223,7 @@ function open1s(open_strength, relay_strength)
 		1n relay, $(relay_strength) PC
 			2c ♠ shortness, 3-4 ♥ (but see 3♣/♦)
 				2d relay  
-					2h 5+ ♣ 
+					2h 5+ ♣, but see 3♣ 
 						2s relay 
 							2n 4 ♦, 3 ♥   
 								3c relay
@@ -239,7 +239,7 @@ function open1s(open_strength, relay_strength)
 							3h 1426, minimum
 							3s 1435, maximum
 							3n 1435, minimum
-					2s 5+ ♦
+					2s 5+ ♦, but see 3♦/♥
 						2n relay 
 							3c 4 ♣, 3 ♥   
 								3d relay
@@ -271,7 +271,7 @@ function open1s(open_strength, relay_strength)
 									4c minimum
 							3s 1444, maximum
 							3n 1444, minimum
-					3c 6+ ♣, maximum
+					3c 6+ ♣ without 4-card, maximum
 						3d relay
 							3h 0337
 							3s 1327
@@ -825,7 +825,7 @@ function 2cbalanced_relay()
 				3h 2452, minimum
 				3s 3433, maximum
 				3n 3433, minimum
-		2h 4 ♠
+		2h 4 ♠, no 4♥
 			2s relay
 				2n 4+ ♣
 					3c relay
@@ -851,7 +851,7 @@ function 2cbalanced_relay()
 				3h 4252, minimum
 				3s 4333, maximum
 				3n 4333, minimum
-		2s 5-card minor, maximum
+		2s 5-card minor, no 4♥/♠, maximum
 			2n relay
 				3c (332)5
 					3d relay
@@ -965,7 +965,7 @@ function 2nspades_relay()
 		3n 5242, minimum
 end
 
-pa 13+ PC, any distribution
+pa 13+ PC, any distribution (but see 2♦ opening)
 	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61)
 		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61)
 			1h 11+ PC, any distribution
