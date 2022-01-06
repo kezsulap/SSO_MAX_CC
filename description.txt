@@ -1077,12 +1077,10 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 			2s relay, GF
 				2n 35(41)
 					3c relay
-						3d 3514
-							3h relay
-								3s maximum
-								3n minimum
+						3d 3514, maximum
 						3h 3541, maximum
-						3s 3541, minimum
+						3s 3514, minimum
+						3n 3541, minimum
 				3c 3)5(32, maximum
 					3d relay
 						3h 2533
