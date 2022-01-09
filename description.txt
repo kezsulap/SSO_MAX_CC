@@ -58,9 +58,9 @@ function open1h(open_strength, relay_strength)
 		1n relay, $(relay_strength) PC
 			2c ♥ shortness, 3-4 ♠ (but see 3♣/♦)
 				2d relay  
-					2h 5+ ♣, but see 3♣
+					2h 5+ ♣ (but see 2NT/3♣/♠/NT)
 						2s relay 
-							2n 4 ♦, 3 ♠   
+							2n 4 ♦, 3 ♠
 								3c relay
 									3d 3046, maximum
 									3h 3046, minimum
@@ -74,7 +74,7 @@ function open1h(open_strength, relay_strength)
 							3h 4126, minimum
 							3s 4135, maximum
 							3n 4135, minimum
-					2s 5+ ♦, but see 3♦/♥
+					2s 5+ ♦ (but see 2NT/3♦/♥/♠/NT)
 						2n relay 
 							3c 4 ♣, 3 ♠   
 								3d relay
@@ -223,7 +223,7 @@ function open1s(open_strength, relay_strength)
 		1n relay, $(relay_strength) PC
 			2c ♠ shortness, 3-4 ♥ (but see 3♣/♦)
 				2d relay  
-					2h 5+ ♣, but see 3♣ 
+					2h 5+ ♣ (but see 2NT/3♣/♠/NT)
 						2s relay 
 							2n 4 ♦, 3 ♥   
 								3c relay
@@ -239,7 +239,7 @@ function open1s(open_strength, relay_strength)
 							3h 1426, minimum
 							3s 1435, maximum
 							3n 1435, minimum
-					2s 5+ ♦, but see 3♦/♥
+					2s 5+ ♦ (but see 2NT/3♦/♥/♠/NT)
 						2n relay 
 							3c 4 ♣, 3 ♥   
 								3d relay
