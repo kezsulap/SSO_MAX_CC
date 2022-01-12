@@ -169,11 +169,11 @@ function open1h(open_strength, relay_strength)
 					3n 1642, minimum
 			2n 6+ ♥ without 4-card (but see 2♥ and 3♥/♠/NT)
 				3c relay, GF
-					3d 6+ ♥ with a shortness, minimum
+					3d shortness, minimum
 						3h relay
-							3s 3631 or 3721 or 2731 or 7330 
-							3n 3613 or or 3712 or 2713 or 3703
-							4c 1633 or or 17(32) or 0733
+							3s 3631 or 3721 or 2731 or 3730 
+							3n 3613 or 3)71(2 or 3703
+							4c 1633 or 17(32) or 0733
 					3h 2632 or 3622, maximum
 						3s relay
 							3n 2632
@@ -191,8 +191,8 @@ function open1h(open_strength, relay_strength)
 					3s 3073
 					3n 3172
 					4c 3163
-			3h 3631 or 3721 or 2731 or 7330, maximum
-			3s 3613 or 3712 or 2713 or 3703, maximum
+			3h 3631 or 3721 or 2731 or 3730, maximum
+			3s 3613 or 3)71(2 or 3703, maximum
 			3n 1633 or 17(32) or 0733, maximum
 		2c natural, 3- ♠, NF
 		2d natural, 3- ♠, NF
@@ -334,11 +334,11 @@ function open1s(open_strength, relay_strength)
 					3n 6142, minimum
 			2n 6+ ♠ without 4-card (but see 2♥ and 3♥/♠/NT)
 				3c relay, GF
-					3d 6(331), minimum
+					3d shortness minimum
 						3h relay
 							3s 6331 or 7(32)1 or 7330 
-							3n 6313 or or 7312 or 7213 or 7303
-							4c 6133 or or 71(32) or 7033
+							3n 6313 or 7312 or 7213 or 7303
+							4c 6133 or 71(32) or 7033
 					3h 6232 or 6322, maximum
 						3s relay
 							3n 6232
