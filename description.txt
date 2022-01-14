@@ -473,24 +473,24 @@ function open1n(open_strength, relay_strength)
 					3n 6412, minimum
 			2n 55 ♣♦
 				3c relay
-					3d 2155, maximum
-					3h 1255, maximum
-					3s 2155, minimum
-					3n 1255, minimum
+					3d 1255, maximum
+					3h 2155, maximum
+					3s 1255, minimum
+					3n 2155, minimum
 			3c 6 ♣, minimum 
 				3d relay
-					3h 2146 
-					3s 1246
+					3h 1246
+					3s 2146
 			3d 6 ♦, minimum
 				3h relay
-					3s 2164
-					3n 1264
+					3s 1264
+					3n 2164
 			3h 6 ♣, maximum
 				3s relay
-					3n 2146
-					4c 1246
-			3s 2164, maximum
-			3n 1264, maximum   
+					3n 1246
+					4c 2146
+			3s 1264, maximum
+			3n 2164, maximum
 		2d weak relay
 			pa 6 ♦, weak hand
 			2h 4 ♠ 
