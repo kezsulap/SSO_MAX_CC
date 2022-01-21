@@ -140,7 +140,7 @@ function open1h(open_strength, relay_strength)
 					3h 5053, minimum
 					3s 5044, maximum
 					3n 5044, minimum
-			2h 6 ♥, 4 ♣ or 2623, maximum or 2722, maximum  
+			2h 6 ♥, 4+ ♣ or 2623, maximum or 2722, maximum  
 				2s relay, GF
 					2n ♦ shortness
 						3c relay
@@ -148,12 +148,14 @@ function open1h(open_strength, relay_strength)
 							3h 3604, minimum
 							3s 2614, maximum
 							3n 2614, minimum
+							4c 1615, maximum
 					3c 0634, maximum
 					3d 0634, minimum
 					3h 1624, maximum
 					3s 1624, minimum
 					3n 2623 or 2722, maximum
-			2s 6 ♥, 4 ♦
+					4c 1615, minimum
+			2s 6 ♥, 4+ ♦
 				2n relay, GF
 					3c ♣ shortness
 						3d relay
@@ -163,10 +165,12 @@ function open1h(open_strength, relay_strength)
 									4c minimum
 							3s 2641, maximum
 							3n 2641, minimum
+							4c 1651, maximum
 					3d 0643, maximum
 					3h 0643, minimum
 					3s 1642, maximum
 					3n 1642, minimum
+					4c 1651, minimum
 			2n 6+ ♥ without 4-card (but see 2♥ and 3♥/♠/NT)
 				3c relay, GF
 					3d shortness, minimum
@@ -312,7 +316,7 @@ function open1s(open_strength, relay_strength)
 					3h 0553, minimum
 					3s 0544, maximum
 					3n 0544, minimum
-			2h 6 ♠, 4 ♣ or 6223, maximum or 7222, maximum  
+			2h 6 ♠, 4+ ♣ or 6223, maximum or 7222, maximum  
 				2s relay, GF
 					2n ♦ shortness
 						3c relay
@@ -320,12 +324,14 @@ function open1s(open_strength, relay_strength)
 							3h 6304, minimum
 							3s 6214, maximum
 							3n 6214, minimum
+							4c 6115, maximum
 					3c 6034, maximum
 					3d 6034, minimum
 					3h 6124, maximum
 					3s 6124, minimum
 					3n 6223 or 7222, maximum
-			2s 6 ♠, 4 ♦
+					4c 6115, minimum
+			2s 6 ♠, 4+ ♦
 				2n relay, GF
 					3c ♣ shortness
 						3d relay
@@ -335,10 +341,12 @@ function open1s(open_strength, relay_strength)
 									4c minimum
 							3s 6241, maximum
 							3n 6241, minimum
+							4c 6151, maximum
 					3d 6043, maximum
 					3h 6043, minimum
 					3s 6142, maximum
 					3n 6142, minimum
+					4c 6151, minimum
 			2n 6+ ♠ without 4-card (but see 2♥ and 3♥/♠/NT)
 				3c relay, GF
 					3d shortness minimum
