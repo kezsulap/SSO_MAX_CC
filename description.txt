@@ -195,7 +195,14 @@ function open1h(open_strength, relay_strength)
 			3s 3613 or 3)71(2 or 3703, maximum
 			3n 1633 or 17(32) or 0733, maximum
 		2c natural, 3- ♠, NF
+			2d 6♦, 4♠
+			2h 6♥
+			2s 5♠, 5♦, extras
+			2n 5♠, 4+♣, extras
 		2d natural, 3- ♠, NF
+			2h 6♥
+			2s 5♠, 5♣, extras
+			2n 5♠, 4+♦, extras
 		2h 2+ ♥, 3 ♠, 33+ ♣♦
 			2s 5 ♠
 			2n 44 or 55 ♣♦
@@ -360,7 +367,14 @@ function open1s(open_strength, relay_strength)
 			3s 6313 or 7312 or 7213 or 7303, maximum
 			3n 6133 or 71(32) or 7033, maximum 	
 		2c natural, 3- ♥, NF
+			2d 6♦, 4♥
+			2h 5♥, 5♦, extras
+			2s 6♠
+			2n 5♥, 4+♣, extras
 		2d natural, 3- ♥, NF
+			2h 5♥, 5♣, extras
+			2s 6♠
+			2n 5♥, 4+♦, extras
 		2h 4+ ♥, NF 
 		2s 2+ ♠, 3 ♥, 33+ ♣♦
 			2n 44 or 55 ♣♦ or good hand with 5 ♥ 
