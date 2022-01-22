@@ -1008,15 +1008,15 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 					3d 6+ ♦, very good suit, minimum
 					3h 6+ ♥, very good suit, minimum
 					3s 6+ ♠, very good suit, minimum
-				1n balanced hand, no 5-card major, no 6-card minor
+				1n 13-16 balanced hand, no 5-card major, no 6-card minor
 					:2cbalanced_relay()
-				2c 6+ ♣
+				2c 13-16 6+ ♣
 					:2dclubs_relay()
-				2d 6+ ♦ 
+				2d 13-16 6+ ♦
 					:2hdiamonds_relay()
-				2h 5 ♥
+				2h 13-16 5 ♥
 					:2shearts_relay()
-				2s 5 ♠ 
+				2s 13-16 5 ♠
 					:2nspades_relay()
 			1s 6-10 PC, balanced hand, no 5-card major, no 6-card minor
 				1n NF
@@ -1024,13 +1024,13 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 			1n 6-10 PC, 6+ ♣
 				2c NF
 				:2dclubs_relay()
-			2c 6-10 PC, 6+ ♦ 
+			2c 6-10 PC, 6+ ♦
 				2d NF
 				:2hdiamonds_relay()
 			2d 6-10 PC, 5 ♥
 				2h NF
 				:2shearts_relay()
-			2h 6-10 PC, 5 ♠ 
+			2h 6-10 PC, 5 ♠
 				2s NF
 				:2nspades_relay()
 		:open1h(13-16, 9+)
