@@ -291,25 +291,30 @@ function open1s(open_strength, relay_strength)
 					3s 0355, maximum
 					3n 0355, minimum 
 			2d 5 ♥
-				2h relay, GF
-					2s 4+ ♣, ♠ singleton
-						2n relay
-							3c 1525, maximum
-							3d 1525, minimum
-							3h 1534, maximum
-							3s 1534, minimum
-					2n 4+ ♦, ♠ singleton
+				2h natural, invitational
+				2s relay, GF
+					2n 4+ ♣, ♠ singleton
 						3c relay
-							3d 1552, maximum
-							3h 1552, minimum
+							3d 1525, maximum
+							3h 1525, minimum
+							3s 1534, maximum
+							3n 1534, minimum
+					3c 4+ ♦, ♠ singleton
+						3d relay
+							3h 1552
+								3s relay
+									3n maximum
+									4c minimum
 							3s 1543, maximum
 							3n 1543, minimum
-					3c 0535
-						3d relay
-							3h maximum
-							3s minimum
-					3d 0553, maximum
-					3h 0553, minimum
+					3d 0535
+						3h relay
+							3s maximum
+							3n minimum
+					3h 0553
+						3s relay
+							3n maximum
+							4c minimum
 					3s 0544, maximum
 					3n 0544, minimum
 			2h 6 ♠, 4 ♣ or 6223, maximum or 7222, maximum  
