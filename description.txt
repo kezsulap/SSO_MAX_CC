@@ -501,24 +501,28 @@ function open1n(open_strength, relay_strength)
 					3s 6412, maximum
 					3n 6412, minimum
 					4c 6511, minimum
-			2n 55 ♣♦
-				3c relay
-					3d 1255, maximum
-					3h 2155, maximum
-					3s 1255, minimum
-					3n 2155, minimum
-			3c 6 ♣, minimum 
+			2n 6♣
+				3c natural, invitational
 				3d relay
 					3h 1246
-					3s 2146
+						3s relay
+							3n maximum
+							4c minimum
+					3s 2146, maximum
+					3n 2146, minimum
+			3c 55♣♦, minimum 
+				3d signoff
+				3h relay
+					3s 1246
+					3n 2146
 			3d 6 ♦, minimum
 				3h relay
 					3s 1264
 					3n 2164
-			3h 6 ♣, maximum
+			3h 55♣♦, maximum
 				3s relay
-					3n 1246
-					4c 2146
+					3n 1255
+					4c 2155
 			3s 1264, maximum
 			3n 2164, maximum
 			4c 5611, maximum
