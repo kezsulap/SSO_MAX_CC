@@ -702,14 +702,14 @@ function 2hbaserelay()
 				3s relay
 					3n maximum
 					4c minimum
-			3s 3505, maximum
-			3n 3505, minimum
-			4c 1516, minimum
+			3s 1516, minimum
+			3n 3505, maximum
+			4c 3505, minimum
 	3d ♦+♠, minimum
 		3h relay
-			3s 5350
-			3n 5161
-			4c 5251
+			3s 5161
+			3n 5251
+			4c 5350
 	3h 5♦, maximum
 		3s relay
 			3n 5251
@@ -760,14 +760,14 @@ function 2sbaserelay()
 				3s relay
 					3n maximum
 					4c minimum
-			3s 3550, maximum
-			3n 3550, minimum
-			4c 1561, minimum
+			3s 1561, minimum
+			3n 3550, maximum
+			4c 3550, minimum
 	3d ♣+♠, minimum
 		3h relay
-			3s 5305
-			3n 5116
-			4c 5215
+			3s 5116
+			3n 5215
+			4c 5305
 	3h 5♣, maximum
 		3s relay
 			3n 5215
