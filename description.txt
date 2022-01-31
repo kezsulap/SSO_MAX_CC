@@ -882,10 +882,10 @@ function 2cbalanced_relay()
 					3h relay
 						3s 2353
 						3n 3253
-				3h 2245
-				3s 2254
-				3n 3352
-		2n no 4-card major, 5-card minor, maximum, or 22(54), minimum
+				3h 3352
+				3s 2245
+				3n 2254
+		2n no 4-card major, no 5-card minor, maximum, or 22(54), minimum
 			3c relay
 				3d 22(54), minimum
 					3h relay
