@@ -197,11 +197,11 @@ function open1h(open_strength, relay_strength)
 		2c natural, 3- ♠, NF
 			2d 6♦, 4♠
 			2h 6♥
-			2s 5♠, 5♦, extras
+			2s 5♠, 5♦
 			2n 5♠, 4+♣, extras
 		2d natural, 3- ♠, NF
 			2h 6♥
-			2s 5♠, 5♣, extras
+			2s 5♠, 5♣
 			2n 5♠, 4+♦, extras
 		2h 2+ ♥, 3 ♠, 33+ ♣♦
 			2s 5 ♠
@@ -368,11 +368,11 @@ function open1s(open_strength, relay_strength)
 			3n 6133 or 71(32) or 7033, maximum 	
 		2c natural, 3- ♥, NF
 			2d 6♦, 4♥
-			2h 5♥, 5♦, extras
+			2h 5♥, 5♦
 			2s 6♠
 			2n 5♥, 4+♣, extras
 		2d natural, 3- ♥, NF
-			2h 5♥, 5♣, extras
+			2h 5♥, 5♣
 			2s 6♠
 			2n 5♥, 4+♦, extras
 		2h 4+ ♥, NF 
