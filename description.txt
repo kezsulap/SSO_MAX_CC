@@ -502,8 +502,8 @@ function open1n(open_strength, relay_strength)
 			3c 55♣♦, minimum 
 				3d signoff
 				3h relay
-					3s 1246
-					3n 2146
+					3s 1255
+					3n 2155
 			3d 6 ♦, minimum
 				3h relay
 					3s 1264
