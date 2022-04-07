@@ -832,15 +832,15 @@ function 2cbalanced_relay()
 						3s 4432, minimum
 				2n 4+ ♣
 					3c relay
-						3d 4 ♣, maximum
+						3d 2425
 							3h relay
-								3s 2434
-								3n 3424
-						3h 2425
+								3s maximum
+								3n minimum
+						3h 2434
 							3s relay
 								3n maximum
 								4c minimum
-						3s 2434, minimum
+						3s 3424, maximum
 						3n 3424, minimum
 				3c 4+ ♦, maximum
 					3d relay
@@ -858,15 +858,15 @@ function 2cbalanced_relay()
 			2s relay
 				2n 4+ ♣
 					3c relay
-						3d 4 ♣, maximum
+						3d 4225
 							3h relay
-								3s 4234
-								3n 4324
-						3h 4225
+								3s maximum
+								3n minimum
+						3h 4234
 							3s relay
 								3n maximum
 								4c minimum
-						3s 4234, minimum
+						3s 4324, maximum
 						3n 4324, minimum
 				3c 4+ ♦, maximum
 					3d relay
@@ -900,12 +900,12 @@ function 2cbalanced_relay()
 					3h relay
 						3s 2245
 						3n 2254
-				3h 33(43), maximum
+				3h (23)44, maximum
 					3s relay
-						3n 3334
-						4c 3343
-				3s 2344, maximum
-				3n 3244, maximum
+						3n 2344
+						4c 3244
+				3s 3334, maximum
+				3n 3343, maximum
 		3c (332)5, minimum
 			3d relay
 				3h 2335
@@ -916,12 +916,12 @@ function 2cbalanced_relay()
 				3s 2353
 				3n 3253
 				4c 3352
-		3h 33(43), minimum
+		3h (32)44, minimum
 			3s relay
-				3n 3334
-				4c 3343
-		3s 2344, minimum
-		3n 3244, minimum
+				3n 2344
+				4c 3244
+		3s 3334, minimum
+		3n 3343, minimum
 end
 function 2dclubs_relay()
 	2d relay, GF
