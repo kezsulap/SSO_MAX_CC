@@ -594,7 +594,7 @@ function open2c(open_strength, relay_strength)
 			pa pass or correct
 			re bid longer major
 				2d equal
-			2d and higher system on
+			{2!d and higher} system on
 end
 function old2d(open_strength, relay_strength)
 	2d $(open_strength) PC, (53)(41)
@@ -621,7 +621,7 @@ function old2d(open_strength, relay_strength)
 			pa bid major
 			re penalty, own diamonds
 			2h signoff
-			2s and higher system on
+			{2!s and higher} system on
 end
 function new2d()
 	2d 5-card major, 5-card minor, at most 2 cards in the shorter major, 13-17 (18) PC
