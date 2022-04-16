@@ -561,6 +561,13 @@ function open2c(open_strength, relay_strength)
 					3h 4360, minimum
 					3s 4351, maximum
 					3n 4351, minimum
+				2n pass with minimum "I guessed which suits you have", invitational
+				3c p/c with minimum, invitational
+					3d ♣ shortness, minimum
+				3d p/c with minimum, invitational
+					3h ♦ shortness, minimum
+				3h pass with minimum, invitational
+				3s pass with minimum, invitational
 			2s 5+ ♣, 4 ♠, 3♥ or 5+ ♦, 4 ♥, 3♠   (except 4315, maximum) 
 				2n relay
 					3c 5+ ♣, 4 ♠      
@@ -572,6 +579,12 @@ function open2c(open_strength, relay_strength)
 					3h 3460, minimum
 					3s 3451, maximum
 					3n 3451, minimum 
+				3c p/c with minimum, invitational
+					3d ♣ shortness, minimum
+				3d p/c with minimum, invitational
+					3h ♦ shortness, minimum
+				3h pass with minimum, invitational
+				3s pass with minimum, invitational
 			2n 4441 or 4450
 				3c relay
 					3d 4450, maximum
@@ -592,9 +605,15 @@ function open2c(open_strength, relay_strength)
 		3s preemptive or invitational
 		(DB)
 			pa pass or correct
+				re 4-5!d
+				2d 6!d (or strong 5)
 			re bid longer major
 				2d equal
 			{2!d and higher} system on
+		pa
+			(db)
+				re 4-5!d
+				2d 6!d (or strong 5)
 end
 function old2d(open_strength, relay_strength)
 	2d $(open_strength) PC, (53)(41)
