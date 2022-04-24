@@ -76,7 +76,7 @@ function auction_to_str(auction, separator) {
 		}
 		else {
 			if (competitive) {
-				ret += '-(' + call_to_str(auction[i]) + ')';
+				ret += '-(' + call_to_str(auction[i], false) + ')';
 			}
 		}
 	}
