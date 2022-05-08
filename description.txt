@@ -1104,8 +1104,8 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 					2n sign-off
 				2s at least one 4-card major, no 5-card minor, maximum
 					2n relay
-						3c 4♥ no 4♠
-						3d 4♠ no 4♥
+						3c 4♥, no 4♠
+						3d 4♠, no 4♥
 						3h 4♥ and 4♠
 				2nt no 4-card major, no 54 distribution, maximum
 				3c (24)25, maximum
