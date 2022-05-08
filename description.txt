@@ -1088,13 +1088,30 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		1h balanced hand, no 5-card major, no 6-card minor
 			1s artificial, at least invitational hand
 				1n no 54 distribution, minimum      
-				2c (422)5, forcing to 2NT                
-				2d 42)5(2, forcing to 2NT
-				2h 4 ♥, no 5-card, maximum
-				2s 4 ♠, no 5-card, maximum
-				2n no 5-card minor, no 4-card major, maximum
-				3c (332)5, maximum
-				3d 33)5(2, maximum
+				2c (24)25, minimum
+					2d relay
+						2h 2425
+						2s 4225
+					2h sign-off
+					2s sign-off
+				2d (24)52, minimum
+					2h pass or correct
+					2s pass or correct
+				2h 22(54), minimum
+					2s relay
+						3c 2245
+						3d 2254
+					2n sign-off
+				2s at least one 4-card major, no 5-card minor, maximum
+					2n relay
+						3c 4♥ no 4♠
+						3d 4♠ no 4♥
+						3h 4♥ and 4♠
+				2nt no 4-card major, no 54 distribution, maximum
+				3c (24)25, maximum
+				3d (24)52, maximum
+				3h 2245, maximum
+				3s 2254, maximum
 			1n NF
 			:2cbalanced_relay()
 		1s 6+ ♣
