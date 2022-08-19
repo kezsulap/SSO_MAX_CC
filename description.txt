@@ -17,7 +17,31 @@ function negative1d(r1, r2, r3)
 		1s natural, NF 
 		1n at least F1, GF to $(r3) PC range
 			2c $(r2)PC, any distribution
-				2d GF
+				{2♦/2♥/2♠} NF
+				2n GF
+					3c 5+4+♥♠ or nothing to show
+						3d relay
+							3h 5+♠, 4♥
+							3s nothing to show
+							3n 5+♥, 4♠
+							4c 5+5+
+					3d 4♥ or 4♠
+						3h raise/cue-bid with 4♥, bid 3nt without
+						3s raise/cue-bid with 4♠, bid 3nt without
+					3h 5+♠
+						3s ask for 3♥
+							3n no 3♥
+					3s 5+♥, no 3♠
+					3n 5+♥, 3♠
+					4c 5+5+♣♦
+					4d 6+♥
+					4h 6+♠
+				{3♣/3♦/3♥/3♠} GF, 6+
+				3n GF, 5+5+♦♥
+				4c GF, 5+5+♣♥
+				4d GF, 5+5+♦♠
+				4h GF, 5+5+♣♠
+				4s GF, 5+5+♣♦
 			2d 4+ ♥
 			2h 4+ ♠
 			2s balanced hand without 4-card major
