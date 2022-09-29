@@ -26,8 +26,8 @@ function negative1d(r1, r2, r3)
 							3n 5+♥, 4♠
 							4c 5+5+
 					3d 4♥ or 4♠
-						3h raise/cue-bid with 4♥, bid 3nt without
-						3s raise/cue-bid with 4♠, bid 3nt without
+						3h raise/cue-bid with 4♥, bid 3NT without
+						3s raise/cue-bid with 4♠, bid 3NT without
 					3h 5+♠
 						3s ask for 3♥
 							3n no 3♥
@@ -79,6 +79,10 @@ end
 function open1h(open_strength, relay_strength)
 	1h $(open_strength) PC, ♥ shortness, 3-5 ♠  or 6+ ♥, 3- ♠ 
 		1s 4+ ♠, NF
+			2c 6♣, extras
+			2d 6♦, extras
+			2h 6♥
+			2s 4♠
 		1n relay, $(relay_strength) PC
 			2c ♥ shortness, 3-4 ♠ (but see 3♣/♦)
 				2d relay  
@@ -142,6 +146,7 @@ function open1h(open_strength, relay_strength)
 					3h 3163, maximum
 					3s 3055, maximum
 					3n 3055, minimum 
+				2h invitational+ with exactly 4♠
 			2d 5 ♠
 				2h relay, GF
 					2s 4+ ♣, ♥ singleton
@@ -219,14 +224,17 @@ function open1h(open_strength, relay_strength)
 			3s 3613 or 3)71(2 or 3703, maximum
 			3n 1633 or 17(32) or 0733, maximum
 		2c natural, 3- ♠, NF
-			2d 6♦, 4♠
+			2d 6♦
 			2h 6♥
 			2s 5♠, 5♦
 			2n 5♠, 4+♣, extras
+			3c 4+♣ no 5♠, extras
 		2d natural, 3- ♠, NF
 			2h 6♥
 			2s 5♠, 5♣
 			2n 5♠, 4+♦, extras
+			3c 6+♣, extras
+			3d 4+♦, no 5♠, extras
 		2h 2+ ♥, 3 ♠, 33+ ♣♦
 			2s 5 ♠
 			2n 44 or 55 ♣♦
@@ -313,7 +321,8 @@ function open1s(open_strength, relay_strength)
 							3n 1372
 					3h 1363, maximum
 					3s 0355, maximum
-					3n 0355, minimum 
+					3n 0355, minimum
+				2s invitational+ with exactly 4♥
 			2d 5 ♥
 				2h natural, invitational
 				2s relay, GF
@@ -396,14 +405,17 @@ function open1s(open_strength, relay_strength)
 			3s 6313 or 7312 or 7213 or 7303, maximum
 			3n 6133 or 71(32) or 7033, maximum 	
 		2c natural, 3- ♥, NF
-			2d 6♦, 4♥
+			2d 6♦
 			2h 5♥, 5♦
 			2s 6♠
 			2n 5♥, 4+♣, extras
+			3c 4+♣, no 5♥, extras
 		2d natural, 3- ♥, NF
 			2h 5♥, 5♣
 			2s 6♠
 			2n 5♥, 4+♦, extras
+			3c 6+♣, extras
+			3d 4+♦, no 5♥, extras
 		2h 4+ ♥, NF 
 		2s 2+ ♠, 3 ♥, 33+ ♣♦
 			2n 44 or 55 ♣♦ or good hand with 5 ♥ 
@@ -539,16 +551,13 @@ function open1n(open_strength, relay_strength)
 			3s 1264, maximum
 			3n 2164, maximum
 		2d weak relay
-			pa 6 ♦, weak hand
-			2h 4 ♠ 
-			2s 4 ♥ 
-			2n 55
-				3c pass or correct
-				3d pass or correct
-				3h pass, raise or correct
-				3s pass, raise or correct
+			pa 6 ♦
+			2h longer ♥/equal
+				2s invitational if partner has 5♠
+			2s longer ♠
+			2n 55♣♦
 			3c 6 ♣
-			3d 6 ♦ 
+			3d 6 ♦, extraordinary hand
 			3h 6 ♥, extraordinary hand 
 			3s 6 ♠, extraordinary hand         
 		2h pass or correct
@@ -565,8 +574,12 @@ function open1n(open_strength, relay_strength)
 		3h natural, preemptive or invitational
 		3s natural, preemptive or invitational
 		(dbl)
-			pass show longer/better suit
+			pass show longer suit
+				rdbl equal
 			rdbl strong, let's double them
+			2c system on
+			2d own suit
+			{2!h and higher} system on
 end
 function open2c(open_strength, relay_strength)
 	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness (except 3307, 3370)
@@ -630,11 +643,14 @@ function open2c(open_strength, relay_strength)
 			2s 4♥, minor void, extras
 			2n 43(51), extras
 				3♣ pass or correct
+				3♦ pass or correct
 			3c 3♥, 6♣, extras
 			3d 3♥, 6♦, extras
 			3h 4♥, minor singleton, extras
 		2s signoff
 			2n 34(51), extras
+				3♣ pass or correct
+				3♦ pass or correct
 			3c 3♠, 6♣, extras
 			3d 3♠, 6♦, extras
 			3h 4♠, minor void, extras
@@ -818,12 +834,20 @@ end
 function open2h(open_strength, relay_strength, which_relay)
 	2h $(open_strength) PC, 55 with minor shortness/5M6m11 ♥♣ or ♠♦
 		2s pass or correct
-			2n 5 ♣   
-			3c 6 ♣ 
+			2n ♣+♥, extras  
+			3c ♣+♥
+			3d ♦+♠, extras
 		2n relay, $(relay_strength) PC
 			:$(which_relay)()
 		3c pass or correct
+			3d ♦+♠
+			3h ♣+♥, extras
+			3s ♦+♠, extras
+				
 		3d pass or correct
+			3h ♥+♣
+			3s ♦+♠, extras
+			3n ♥+♣, extras
 		3h preemptive or invitational
 		3s preemptive or invitational
 		3n “bid your minor”
@@ -833,6 +857,9 @@ function open2h(open_strength, relay_strength, which_relay)
 		4s signoff
 		(dbl)
 			pass pass or correct
+				rdbl ♦+♠, extras
+				2s ♦+♠
+				3c ♣+♥ with much stronger ♣
 			rdbl one of us has ♥, let's double them
 end
 function 2sbaserelay()
@@ -879,10 +906,17 @@ function open2s(open_strength, relay_strength, which_relay)
 		2n relay, $(relay_strength) PC
 			:$(which_relay)()
 		3c pass or correct
+			3d ♦+♥
+			3h ♦+♥, extras
+			3♠ ♣+♠, extras
 		3d pass or correct
-			3h 6 ♣
-			3s 5 ♣
+			3h ♦+♥, extras
+			3s ♣+♠
+			3n ♣+♠, extras
 		3h pass or correct
+			3s ♠+♣
+			3n ♦+♥, extras
+			4c ♠+♣, extras
 		3s preemptive or invitational
 		3n “bid your minor”
 		4c three-suiter with ♠ shortness
@@ -891,6 +925,10 @@ function open2s(open_strength, relay_strength, which_relay)
 		4s signoff
 		(dbl)
 			pass pass or correct
+				rdbl 3505, extras
+				2n ♦+♥, extras without 3♠
+				3c ♣+♥ with much stronger ♣
+				3d ♦+♥
 			rdbl one of us has ♠, let's double them
 end
 function 2cbalanced_relay()
@@ -1239,12 +1277,48 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		2s 5323, maximum
 		2n 5332, maximum 
 	1h 4+ ♥, NF
+		1s 5♠
+		1n 22(54), extras
+		2c 6♣
+		2d 6♦
+		2h 4+♥	
+		3h 4+♥, extraordinary hand
 	1s 4+ ♠, NF
+		1n 22(54), extras
+		2c 6♣
+		2d 6♦	
+		2h 5♥
+		2s 4+♠
+		3s 4+♠, extraordinary hand
 	1n natural, NF
+		pass no 5M, 6m
+		2c 6♣
+		2d 6♦
+		2h 5♥
+		2s 5♠
 	2c 5+ ♣, NF
+		2d 6♦
+		2h 3541
+		2s 5341
 	2d 5+ ♦, NF
-	2h natural, preemptive or invitational 
+		2h 3514
+		2s 5314
+		2n 2416
+		3c 4216
+	2h natural, preemptive or invitational
+		2s accepting invitation, ♠ values
+		2n accepting invitation, spread values 
+		3c accepting invitation, ♣ values
+		3d accepting invitation, ♦ values
+		3h 4+♥, minimum
+		4h 4+♥, maximum
 	2s natural, preemptive or invitational   
+		2n accepting invitation, spread values 
+		3c accepting invitation, ♣ values
+		3d accepting invitation, ♦ values
+		3h accepting invitation, ♥ values
+		3s 4+♠, minimum
+		4s 4+♠, maximum
 	2n ♣♦, preemptive
 	3c natural, preemptive
 	3d natural, preemptive
