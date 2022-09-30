@@ -176,10 +176,10 @@ border-color: #FF5C33;
 cursor: n-resize;
 }
 .bidding.diff, .bidding.subtreediff:not(.rozwiniete) {
-	border-color:orange;
+	border-color:#FFC500;
 }
 .bidding.diff.relay, .bidding.subtreediff.relay:not(.rozwiniete) {
-	background-color:orange;
+	background-color:#FFC500;
 }
 
 .OtherPage {
