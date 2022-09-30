@@ -286,7 +286,7 @@ function parse_file(file) {
 			}
 			return;
 		}
-		if (indent > nodes_stack.length) {
+		if (indent >= nodes_stack.length) {
 			throw new ParsingError('Unexpected indentation on line ' + line_id);
 		}
 		nodes_stack = nodes_stack.slice(0, indent + 1);
