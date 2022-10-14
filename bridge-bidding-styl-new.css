@@ -181,6 +181,10 @@ cursor: n-resize;
 .bidding.diff.relay, .bidding.subtreediff.relay:not(.rozwiniete) {
 	background-color:#FFC500;
 }
+.bidding.diff.relay:hover, .bidding.subtreediff.relay:not(.rozwiniete):hover {
+	background-color:#FF8300;
+	border-color:#FF8300;
+}
 
 .OtherPage {
 background-color: #ADD6FF;
