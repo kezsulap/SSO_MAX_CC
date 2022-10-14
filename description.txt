@@ -869,7 +869,6 @@ function open2h(open_strength, relay_strength, which_relay)
 			3d ♦+♠
 			3h ♣+♥, extras
 			3s ♦+♠, extras
-				
 		3d pass or correct
 			3h ♥+♣
 			3s ♦+♠, extras
@@ -953,7 +952,7 @@ function open2s(open_strength, relay_strength, which_relay)
 			pass pass or correct
 				rdbl 3505, extras
 				2n ♦+♥, extras without 3♠
-				3c ♣+♥ with much stronger ♣
+				3c ♣+♠ with much stronger ♣
 				3d ♦+♥
 			rdbl one of us has ♠, let's double them
 end
