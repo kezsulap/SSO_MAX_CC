@@ -117,7 +117,7 @@ function open1h(open_strength, relay_strength, 5s_responses)
 			2s 4♠
 		1n relay, $(relay_strength) PC
 			2c ♥ shortness, 3-4 ♠ (but see 3♣/♦)
-				2d relay  
+				2d relay, GF
 					2h 5+ ♣ (but see 2NT/3♣/♠/NT)
 						2s relay 
 							2n 4 ♦, 3 ♠
@@ -310,7 +310,7 @@ function open1s(open_strength, relay_strength, 5h_responses)
 	1s $(open_strength) PC, ♠ shortness, 3-5 ♥ or 6+ ♠, 3- ♥
 		1n relay, $(relay_strength) PC
 			2c ♠ shortness, 3-4 ♥ (but see 3♣/♦)
-				2d relay  
+				2d relay, GF
 					2h 5+ ♣ (but see 2NT/3♣/♠/NT)
 						2s relay 
 							2n 4 ♦, 3 ♥   
@@ -519,7 +519,7 @@ function open1n(open_strength, relay_strength)
 					3h 5♠ 4♥, maximum
 					3s 5♥ 4♠, maximum
 			2h 55 with ♦ shortness or 6 ♥ 
-				2s relay
+				2s relay, GF
 					2n 55 with ♦ shortness
 						3c relay 
 							3d 5503, maximum
@@ -539,7 +539,7 @@ function open1n(open_strength, relay_strength)
 					3s 4612, maximum
 					3n 4612, minimum
 			2s 6 ♠ 
-				2n relay
+				2n relay, GF
 					3c ♣ shortness
 						3d relay
 							3h 6430
@@ -554,7 +554,7 @@ function open1n(open_strength, relay_strength)
 					3n 6412, minimum
 			2n 6♣
 				3c natural, invitational
-				3d relay
+				3d relay, GF
 					3h 1246
 						3s relay
 							3n maximum
@@ -563,15 +563,15 @@ function open1n(open_strength, relay_strength)
 					3n 2146, minimum
 			3c 55♣♦, minimum 
 				3d signoff
-				3h relay
+				3h relay, GF
 					3s 1255
 					3n 2155
 			3d 6 ♦, minimum
-				3h relay
+				3h relay, GF
 					3s 1264
 					3n 2164
 			3h 55♣♦, maximum
-				3s relay
+				3s relay, GF
 					3n 1255
 					4c 2155
 			3s 1264, maximum
@@ -611,7 +611,7 @@ function open2c(open_strength, relay_strength)
 	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness (except 3307, 3370)
 		2d relay, $(relay_strength) PC
 			2h 5+ ♣, 4 ♥, 3♠ or 5+ ♦, 4 ♠, 3♥ or 4414 or 4405     
-				2s relay
+				2s relay, GF
 					2n 4414 or 4405 or 3415, minimum
 						3c relay
 							3d 5♣, minimum
@@ -638,7 +638,7 @@ function open2c(open_strength, relay_strength)
 				3h pass with minimum, invitational
 				3s pass with minimum, invitational
 			2s 5+ ♣, 4 ♠, 3♥ or 5+ ♦, 4 ♥, 3♠   (except 4315, maximum) 
-				2n relay
+				2n relay, GF
 					3c 5+ ♣, 4 ♠      
 						3d relay
 							3h 4306, maximum
@@ -655,7 +655,7 @@ function open2c(open_strength, relay_strength)
 				3h pass with minimum, invitational
 				3s pass with minimum, invitational
 			2n 4441 or 4450
-				3c relay
+				3c relay, GF
 					3d 4450, maximum
 					3h 4450, minimum
 					3s 4441, maximum
@@ -718,12 +718,12 @@ function old2d(open_strength, relay_strength)
 			3s 5314
 		2n relay, $(relay_strength) PC
 			3c 5 ♥  (except 3541, maximum)
-				3d relay
+				3d relay, GF
 					3h 3514, maximum
 					3s 3514, minimum
 					3n 3541, minimum
 			3d 5 ♠, minimum 
-				3h relay
+				3h relay, GF
 					3s 5314 
 					3n 5341 
 			3h 5314, maximum
@@ -821,7 +821,7 @@ function new2d()
 end
 function 2hbaserelay()
 	3c ♣+♥ (except 1516, maximum) 
-		3d relay
+		3d relay, GF
 			3h 2515
 				3s relay
 					3n maximum
@@ -830,12 +830,12 @@ function 2hbaserelay()
 			3n 3505, maximum
 			4c 3505, minimum
 	3d ♦+♠, minimum
-		3h relay
+		3h relay, GF
 			3s 5161
 			3n 5251
 			4c 5350
 	3h 5♦, maximum
-		3s relay
+		3s relay, GF
 			3n 5251
 			4c 5350
 	3s 1516, maximum
@@ -843,15 +843,15 @@ function 2hbaserelay()
 end
 function 2hpassedrelay()
 	3c 3505
-		3d relay
+		3d relay, GF
 			3h maximum
 			3s minimum
 	3d 5350   
-		3h relay
+		3h relay, GF
 			3s maximum
 			3n minimum
 	3h 1516 
-		3s relay 
+		3s relay, GF
 			3n maximum
 			4c minimum
 	3s 5161, maximum
@@ -889,7 +889,7 @@ function open2h(open_strength, relay_strength, which_relay)
 end
 function 2sbaserelay()
 	3c ♦+♥ (except 1561, maximum) 
-		3d relay
+		3d relay, GF
 			3h 2551
 				3s relay
 					3n maximum
@@ -898,12 +898,12 @@ function 2sbaserelay()
 			3n 3550, maximum
 			4c 3550, minimum
 	3d ♣+♠, minimum
-		3h relay
+		3h relay, GF
 			3s 5116
 			3n 5215
 			4c 5305
 	3h 5♣, maximum
-		3s relay
+		3s relay, GF
 			3n 5215
 			4c 5305
 	3s 1561, maximum
@@ -912,15 +912,15 @@ function 2sbaserelay()
 end
 function 2spassedrelay()
 	3c 3550
-		3d relay
+		3d relay, GF
 			3h maximum
 			3s minimum
 	3d 5305
-		3h relay
+		3h relay, GF
 			3s maximum
 			3n minimum 
 	3h 5116 
-		3s relay 
+		3s relay, GF
 			3n maximum
 			4c minimum
 	3s 1561, maximum
