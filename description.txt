@@ -666,21 +666,21 @@ function open2c(open_strength, relay_strength)
 			3s 3361, maximum
 			3n 4315, maximum
 		2h signoff
-			2s 4♥, minor void, extras
+			2s 4♥, club shortness, extras
 			2n 43(51), extras
 				3♣ pass or correct
 				3♦ pass or correct
 			3c 3♥, 6♣, extras
 			3d 3♥, 6♦, extras
-			3h 4♥, minor singleton, extras
+			3h 4♥, diamond shortness, extras
 		2s signoff
 			2n 34(51), extras
 				3♣ pass or correct
 				3♦ pass or correct
 			3c 3♠, 6♣, extras
 			3d 3♠, 6♦, extras
-			3h 4♠, minor void, extras
-			3s 4♠, minor singleton, extras
+			3h 4♠, club shortness, extras
+			3s 4♠, diamond shortness, extras
 		2n 44+ majors
 			3c 3316
 			3d 3361
