@@ -19,15 +19,35 @@ function negative1d(r1, r2, r3)
 			2c $(r2)PC, any distribution
 				{2♦/2♥/2♠} NF
 				2n GF
-					3c 5+4+♥♠ or nothing to show
+					3c 5+4+♥♠ or nothing to show, or 4♠ without 4♥
 						3d relay
-							3h 5+♠, 4♥
-							3s nothing to show
-							3n 5+♥, 4♠
+							3h nothing to show, or 4♠
+								3♠ relay
+									3n nothing to show
+							3s 5+♥, 4♠
+								3n sign-off
+								4c agreeing ♥
+								4d agreeing ♠
+							3n 5+♠, 4♥
+								4c agreeing ♥
+								4d agreeing ♠
 							4c 5+5+
-					3d 4♥ or 4♠
-						3h raise/cue-bid with 4♥, bid 3NT without
-						3s raise/cue-bid with 4♠, bid 3NT without
+						3h 5♥
+							3♠ no 4♠, 3♥
+							3n 4♠, no 3♥
+							{4♣/♦} 3♥, cue-bid
+							4♥ NF
+						3s 5♠
+					3d 4♥
+						3h ask for 4♠
+							3s no 4♠
+							3n 4♠
+						3s ask for 3♠
+							3n no 3♠
+							{4♣/4♦/4♥} 3♠, cue-bid
+							4♠ NF
+						3n sign-off
+						{4♣/♦/♥} agreeing ♥
 					3h 5+♠
 						3s ask for 3♥
 							3n no 3♥
