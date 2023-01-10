@@ -751,6 +751,72 @@ function open2c(open_strength, relay_strength)
 			3h 3316, maximum
 			3s 3361, maximum
 			3n 4315, maximum
+			(x)
+				xx penalty
+				pass 5+♦, too weak to redouble
+					xx penalty
+				2h 4♠, 5+♣
+					2s relay
+						2n 4306, maximum
+						3c 4306, minimum
+						3d 4315, maximum
+						3h 4315, minimum
+				2s 4♥, 5+♣
+					2n relay
+						3c 3406, maximum
+						3d 3406, minimum
+						3h 3415, maximum
+						3s 3415, minimum
+				2n 4414 minimum or 4405
+					3c natural, invitational
+					3d relay
+						3h 4405, maximum
+						3s 4405, minimum
+						3n 4414, minimum
+				3c 3316, minimum
+				3d 4441, minimum
+				3h 3316, maximum
+				3s 4441, maximum
+				3n 4414, maximum
+			(2h)
+				x 4♥
+				pass 4♠
+				2s 43(06), minimum
+				2n 43(06), GF
+				3c 6♣, NF
+				3d 6♦, NF
+				3h 6♣, GF
+					3s asks for ♥ stopper
+						3n ♥ stopper
+				3s 6♦ no ♥ stopper
+				3n 6♦ with ♥ stopper
+			(2s)
+				x 4♠
+				pass 4♥
+				2n 43(06), minimum
+				3c 6♣, NF
+				3d 6♦, NF
+				3h 43(06), maximum
+				3s 6♣/♦, no ♠ stopper, GF
+				3n 6♣/♦, ♠ stopper, GF
+			(3c)
+				x 4♥4♠ or GF with 4♥ or 4♠
+				3d 6♦, NF
+				3h 4360, GF
+				3s 3460, GF
+				3n sign-off
+			(3d)
+				x 4♥4♠ or GF with 4♥ or 4♠
+				3h 3406, GF
+				3s 4306, GF
+				3n sign-off
+			(3h)
+				x 4♠, GF
+				3s 43(60), GF
+				3n sign-off
+			(3s)
+				x 4♥, GF
+				3n sign-off
 		2h signoff
 			2s 4♥, club shortness, extras
 			2n 43(51), extras
