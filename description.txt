@@ -21,7 +21,7 @@ function negative1d(r1, r2, r3)
 				2n GF
 					3c 5+4+♥♠ or nothing to show, or 4♠ without 4♥
 						3d relay
-							3h nothing to show, or 4♠
+							3h nothing to show or 4♠
 								3♠ relay
 									3n nothing to show
 							3s 5+♥, 4♠
@@ -33,7 +33,7 @@ function negative1d(r1, r2, r3)
 								4d agreeing ♠
 							4c 5+5+
 						3h 5♥
-							3♠ no 4♠, 3♥
+							3♠ no 4♠, no 3♥
 							3n 4♠, no 3♥
 							{4♣/♦} 3♥, cue-bid
 							4♥ NF
@@ -626,6 +626,12 @@ function open1n(open_strength, relay_strength)
 				2♠ 6♠, NF
 				2n 1255 minimum, or 12(64) maximum
 					3c NF
+						3h 6+♣
+							3s asks for J+ in ♥
+								3n with J+ in ♥
+								{others} without
+						3s 6+♦ without J+ in ♥
+						3n 6+♦ with J+ in ♥
 					3d NF
 						3h 6+♣
 							3s asks for J+ in ♥
@@ -640,9 +646,15 @@ function open1n(open_strength, relay_strength)
 				3n 1255 maximum with J+ in ♥
 			(2♠)
 				x penalty (usually 5+♠) or ♠ singleton
-				pass 5♠4♥
+				pass 5♥4♠
 				2n 2155 minimum, or 21(64) maximum
 					3c NF
+						3h 6+♣
+							3s asks for J+ in ♥
+								3n with J+ in ♥
+								{others} without
+						3s 6+♦ without J+ in ♥
+						3n 6+♦ with J+ in ♥
 					3d NF
 						3h 6+♣
 							3s asks for J+ in ♠
@@ -655,7 +667,34 @@ function open1n(open_strength, relay_strength)
 				3h 6♥
 				3s 2155 maximum, without J+ in ♠
 				3n 2155 maximum, with J+ in ♠
-			(3♥)
+			(3c)
+				pass 54♠♥ minimum or minors, but see 3♦
+				x 5♥4♠ GF or 6♥
+					3h NF
+						3♠ 6♥ GF
+						3n 5♥4♠
+					3s relay
+					3n sign-off
+					4c agreeing ♥
+					4d agreeing ♠
+				3d natural, NF
+				3h 55♥♠, minimum
+				3s 6♠, minimum
+				3n 5♠4♥ GF
+			(3d)
+				pass 54♠♥ minimum or minors
+				x 5♥4♠ GF or 6♥
+					3h NF
+						3♠ 6♥ GF
+						3n 5♥4♠
+					3s relay
+					3n sign-off
+					4c agreeing ♥
+					4d agreeing ♠
+				3h 55♥♠, minimum
+				3s 6♠, minimum
+				3n 5♠4♥ GF
+			(3h)
 				x (12)55, GF
 				3s (12)46, GF
 				3n (12)64, GF
@@ -793,10 +832,10 @@ function open2c(open_strength, relay_strength)
 			(2s)
 				x 4♠
 				pass 4♥
-				2n 43(06), minimum
+				2n 34(06), minimum
 				3c 6♣, NF
 				3d 6♦, NF
-				3h 43(06), maximum
+				3h 34(06), maximum
 				3s 6♣/♦, no ♠ stopper, GF
 				3n 6♣/♦, ♠ stopper, GF
 			(3c)
@@ -807,8 +846,8 @@ function open2c(open_strength, relay_strength)
 				3n sign-off
 			(3d)
 				x 4♥4♠ or GF with 4♥ or 4♠
-				3h 3406, GF
-				3s 4306, GF
+				3h 4306, GF
+				3s 3406, GF
 				3n sign-off
 			(3h)
 				x 4♠, GF
