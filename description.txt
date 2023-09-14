@@ -1326,24 +1326,187 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61)
 			1h 11+ PC, any distribution
 				1s 17+ PC, any distribution
-					2NT 11-15 PC, (4441)
-						3c relay
-							3d 4144, maximum, or 4441
+					1n (5431) lub (4441) lub sześciokart starszy bez bocznej czwórki
+						2c relay
+							2d krótkość młodsza i pięciokart
+								2h relay
+									2s krótkość trefl (poza 5431)
+										2n relay
+											3c pięć kar
+												3d relay
+													3h 3451
+													3s 4351
+											3d 3541
+											3h 4531
+											3s 5341
+									2n krótkość karo, pięć trefli
+										3c relay
+											3d 3415
+											3h 4315
+									3c krótkość karo, pięć kierów
+										3d relay
+											3h 3514
+											3s 4513
+									3d 5314
+									3h 5413
+									3s 5431 
+							2h krótkość kier
+								2s relay
+									2n pięć trefli
+										3c relay
+											3d 3145 
+											3h 4135
+									3c pięć kar
+										3d relay
+											3h 3154
+											3s 4153
+									3d 5134
+									3h 5143
+									3s 4144
+							2s piątka młodsza, krótkość pik
+								2n relay
+									3c 1345
+									3d 1435
+									3h 1354
+									3s 1453
+							2n szóstka starsza
+								3c relay
+									3d kiery
+									3h piki
+							3c krótkość młodsza
+								3d relay
+									3h krótkość trefl
+									3s krótkość karo
+							3d 1534
+							3h 1543
+							3s 1444 
+					2c (4432) lub (5422)
+						2d relay
+							2h (5422) stary z młodym
+								2s relay
+									2n trefle bez 5224
+										3c relay
+											3d 2425
+											3h 4225
+											3s 2524
+									3c pięć kar
+										3d relay
+											3h 2452
+											3s 4252
+									3d 2542
+									3h 5242
+									3s 5224 
+							2s (4432) nie młode nie stare nie spiczaste 
+								2n relay
+									3c okrągłe
+										3d relay
+											3h 2434 
+											3s 3424
+									3d czarne 
+										3h relay
+											3s 4234
+											3n 4324
+									3h 2443
+									3s 3442
+							2n młode 44+
+								3c relay
+									3d 22(54)
+										3h relay
+											3s 2245
+											3n 2254
+									3h 2344
+									3s 3244
+							3c (54)22
+								3d relay
+									3h 4522
+									3s 5422
+							3d 44(32)
 								3h relay
-									3s 4144, maximum
-									3n 4441, maximum
-									4c 4441, minimum
-							3h 4414
+									3s 4423
+									3n 4432
+							3h 4243
+							3s 4342
+					2d 64
+						2h relay
+							2s szóstka młodsza
+								2n
+									3c trefle
+										3d relay
+											3h cztery kara
+											3s cztery kiery
+											3n cztery piki
+									3d sześć kar i cztery trefle
+										3h relay
+											3s krótkość kier
+											3n krótkość pik
+									3h sześć kar i cztery kiery
+									3s sześć kar i cztery piki
+							2n sześć kierów
+								3c relay
+									3d cztery trefle
+										3h relay
+											3s krótkość karo
+											3n krótkość pik
+									3h cztery kara
+									3s cztery piki
+							3c sześć pików z młodym
+								3d relay
+									3h cztery trefle
+									3s cztery kara
+							3d 6430 lub 6421
+								3h relay
+									3s 6430
+									3n 6421
+							3h 6403
+							3s 6412
+					2h 55
+						2s relay
+							2n trefle
+								3c relay
+									3d kara
+										3h relay
+											3s krótkość kier
+											3n krótkość pik
+									3h kiery
+									3s piki
+							3c kara ze starym
+								3d relay
+									3h kiery
+									3s piki
+							3d stare, krótkość trefl
+								3h relay
+									3s 5530
+									3n 5521
+							3h 5503
+							3s 5512
+					2s (5332) z piątką młodszą
+						2n relay
+							3c trefle
+								3d relay
+									3h 2335
+									3s 3235
+									3n 3325
+								3h relay
+							3d 2353
+							3h 3253
+							3s 3352
+					2n (5332) z piątką starszą
+						3c relay
+							3d kiery
+								3h relay
+									3s 2533
+									3n 3523
+									4c 3532
+							3h piki z dublem młodszym
 								3s relay
-									3n maximum
-									4c minimum
-							3s 4144, minimum
-							3n 1444, maximum
-							4c 1444, minimum
-					3c 6+ ♣, very good suit, minimum
-					3d 6+ ♦, very good suit, minimum
-					3h 6+ ♥, very good suit, minimum
-					3s 6+ ♠, very good suit, minimum
+									3n 5323
+									4c 5332
+							3s piki z dublem kier
+					3c sześć trefli
+					3d sześć kar
+					3h (43)33
+					3s 33(43)
+					
 				1n 13-16 balanced hand, no 5-card major, no 6-card minor
 					:2cbalanced_relay()
 				2c 13-16 6+ ♣
