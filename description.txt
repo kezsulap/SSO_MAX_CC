@@ -280,7 +280,7 @@ function open1h(open_strength, relay_strength, 5s_responses)
 		2n 3+ ♥, 2- ♠, 44+ ♣♦
 		3c 6+ ♣, 3+ ♥, 2- ♠, preemptive or invitational
 		3d 6+ ♦, 3+ ♥, 2- ♠, preemptive or invitational
-		3h 6+ ♥, very good suit, preemptive or invitational
+		3h 6+ ♥, preemptive
 		3s 5+ ♠, 3+ ♥, preemptive or invitational
 		3n signoff to ♥ shortness
 		4c natural with ♥ support, preemptive
@@ -498,7 +498,7 @@ function open1s(open_strength, relay_strength, 5h_responses)
 		3c 6+ ♣, 3+ ♠, 2- ♥, preemptive or invitational
 		3d 6+ ♦, 3+ ♠, 2- ♥, preemptive or invitational
 		3h 5+ ♥, 3+ ♠, preemptive or invitational
-		3s 6+ ♠, very good suit, preemptive or invitational
+		3s 6+ ♠, preemptive
 		3n signoff to ♠ shortness
 		4c natural with ♠ support, preemptive
 		4d natural with ♠ support, preemptive
