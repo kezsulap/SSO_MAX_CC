@@ -297,6 +297,10 @@ function open1h(open_strength, relay_strength, 5s_responses)
 				2n 5♦, 5♠, extras
 				3c 6♦, 4♠, extras
 				3h 6+♥, extras
+			2h pass or correct
+				2s short ♥, 3-4♠
+				2n short ♥, 5♠
+				3c ask for stopper with solid 6+♦
 		(2d)
 			x pass with short ♥ and 3+♦
 				2h 6+♥
@@ -305,6 +309,10 @@ function open1h(open_strength, relay_strength, 5s_responses)
 				3c 6♣, 4♠
 				3d 6♣, 4♠, extras
 				3h 6+♥, extras
+			2h pass or correct
+				2s short ♥, 3-4♠
+				2n short ♥, 5♠
+				3d ask for stopper with solid 6+♣
 end
 function 1s5M()
 	2n 4+ ♣, ♠ singleton
@@ -506,6 +514,10 @@ function open1s(open_strength, relay_strength, 5h_responses)
 				2n 5♦, 5♥, extras
 				3c 6♦, 4♥, extras
 				3s 6+♠, extras
+			2s pass or correct
+				2n short ♠, 5♥
+				3c ask for stopper with solid 6+♦
+				3d short ♠, no 5♥
 		(2d)
 			x pass with short ♠ and 3+♦
 				2h 5♣, 5♥
@@ -514,6 +526,10 @@ function open1s(open_strength, relay_strength, 5h_responses)
 				3c 6♣, 4♥
 				3d 6♣, 4♥, extras
 				3s 6+♠, extras
+			2s pass or correct
+				2n short ♠, 5♥
+				3c short ♠, no 5♥
+				3d ask for stopper with solid 6+♣
 end
 function open1n(open_strength, relay_strength)
 	1n $(open_strength) PC, (54)/55/(64) ♥♠ or 55/(64) ♣♦
