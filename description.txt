@@ -1703,6 +1703,16 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 	3d natural, preemptive
 	3h natural, preemptive
 	3s natural, preemptive
+	(1d)
+		1h 4+♥ F1, if 5+ then with game hope
+		1s 4+♠ F1, if 5+ then with game hope
+		x 4+♥, 4+♠
+		2h 5+♥, preemptive
+		2s 5+♠, preemptive
+	(1h)
+		1s 4+♠ F1, if 5+ then with game hope
+		x no 4♠, points
+		2s 5+♠, preemptive
 
 :negative1d(0-7, 0-4, 5-7)
 :open1h(8-12, 13+, 1h5M)
