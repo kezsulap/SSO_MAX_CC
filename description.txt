@@ -289,6 +289,22 @@ function open1h(open_strength, relay_strength, 5s_responses)
 		4s signoff
 		(dbl)
 			rdbl one of us has ♥, let's double them
+		(2c)
+			x pass with short ♥ and 3+♣
+				2d 6♦, 4♠
+				2h 6+♥
+				2s 5♦, 5♠
+				2n 5♦, 5♠, extras
+				3c 6♦, 4♠, extras
+				3h 6+♥, extras
+		(2d)
+			x pass with short ♥ and 3+♦
+				2h 6+♥
+				2s 5♣, 5♠
+				2n 5♣, 5♠, extras
+				3c 6♣, 4♠
+				3d 6♣, 4♠, extras
+				3h 6+♥, extras
 end
 function 1s5M()
 	2n 4+ ♣, ♠ singleton
@@ -482,6 +498,22 @@ function open1s(open_strength, relay_strength, 5h_responses)
 		4s signoff
 		(dbl)
 			rdbl one of us has ♠, let's double them
+		(2c)
+			x pass with short ♠ and 3+♣
+				2d 6♦, 4♥
+				2h 5♦, 5♥
+				2s 6+♠
+				2n 5♦, 5♥, extras
+				3c 6♦, 4♥, extras
+				3s 6+♠, extras
+		(2d)
+			x pass with short ♠ and 3+♦
+				2h 5♣, 5♥
+				2s 6+♠
+				2n 5♣, 5♥, extras
+				3c 6♣, 4♥
+				3d 6♣, 4♥, extras
+				3s 6+♠, extras
 end
 function open1n(open_strength, relay_strength)
 	1n $(open_strength) PC, (54)/55/(64) ♥♠ or 55/(64) ♣♦
