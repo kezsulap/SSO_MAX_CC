@@ -763,6 +763,25 @@ function open1n(open_strength, relay_strength)
 			2c system on
 			2d own suit
 			{2!h and higher} system on
+		(2c)
+			x pass or correct
+				2d 6♦, bad hand to defend 2♣x
+				2h longer ♥/equal
+				2s longer ♠
+				2n 55♥♠, extras
+				3c 6♥, 4♠, extras
+				3h 6♠, 4♥, extras
+			2♦ pass or correct
+				2♥ majors, doesn't specify longer suit
+		(2d)
+			x pass or correct
+				2h longer ♥/equal
+				2s longer ♠
+				2n 55♥♠, extras
+				3c 6♣, bad hand to defend 2♦x
+				3d 6♥, 4♠, extras
+				3h 6♠, 4♥, extras
+
 end
 function open2c(open_strength, relay_strength)
 	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness (except 3307, 3370)
