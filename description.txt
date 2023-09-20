@@ -775,6 +775,8 @@ function open1n(open_strength, relay_strength)
 		(dbl)
 			pass show longer suit
 				rdbl equal
+					2c pass or correct
+						2d majors
 			rdbl strong, let's double them
 			2c system on
 			2d own suit
