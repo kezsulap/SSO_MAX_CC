@@ -1703,12 +1703,13 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						3c 2245
 						3d 2254
 					2n sign-off
-				2s at least one 4-card major, no 5-card minor, maximum
-					2n relay
-						3c 4♥, no 4♠
-						3d 4♠, no 4♥
-						3h 4♥ and 4♠
-				2nt no 4-card major, no 54 distribution, maximum
+				2s at least one 4-card major, no 5-card minor or bad hand to bid NT, maximum
+					2n ask for 4M
+						3h 4♥
+						3s 4♠
+						3n none
+						4h both
+				2nt no 4-card major, no 54 distribution, maximum, good hand to bid NT
 				3c (24)25, maximum
 				3d (24)52, maximum
 				3h 2245, maximum
