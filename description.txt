@@ -63,12 +63,37 @@ function negative1d(r1, r2, r3)
 				4h GF, 5+5+♣♠
 				4s GF, 5+5+♣♦
 			2d 4+ ♥
+				2h relay
+					2s 5♥, no 4♠
+					2n 5♥, 4♠
+					3c 5+♣
+					3d 5+♦
+					3h 4♠
+					3s no 3433, no 4♠
+					3n 3433
 			2h 4+ ♠
+				2s relay
+					2n 5♠, no 5♥
+					3c 5+♣
+					3d 5+♦
+					3h no 4333, no 5♥
+					3s 5♥, 5♠
+					3n 4333
 			2s balanced hand without 4-card major
+				2n relay
+					3c 5♣
+					3d 5♦
+					3h 31(54)
+					3s 13(54)
+					3n none of the above
 			2n 6+ ♣
+				3c agreeing ♣
 			3c 6+ ♦
+				3d agreeing ♦
 			3d 6+ ♥
+				3h agreeing ♥
 			3h 6+ ♠
+				3s agreeing ♠
 			3s 55+ minors
 		2c natural, NF
 		2d natural, NF
