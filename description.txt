@@ -1319,39 +1319,100 @@ function 2cbalanced_relay()
 		3s 2344, minimum
 		3n 3244, minimum
 end
-function 2dclubs_relay()
-	2d relay, GF
-		2h (42)16
-			2s relay
-				2n 2416, maximum
-				3c 4216, maximum
-				3d 2416, minimum
-				3h 4216, minimum
-		2s 2236
-			2n relay
-				3c maximum
-				3d minimum
-		2n 2326, maximum
-		3c 3226, maximum
-		3d 2326, minimum
-		3h 3226, minimum
+function clubs_relay_with_2137()
+	2n (21)37
+		3c relay
+			3d 1237, maximum
+			3h 2137, maximum
+			3s 1237, minimum
+			3n 2137, minimum
+	3c 2317
+		3d relay
+			3h maximum
+			3s minimum
+	3d 3217, maximum
+	3h 3217, minimum
+	3s 2227, maximum
+	3n 2227, minimum
 end
-function 2hdiamonds_relay()
-	2h relay, GF
-		2s (42)61
+function clubs_relay_without_2137()
+	2n 2317
+		3c relay
+			3d maximum
+			3h minimum
+	3c 3217, maximum
+	3d 3217, minimum
+	3h 2227, maximum
+	3s 2227, minimum
+end
+function diamonds_relay_with_2137()
+	3c (21)73
+		3d relay
+			3h 1273
+				3s relay
+					3n maximum
+					4c minimum
+			3s 2173, maximum
+			3n 2173, minimum
+	3d 2371
+		3h relay
+			3s maximum
+			3n minimum
+	3h 3271
+		3s relay
+			3n maximum
+			4c minimum
+	3s 2272, maximum
+	3n 2272, minimum
+end
+function diamonds_relay_without_2137()
+	3c 2371
+		3d relay
+			3h maximum
+			3s minimum
+	3d 3271, maximum
+	3h 3271, minimum
+	3s 2272, maximum
+	3n 2272, minimum
+end
+function 2dclubs_relay(which_7card)
+	2d relay, GF
+		2h 7♣
+			2s relay
+				:$(which_7card)()
+		2s (42)16
 			2n relay
-				3c 2461, maximum
-				3d 4261, maximum
-				3h 2461, minimum
-				3s 4261, minimum
-		2n 2263
+				3c 2416, maximum
+				3d 4216, maximum
+				3h 2416, minimum
+				3s 4216, minimum
+		2n 2236
 			3c relay
 				3d maximum
 				3h minimum
-		3c 2362, maximum
-		3d 3262, maximum
-		3h 2362, minimum
-		3s 3262, minimum
+		3c 2326, maximum
+		3d 3226, maximum
+		3h 2326, minimum
+		3s 3226, minimum
+end
+function 2hdiamonds_relay(which_7card)
+	2h relay, GF
+		2s 7♦
+			:$(which_7card)()
+		2n (42)61
+			3c relay
+				3d 2461, maximum
+				3h 4261, maximum
+				3s 2461, minimum
+				3n 4261, minimum
+		3c 2263
+			3d relay
+				3h maximum
+				3s minimum
+		3d 2362, maximum
+		3h 3262, maximum
+		3s 2362, minimum
+		3n 3262, minimum
 end
 function 2shearts_relay()
 	2s relay, GF
@@ -1391,8 +1452,8 @@ function 2nspades_relay()
 end
 
 pa 13+ PC, any distribution (but see 2♦ opening)
-	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61)
-		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61)
+	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61) 3) 7-card minor, inappropriate hand for 1♥/♠
+		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61) 3) 7-card minor, inappropriate hand for 1♥/♠
 			1h 11+ PC, any distribution
 				1s 17+ PC, any distribution
 					1n (5431) lub (4441) lub sześciokart starszy bez bocznej czwórki
@@ -1579,9 +1640,9 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 				1n 13-16 balanced hand, no 5-card major, no 6-card minor
 					:2cbalanced_relay()
 				2c 13-16 6+ ♣
-					:2dclubs_relay()
+					:2dclubs_relay(clubs_relay_with_2137)
 				2d 13-16 6+ ♦
-					:2hdiamonds_relay()
+					:2hdiamonds_relay(diamonds_relay_with_2137)
 				2h 13-16 5 ♥
 					:2shearts_relay()
 				2s 13-16 5 ♠
@@ -1591,10 +1652,10 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 				:2cbalanced_relay()
 			1n 6-10 PC, 6+ ♣
 				2c NF
-				:2dclubs_relay()
+				:2dclubs_relay(clubs_relay_with_2137)
 			2c 6-10 PC, 6+ ♦
 				2d NF
-				:2hdiamonds_relay()
+				:2hdiamonds_relay(diamonds_relay_with_2137)
 			2d 6-10 PC, 5 ♥
 				2h NF
 				:2shearts_relay()
@@ -1623,7 +1684,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 	3h preempt
 	3s preempt
 
-1c 8-12 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (53)(41) 3) (42)(61)
+1c 8-12 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (53)(41) 3) (42)(61) 4) 7-card minor with 2+♥, 2+♠
 	1d relay, 13 + PC
 		1h balanced hand, no 5-card major, no 6-card minor
 			1s artificial, at least invitational hand
@@ -1660,14 +1721,14 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 					2n NF
 					3c NF
 			2c NF
-			:2dclubs_relay()
+			:2dclubs_relay(clubs_relay_without_2137)
 		1n 6+ ♦
 			2c artificial, at least invitational hand
 				2d minimum
 					2n NF
 					3d NF
 			2d NF
-			:2hdiamonds_relay()
+			:2hdiamonds_relay(diamonds_relay_without_2137)
 		2c 5 ♥
 			2d artificial, at least invitational
 				2h minimum
