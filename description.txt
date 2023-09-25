@@ -1423,7 +1423,8 @@ end
 function 2hdiamonds_relay(which_7card)
 	2h relay, GF
 		2s 7♦
-			:$(which_7card)()
+			2n relay
+				:$(which_7card)()
 		2n (42)61
 			3c relay
 				3d 2461, maximum
