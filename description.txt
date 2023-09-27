@@ -1482,89 +1482,89 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61) 3) 7-card minor, inappropriate hand for 1♥/♠
 			1h 11+ PC, any distribution
 				1s 17+ PC, any distribution
-					1n (5431) lub (4441) lub sześciokart starszy bez bocznej czwórki
+					1n (5431) or (4441) or 6+♥/♠ without other 4-card suit
 						2c relay
-							2d krótkość młodsza i pięciokart
+							2d short ♣/♦ with 5-card
 								2h relay
-									2s krótkość trefl (poza 5431)
+									2s short ♣ (except 5431)
 										2n relay
-											3c pięć kar
+											3c 5♦
 												3d relay
 													3h 3451
 													3s 4351
 											3d 3541
 											3h 4531
 											3s 5341
-									2n krótkość karo, pięć trefli
+									2n short ♦, 5♣
 										3c relay
 											3d 3415
 											3h 4315
-									3c krótkość karo, pięć kierów
+									3c short ♦, 5♥
 										3d relay
 											3h 3514
 											3s 4513
 									3d 5314
 									3h 5413
 									3s 5431 
-							2h krótkość kier
+							2h short ♥
 								2s relay
-									2n pięć trefli
+									2n 5♣
 										3c relay
 											3d 3145 
 											3h 4135
-									3c pięć kar
+									3c 5♦
 										3d relay
 											3h 3154
 											3s 4153
 									3d 5134
 									3h 5143
 									3s 4144
-							2s piątka młodsza, krótkość pik
+							2s 5♣/♦, short ♠
 								2n relay
 									3c 1345
 									3d 1435
 									3h 1354
 									3s 1453
-							2n szóstka starsza
+							2n 6+♥/♠
 								3c relay
-									3d kiery
-									3h piki
-							3c krótkość młodsza
+									3d 6♥
+									3h 6♠
+							3c 44(14)
 								3d relay
-									3h krótkość trefl
-									3s krótkość karo
+									3h 4441
+									3s 4414
 							3d 1534
 							3h 1543
 							3s 1444 
-					2c (4432) lub (5422)
+					2c (4432) or (5422)
 						2d relay
-							2h (5422) stary z młodym
+							2h (5422) major + minor
 								2s relay
-									2n trefle bez 5224
+									2n 4+♣ (except 5224)
 										3c relay
 											3d 2425
 											3h 4225
 											3s 2524
-									3c pięć kar
+									3c 5♦
 										3d relay
 											3h 2452
 											3s 4252
 									3d 2542
 									3h 5242
 									3s 5224 
-							2s (4432) nie młode nie stare nie spiczaste 
+							2s (4432) ♣+♥/♣+♠/♦+♥
 								2n relay
-									3c okrągłe
+									3c ♣+♥
 										3d relay
 											3h 2434 
 											3s 3424
-									3d czarne 
+									3d ♣+♠
 										3h relay
 											3s 4234
 											3n 4324
 									3h 2443
 									3s 3442
-							2n młode 44+
+							2n 44+♣♦
 								3c relay
 									3d 22(54)
 										3h relay
@@ -1584,32 +1584,32 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 							3s 4342
 					2d 64
 						2h relay
-							2s szóstka młodsza
-								2n
-									3c trefle
+							2s 6♣/♦
+								2n relay
+									3c 6♣
 										3d relay
-											3h cztery kara
-											3s cztery kiery
-											3n cztery piki
-									3d sześć kar i cztery trefle
+											3h 4♦
+											3s 4♥
+											3n 4♠
+									3d 6♦, 4♣
 										3h relay
-											3s krótkość kier
-											3n krótkość pik
-									3h sześć kar i cztery kiery
-									3s sześć kar i cztery piki
-							2n sześć kierów
+											3s short ♥
+											3n short ♠
+									3h 6♦, 4♥
+									3s 6♦, 4♠
+							2n 6♥
 								3c relay
-									3d cztery trefle
+									3d 6♣
 										3h relay
-											3s krótkość karo
-											3n krótkość pik
-									3h cztery kara
-									3s cztery piki
-							3c sześć pików z młodym
+											3s short ♦
+											3n short ♠
+									3h 4♦
+									3s 4♠
+							3c 6♣, 4+♣/♦
 								3d relay
-									3h cztery trefle
-									3s cztery kara
-							3d 6430 lub 6421
+									3h 4♣
+									3s 4♦
+							3d 6430 or 6421
 								3h relay
 									3s 6430
 									3n 6421
@@ -1617,50 +1617,55 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 							3s 6412
 					2h 55
 						2s relay
-							2n trefle
+							2n 5+♣
 								3c relay
-									3d kara
+									3d 5+♦
 										3h relay
-											3s krótkość kier
-											3n krótkość pik
-									3h kiery
-									3s piki
-							3c kara ze starym
+											3s short ♥
+											3n short ♠
+									3h 5+♥
+									3s 5+♠
+							3c 5+♦, 5+♥/♠
 								3d relay
-									3h kiery
-									3s piki
-							3d stare, krótkość trefl
+									3h 5+♥
+									3s 5+♠
+							3d ♥+♠, short ♣
 								3h relay
 									3s 5530
 									3n 5521
 							3h 5503
 							3s 5512
-					2s (5332) z piątką młodszą
+					2s (5332) with 5♣/♦
 						2n relay
-							3c trefle
+							3c (322)5
 								3d relay
 									3h 2335
 									3s 3235
 									3n 3325
-								3h relay
 							3d 2353
 							3h 3253
 							3s 3352
-					2n (5332) z piątką starszą
+					2n (5332) with 5♥/♠
 						3c relay
-							3d kiery
+							3d 3)5(32
 								3h relay
 									3s 2533
 									3n 3523
 									4c 3532
-							3h piki z dublem młodszym
+							3h 53(32)
 								3s relay
 									3n 5323
 									4c 5332
-							3s piki z dublem kier
-					3c sześć trefli
-					3d sześć kar
+							3s 5233
+					3c 6+♣, no other 4-card
+					3d 6+♦, no other 4-card
 					3h (43)33
+						3s relay
+							3n 3433
+							4c 4333
+						3n NF
+							4♣ 3433, extras
+							4♦ 4333, extras
 					3s 33(43)
 					
 				1n 13-16 balanced hand, no 5-card major, no 6-card minor
