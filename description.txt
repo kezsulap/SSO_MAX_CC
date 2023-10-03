@@ -11,7 +11,7 @@ function 1hSOS()
 					1s 4 ♣, 4 ♠
 					re 5 ♣, 3 ♠
 end
-function negative1d(r1, r2, r3)
+function negative1d(r1, r2, r3, r4)
 	1d $(r1) PC, any distribution
 		1h natural, NF
 		1s natural, NF
@@ -71,6 +71,11 @@ function negative1d(r1, r2, r3)
 					3h 4♠
 					3s no 3433, no 4♠
 					3n 3433
+				2n 55 without ♥
+					3c automatic
+						3d ♣+♠
+						3h ♦+♠
+						3s ♣+♦
 			2h 4+ ♠
 				2s relay
 					2n 5♠, no 5♥
@@ -79,6 +84,11 @@ function negative1d(r1, r2, r3)
 					3h no 4333, no 5♥
 					3s 5♥, 5♠
 					3n 4333
+				2n 55 without ♠
+					3c automatic
+						3d ♣+♥
+						3h ♦+♥
+						3s ♣+♦
 			2s balanced hand without 4-card major
 				2n relay
 					3c 5♣
@@ -99,7 +109,7 @@ function negative1d(r1, r2, r3)
 		2d natural, NF
 		2h 6+ ♥, preemptive or invitational
 		2s 6+ ♠, preemptive or invitational
-		2n 21-22, balanced
+		2n $(r4), balanced
 		3c natural, preemptive or invitational
 		3d natural, preemptive or invitational
 		3h natural, preemptive or invitational
@@ -1701,7 +1711,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		:open2h(13-16, 9+, 2hpassedrelay)
 		:open2s(13-16, 9+, 2spassedrelay)
 
-	:negative1d(0-5, 0-3, 4-5)
+	:negative1d(0-5, 0-3, 4-5, 22-23)
 	:open1h(6-10, 15+, 1h5M)
 	:open1s(6-10, 15+, 1s5M)
 	:open1n(6-10, 15+)
@@ -1876,7 +1886,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		x no 4♠, points
 		2s 5+♠, preemptive
 
-:negative1d(0-7, 0-4, 5-7)
+:negative1d(0-7, 0-4, 5-7, 21-22)
 :open1h(8-12, 13+, 1h5M)
 :open1s(8-12, 13+, 1s5M)
 :open1n(8-12, 13+)
