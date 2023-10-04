@@ -1762,20 +1762,66 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 				2c minimum
 					2n NF
 					3c NF
+				2h 4♥, GF
+				2s 4♠, GF
+				2n good hand to bid NT, GF
+				3c 7♣, GF
+				3d bad hand to bid NT, GF
 			2c NF
+				2h 4♥, F1
+				2s 4♠, F1
+				2n NF, good hand to bid NT
+				3c NF, bad hand to bid NT
+				3h 3♥, GF
+				3s 3♠, GF
+				3n no 3♥/♠, GF
 			:2dclubs_relay(clubs_relay_without_2137)
 		1n 6+ ♦
 			2c artificial, at least invitational hand
 				2d minimum
 					2n NF
 					3d NF
+				2h 4♥, GF
+				2s 4♠, GF
+				2n good hand to bid NT, GF
+			 	3c bad hand to bid NT, GF
+				3d 7♦	
 			2d NF
+				2h 4♥, F1
+				2s 4♠, F1
+				2n NF, good hand to bid NT
+				3d NF, bad hand to bid NT
+				3h 3♥
+				3s 3♠
+				3n no 3♥/♠, GF
 			:2hdiamonds_relay(diamonds_relay_without_2137)
 		2c 5 ♥
 			2d artificial, at least invitational
 				2h minimum
 					2n NF
+				2n 3)5(32, good hand to bid NT, GF
+				3c 35(41), GF
+					3d relay
+						3h 4♣
+						3s 4
+				3d 25(24), GF
+					3h relay
+						3s 4♣
+						3n 4♦
+				3h 35(32), GF
+				3s 2533, GF
 			2h NF
+				2s 35(41)
+					2n NF
+					3c relay
+						3d ♣
+						3h ♦, NF
+						3n ♦, GF
+				2n 3)5(32 or (25(24), good hand to bid NT), NF
+				3c 2524, F1
+				3d 2542, F1
+				3h 2533, GF
+				3n 35(32), GF
 			2s relay, GF
 				2n 35(41)
 					3c relay
@@ -1803,7 +1849,28 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 			2h artificial, at least invitational
 				2s minimum
 					2n NF
+				2n 5(332), good hand to bid NT, GF
+				3c 53(41), GF
+					3d relay
+						3h 4♣
+						3s 4
+				3d 52(24), GF
+					3h relay
+						3s 4♣
+						3n 4♦
+				3h 53(32), GF
+				3s 5233, GF
 			2s NF
+				2n 5(332) or (52(24), good hand to bid NT), NF
+				3c 53(41)
+					3d relay	
+						3h ♣
+						3s ♦, NF
+						3n ♦, GF
+				3d 5224, F1
+				3h 5242, F1
+				3s 5322, GF
+				3n 53(32), GF
 			2n relay, GF
 				3c 53(41)
 					3d relay
