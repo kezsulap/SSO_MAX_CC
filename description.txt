@@ -791,9 +791,11 @@ function open1n(open_strength, relay_strength)
 			2s longer ♠
 			2n 55♣♦
 			3c 6 ♣
-			3d 6 ♦, extraordinary hand
-			3h 6 ♥, extraordinary hand
-			3s 6 ♠, extraordinary hand
+			3d 55+♥♠, extras
+			3h 6+ ♥, 4♠, extras
+			3s 6+ ♠, 4♥, extras
+			3n minors, extras
+			4c 65+ minors
 		2h pass or correct
 		2s pass or correct
 		2n preemptive with at least one 4-card major and at least one 4-card minor
