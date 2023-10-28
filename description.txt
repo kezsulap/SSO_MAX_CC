@@ -839,24 +839,20 @@ function open1n(open_strength, relay_strength)
 
 end
 function open2c(open_strength, relay_strength)
-	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness (except 3307, 3370)
+	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness, 5-6 cards in the other minor
 		2d relay, $(relay_strength) PC
-			2h 5+ ♣, 4 ♥, 3♠ or 5+ ♦, 4 ♠, 3♥ or 4414 or 4405
+			2h 5+ ♣, 4 ♥, 3♠ or 5+ ♦, 4 ♠, 3♥ or 4405
 				2s relay, GF
-					2n 4414 or 4405 or 3415, minimum
+					2n 5♣
 						3c relay
-							3d 5♣, minimum
-								3h relay
-									3s 4405, minimum
-									3n 3415, minimum
-							3h 4405, maximum
-							3s 4414, maximum
-							3n 4414, minimum
-					3c 5+ ♣, 4 ♥ (except 3415, minimum)
+							3d 4405, maximum
+							3h 4405, minimum
+							3s 3415, maximum
+							3n 3415, minimum
+					3c 3406
 						3d relay
-							3h 3406, maximum
-							3s 3406, minimum
-							3n 3415, maximum
+							3h maximum
+							3s minimum
 					3d 4360, maximum
 					3h 4360, minimum
 					3s 4351, maximum
@@ -885,12 +881,10 @@ function open2c(open_strength, relay_strength)
 					3h ♦ shortness, minimum
 				3h pass with minimum, invitational
 				3s pass with minimum, invitational
-			2n 4441 or 4450
+			2n 4450
 				3c relay, GF
-					3d 4450, maximum
-					3h 4450, minimum
-					3s 4441, maximum
-					3n 4441, minimum
+					3d maximum
+					3h minimum
 			3c 3316, minimum
 			3d 3361, minimum
 			3h 3316, maximum
@@ -1490,8 +1484,8 @@ function 2nspades_relay()
 end
 
 pa 13+ PC, any distribution (but see 2♦ opening)
-	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61) 3) 7-card minor, inappropriate hand for 1♥/♠
-		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (42)(61) 3) 7-card minor, inappropriate hand for 1♥/♠
+	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
+		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
 			1h 11+ PC, any distribution
 				1s 17+ PC, any distribution
 					1n (5431) or (4441) or 6+♥/♠ without other 4-card suit
@@ -1680,7 +1674,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 							4♦ 4333, extras
 					3s 33(43)
 					
-				1n 13-16 balanced hand, no 5-card major, no 6-card minor
+				1n 13-16 no 5-card major, no 6-card minor, no shortness
 					:2cbalanced_relay()
 				2c 13-16 6+ ♣
 					:2dclubs_relay(clubs_relay_with_2137)
@@ -1690,7 +1684,13 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 					:2shearts_relay()
 				2s 13-16 5 ♠
 					:2nspades_relay()
-			1s 6-10 PC, balanced hand, no 5-card major, no 6-card minor
+				2n 44(41)
+					3c relay
+						3d 4414, maximum
+						3h 4441, maximum
+						3s 4414, minimum
+						3n 4441, minimum
+			1s 6-10 PC, no 5-card major, no 6-card minor, no shortness
 				1n NF
 				:2cbalanced_relay()
 			1n 6-10 PC, 6+ ♣
@@ -1705,6 +1705,20 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 			2h 6-10 PC, 5 ♠
 				2s NF
 				:2nspades_relay()
+			2s 44(41), minimum
+				2n sign-off
+				3c pass or correct
+				3d relay, GF
+					3h 4414
+					3s 4441
+				3h sign-off
+			2n 44(41), maximum
+				3c pass or correct
+				3d relay, GF
+					3h 4414
+					3s 4441
+				3h sign-off
+				3s sign-off
 		:open1h(13-16, 9+, 1h5Mpassed)
 		:open1s(13-16, 9+, 1s5Mpassed)
 		:open1n(13-16, 9+)
@@ -1727,9 +1741,9 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 	3h preempt
 	3s preempt
 
-1c 8-12 PC, 1) no shortness, no 54 majors, no 6-card major or 2) (53)(41) 3) (42)(61) 4) 7-card minor with 2+♥, 2+♠
+1c 8-12 PC, 1) no shortness, no 54 majors, no 6-card major or 2) 44(41) 3) (53)(41) 4) (42)(61) 5) 7-card minor with 2+♥, 2+♠
 	1d relay, 13 + PC
-		1h balanced hand, no 5-card major, no 6-card minor
+		1h no 5-card major, no 6-card minor, no shortness
 			1s artificial, at least invitational hand
 				1n no 54 distribution, minimum
 				2c (24)25, minimum
@@ -1893,9 +1907,22 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						4c minimum
 				3s 5242, maximum
 				3n 5242, minimum
-		2h 5233, maximum
-		2s 5323, maximum
-		2n 5332, maximum
+		2h 44(41), minimum
+			2s sign-off
+			2n sign-off
+			3c pass or correct
+			3d relay, GF
+				3h 4414
+				3s 4441
+		2s 44(41), maximum
+			2n relay
+				3c 4414
+				3d 4441
+		2n 5(332), maximum
+			3c relay
+				3d 5233
+				3h 5323
+				3s 5332
 	1h 4+ ♥, NF
 		1s 5♠
 		1n 22(54), extras
