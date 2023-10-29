@@ -1,3 +1,13 @@
+function theme(bright) {
+	document.querySelector('#bright-dark').href = (bright ? './bright.css' : './dark.css')
+}
+curr_theme = localStorage.getItem('theme') == 'bright'
+if (curr_theme) theme(true)
+function handle_theme_switch() {
+	curr_theme = !curr_theme
+	localStorage.setItem('theme', curr_theme ? 'bright' : 'dark')
+	theme(curr_theme)
+}
 function load(url) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, false); //TODO: make asynchronous 
@@ -320,6 +330,14 @@ function format_str(s) {
 	s = s.replaceAll('!s', '<sp></sp>');
 	return s;
 }
+function add_theme_switch_node() {
+	let topmenu = document.querySelector('#topmenulist')
+	let ret = document.createElement('li');
+	ret.id = 'theme_switch_button'
+	ret.innerHTML = '<div onclick=handle_theme_switch()>☀</div>'
+	topmenu.appendChild(ret)
+	topmenu.children[topmenu.children.length - 1].addEventListener('click', handle_theme_switch)
+}
 function display(node) {
 	let content = document.querySelector('#bidding')
 	let topmenu = document.querySelector('#topmenulist')
@@ -364,6 +382,7 @@ function display(node) {
 		}
 	}
 	dfs(node, 0);
+	add_theme_switch_node()
 }
 function compare(starting_nodes) {
 	ret = new Node();

@@ -1,0 +1,80 @@
+div.bidding {
+	border: solid #ADD6FF 2px;
+}
+.relay {
+	background-color: #ADD6FF;
+}
+.OtherPage {
+background-color: #ADD6FF;
+}
+.bidding.diff, .bidding.subtreediff:not(.rozwiniete) {
+	border-color:#FFC500;
+}
+.bidding.diff.relay, .bidding.subtreediff.relay:not(.rozwiniete) {
+	background-color:#FFC500;
+}
+.bidding.diff.relay.rozwiniete:not(:hover) {
+	background-color:#E6B000;
+}
+ul.topmenu li {
+	border: solid #ADD6FF 2px;
+	background-color: #ADD6FF;
+}
+a.topmenu {
+	color: black;
+}
+.rozwiniete {
+	background-color: #85C2FF;
+}
+table.bidding {
+	border: solid #ADD6FF 1px;
+}
+table.bidding tr:first-child td  {
+	background-color: #ADD6FF;
+}
+table.bidding tr:first-child td  {
+	border: solid #ADD6FF 1px;
+}
+table.bidding tr  td{
+	border: solid #ADD6FF 1px;
+}
+table.hands {
+	border: solid #ADD6FF 1px;
+}
+table.hands tr:first-child td  {
+	border: solid #ADD6FF 1px;
+}
+table.hands tr  td {
+	border: solid #ADD6FF 1px;
+}
+table.tabela2x200 {
+	border: solid #ADD6FF 1px;
+}
+table.tabela2x200 tr:first-child td  {
+	border: solid #ADD6FF 1px;
+}
+table.hands tr:first-child td  {
+	background-color: #ADD6FF;
+}
+table.tabela2x200 tr:first-child td  {
+	background-color: #ADD6FF;
+}
+.t2 {
+	border: solid 1px #ADD6FF;
+	background-color: #ADD6FF;
+}
+.t3 {
+	border: solid 1px #ADD6FF;
+}
+cl:after {
+	color: #005416;
+}
+di:after {
+	color: #ff6600;
+}
+he:after {
+	color: red;
+}
+sp:after {
+	color: blue;
+}
