@@ -778,12 +778,12 @@ function open1n(open_strength, relay_strength)
 				3s 6♠, minimum
 				3n 5♠4♥ GF
 			(3h)
-				x (12)55, GF
-				3s (12)46, GF
-				3n (12)64, GF
+				x (21)55, GF
+				3s (21)46, GF
+				3n (21)64, GF
 			(3♠)
-				x (12)55, GF
-				3n (12)(46), GF
+				x (21)55, GF
+				3n (21)(46), GF
 		2d weak relay
 			pa 6 ♦
 			2h longer ♥/equal
@@ -920,8 +920,8 @@ function open2c(open_strength, relay_strength)
 			(2h)
 				x 4♥
 				pass 4♠
-				2s 43(06), minimum
-				2n 43(06), GF
+				2s 43(60), minimum
+				2n 43(60), GF
 				3c 6♣, NF
 				3d 6♦, NF
 				3h 6♣, GF
@@ -932,10 +932,10 @@ function open2c(open_strength, relay_strength)
 			(2s)
 				x 4♠
 				pass 4♥
-				2n 34(06), minimum
+				2n 34(60), minimum
 				3c 6♣, NF
 				3d 6♦, NF
-				3h 34(06), maximum
+				3h 34(60), maximum
 				3s 6♣/♦, no ♠ stopper, GF
 				3n 6♣/♦, ♠ stopper, GF
 			(3c)
@@ -1343,7 +1343,7 @@ function 2cbalanced_relay()
 				3s 2353
 				3n 3253
 				4c 3352
-		3h 33(34), minimum
+		3h 33(43), minimum
 			3s relay
 				3n 3334
 				4c 3343
@@ -1535,7 +1535,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 								3c relay
 									3d 6♥
 									3h 6♠
-							3c 44(14)
+							3c 44(41)
 								3d relay
 									3h 4441
 									3s 4414
@@ -1746,13 +1746,13 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		1h no 5-card major, no 6-card minor, no shortness
 			1s artificial, at least invitational hand
 				1n no 54 distribution, minimum
-				2c (24)25, minimum
+				2c (42)25, minimum
 					2d relay
 						2h 2425
 						2s 4225
 					2h sign-off
 					2s sign-off
-				2d (24)52, minimum
+				2d (42)52, minimum
 					2h pass or correct
 					2s pass or correct
 				2h 22(54), minimum
@@ -1767,8 +1767,8 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						3n none
 						4h both
 				2nt no 4-card major, no 54 distribution, maximum, good hand to bid NT
-				3c (24)25, maximum
-				3d (24)52, maximum
+				3c (42)25, maximum
+				3d (42)52, maximum
 				3h 2245, maximum
 				3s 2254, maximum
 			1n NF
@@ -1820,7 +1820,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 					3d relay
 						3h 4♣
 						3s 4
-				3d 25(24), GF
+				3d 25(42), GF
 					3h relay
 						3s 4♣
 						3n 4♦
@@ -1833,7 +1833,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						3d ♣
 						3h ♦, NF
 						3n ♦, GF
-				2n 3)5(32 or (25(24), good hand to bid NT), NF
+				2n 3)5(32 or (25(42), good hand to bid NT), NF
 				3c 2524, F1
 				3d 2542, F1
 				3h 2533, GF
@@ -1870,14 +1870,14 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 					3d relay
 						3h 4♣
 						3s 4
-				3d 52(24), GF
+				3d 52(42), GF
 					3h relay
 						3s 4♣
 						3n 4♦
 				3h 53(32), GF
 				3s 5233, GF
 			2s NF
-				2n 5(332) or (52(24), good hand to bid NT), NF
+				2n 5(332) or (52(42), good hand to bid NT), NF
 				3c 53(41)
 					3d relay	
 						3h ♣
