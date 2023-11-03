@@ -1,13 +1,3 @@
-function theme(bright) {
-	document.querySelector('#bright-dark').href = (bright ? './bright.css' : './dark.css')
-}
-curr_theme = localStorage.getItem('theme') == 'bright'
-if (curr_theme) theme(true)
-function handle_theme_switch() {
-	curr_theme = !curr_theme
-	localStorage.setItem('theme', curr_theme ? 'bright' : 'dark')
-	theme(curr_theme)
-}
 function load(url) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, false); //TODO: make asynchronous 
@@ -339,6 +329,7 @@ function add_theme_switch_node() {
 	topmenu.children[topmenu.children.length - 1].addEventListener('click', handle_theme_switch)
 }
 function display(node) {
+	init_theme()
 	let content = document.querySelector('#bidding')
 	let topmenu = document.querySelector('#topmenulist')
 	let no = 0;
@@ -440,7 +431,7 @@ function get_url(owner, repo, version = 'main', file = 'description.txt') {
 	return ('https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + version + '/' + file);
 }
 function init() {
-	window.onload = function() {
+	window.addEventListener('load', function() {
 		try {
 			if (hardcoded !== undefined) {
 				nodes = [];
@@ -493,7 +484,7 @@ function init() {
 		catch (e) {
 			display_error(e);
 		}
-	}
+	})
 }
 function paste_update() {
 	let mode = document.querySelector('input[name="mode"]:checked').value;

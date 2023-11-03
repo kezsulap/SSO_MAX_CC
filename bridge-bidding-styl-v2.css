@@ -164,14 +164,25 @@ font-size: 55%;
 .mia:hover {color: #cc0000;}
 .gruby {font-weight: bold;}
 
-.relay:hover {
-background-color: #FF5C33;
-border-color: #FF5C33;
-cursor: n-resize;
+body.bright .bidding:hover {
+	border-color: #b3ffb3;
 }
-.bidding.diff.relay:hover, .bidding.subtreediff.relay:not(.rozwiniete):hover {
-	background-color:#FF8300;
-	border-color:#FF8300;
+body.bright .relay:hover {
+	background-color: #b3ffb3;
+	cursor: n-resize;
+}
+body.bright .relay.rozwiniete:hover {
+	background-color: #80ff80;	
+}
+body.dark .bidding:hover {
+	border-color: #00b000;
+}
+body.dark .relay:hover {
+	background-color:  #00b000;
+	cursor: n-resize;
+}
+body.dark .relay.rozwiniete:hover {
+	background-color:  #008000;
 }
 
 .OtherPage:hover {
@@ -362,3 +373,524 @@ sp:after {
   visibility: visible;
 }
 
+/****************************************************Bright theme****************************************************/
+
+body.bright div.bidding {
+	border: solid #ADD6FF 2px;
+}
+body.bright .relay {
+	background-color: #ADD6FF;
+}
+body.bright .OtherPage {
+background-color: #ADD6FF;
+}
+body.bright .bidding.diff, body.bright .bidding.subtreediff:not(.rozwiniete) {
+	border-color:#FFC500 !important;
+}
+body.bright .bidding.diff.relay, body.bright .bidding.subtreediff.relay:not(.rozwiniete) {
+	background-color:#FFC500 !important;
+}
+body.bright .bidding.diff.relay.rozwiniete {
+	background-color:#E6B000 !important;
+}
+body.bright .bidding.diff:hover, body.bright .bidding.subtreediff:not(.rozwiniete):hover {
+	border-color:#ff99cc !important;
+}
+body.bright .bidding.diff.relay:hover, body.bright .bidding.subtreediff.relay:not(.rozwiniete):hover {
+	background-color:#ff99cc !important;
+}
+body.bright .bidding.diff.relay.rozwiniete:hover {
+	background-color:#ff66b3 !important;
+}
+body.bright ul.topmenu li {
+	border: solid #ADD6FF 2px;
+	background-color: #ADD6FF;
+}
+body.bright a.topmenu {
+	color: black;
+}
+body.bright .rozwiniete {
+	background-color: #85C2FF;
+}
+body.bright table.bidding {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.bidding tr:first-child td  {
+	background-color: #ADD6FF;
+}
+body.bright table.bidding tr:first-child td  {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.bidding tr  td{
+	border: solid #ADD6FF 1px;
+}
+body.bright table.hands {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.hands tr:first-child td  {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.hands tr  td {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.tabela2x200 {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.tabela2x200 tr:first-child td  {
+	border: solid #ADD6FF 1px;
+}
+body.bright table.hands tr:first-child td  {
+	background-color: #ADD6FF;
+}
+body.bright table.tabela2x200 tr:first-child td  {
+	background-color: #ADD6FF;
+}
+body.bright .t2 {
+	border: solid 1px #ADD6FF;
+	background-color: #ADD6FF;
+}
+body.bright .t3 {
+	border: solid 1px #ADD6FF;
+}
+body.bright cl:after {
+	color: #005416;
+}
+body.bright di:after {
+	color: #ff6600;
+}
+body.bright he:after {
+	color: red;
+}
+body.bright sp:after {
+	color: blue;
+}
+
+/*****************************************************Dark theme*****************************************************/
+body.dark {
+	background-color: #222222;
+	color: #dddddd;
+}
+body.dark div.bidding {
+	border: solid #0056B3 2px;
+}
+body.dark .relay {
+	background-color: #0056B3;
+}
+body.dark .OtherPage {
+background-color: #0056B3;
+}
+body.dark .bidding.diff, body.dark .bidding.subtreediff:not(.rozwiniete) {
+	border-color:#A87600 !important;
+}
+body.dark .bidding.diff.relay, body.dark .bidding.subtreediff.relay:not(.rozwiniete) {
+	background-color:#A87600 !important;
+}
+body.dark .bidding.diff.relay.rozwiniete {
+	background-color:#8A6000 !important;
+}
+body.dark .bidding.diff:hover, body.dark .bidding.subtreediff:not(.rozwiniete):hover {
+	border-color:#cc0066 !important;
+}
+body.dark .bidding.diff.relay:hover, body.dark .bidding.subtreediff.relay:not(.rozwiniete):hover {
+	background-color:#cc0066 !important;
+}
+body.dark .bidding.diff.relay.rozwiniete:hover {
+	background-color: #99004d !important;
+}
+body.dark ul.topmenu li {
+	border: solid #0056B3 2px;
+	background-color: #0056B3;
+}
+body.dark a.topmenu {
+	color: #dddddd;
+}
+body.dark .rozwiniete {
+	background-color: #003E80;
+}
+body.dark table.bidding {
+	border: solid #0056B3 1px;
+}
+body.dark table.bidding tr:first-child td  {
+	background-color: #0056B3;
+}
+body.dark table.bidding tr:first-child td  {
+	border: solid #0056B3 1px;
+}
+body.dark table.bidding tr  td{
+	border: solid #0056B3 1px;
+}
+body.dark table.hands {
+	border: solid #0056B3 1px;
+}
+body.dark table.hands tr:first-child td  {
+	border: solid #0056B3 1px;
+}
+body.dark table.hands tr  td {
+	border: solid #0056B3 1px;
+}
+body.dark table.tabela2x200 {
+	border: solid #0056B3 1px;
+}
+body.dark table.tabela2x200 tr:first-child td  {
+	border: solid #0056B3 1px;
+}
+body.dark table.hands tr:first-child td  {
+	background-color: #0056B3;
+}
+body.dark table.tabela2x200 tr:first-child td  {
+	background-color: #0056B3;
+}
+body.dark .t2 {
+	border: solid 1px #0056B3;
+	background-color: #0056B3;
+}
+body.dark .t3 {
+	border: solid 1px #0056B3;
+}
+body.dark cl:after {
+	color: #00e63d;
+}
+body.dark di:after {
+	color: #ffc14d;
+}
+body.dark he:after {
+	color: #ff3333;
+}
+body.dark sp:after {
+	color: #9999ff;
+}
+/***********************************************SPECIAL THEMES*************************************/
+div.bidding:not(.relay) {
+	backdrop-filter: blur(30px);
+}
+/******************** April-fool *********************/
+body.april-fool he:after {
+	content: "\1f921";
+}
+body.april-fool.dark {
+	background-image: url("./special-themes/dark-april-fool.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.april-fool.bright {
+	background-image: url("./special-themes/bright-april-fool.png");
+	background-size: 16.666%;
+	background-attachment: fixed;
+	background-position: left;
+}
+/******************** Children *********************/
+body.children di:after {
+	content: "\1f476";
+}
+body.children.dark {
+	background-image: url("./special-themes/dark-children.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.children.bright {
+	background-image: url("./special-themes/bright-children.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+/******************** Christmas *********************/
+body.christmas cl:after {
+	content: "\1F384";
+}
+body.christmas.dark {
+	background-image: url("./special-themes/dark-christmas.png");
+	background-attachment: fixed;
+	background-position: left;
+}
+body.christmas.bright {
+	background-image: url("./special-themes/bright-christmas.jpg");
+	background-attachment: fixed;
+	background-position: left;
+}
+/******************** Earth *********************/
+body.earth sp:after {
+	content: "\1F4A7";
+}
+body.earth.dark {
+	background-image: url("./special-themes/dark-earth.jpg");
+	background-size: 50%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.earth.bright {
+	background-image: url("./special-themes/bright-earth.jpg");
+	background-size: 50%;
+	background-attachment: fixed;
+	background-position: left;
+}
+/******************** Easter *********************/
+body.easter di:after {
+	content: "\1f425";
+}
+body.easter.dark {
+	background-image: url("./special-themes/dark-easter.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.easter.bright {
+	background-image: url("./special-themes/bright-easter.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+/******************** Halloween *********************/
+body.halloween.dark {
+	background-image: url("./special-themes/dark-spider-web.svg");
+	background-attachment: fixed;
+	background-position: left;
+}
+body.halloween.dark .bidding:not(.relay) {
+	background-color: black
+}
+body.halloween.bright {
+	background-image: url("./special-themes/bright-spider-web.svg");
+	background-attachment: fixed;
+	background-position: left;
+}
+body.halloween.bright .bidding:not(.relay) {
+	background-color: white
+}
+body.halloween di:after {
+	content: "\1F383";
+}
+/******************** Independence *********************/
+body.independence.dark {
+	background-image: url("./special-themes/dark-independence.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.independence.bright {
+	background-image: url("./special-themes/bright-independence.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top;
+}
+.bright.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .bright.independence .topmenu li:nth-child(odd) {
+	border-color:white;
+}
+.bright.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .bright.independence .topmenu li:nth-child(odd) {
+	background-color:white;
+}
+.dark.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .dark.independence .topmenu li:nth-child(odd) {
+	border-color:#aaaaaa;
+}
+.dark.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .dark.independence .topmenu li:nth-child(odd) {
+	background-color:#aaaaaa;
+}
+.bright.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])), .bright.independence .topmenu li:nth-child(even) {
+	border-color:#ff9999;
+}
+.bright.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .bright.independence .topmenu li:nth-child(even) {
+	background-color:#ff9999;
+}
+.dark.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])), .dark.independence .topmenu li:nth-child(even) {
+	border-color:#990000;
+}
+.dark.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .dark.independence .topmenu li:nth-child(even) {
+	background-color:#990000;
+}
+/******************** Men *********************/
+body.men sp:after {
+	content: "\1f3a9";
+}
+/******************** New-year *********************/
+body.new-year di:after {
+	content: "\1f973";
+}
+body.new-year.dark {
+	background-image: url("./special-themes/dark-new-year.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.new-year.bright {
+	background-image: url("./special-themes/bright-new-year.jpg");
+	background-size: 25%;
+	background-attachment: fixed;
+	background-position: left;
+}
+/******************** Rainbow *********************/
+
+.bright.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+1) {
+	border-color:#ff9999;
+}
+.bright.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+1) {
+	background-color:#ff9999;
+}
+.dark.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+1) {
+	border-color:#990000;
+}
+.dark.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+1) {
+	background-color:#990000;
+}
+.bright.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+2) {
+	border-color:#ffdb99;;
+}
+.bright.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+2) {
+	background-color:#ffdb99;;
+}
+.dark.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+2) {
+	border-color:#996300;
+}
+.dark.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+2) {
+	background-color:#996300;
+}
+.bright.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+3) {
+	border-color:#ffff99;
+}
+.bright.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+3) {
+	background-color:#ffff99;
+}
+.dark.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+3) {
+	border-color:#c8a900;
+}
+.dark.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+3) {
+	background-color:#c8a900;
+}
+.bright.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+4) {
+	border-color:#99ff99;
+}
+.bright.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+4) {
+	background-color:#99ff99;
+}
+.dark.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+4) {
+	border-color:#009900;
+}
+.dark.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+4) {
+	background-color:#009900;
+}
+.bright.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+5) {
+	border-color:#ADD6FF;
+}
+.bright.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+5) {
+	background-color:#ADD6FF;
+}
+.dark.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+5) {
+	border-color:blue;
+}
+.dark.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+5) {
+	background-color:blue;
+}
+
+.bright.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+6) {
+	border-color:#ff99ff;
+}
+.bright.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+6) {
+	background-color:#ff99ff;
+}
+.dark.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+6) {
+	border-color:#990099;
+}
+.dark.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+6) {
+	background-color:#990099;
+}
+
+body.rainbow.bright .bidding.diff, body.rainbow.bright .bidding.subtreediff:not(.rozwiniete) {
+	border-color:red !important;
+	background-color:silver !important;
+}
+body.rainbow.bright .bidding.diff.relay, body.rainbow.bright .bidding.subtreediff.relay:not(.rozwiniete) {
+	border-color:red !important;
+	background-color:gray !important;
+}
+body.rainbow.dark .bidding.diff, body.rainbow.dark .bidding.subtreediff:not(.rozwiniete) {
+	border-color:red !important;
+	background-color:#505050 !important;
+}
+body.rainbow.dark .bidding.diff.relay, body.rainbow.dark .bidding.subtreediff.relay:not(.rozwiniete) {
+	border-color:red !important;
+	background-color:gray !important;
+}
+/******************** Santa *********************/
+body.santa he:after {
+	content: "\01F385";
+}
+body.santa.dark {
+	background-image: url("./special-themes/dark-santa.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.santa.bright {
+	background-image: url("./special-themes/bright-santa.jpg");
+	background-size: 50%;
+	background-attachment: fixed;
+	background-position: top;
+}
+/******************** Ukraine *********************/
+body.ukraine.dark {
+	background-image: url("./special-themes/dark-ukraine.webp");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.ukraine.bright {
+	background-image: url("./special-themes/bright-ukraine.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top;
+}
+.bright.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .bright.ukraine .topmenu li:nth-child(odd) {
+	border-color:#ADD6FF;
+}
+.bright.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .bright.ukraine .topmenu li:nth-child(odd) {
+	background-color:#ADD6FF;
+}
+.dark.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .dark.ukraine .topmenu li:nth-child(odd) {
+	border-color:blue;
+}
+.dark.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .dark.ukraine .topmenu li:nth-child(odd) {
+	background-color:blue;
+}
+.bright.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])), .bright.ukraine .topmenu li:nth-child(even) {
+	border-color:yellow;
+}
+.bright.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .bright.ukraine .topmenu li:nth-child(even) {
+	background-color:yellow;
+}
+.dark.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])), .dark.ukraine .topmenu li:nth-child(even) {
+	border-color:#c8a900;
+}
+.dark.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .dark.ukraine .topmenu li:nth-child(even) {
+	background-color:#c8a900;
+}
+/******************** Valentines *********************/
+body.valentines he:after {
+	content: "\1F498";
+}
+body.valentines.bright {
+	background-image: url("./special-themes/bright-valentines.jpg");
+	background-attachment: fixed;
+	background-position: left;
+}
+body.valentines.dark {
+	background-image: url("./special-themes/dark-valentines.jpg");
+	background-attachment: fixed;
+	background-position: left;
+}
+
+/******************** Women *********************/
+body.women he:after {
+	content: "\1F339";
+}
+body.women.bright {
+	background-image: url("./special-themes/bright-women.jpg");
+	background-size: 50%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.women.dark {
+	background-image: url("./special-themes/dark-women.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
