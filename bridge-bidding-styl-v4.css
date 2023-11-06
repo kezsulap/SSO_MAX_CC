@@ -167,6 +167,10 @@ font-size: 55%;
 body.bright .bidding:hover {
 	border-color: #b3ffb3;
 }
+body.bright .topmenu li:hover {
+	border-color: #b3ffb3;
+	background-color: #b3ffb3;
+}
 body.bright .relay:hover {
 	background-color: #b3ffb3;
 	cursor: n-resize;
@@ -176,6 +180,10 @@ body.bright .relay.rozwiniete:hover {
 }
 body.dark .bidding:hover {
 	border-color: #00b000;
+}
+body.dark .topmenu li:hover {
+	border-color: #00b000;
+	background-color: #00b000;
 }
 body.dark .relay:hover {
 	background-color:  #00b000;
@@ -374,10 +382,14 @@ body.bright .relay {
 body.bright .OtherPage {
 background-color: #ADD6FF;
 }
-body.bright .bidding.diff, body.bright .bidding.subtreediff:not(.rozwiniete) {
+body.bright .bidding.diff, body.bright .bidding.subtreediff:not(.rozwiniete), body.bright .topmenu li.diff, body.bright .topmenu li.subtreediff {
 	border-color:#FFC500 !important;
 }
-body.bright .bidding.diff.relay, body.bright .bidding.subtreediff.relay:not(.rozwiniete) {
+body.bright .topmenu li.diff:hover, body.bright .topmenu li.subtreediff:hover {
+	border-color:#ff99cc !important;
+	background-color:#ff99cc !important;
+}
+body.bright .bidding.diff.relay, body.bright .bidding.subtreediff.relay:not(.rozwiniete), body.bright .topmenu li.diff, body.bright .topmenu li.subtreediff {
 	background-color:#FFC500 !important;
 }
 body.bright .bidding.diff.relay.rozwiniete {
@@ -472,10 +484,14 @@ body.dark .relay {
 body.dark .OtherPage {
 background-color: #0056B3;
 }
-body.dark .bidding.diff, body.dark .bidding.subtreediff:not(.rozwiniete) {
+body.dark .bidding.diff, body.dark .bidding.subtreediff:not(.rozwiniete), body.dark .topmenu li.diff, body.dark .topmenu li.subtreediff {
 	border-color:#A87600 !important;
 }
-body.dark .bidding.diff.relay, body.dark .bidding.subtreediff.relay:not(.rozwiniete) {
+body.dark .topmenu li.diff:hover, body.dark .topmenu li.subtreediff:hover {
+	border-color:#cc0066 !important;
+	background-color:#cc0066 !important;
+}
+body.dark .bidding.diff.relay, body.dark .bidding.subtreediff.relay:not(.rozwiniete), body.dark .topmenu li.diff, body.dark .topmenu li.subtreediff {
 	background-color:#A87600 !important;
 }
 body.dark .bidding.diff.relay.rozwiniete {

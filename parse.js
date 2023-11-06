@@ -358,6 +358,9 @@ function display(node) {
 				let topmenu_node = document.createElement('li');
 				let link = document.createElement('a');
 				topmenu_node.appendChild(link);
+				for (let otherClass of node.otherClasses) {
+					topmenu_node.classList.add(otherClass);
+				}
 				link.innerHTML = format_str(call_to_str(node.current_auction[0], false));
 				link.setAttribute('href', '#open' + no);
 				link.classList.add('topmenu');
