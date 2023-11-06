@@ -352,31 +352,21 @@ sp:after {
 .bidding {
 	position: relative;
 }
-.bidding .tooltip {
- visibility: hidden;
-  width: fit-content;
-  background-color: #ddd;
-  color: black;
-  text-align: justify;
-/*  padding: 5px 0; */
-/*  border-radius: 6px;*/
- 
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: +1;
-/*  top: -5px;*/
-	text-indent:0px;
-  right: 105%;
-}
 
-.bidding:hover .tooltip {
-  visibility: visible;
+.my-balloon {
+	min-width: 20px ;
+	padding        : 5px ;
+	border-radius   : 6px ;
+	box-shadow      : 4px 4px 4px #555 ;
+	z-index         : 32767 ;
 }
-
 /****************************************************Bright theme****************************************************/
 
-body.bright div.bidding {
+body.bright div.bidding, body.bright .my-balloon {
 	border: solid #ADD6FF 2px;
+}
+body.bright .my-balloon {
+	background-color: white;
 }
 body.bright .relay {
 	background-color: #ADD6FF;
@@ -470,8 +460,11 @@ body.dark {
 	background-color: #222222;
 	color: #dddddd;
 }
-body.dark div.bidding {
+body.dark div.bidding, body.dark .my-balloon {
 	border: solid #0056B3 2px;
+}
+body.dark .my-balloon {
+	background-color: #222222;
 }
 body.dark .relay {
 	background-color: #0056B3;

@@ -61,26 +61,25 @@ function call_to_str(x, braces = true) {
 	}
 	throw new ParsingError('invalid call ' + x);
 }
-function auction_to_str(auction, separator) {
+function auction_to_str(auction, table) { //TODO: make this into a table
 	let competitive = false;
 	for (let i = 1; i < auction.length; i += 2) if (auction[i] !== 0) competitive = true;
 	let ret = '';
-	for (let i = 0; i < auction.length; ++i) {
-		let our = i % 2 == 0;
-		if (our) {
-			if (i) {
-				if (i % 4) ret += '-';
-				else ret += separator;
+	if (auction.length == 1) return 'Open ' + call_to_str(auction[0]);
+	else {
+		if (table) ret += '<table><tr><td>';
+		for (let i = 0; i < auction.length; ++i) {
+			let our = i % 2 == 0;
+			if (our || competitive) {
+				if (i) {
+					if (i % 4) ret += (table ? '</td><td>' : '-');
+					else ret += (table ? '</td></tr><tr><td>' : '-')
+				}
+				ret += call_to_str(auction[i], false);
 			}
-			ret += call_to_str(auction[i], false);
 		}
-		else {
-			if (competitive) {
-				ret += '-(' + call_to_str(auction[i], false) + ')';
-			}
-		}
+		if (table) ret += '</td></tr></table>'
 	}
-	if (auction.length == 1) ret = 'Open ' + ret;
 	return ret;
 }
 class Node {
@@ -133,7 +132,7 @@ class Node {
 		let current_node = this.getChild(call);
 		if (current_node !== undefined) {
 			if (throw_if_exists || (meaning && current_node.meaning)) {
-				throw new ParsingError('Redefined sequence ' + auction_to_str(current_node.current_auction, '-') + (line ? 'on line ' + line : ''));
+				throw new ParsingError('Redefined sequence ' + auction_to_str(current_node.current_auction, false) + (line ? 'on line ' + line : ''));
 			}
 			else {
 				return current_node;
@@ -329,10 +328,13 @@ function add_theme_switch_node() {
 	topmenu.children[topmenu.children.length - 1].addEventListener('click', handle_theme_switch)
 }
 function display(node) {
+	$.balloon.defaults.classname = "my-balloon";
+	$.balloon.defaults.css = {}
 	init_theme()
 	let content = document.querySelector('#bidding')
 	let topmenu = document.querySelector('#topmenulist')
 	let no = 0;
+	let balloons = [];
 	function dfs(node, depth) {
 		let skip = node.current_auction.length == 0 ||
 			(node.current_auction[node.current_auction.length - 1] === 0 && node.current_auction.length % 2 == 0 && node.meaning.trim() === '');
@@ -362,11 +364,8 @@ function display(node) {
 				topmenu.appendChild(topmenu_node);
 				no++;
 			}
-			let title = document.createElement('span');
-			title.classList.add('tooltip');
-			title.innerHTML = format_str(auction_to_str(node.current_auction, '<br>'));
+			a.setAttribute('title', format_str(auction_to_str(node.current_auction, true)))
 			content.appendChild(a);
-			a.appendChild(title);
 		}
 		for (let [call, subnode] of node.children) {
 			dfs(subnode, depth + !skip);
@@ -374,6 +373,7 @@ function display(node) {
 	}
 	dfs(node, 0);
 	add_theme_switch_node()
+	$(function(){$('#bidding .bidding').balloon({position: "left"})})
 }
 function compare(starting_nodes) {
 	ret = new Node();
