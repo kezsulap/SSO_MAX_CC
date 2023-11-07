@@ -343,7 +343,7 @@ function display(node) {
 			a.classList.add('bidding');
 			a.setAttribute('level', depth);
 			a.classList.add('level' + String(depth).padStart(2, '0'));
-			a.innerHTML = format_str(wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1], false), node.current_auction.length % 2) + ': ' + node.meaning);
+			a.innerHTML = format_str('<call>' + wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1], false), node.current_auction.length % 2) + ':</call> ' + node.meaning);
 			if (depth) {
 				a.setAttribute('style', "display: none;");
 			}

@@ -164,6 +164,9 @@ font-size: 55%;
 .mia:hover {color: #cc0000;}
 .gruby {font-weight: bold;}
 
+call {
+	font-weight: bold;
+}
 body.bright .bidding:hover {
 	border-color: #b3ffb3;
 }
