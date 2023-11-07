@@ -1800,8 +1800,8 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 				2h 4♥, GF
 				2s 4♠, GF
 				2n good hand to bid NT, GF
-			 	3c bad hand to bid NT, GF
-				3d 7♦	
+				3c bad hand to bid NT, GF
+				3d 7♦
 			2d NF
 				2h 4♥, F1
 				2s 4♠, F1
