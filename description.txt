@@ -683,9 +683,10 @@ function open1n(open_strength, relay_strength)
 				xx penalty or 5♥4♠
 				pass 5♠4♥
 					xx penalty
+				2♦ 6♦, too weak ♣ to redouble
 				2♥ 6♥, minimum
 				2♠ 6♠, minimum
-				2n 6♦ or 55♣♦ too weak suit to redouble, minimum
+				2n 55♣♦ too weak suit to redouble, minimum
 				3c 55♥♠, minimum
 				3d 55♥♠, maximum
 				3♥ 6♠, maximum
