@@ -27,7 +27,6 @@ $(function() {
 			
 	$( "body" ).on("click", "div.rozwiniete", function() {
 		clicked = parseInt($(this).attr("level"));
-		console.log(clicked)
 		count = 0
 		$(this).nextAll().each(function() {
 			sibling_number = parseInt($(this).attr("level"));
@@ -36,7 +35,6 @@ $(function() {
 			} else {
 				$(this).removeClass( "rozwiniete" );
 				curr = $(this).css('display')
-				console.log(curr)
 				if (curr != 'none') {
 					count++
 					if (count < 20)
@@ -50,7 +48,6 @@ $(function() {
 	});
 
 	$( "body" ).on("contextmenu taphold", "div.relay:not('rozwiniete')", function() {
-		console.log('start')
 		clicked = parseInt($(this).attr("level"));
 		count = 0
 		$(this).nextAll().each(function() {
