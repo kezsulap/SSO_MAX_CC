@@ -839,6 +839,26 @@ function open1n(open_strength, relay_strength)
 				3h 6♠, 4♥, extras
 
 end
+function open2c_2d_x_p_2h_relay()
+	2s (43)60
+		2n relay
+			3c 3460, maximum
+			3d 4360, maximum
+			3h 3460, minimum
+			3s 4360, minimum
+	2n 3361
+		3c relay
+			3d maximum
+			3h minimum
+	3c 4450
+		3d relay
+			3h maximum
+			3s minimum
+	3d 3451, maximum
+	3h 4351, maximum
+	3s 3451, minimum
+	3n 4351, minimum
+end
 function open2c(open_strength, relay_strength)
 	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness, 5-6 cards in the other minor
 		2d relay, $(relay_strength) PC
@@ -893,31 +913,45 @@ function open2c(open_strength, relay_strength)
 			3n 4315, maximum
 			(x)
 				xx penalty
+					2h relay, GF
+						:open2c_2d_x_p_2h_relay()
+					{2♠/2NT/3♣} natural, NF
+					3d inv with 44+♥♠
+					3h natural, NF
 				pass 5+♦, too weak to redouble
 					xx penalty
-				2h 4♠, 5+♣
-					2s relay
-						2n 4306, maximum
-						3c 4306, minimum
-						3d 4315, maximum
-						3h 4315, minimum
-				2s 4♥, 5+♣
-					2n relay
-						3c 3406, maximum
-						3d 3406, minimum
-						3h 3415, maximum
-						3s 3415, minimum
-				2n 4414 minimum or 4405
+					2h relay, GF
+						:open2c_2d_x_p_2h_relay()
+					{2♠/2NT/3♣} natural, NF
+					3d inv with 44+♥♠
+					3h natural, NF
+				2h 4♥, 5+♣, minimum
+					2s sign-off
+					2n sign-off
+					3c sign-off
+					3d relay
+						3h 3406
+						3s 3415
+				2s 4♠, 5+♣, minimum
+					2n sign-off
+					3c sign-off
+					3d relay
+						3h 4306
+						3s 4315
+					3h sign-off
+				2n 4405
 					3c natural, invitational
 					3d relay
-						3h 4405, maximum
-						3s 4405, minimum
-						3n 4414, minimum
+						3h maximum
+						3s minimum
 				3c 3316, minimum
-				3d 4441, minimum
+				3d (43)06, maximum
+					3h relay
+						3s 3406
+						3n 4306
 				3h 3316, maximum
-				3s 4441, maximum
-				3n 4414, maximum
+				3s 3415, maximum
+				3n 4315, maximum
 			(2h)
 				x 4♥
 				pass 4♠
@@ -984,8 +1018,8 @@ function open2c(open_strength, relay_strength)
 		3s preemptive or invitational
 		(DB)
 			pa pass or correct
-				re 4-5!d
-				2d 6!d (or strong 5)
+				re 5!d
+				2d 6!d
 			re bid longer major
 				2d 6♦
 					2h NF
@@ -993,8 +1027,8 @@ function open2c(open_strength, relay_strength)
 			{2!d and higher} system on
 		pa
 			(db)
-				re 4-5!d
-				2d 6!d (or strong 5)
+				re 5!d
+				2d 6!d
 end
 function old2d(open_strength, relay_strength)
 	2d $(open_strength) PC, (53)(41)
