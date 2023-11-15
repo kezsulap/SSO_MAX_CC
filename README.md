@@ -102,5 +102,18 @@ Example:
 	({2 level overcall})
 		1NT #clearly not what you intended, but no way for the parser to know it
 ```
+### Notes (BETA)
+Line starting with '@' will be considered a note.
+
+Currently notes can only have other notes as subnodes and diffing algorithm for them is very basic.
+```
+1♣ 8-12 balanced
+	@Note this relay is sometimes a bluff
+		@just sometimes
+	1♦ relay 13+
+		1♥ = no 4M, 5m
+		1♠ ...
+```
+
 ## Future updates
 Main branch of this repository will contain changes both to the code and to the system. If you're setting up your own instance merge changes to the code only from code branch.
