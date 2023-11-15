@@ -132,6 +132,7 @@ function negative1d(r1, r2, r3, r4)
 					1n 55+ distribution
 end
 function 1h5M()
+	@⚠️ these responses are different after PASS - 1♣ - 1♥
 	2s 4+ ♣, ♥ singleton
 		2n relay
 			3c 5125, maximum
@@ -154,6 +155,7 @@ function 1h5M()
 	3n 5044, minimum
 end
 function 1h5Mpassed()
+	@⚠️ these responses are different after open 1♥ and PASS - 1♥
 	2s 5044
 		2n relay
 			3c maximum
@@ -350,6 +352,7 @@ function open1h(open_strength, relay_strength, 5s_responses)
 				3d ask for stopper with solid 6+♣
 end
 function 1s5M()
+	@⚠️ these responses are different after PASS - 1♣ - 1♠
 	2n 4+ ♣, ♠ singleton
 		3c relay
 			3d 1525, maximum
@@ -376,6 +379,7 @@ function 1s5M()
 	3n 0544, minimum
 end
 function 1s5Mpassed()
+	@⚠️ these responses are different after open 1♠ and PASS - 1♠
 	2n 0544
 		3c relay
 			3d maximum
@@ -1112,6 +1116,7 @@ function new2d()
 			2h own suit
 end
 function 2hbaserelay()
+	@⚠️ these responses are different after PASS - 1♣ - 2♥
 	3c ♣+♥ (except 1516, maximum)
 		3d relay, GF
 			3h 2515
@@ -1134,6 +1139,7 @@ function 2hbaserelay()
 	3n 5161, maximum
 end
 function 2hpassedrelay()
+	@⚠️ these responses are different after open 2♥ and PASS - 2♥
 	3c 3505
 		3d relay, GF
 			3h maximum
@@ -1180,6 +1186,7 @@ function open2h(open_strength, relay_strength, which_relay)
 			rdbl one of us has ♥, let's double them
 end
 function 2sbaserelay()
+	@⚠️ these responses are different after PASS - 1♣ - 2♠
 	3c ♦+♥ (except 1561, maximum)
 		3d relay, GF
 			3h 2551
@@ -1203,6 +1210,7 @@ function 2sbaserelay()
 
 end
 function 2spassedrelay()
+	@⚠️ these responses are different after open 2♠ and PASS - 2♠
 	3c 3550
 		3d relay, GF
 			3h maximum
