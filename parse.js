@@ -59,6 +59,9 @@ function call_to_str(x, braces = true) {
 			return Math.floor((x + 4) / 5) + ['♣', '♦', '♥', '♠', 'NT'][(x + 4) % 5];
 		}
 	}
+	if (x.constructor.name == 'Comment') {
+		return x.content
+	}
 	throw new ParsingError('invalid call ' + x);
 }
 function auction_to_str(auction, table) { //TODO: make this into a table
@@ -82,6 +85,17 @@ function auction_to_str(auction, table) { //TODO: make this into a table
 	}
 	return ret;
 }
+function generate_all_states() {
+	let ret = [];
+	for (let p = 0; p <= 3; ++p)
+		ret.push([0, 0, p]);
+	for (let i = 1; i <= 35; ++i)
+		for (let p = 0; p < 3; ++p)
+			for (let d = 0; d <= 2; ++d)
+				ret.push([i, d, p]);
+	ret.push(undefined);
+	return ret;
+}
 class Node {
 	constructor(call, possible_states, meaning, current_auction, line = '') {
 		if (call === undefined) {
@@ -91,6 +105,16 @@ class Node {
 			this.children = [];
 			this.otherClasses = new Set();
 			return;
+		}
+		if (call.constructor.name == 'Comment') {
+			this.meaning = call.content
+			this.current_auction = undefined;
+			this.children = []
+			this.otherClasses = new Set();
+			return
+		}
+		if (current_auction === undefined) {
+			throw new ParsingError('Call node at line ' + line + ' as a subnode to a comment currently unsupported');
 		}
 		let new_auction = current_auction.slice()
 		new_auction.push(call)
@@ -143,10 +167,24 @@ class Node {
 		return ret;
 	}
 	getChild(call) {
+		if (call.constructor.name === 'Comment') {
+			for (let [subcall, subnode] of this.children) {
+				if (subcall.constructor.name === 'Comment' && subcall.content === call.content) return subnode;
+			}
+			return undefined;
+		}
 		for (let [subcall, subnode] of this.children) {
 			if (call === subcall) return subnode;
 		}
 		return undefined;
+	}
+}
+class Comment {
+  constructor(content) {
+    this.content = content;
+  }
+	toString() {
+		return this.content
 	}
 }
 function parse_call(x) {
@@ -163,6 +201,7 @@ function parse_call(x) {
 	if (x[0] == '{' && x.slice(-1) == '}') {
 		return x.slice(1, -1);
 	}
+	// if (x[0] == '@') return new Comment(x.slice(1))
 	if (x[0] >= '1' && x[0] <= '7') {
 		let rank = parseInt(x[0]);
 		let suit = undefined;
@@ -199,6 +238,9 @@ function parse_function(content, exception, is_definition) {
 function parse_line(content, line_id) {
 	content = content.trim();
 	let call = undefined, meaning = undefined, ours = true;
+	if (content[0] == '@') {
+		return [new Comment(content.slice(1)), undefined, undefined]
+	}
 	if (content[0] == '(') {
 		ours = false;
 		let i = content.indexOf(')');
@@ -291,7 +333,7 @@ function parse_file(file) {
 		nodes_stack = nodes_stack.slice(0, indent + 1);
 		[call, ours, meaning] = parse_line(content, line_id);
 		let current_node = nodes_stack[indent];
-		if (!ours && current_node.current_auction.length % 2 == 0) {
+		if (call.constructor.name != 'Comment' && !ours && current_node.current_auction.length % 2 == 0) {
 			throw new ParsingError('Bidding missing our call on line ' + line_id);
 		}
 		if (ours && current_node.current_auction.length % 2)
@@ -317,6 +359,7 @@ function format_str(s) {
 	s = s.replaceAll('!h', '<he></he>');
 	s = s.replaceAll('♠', '<sp></sp>');
 	s = s.replaceAll('!s', '<sp></sp>');
+	s = s.replaceAll(/(\p{Emoji}+)/ug, '<span class="emoji">$1</span>')
 	return s;
 }
 function add_theme_switch_node() {
@@ -336,14 +379,15 @@ function display(node) {
 	let no = 0;
 	let balloons = [];
 	function dfs(node, depth) {
-		let skip = node.current_auction.length == 0 ||
-			(node.current_auction[node.current_auction.length - 1] === 0 && node.current_auction.length % 2 == 0 && node.meaning.trim() === '');
+		let is_comment = node.current_auction === undefined;
+		let skip = !is_comment && (node.current_auction.length == 0 ||
+			(node.current_auction[node.current_auction.length - 1] === 0 && node.current_auction.length % 2 == 0 && node.meaning.trim() === ''));
 		if (!skip) {
 			let a = document.createElement('div');
 			a.classList.add('bidding');
 			a.setAttribute('level', depth);
 			a.classList.add('level' + String(depth).padStart(2, '0'));
-			a.innerHTML = format_str('<call>' + wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1], false), node.current_auction.length % 2) + ':</call> ' + node.meaning);
+			a.innerHTML = format_str(is_comment ? node.meaning : '<call>' + wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1], false), node.current_auction.length % 2) + ':</call> ' + node.meaning);
 			if (depth) {
 				a.setAttribute('style', "display: none;");
 			}
@@ -353,7 +397,10 @@ function display(node) {
 			for (let otherClass of node.otherClasses) {
 				a.classList.add(otherClass);
 			}
-			if (depth == 0) {
+			if (is_comment) {
+				a.classList.add('comment')
+			}
+			if (depth == 0 && !is_comment) {
 				a.setAttribute('id', 'open' + no);
 				let topmenu_node = document.createElement('li');
 				let link = document.createElement('a');
@@ -367,7 +414,9 @@ function display(node) {
 				topmenu.appendChild(topmenu_node);
 				no++;
 			}
-			a.setAttribute('title', format_str(auction_to_str(node.current_auction, true)))
+			if (!is_comment) {
+				a.setAttribute('title', format_str(auction_to_str(node.current_auction, true)))
+			}
 			content.appendChild(a);
 		}
 		for (let [call, subnode] of node.children) {
@@ -413,6 +462,7 @@ function compare(starting_nodes) {
 				for (let [call, subnode] of node.children) valid_calls.add(call);
 			}
 		}
+		let done_comments = new Set();
 		for (let valid_call of valid_calls) {
 			let next_run = [];
 			for (let sub of input_nodes) next_run.push(sub.slice());
@@ -441,7 +491,9 @@ function init() {
 				for (let i = 0; i < hardcoded.length; ++i) {
 					nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
 				}
-				display(compare(nodes));
+				// display(compare(nodes));
+				if (nodes.length == 1) display(nodes[0][1]);
+				else display(compare(nodes))
 			}
 			else {
 				let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;

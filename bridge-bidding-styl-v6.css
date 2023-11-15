@@ -167,6 +167,12 @@ font-size: 55%;
 call {
 	font-weight: bold;
 }
+.comment {
+	font-style: italic;
+}
+.emoji {
+	font-style: normal;
+}
 body.bright .bidding:hover {
 	border-color: #b3ffb3;
 }
