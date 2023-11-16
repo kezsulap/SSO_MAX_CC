@@ -356,15 +356,19 @@ background-color: #ffff00; font-size: 90%;
 }
 cl:after {
 	content: "\2663";
+	font-style: normal;
 }
 di:after {
 	content: "\2666";
+	font-style: normal;
 }
 he:after {
 	content: "\2665";
+	font-style: normal;
 }
 sp:after {
 	content: "\2660";
+	font-style: normal;
 }
 .bidding {
 	position: relative;
