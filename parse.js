@@ -499,7 +499,7 @@ function init() {
 				let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
 				repo = undefined, owner = undefined;
 				if (protocol === 'http:' || protocol === 'https:') {
-					if (domain.match('^[a-z]*.github.io$')) {
+					if (domain.match('.github.io$')) {
 						repo = path.split('/')[1];
 						owner = domain.split('.')[0];
 					}
