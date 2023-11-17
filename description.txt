@@ -1912,7 +1912,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 				3c 53(41), GF
 					3d relay
 						3h 4♣
-						3s 4
+						3s 4♦
 				3d 52(42), GF
 					3h relay
 						3s 4♣
