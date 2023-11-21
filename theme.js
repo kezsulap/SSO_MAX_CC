@@ -41,6 +41,7 @@ function pick_special_theme() {
 	if (month == 10 && day == 31) return 'halloween'
 	if (month == 11 && day == 11) return 'independence'
 	if (month == 3 && day == 10) return 'men'	
+	if (month == 7 && day == 20) return 'moon'
 	if (month == 12 && day == 31) return 'new-year'
 	if (month == 1 && day == 1) return 'new-year'
 	if (month == 5 && day == 17) return 'rainbow'
