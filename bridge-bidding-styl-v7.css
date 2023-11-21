@@ -724,6 +724,19 @@ body.independence.bright {
 body.men sp:after {
 	content: "\1f3a9";
 }
+/******************** Moon *********************/
+body.moon di:after {
+	content: "\1F316";
+}
+body.moon {
+	background-image: url("./special-themes/dark-moon.jpg");
+	background-size: 33%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.moon.bright div.bidding:not(.relay) {
+	backdrop-filter: brightness(200%) blur(30px);
+}
 /******************** New-year *********************/
 body.new-year di:after {
 	content: "\1f973";
