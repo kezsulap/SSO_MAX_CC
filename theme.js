@@ -31,13 +31,11 @@ function pick_special_theme() {
 	let year = date.getFullYear();
 
 	if (month == 4 && day == 1) return 'april-fool'
+	if (month == 9 && day == 23) return 'autumn'
 	if (month == 12 && day >= 24 && day <= 26) return 'christmas'
 	if (month == 6 && day == 1) return 'children'
 	if (month == 4 && day == 24) return 'earth'
-	
-	let [easter_m, easter_d] = Easter(year)
-	let days_til_easter = (new Date(year + '-' + month + '-' + day).getTime() - new Date(year + '-' + easter_m + '-' + easter_d).getTime()) / (24 * 60 * 60 * 1000)
-	if (days_til_easter >= -2 && days_til_easter <= 1) return 'easter'
+	if (month == 10 && day == 14) return 'education'
 	if (month == 10 && day == 31) return 'halloween'
 	if (month == 11 && day == 11) return 'independence'
 	if (month == 3 && day == 10) return 'men'	
@@ -46,9 +44,17 @@ function pick_special_theme() {
 	if (month == 1 && day == 1) return 'new-year'
 	if (month == 5 && day == 17) return 'rainbow'
 	if (month == 12 && day == 6) return 'santa'
+	if (month == 3 && day == 21) return 'spring'
+	if (month == 6 && day == 22) return 'summer'
 	if (month == 2 && day == 24) return 'ukraine'
-	if (month == 2 && day == 14) return 'valentines'	
+	if (month == 2 && day == 14) return 'valentines'
+	if ((month == 10 || month == 11) && day == 1) return 'veggie'
+	if (month == 12 && day == 22) return 'winter'
 	if (month == 3 && day == 8) return 'women'	
+
+	let [easter_m, easter_d] = Easter(year)
+	let days_til_easter = (new Date(year + '-' + month + '-' + day).getTime() - new Date(year + '-' + easter_m + '-' + easter_d).getTime()) / (24 * 60 * 60 * 1000)
+	if (days_til_easter >= -2 && days_til_easter <= 1) return 'easter'
 }
 function init_theme() {
 	theme(curr_theme)

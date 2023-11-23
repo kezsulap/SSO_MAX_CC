@@ -601,6 +601,10 @@ body.april-fool.bright {
 	background-attachment: fixed;
 	background-position: left;
 }
+/******************** Autumn ***********************/
+body.autumn di:after {
+	content: "\1f341";
+}
 /******************** Children *********************/
 body.children di:after {
 	content: "\1f476";
@@ -662,6 +666,10 @@ body.easter.bright {
 	background-size: 100%;
 	background-attachment: fixed;
 	background-position: left;
+}
+/******************** Education *********************/
+body.education sp:after {
+	content: "\1f393"
 }
 /******************** Halloween *********************/
 body.halloween.dark {
@@ -861,6 +869,14 @@ body.santa.bright {
 	background-attachment: fixed;
 	background-position: top;
 }
+/******************** Spring **********************/
+body.spring cl:after {
+	content: "\1f331"
+}
+/******************** Summer **********************/
+body.summer di:after {
+	content: "\2600\fe0f"
+}
 /******************** Ukraine *********************/
 body.ukraine.dark {
 	background-image: url("./special-themes/dark-ukraine.webp");
@@ -912,7 +928,14 @@ body.valentines.dark {
 	background-attachment: fixed;
 	background-position: left;
 }
-
+/******************** Veggie ********************/
+body.veggie cl:after {
+	content: "\1f966"
+}
+/******************** Winter ********************/
+body.winter sp:after {
+	content: "\2744"
+}
 /******************** Women *********************/
 body.women he:after {
 	content: "\1F339";
