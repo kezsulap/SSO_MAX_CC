@@ -919,7 +919,8 @@ function open2c(open_strength, relay_strength)
 					3n ♦ shortness, maximum
 				3h pass with minimum, invitational
 					3s ♣ shortness, maximum
-					3n ♦ shortness, maximum
+					3n 4351 or 4360, maximum
+					4h 4405, maximum
 				3s pass with minimum, invitational
 					3n 3♠, maximum
 					4s 4♠, maximum
