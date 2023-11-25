@@ -236,9 +236,19 @@ function open1h(open_strength, relay_strength, 5s_responses)
 					3s 3055, maximum
 					3n 3055, minimum
 				2h invitational+ with exactly 4♠
+				2n natural, invitational
+					3c 5+♣, minimum
+					3d 5+♦, minimum
+					3h 5+♣, maximum
+					3s 5+♦, maximum
 			2d 5 ♠
 				2h relay, GF
 					:$(5s_responses)()
+				2n natural, invitational
+					3c 5+♣, minimum
+					3d 5+♦, minimum
+					3h 5+♣, maximum
+					3s 5+♦, maximum
 			2h 6 ♥, 4 ♣ or 2623, maximum or 2722, maximum
 				2s relay, GF
 					2n ♦ shortness
@@ -455,10 +465,20 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					3s 0355, maximum
 					3n 0355, minimum
 				2s invitational+ with exactly 4♥
+				2n natural, invitational
+					3c 5+♣, minimum
+					3d 5+♦, minimum
+					3h 5+♣, maximum
+					3s 5+♦, maximum
 			2d 5 ♥
 				2h natural, invitational
 				2s relay, GF
 					:$(5h_responses)()
+				2n natural, invitational
+					3c 5+♣, minimum
+					3d 5+♦, minimum
+					3h 5+♣, maximum
+					3s 5+♦, maximum
 			2h 6 ♠, 4 ♣ or 6223, maximum or 7222, maximum
 				2s relay, GF
 					2n ♦ shortness
@@ -883,12 +903,27 @@ function open2c(open_strength, relay_strength)
 					3s 4351, maximum
 					3n 4351, minimum
 				2n pass with minimum "I guessed which suits you have", invitational
+					3c 6♣, minimum
+					3d 6♦, minimum
+					3h 3415 or 3406, maximum
+					3s 4351 or 4360, maximum
+					3n 4405, maximum
 				3c p/c with minimum, invitational
 					3d ♣ shortness, minimum
+					3h 3415 or 3406, maximum
+					3s 4351 or 4360, maximum
+					3n 4405, maximum
 				3d p/c with minimum, invitational
 					3h ♦ shortness, minimum
+					3s ♣ shortness, maximum
+					3n ♦ shortness, maximum
 				3h pass with minimum, invitational
+					3s ♣ shortness, maximum
+					3n 4351 or 4360, maximum
+					4h 4405, maximum
 				3s pass with minimum, invitational
+					3n 3♠, maximum
+					4s 4♠, maximum
 			2s 5+ ♣, 4 ♠, 3♥ or 5+ ♦, 4 ♥, 3♠ (except 4315, maximum)
 				2n relay, GF
 					3c 5+ ♣, 4 ♠
@@ -902,10 +937,18 @@ function open2c(open_strength, relay_strength)
 					3n 3451, minimum
 				3c p/c with minimum, invitational
 					3d ♣ shortness, minimum
+					3h 3451 or 3460, maximum
+					3s 4315 or 4306, maximum
 				3d p/c with minimum, invitational
 					3h ♦ shortness, minimum
+					3s 4315 or 4306, maximum
+					3n 3451 or 3460, maximum
 				3h pass with minimum, invitational
+					3s ♦ shortness, maximum
+					3n ♣ shortness, maximum
 				3s pass with minimum, invitational
+					3n 3♠, maximum
+					4s 4♠, maximum
 			2n 4450
 				3c relay, GF
 					3d maximum
