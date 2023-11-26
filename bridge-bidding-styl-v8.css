@@ -936,6 +936,18 @@ body.veggie cl:after {
 body.winter sp:after {
 	content: "\2744"
 }
+body.winter.bright {
+	background-image: url("./special-themes/bright-winter.jpeg");
+	background-attachment: fixed;
+	background-position: left;
+	background-size: 100%;
+}
+body.winter.dark {
+	background-image: url("./special-themes/dark-winter.jpg");
+	background-attachment: fixed;
+	background-position: left;
+	background-size: 100%;
+}
 /******************** Women *********************/
 body.women he:after {
 	content: "\1F339";
