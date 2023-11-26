@@ -884,80 +884,61 @@ function open2c_2d_x_p_2h_relay()
 	3n 4351, minimum
 end
 function open2c(open_strength, relay_strength)
-	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness, 5-6 cards in the other minor
+	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness, 5+ cards in the other minor
 		2d relay, $(relay_strength) PC
-			2h 5+ ♣, 4 ♥, 3♠ or 5+ ♦, 4 ♠, 3♥ or 4405
+			2h 34xx full range or 44(50) maximum
 				2s relay, GF
-					2n 5♣
+					2n short ♣
 						3c relay
-							3d 4405, maximum
-							3h 4405, minimum
-							3s 3415, maximum
-							3n 3415, minimum
-					3c 3406
+							3d 3451
+								3h relay
+									3s maximum
+									3n minimum
+							3h 3460, max
+							3s 3460, min
+							3n 4450, min
+					3c 3415
 						3d relay
 							3h maximum
 							3s minimum
-					3d 4360, maximum
-					3h 4360, minimum
-					3s 4351, maximum
-					3n 4351, minimum
-				2n pass with minimum "I guessed which suits you have", invitational
-					3c 6♣, minimum
-					3d 6♦, minimum
-					3h 3415 or 3406, maximum
-					3s 4351 or 4360, maximum
-					3n 4405, maximum
-				3c p/c with minimum, invitational
-					3d ♣ shortness, minimum
-					3h 3415 or 3406, maximum
-					3s 4351 or 4360, maximum
-					3n 4405, maximum
-				3d p/c with minimum, invitational
-					3h ♦ shortness, minimum
-					3s ♣ shortness, maximum
-					3n ♦ shortness, maximum
-				3h pass with minimum, invitational
-					3s ♣ shortness, maximum
-					3n 4351 or 4360, maximum
-					4h 4405, maximum
-				3s pass with minimum, invitational
-					3n 3♠, maximum
-					4s 4♠, maximum
-			2s 5+ ♣, 4 ♠, 3♥ or 5+ ♦, 4 ♥, 3♠ (except 4315, maximum)
+					3d 3406, max
+					3h 3406, min
+					3s 4405, min
+			2s 4♠, minimum
 				2n relay, GF
-					3c 5+ ♣, 4 ♠
+					3c short ♣
 						3d relay
-							3h 4306, maximum
-							3s 4306, minimum
-							3n 4315, minimum
-					3d 3460, maximum
-					3h 3460, minimum
-					3s 3451, maximum
-					3n 3451, minimum
-				3c p/c with minimum, invitational
-					3d ♣ shortness, minimum
-					3h 3451 or 3460, maximum
-					3s 4315 or 4306, maximum
-				3d p/c with minimum, invitational
-					3h ♦ shortness, minimum
-					3s 4315 or 4306, maximum
-					3n 3451 or 3460, maximum
-				3h pass with minimum, invitational
-					3s ♦ shortness, maximum
-					3n ♣ shortness, maximum
-				3s pass with minimum, invitational
-					3n 3♠, maximum
-					4s 4♠, maximum
-			2n 4450
-				3c relay, GF
-					3d maximum
-					3h minimum
-			3c 3316, minimum
-			3d 3361, minimum
-			3h 3316, maximum
-			3s 3361, maximum
-			3n 4315, maximum
+							3h 4360
+							3s 4450
+							3n 4351
+					3d 4306
+					3h 4405
+					3s 4315
+				3c p/c
+				3d p/c
+					3h ♦ shortness
+				3h sign-off
+			2n 43xx, maximum
+				3c relay
+					3d 4306
+					3h 4360
+					3s 4315
+					3n 4351
+			3c 3316/3307, minimum
+				3d relay
+					3h 3307
+					3s 3316
+			3d 3361/3370, minimum
+				3h relay
+					3s 3370
+					3n 3361
+			3h 3316/3307, maximum
+				3s relay
+					3n 3316
+					4c 3307
+			3s 3370, maximum
+			3n 3361, maximum
+
 			(x)
 				xx penalty
 					2h relay, GF
