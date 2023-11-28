@@ -280,6 +280,11 @@ function parse_file(file) {
 	function process_line(content, line_id, offset = 0) {
 		content = content.split('#')[0]
 		if (!content.trim()) return;
+		if (content.trim()[0] == '&') {
+			title = content.trim().substring(1);
+			nodes_stack[0].title = title;
+			return;
+		}
 		if (current_function) {
 			if (content.trim() === 'end') {
 				let name = current_function['name'];
@@ -426,6 +431,13 @@ function display(node) {
 	dfs(node, 0);
 	add_theme_switch_node()
 	$(function(){$('#bidding .bidding').balloon({position: "left"})})
+	if (node.title !== undefined) {
+		document.title = node.title;
+		document.querySelector('#page_title').innerHTML = node.title;
+		if (node.diff_title !== undefined) {
+			document.querySelector('#page_title').classList.add('diff')
+		}
+	}
 }
 function compare(starting_nodes) {
 	ret = new Node();
@@ -478,6 +490,27 @@ function compare(starting_nodes) {
 		return any_diff;
 	}
 	dfs(starting_nodes, ret);
+	titles = [];
+	for (let i = 0; i < starting_nodes.length; ++i) titles.push(starting_nodes[i][1].title);
+	let equal = true;
+	for (let title of titles) {
+		if (title != titles[0]) equal = false;
+	}
+	if (equal) {
+		ret.title = titles[0];
+	}
+	else {
+		new_title = ''
+		let first = true;
+		for (let i = 0; i < starting_nodes.length; ++i) {
+			if (titles[i] === undefined) continue;
+			if (!first) new_title += '<br>';
+			first = false;
+			new_title += starting_nodes[i][0] + ': ' + titles[i];
+		}
+		ret.title = new_title;
+		ret.diff_title = true;
+	}
 	return ret;
 }
 function get_url(owner, repo, version = 'main', file = 'description.txt') {
@@ -491,7 +524,6 @@ function init() {
 				for (let i = 0; i < hardcoded.length; ++i) {
 					nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
 				}
-				// display(compare(nodes));
 				if (nodes.length == 1) display(nodes[0][1]);
 				else display(compare(nodes))
 			}

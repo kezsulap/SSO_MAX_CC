@@ -8,6 +8,12 @@ To get index file for hosting on different site run `python generate.py file1.tx
 from github. Don't overwrite index.html with `python generate.py > index.html` as generate.py script is using it.
 
 ## description.txt syntax
+### System title
+Put
+```
+&Title
+```
+anywhere in the system file to set title at the top of the page and HTML page title
 ### Basic costructive bidding
 Indentation only using tabs is supported.
 ```
