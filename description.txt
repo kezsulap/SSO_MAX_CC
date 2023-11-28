@@ -1,3 +1,4 @@
+&System MAX by Jakub Andruszkiewicz and Konrad Paluszek based on the concept by Lech Ohrysko
 function 1hSOS()
 	1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
 		(DB)
