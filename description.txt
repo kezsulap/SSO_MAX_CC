@@ -259,7 +259,7 @@ function open1h(open_strength, relay_strength, 5s_responses)
 									3s ♠ singleton 
 									3n ♦ singleton
 									4c ♣ singleton
-							3h 0634 or 3640
+							3h 0634 or 3604
 								3s relay
 									3n 0634
 									4c 3604
@@ -273,17 +273,17 @@ function open1h(open_strength, relay_strength, 5s_responses)
 									4c 2614
 							3s 1642
 							3n 2641
-					3d 3)6(31)
+					3d 3)6(31
 						3h relay
 							3s 1633
 							3n 3613
 							4c 3631
-					3h 2633 or 3623
+					3h 26(32)
 						3s relay
-							3n 2633
-							4c 3623
+							3n 2623
+							4c 2632
 					3s 2722
-					3n 3632
+					3n 3622
 			2s 6♥ without a void or 2722, maximum 
 				2n relay
 					3c 6♥4m with a singleton
@@ -299,12 +299,12 @@ function open1h(open_strength, relay_strength, 5s_responses)
 							3s 1633
 							3n 3613
 							4c 3631
-					3h 2633 or 3623
+					3h 26(32)
 						3s relay
-							3n 2633
-							4c 3623
+							3n 2623
+							4c 2632
 					3s 2722
-					3n 3632
+					3n 3622
 			2n 6♥ with a void or 7♥ with a singleton, maximum
 				3c relay
 					3d 7♥ with a singleton
@@ -337,7 +337,7 @@ function open1h(open_strength, relay_strength, 5s_responses)
 					4c minimum
 					4d maximum
 			3n 7♥ with a ♣ void, maximum
-			4c 7♥ wiih a ♣ void, minimum
+			4c 7♥ with a ♣ void, minimum
 		2c natural, 3- ♠, NF
 			2d 6♦
 			2h 6♥
@@ -542,12 +542,12 @@ function open1s(open_strength, relay_strength, 5h_responses)
 							3s 6133
 							3n 6313
 							4c 6331
-					3h 6(32)3
+					3h 62(32)
 						3s relay
-							3n 6233
-							4c 6323
+							3n 6223
+							4c 6232
 					3s 7222
-					3n 6332
+					3n 6322
 			2s 6♠ without a void or 7222, minimum 
 				2n relay
 					3c 6♠4m with a singleton
@@ -563,12 +563,12 @@ function open1s(open_strength, relay_strength, 5h_responses)
 							3s 6133
 							3n 6313
 							4c 6331
-					3h 6(32)3
+					3h 62(32)
 						3s relay
-							3n 6233
-							4c 6323
+							3n 6223
+							4c 6232
 					3s 7222
-					3n 6332
+					3n 6322
 			2n 6♠ with a void or 7♠ with a singleton, minimum
 				3c relay
 					3d 7♠ with a singleton
@@ -577,6 +577,9 @@ function open1s(open_strength, relay_strength, 5h_responses)
 							3n ♦ singleton
 							4c ♣ singleton
 					3h 6(30)4
+						3s relay
+							3n 6034
+							4c 6304
 					3s 6043
 					3n 6340
 			3c 6+ ♣ without 4-card, minimum
@@ -598,7 +601,7 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					4c minimum
 					4d maximum
 			3n 7♠ with a ♣ void, maximum
-			4c 7♠ wiih a ♣ void, minimum
+			4c 7♠ with a ♣ void, minimum
 		2c natural, 3- ♥, NF
 			2d 6♦
 			2h 5♥, 5♦
