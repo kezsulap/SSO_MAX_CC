@@ -68,4 +68,60 @@ function open1nt(strength, invite_lower_bound, invite_upper_bound)
 		4s choose a minor
 end
 
+1c 12-14 PC balanced, or 15+ PC 5+!c, or 18+ PC
+	1d 0-6 PC or 5+m 7-11 PC if before pass, 7-9 PC if after pass
+		1h 12-14 PC 3+h or 18-20 PC 5+h
+			pass 0-3 PC
+			1s 0-3 PC better !s than !h
+			1nt 4-6 PC less than 4!h
+			2c 7-11(9) PC 5+!c
+			2d 7-11(9) PC 5+!d
+			2h 4-6 PC 4+!h
+		1s 12-14 PC 3+s or 18-20 PC 5+s
+			pass 0-3 PC
+			1nt 4-6 PC less than 4!s
+			2c 7-11(9) PC 5+!c
+			2d 7-11(9) PC 5+!d
+			2s 4-6 PC 4+!s
+		:open1nt(18-20, 4, 6)
+		2c 15+ PC 5+!c
+		2d ACOL 22+ PC unbalanced or 24+ PC balanced GF
+			2h 0-3 PC
+			2s 4-6 PC
+			2NT 7+ PC
+		2h 20-22 PC 5+!h
+		2s 20-22 PC 2+!s
+		2nt 21-23 PC balanced hand, 5M and 6m allowed
+			3c Puppet Stayman 43/34 !h!s 3+ PC GF
+				3d 4-card major(s)
+					3h 4!s
+						3nt prefer NT
+						4s 4!s and prefer !s
+					3s 4!h
+						3nt prefer NT
+						4h 4!h and prefer !h
+				3h 5!h
+				3s 5!s
+				3nt no 4-card majors
+			3d 5+!h
+				3h automatic
+					pass 0-1 PC
+					3NT 2+ PC
+			3h 5+!s
+				3s automatic
+					pass 0-1 PC
+					3NT 2+ PC
+		3c 18+ PC 6+!c
+		3d 18+ PC 6+!d
+		3h 5+-5+ two-suiter with !h and a minor, strong colours GF
+			3s better !s than !h
+			3nt show me your minor
+			4c cue bid on !h
+			4d cue bid on !h
+		3s 5+-5+ two-suiter with !s and a minor, strong colours GF
+			3nt show me your minor
+			4c cue bid on !s
+			4d cue bid on !s
+			4h cue bid on !s
+			
 :open1nt(15-17, 7, 9)
