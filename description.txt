@@ -1,1 +1,71 @@
 &Unnamed system by Jakub Jaworski and Wojciech Duda (based on Wspólny Język by Krzysztof Jassem)
+
+function open1nt(strength, invite_lower_bound, invite_upper_bound)
+	1nt $(strength) PC, balanced distribution, 5M and 6m allowed, very rarely with a singleton
+		2c Stayman, $(invite_lower_bound)+ PC
+			2d no 4-card major
+			2h 4!h, maybe 4!s
+			2s 4!s
+		2d 5+!h
+			2h automatic
+				pass minimum
+				2nt 5!h, $(invite_lower_bound)-$(invite_upper_bound) PC, invite to 3NT or 4!h
+					pass minimum, less than 3!h
+					3nt maximum, less than 3!h
+					4h maximum, 3+!h
+				3d slam intentions GF
+					3h 3+!h
+					3nt less than 3!h
+				3h 6+!h, $(invite_lower_bound)-$(invite_upper_bound) PC, invite to 3NT or 4!h
+					pass minimum
+					3nt maximum, prefer NT
+					4h maximum, prefer !h
+				3nt $(invite_upper_bound)+ PC
+					4h prefer !h
+		2h 5+!s
+			2s automatic
+				pass minimum
+				2nt 5!s, $(invite_lower_bound)-$(invite_upper_bound) PC, invite to 3NT or 4!s
+					pass minimum, less than 3!s
+					3nt maximum, less than 3!s
+					4s maximum, 3+!s
+				3h slam intentions GF
+					3s 3+!s
+					3nt less than 3!s
+				3s 6+!s, $(invite_lower_bound)-$(invite_upper_bound) PC, invite to 3NT or 4!s
+					pass minimum
+					3nt maximum, prefer NT
+					4s maximum, prefer !s
+				3nt $(invite_upper_bound)+ PC
+					4s prefer !s
+		2s 6+!c or $(invite_lower_bound)-$(invite_upper_bound) PC
+			2nt minimum
+				pass $(invite_lower_bound)-$(invite_upper_bound) PC
+				3c 6+!c, weak hand, closing
+			3c maximum
+				pass 6+!c, weak hand
+				3nt $(invite_lower_bound)-$(invite_upper_bound) PC
+		2nt 6+!d
+			3c minimum
+			3d maximum
+		3c Puppet Stayman, 43/34 !h!s $(invite_upper_bound)+ PC, GF
+			3d 4-card major(s)
+				3h 4!s
+					3nt prefer NT
+					4s 4!s and prefer !s
+				3s 4!h
+					3nt prefer NT
+					4h 4!h and prefer !h
+			3h 5!h
+			3s 5!s
+			3nt no 4-card majors
+		3d 6!d, strong suit with at least 2 cards from AKQ!d set
+		3h 54/45 !c!d, singleton !h, GF
+		3s 54/45 !c!d, singleton !s, GF
+		4c 5+!h 5+!s, choose a major
+		4d 6+!h
+		4h 6+!s
+		4s choose a minor
+end
+
+:open1nt(15-17, 7, 9)
