@@ -7,6 +7,22 @@ margin-bottom: 1000px;
 width: 900px;
 margin: auto;
 }
+#footer {
+  position: fixed;
+  bottom: 0;
+	left: 50%;
+	margin-left: -450px;
+  text-align: center;
+	width: 900px;
+	border-radius: 5px;
+	font-size: 10px;
+}
+body.bright #footer a {
+	color: blue
+}
+body.dark #footer a {
+	color: #9999ff
+}
 table {
 border-collapse: collapse;
 page-break-inside: avoid;
