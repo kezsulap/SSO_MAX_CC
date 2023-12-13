@@ -250,47 +250,74 @@ function open1h(open_strength, relay_strength, 5s_responses)
 					3d 5+♦, minimum
 					3h 5+♣, maximum
 					3s 5+♦, maximum
-			2h 6 ♥, 4 ♣ or 2623, maximum or 2722, maximum
-				2s relay, GF
-					2n ♦ shortness
+			2h 6+♥, no 7♥ with a void, minimum
+				2s relay
+					2n 6♥ with a void or 7♥ with a singleton
 						3c relay
-							3d 3604, maximum
-							3h 3604, minimum
-							3s 2614, maximum
-							3n 2614, minimum
-					3c 0634, maximum
-					3d 0634, minimum
-					3h 1624, maximum
-					3s 1624, minimum
-					3n 2623 or 2722, maximum
-			2s 6 ♥, 4 ♦
-				2n relay, GF
-					3c ♣ shortness
-						3d relay
-							3h 3640
+							3d 7♥ with a singleton
+								3h relay
+									3s ♠ singleton 
+									3n ♦ singleton
+									4c ♣ singleton
+							3h 0634 or 3604
 								3s relay
-									3n maximum
-									4c minimum
-							3s 2641, maximum
-							3n 2641, minimum
-					3d 0643, maximum
-					3h 0643, minimum
-					3s 1642, maximum
-					3n 1642, minimum
-			2n 6+ ♥ without 4-card (but see 2♥ and 3♥/♠/NT)
-				3c relay, GF
-					3d shortness, minimum
+									3n 0634
+									4c 3604
+							3s 0643
+							3n 3640
+					3c 6♥4m with a singleton
+						3d relay
+							3h 4♣ 
+								3s relay
+									3n 1624
+									4c 2614
+							3s 1642
+							3n 2641
+					3d 3)6(31
 						3h relay
-							3s 3631 or 3721 or 2731 or 3730
-							3n 3613 or 3)71(2 or 3703
-							4c 1633 or 17(32) or 0733
-					3h 2632 or 3622, maximum
+							3s 1633
+							3n 3613
+							4c 3631
+					3h 26(32)
 						3s relay
-							3n 2632
-							4c 3622
-					3s 2623 or 2722, minimum
-					3n 2632, minimum
-					4c 3622, minimum
+							3n 2623
+							4c 2632
+					3s 2722
+					3n 3622
+			2s 6♥ without a void or 2722, maximum 
+				2n relay
+					3c 6♥4m with a singleton
+						3d relay
+							3h 4♣ 
+								3s relay
+									3n 1624
+									4c 2614
+							3s 1642
+							3n 2641
+					3d 3)6(31)
+						3h relay
+							3s 1633
+							3n 3613
+							4c 3631
+					3h 26(32)
+						3s relay
+							3n 2623
+							4c 2632
+					3s 2722
+					3n 3622
+			2n 6♥ with a void or 7♥ with a singleton, maximum
+				3c relay
+					3d 7♥ with a singleton
+						3h relay
+							3s ♠ singleton 
+							3n ♦ singleton
+							4c ♣ singleton
+					3h 0634 or 3640
+						3s relay
+							3n 0634
+							4c 3604
+					3s 0643
+					3n 3640
 			3c 6+ ♣ without 4-card, minimum
 				3d relay, GF
 					3h 3037
@@ -301,9 +328,16 @@ function open1h(open_strength, relay_strength, 5s_responses)
 					3s 3073
 					3n 3172
 					4c 3163
-			3h 3631 or 3721 or 2731 or 3730, maximum
-			3s 3613 or 3)71(2 or 3703, maximum
-			3n 1633 or 17(32) or 0733, maximum
+			3h 7♥ with a ♠ void
+				3s relay
+					3n maximum
+					4c minimum
+			3s 7♥ with a ♦ void
+				3n relay
+					4c minimum
+					4d maximum
+			3n 7♥ with a ♣ void, maximum
+			4c 7♥ with a ♣ void, minimum
 		2c natural, 3- ♠, NF
 			2d 6♦
 			2h 6♥
@@ -480,47 +514,74 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					3d 5+♦, minimum
 					3h 5+♣, maximum
 					3s 5+♦, maximum
-			2h 6 ♠, 4 ♣ or 6223, maximum or 7222, maximum
-				2s relay, GF
-					2n ♦ shortness
+			2h 6+♠, no 7♠ with a void, maximum
+				2s relay
+					2n 6♠ with a void or 7♠ with a singleton
 						3c relay
-							3d 6304, maximum
-							3h 6304, minimum
-							3s 6214, maximum
-							3n 6214, minimum
-					3c 6034, maximum
-					3d 6034, minimum
-					3h 6124, maximum
-					3s 6124, minimum
-					3n 6223 or 7222, maximum
-			2s 6 ♠, 4 ♦
-				2n relay, GF
-					3c ♣ shortness
-						3d relay
-							3h 6340
+							3d 7♠ with a singleton
+								3h relay
+									3s ♥ singleton 
+									3n ♦ singleton
+									4c ♣ singleton
+							3h 6(30)4
 								3s relay
-									3n maximum
-									4c minimum
-							3s 6241, maximum
-							3n 6241, minimum
-					3d 6043, maximum
-					3h 6043, minimum
-					3s 6142, maximum
-					3n 6142, minimum
-			2n 6+ ♠ without 4-card (but see 2♥ and 3♥/♠/NT)
-				3c relay, GF
-					3d shortness minimum
+									3n 6034
+									4c 6304
+							3s 6043
+							3n 6340
+					3c 6♠4m with a singleton
+						3d relay
+							3h 4♣ 
+								3s relay
+									3n 6124
+									4c 6214
+							3s 6142
+							3n 6241
+					3d 6(331)
 						3h relay
-							3s 6331 or 7(32)1 or 7330
-							3n 6313 or 7312 or 7213 or 7303
-							4c 6133 or 71(32) or 7033
-					3h 6232 or 6322, maximum
+							3s 6133
+							3n 6313
+							4c 6331
+					3h 62(32)
 						3s relay
-							3n 6232
-							4c 6322
-					3s 6223 or 7222, minimum
-					3n 6232, minimum
-					4c 6322, minimum
+							3n 6223
+							4c 6232
+					3s 7222
+					3n 6322
+			2s 6♠ without a void or 7222, minimum 
+				2n relay
+					3c 6♠4m with a singleton
+						3d relay
+							3h 4♣ 
+								3s relay
+									3n 6124
+									4c 6214
+							3s 6142
+							3n 6241
+					3d 6(331)
+						3h relay
+							3s 6133
+							3n 6313
+							4c 6331
+					3h 62(32)
+						3s relay
+							3n 6223
+							4c 6232
+					3s 7222
+					3n 6322
+			2n 6♠ with a void or 7♠ with a singleton, minimum
+				3c relay
+					3d 7♠ with a singleton
+						3h relay
+							3s ♥ singleton 
+							3n ♦ singleton
+							4c ♣ singleton
+					3h 6(30)4
+						3s relay
+							3n 6034
+							4c 6304
+					3s 6043
+					3n 6340
 			3c 6+ ♣ without 4-card, minimum
 				3d relay, GF
 					3h 0337
@@ -531,9 +592,16 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					3s 0373
 					3n 1372
 					4c 1363
-			3h 6331 or 7(32)1 or 7330, maximum
-			3s 6313 or 7312 or 7213 or 7303, maximum
-			3n 6133 or 71(32) or 7033, maximum
+			3h 7♠ with a ♥ void
+				3s relay
+					3n maximum
+					4c minimum
+			3s 7♠ with a ♦ void
+				3n relay
+					4c minimum
+					4d maximum
+			3n 7♠ with a ♣ void, maximum
+			4c 7♠ with a ♣ void, minimum
 		2c natural, 3- ♥, NF
 			2d 6♦
 			2h 5♥, 5♦
