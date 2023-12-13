@@ -957,32 +957,32 @@ function open2c(open_strength, relay_strength)
 		2d relay, $(relay_strength) PC
 			2h 34xx full range or 44(50) maximum
 				2s relay, GF
-					2n short ♣
+					2n 5+♣
 						3c relay
-							3d 3460
+							3d 3406
 								3h relay
 									3s maximum
 									3n minimum
-							3h 4450, max
-							3s 3451, max
-							3n 3451, min
-					3c 3406
+							3h 4405, max
+							3s 3415, max
+							3n 3415, min
+					3c 3460
 						3d relay
 							3h maximum
 							3s minimum
-					3d 4405, max
-					3h 3415, max
-					3s 3415, min
+					3d 4450, max
+					3h 3451, max
+					3s 3451, min
 			2s 4♠, minimum
 				2n relay, GF
-					3c short ♣
+					3c 5+♣
 						3d relay
-							3h 4360
-							3s 4450
-							3n 4351
-					3d 4306
-					3h 4405
-					3s 4315
+							3h 4306
+							3s 4405
+							3n 4315
+					3d 4360
+					3h 4450
+					3s 4351
 				3c p/c
 				3d p/c
 					3h ♦ shortness
