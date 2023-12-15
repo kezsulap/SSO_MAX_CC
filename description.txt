@@ -312,7 +312,7 @@ function open1h(open_strength, relay_strength, 5s_responses)
 							3s ♠ singleton 
 							3n ♦ singleton
 							4c ♣ singleton
-					3h 0634 or 3640
+					3h 0634 or 3604
 						3s relay
 							3n 0634
 							4c 3604
