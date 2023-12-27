@@ -1,42 +1,99 @@
-function load(url) {
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', url, false); //TODO: make asynchronous 
-
-	xhr.onload = function () {
-			if (xhr.readyState === xhr.DONE) {
-					if (xhr.status === 200) {
-					}
-			}
-	};
-
-	xhr.send(null);
-	return xhr.responseText;
-}
+const PASS = 0, DOUBLE = -1, REDOUBLE = -2;
+const CALL = 0, CUSTOM_CALL = 1, COMMENT = 2;
+const OURS = 0, THEIRS = 1;
+const HIGHEST_CONTRACT = 35;
 class ParsingError extends Error {
-  constructor(message) {
+  constructor(message, title = undefined) {
     super(message);
     this.name = "ParsingError";
+		this.title = title;
   }
-}
+};
+class Call {
+	constructor(type, value, whose) {
+		this.type = type;
+		this.value = value;
+		this.whose = whose;
+	}
+	equal(oth) {
+		return oth.type === this.type && oth.value === this.value && oth.whose === this.whose;
+	}
+	to_key() {
+		if (this.type === COMMENT) return '@' + this.value
+		return wrap_if(this.type == CALL ? call_to_str(this.value) : '{' + this.value + '}', this.whose == OURS)
+	}
+};
+class states_set {
+	constructor(full=false, initial=true) {
+		this.over = full;
+		this.in_progress = new Array(HIGHEST_CONTRACT + 1);
+		for (let i = 0; i <= HIGHEST_CONTRACT; ++i) {
+			this.in_progress[i] = new Array(3);
+			for (let j = 0; j < 3; ++j) this.in_progress[i][j] = new Array(i == PASS ? 4 : 3).fill(full);
+		}
+		this.in_progress[0][0][0] = initial
+	}
+	append(call) {
+		let low = typeof(call) == 'string' ? REDOUBLE : call;
+		let high = typeof(call) == 'string' ? HIGHEST_CONTRACT : call;
+		let errors = new Set();
+		let ret = new states_set(false, false);
+		let any = false;
+		if (this.over) errors.add('call after end of auction');
+		for (let contract = 0; contract <= HIGHEST_CONTRACT; ++contract) {
+			for (let doubled = 0; doubled <= 2; ++doubled) {
+				for (let passes = 0; passes <= (contract == 0 ? 3 : 2); ++passes) {
+					if (this.in_progress[contract][doubled][passes]) {
+						let curr_state = [contract, doubled, passes];
+						for (let call = low; call <= high; ++call) {
+							let would_be = append_call(curr_state, call);
+							if (would_be[0]) {
+								any = true;
+								if (would_be[1] === undefined) ret.over = true;
+								else {
+									let [contract2, doubled2, passes2] = would_be[1];
+									ret.in_progress[contract2][doubled2][passes2] = true;
+								}
+							}
+							else {
+								errors.add(would_be[1]);
+							}
+						}
+					}
+				}
+			}
+		}
+		if (!any) {
+			if (errors.size == 1) {
+				let [error] = errors;
+				throw new ParsingError(error + ': ' + call_to_str(call));
+			}
+			else {
+				throw new ParsingError('invalid call: ' + call_to_str(call));
+			}
+		}
+		return ret;
+	}
+};
 const initial_sequence = [0, 0, 0];
 function append_call(state, call) {
 	if (state === undefined) {
 		return [false, 'call after end of auction'];
 	}
 	let [contract, doubled, passes] = state;
-	if (call === -2) { //redouble
+	if (call === REDOUBLE) {
 		if (doubled === 1 && passes % 2 === 0) {
 			return [true, [contract, 2, 0]]
 		}
 		return [false, 'invalid redouble']
 	}
-	else if (call === -1) { //double
+	else if (call === DOUBLE) {
 		if (doubled === 0 && passes % 2 === 0 && contract >= 1) {
 			return [true, [contract, 1, 0]];
 		}
 		return [false, 'invalid double']
 	}
-	else if (call === 0) { //pass
+	else if (call === PASS) {
 		if (passes === (contract == 0 ? 3 : 2)) return [true, undefined];
 		return [true, [contract, doubled, passes + 1]];
 	}
@@ -46,44 +103,6 @@ function append_call(state, call) {
 		}
 		return [true, [call, 0, 0]]
 	}
-}
-function call_to_str(x, braces = true) {
-	if (typeof(x) == 'string') {
-		return braces ? '{' + x + '}' : x;
-	}
-	if (typeof(x) == 'number') {
-		if (x === -2) return 'rdbl';
-		if (x === -1) return 'dbl';
-		if (x === 0) return 'pass';
-		if (x <= 35) {
-			return Math.floor((x + 4) / 5) + ['♣', '♦', '♥', '♠', 'NT'][(x + 4) % 5];
-		}
-	}
-	if (x.constructor.name == 'Comment') {
-		return x.content
-	}
-	throw new ParsingError('invalid call ' + x);
-}
-function auction_to_str(auction, table) { //TODO: make this into a table
-	let competitive = false;
-	for (let i = 1; i < auction.length; i += 2) if (auction[i] !== 0) competitive = true;
-	let ret = '';
-	if (auction.length == 1) return 'Open ' + call_to_str(auction[0]);
-	else {
-		if (table) ret += '<table><tr><td>';
-		for (let i = 0; i < auction.length; ++i) {
-			let our = i % 2 == 0;
-			if (our || competitive) {
-				if (i) {
-					if (i % 4) ret += (table ? '</td><td>' : '-');
-					else ret += (table ? '</td></tr><tr><td>' : '-')
-				}
-				ret += call_to_str(auction[i], false);
-			}
-		}
-		if (table) ret += '</td></tr></table>'
-	}
-	return ret;
 }
 function generate_all_states() {
 	let ret = [];
@@ -96,95 +115,65 @@ function generate_all_states() {
 	ret.push(undefined);
 	return ret;
 }
-class Node {
-	constructor(call, possible_states, meaning, current_auction, line = '') {
-		if (call === undefined) {
-			this.current_auction = [];
-			this.possible_states = [initial_sequence]
-			this.meaning = '';
-			this.children = [];
-			this.otherClasses = new Set();
-			return;
+class UNDEFINED_BIDDING {};
+undefined_bidding = new UNDEFINED_BIDDING();
+class Bidding {
+	constructor(possible_states=new states_set(), bidding_sequence=[]) {
+		this.possible_states = possible_states;
+		this.bidding_sequence = bidding_sequence;
+	}
+	append(call) { //Throws ParsingError
+		if (call.type == COMMENT) {
+			return new Bidding(undefined_bidding, undefined_bidding); 
 		}
-		if (call.constructor.name == 'Comment') {
-			this.meaning = call.content
-			this.current_auction = undefined;
-			this.children = []
-			this.otherClasses = new Set();
-			return
-		}
-		if (current_auction === undefined) {
-			throw new ParsingError('Call node at line ' + line + ' as a subnode to a comment currently unsupported');
-		}
-		let new_auction = current_auction.slice()
-		new_auction.push(call)
-		let new_states = [];
-		let low = typeof(call) == 'number' ? call : -2;
-		let high = typeof(call) == 'number' ? call : 35;
-		let errors = new Set();
-		for (let state of possible_states) {
-			for (var tried = low; tried <= high; ++tried) {
-				let [is, next] = append_call(state, tried);
-				if (is) {
-					let was = false;
-					for (let c in new_states) {
-						if (c == next)
-							was = true;
-					}
-					if (!was)
-						new_states.push(next);
+		if (call.type == CALL || call.type == CUSTOM_CALL) {
+			let possible_states = undefined;
+			let bidding_sequence = undefined;
+			if (this.possible_states === undefined_bidding) { //We had a comment before this call
+				possible_states = new states_set(true, true).append(call.value)
+				if (call.whose == THEIRS) {
+					bidding_sequence = [undefined, call.value];
 				}
-				else errors.add(next);
-			}
-		}
-		if (new_states.length == 0) {
-			if (errors.size == 1) {
-				let [error] = errors;
-				throw new ParsingError(error + ': ' + call_to_str(call) + (line ? ' on line ' + line : ''));
+				else {
+					bidding_sequence = [call.value];
+				}
 			}
 			else {
-				throw new ParsingError('invalid call: ' + call_to_str(call) + (line ? ' on line ' + line : ''));
+				let appends = [call.value];
+				if ((call.whose == OURS && this.bidding_sequence.length % 2 == 1) || (call.whose == THEIRS && this.bidding_sequence.length % 2 == 0))
+					appends = [PASS, call.value];
+				bidding_sequence = this.bidding_sequence.concat(appends);
+				possible_states = this.possible_states;
+				if (call.whose == THEIRS && this.bidding_sequence.length == 0) {
+					bidding_sequence = [undefined, call.value];
+					appends = [call.value];
+				}
+				for (let c of appends) {
+					possible_states = possible_states.append(c);
+				}
 			}
+			return new Bidding(possible_states, bidding_sequence);
 		}
-		this.current_auction = new_auction;
-		this.possible_states = new_states;
-		this.meaning = meaning;
-		this.children = [];
-		this.otherClasses = new Set();
+		throw Error('Invalid call type ' + call.type);
 	}
-	append_call_to_node(call, meaning, throw_if_exists, line) {
-		let current_node = this.getChild(call);
-		if (current_node !== undefined) {
-			if (throw_if_exists || (meaning && current_node.meaning)) {
-				throw new ParsingError('Redefined sequence ' + auction_to_str(current_node.current_auction, false) + (line ? 'on line ' + line : ''));
+	to_table() {
+		let competitive = false;
+		for (let i = 1; i < this.bidding_sequence.length; i += 2) if (this.bidding_sequence[i] !== 0) competitive = true;
+		let ret = '';
+		if (this.bidding_sequence.length == 1) return 'Open ' + call_to_str(this.bidding_sequence[0]);
+		if (this.bidding_sequence.length == 2 && this.bidding_sequence[0] === undefined) return 'Opp\'s open ' + call_to_str(this.bidding_sequence[1]);
+		else {
+			ret += '<table><tr>';
+			for (let i = 0; i < this.bidding_sequence.length; ++i) {
+				if (i && i % 4 == 0) ret += '</tr><tr>';
+				let ours = i % 2 == 0;
+				if (ours || competitive) {
+					ret += '<td class="' + (ours ? "ours" : "theirs") + '">' + call_to_str(this.bidding_sequence[i], false) + "</td>";
+				}
 			}
-			else {
-				return current_node;
-			}
+			ret += '</tr></table>'
 		}
-		let ret = new Node(call, this.possible_states, meaning, this.current_auction, line);
-		this.children.push([call, ret]);
 		return ret;
-	}
-	getChild(call) {
-		if (call.constructor.name === 'Comment') {
-			for (let [subcall, subnode] of this.children) {
-				if (subcall.constructor.name === 'Comment' && subcall.content === call.content) return subnode;
-			}
-			return undefined;
-		}
-		for (let [subcall, subnode] of this.children) {
-			if (call === subcall) return subnode;
-		}
-		return undefined;
-	}
-}
-class Comment {
-  constructor(content) {
-    this.content = content;
-  }
-	toString() {
-		return this.content
 	}
 }
 function parse_call(x) {
@@ -201,7 +190,6 @@ function parse_call(x) {
 	if (x[0] == '{' && x.slice(-1) == '}') {
 		return x.slice(1, -1);
 	}
-	// if (x[0] == '@') return new Comment(x.slice(1))
 	if (x[0] >= '1' && x[0] <= '7') {
 		let rank = parseInt(x[0]);
 		let suit = undefined;
@@ -215,6 +203,47 @@ function parse_call(x) {
 	}
 	return undefined;
 }
+function call_to_str(x) {
+	if (x === undefined) return '';
+	if (typeof(x) == 'string') return x;
+	if (typeof(x) == 'number') {
+		if (x === -2) return 'rdbl';
+		if (x === -1) return 'dbl';
+		if (x === 0) return 'pass';
+		if (x <= 35) {
+			return Math.floor((x + 4) / 5) + ['♣', '♦', '♥', '♠', 'NT'][(x + 4) % 5];
+		}
+	}
+	throw new ParsingError('invalid call ' + x);
+}
+class Node {
+	constructor(call, meaning, current_auction) {
+		this.call = call;
+		this.meaning = meaning;
+		this.current_auction = (current_auction === undefined ? new Bidding() : current_auction);
+		this.children = [];
+		this.other_classes = new Set();
+		this.our_calls = new Set();
+		this.their_calls = new Set();
+		return;
+	}
+	append_child(call, meaning) {
+		let new_auction = this.current_auction.append(call)
+		if ((call.whose == OURS && call.type != COMMENT && this.our_calls.has(call.value)) || (call.whose == THEIRS && call.type != COMMENT && this.their_calls.has(call.value))) { //TODO: allow some type of "force"
+			throw new ParsingError('Redefined sequence ' + new_auction.to_table());
+		}
+		if (call.type != COMMENT) {
+			if (call.whose == OURS) this.our_calls.add(call.value);
+			else this.their_calls.add(call.value);
+		}
+		this.children.push(new Node(call, meaning, new_auction));
+		return this.children[this.children.length - 1];
+	}
+	get_child(call) {
+		for (let child of this.children) if (call.equal(child.call)) return child;
+		return undefined;
+	}
+};
 function parse_function(content, exception, is_definition) {
 	content = content.trim();
 	let openings = [...content.matchAll('\\(', 'g')]
@@ -235,42 +264,50 @@ function parse_function(content, exception, is_definition) {
 	if (is_definition) for (let a of args) if (!a.match(R)) throw exception;
 	return [name, args];
 }
-function parse_line(content, line_id) {
+const NORMAL_MODE = 0, IF_MODE = 1, FORCE_MODE = 2;
+function parse_line(content) {
 	content = content.trim();
-	let call = undefined, meaning = undefined, ours = true;
 	if (content[0] == '@') {
-		return [new Comment(content.slice(1)), undefined, undefined]
+		return [new Call(COMMENT, content.slice(1), undefined), undefined, NORMAL_MODE]
 	}
+	let mode = NORMAL_MODE;
+	if (content[0] == '!') {
+		mode = FORCE_MODE;
+		content = content.slice(1);
+	}
+	else if (content[0] == '?') {
+		mode = IF_MODE;
+		content = content.slice(1);
+	}
+	let call = undefined, meaning = undefined, ours = true;
 	if (content[0] == '(') {
 		ours = false;
 		let i = content.indexOf(')');
-		if (i == -1) throw 'Missing \')\' on line ' + line_id;
-		let call_content = content.slice(1, i);
-		if (call_content[0] == '{' && call_content[call_content.length - 1] == '}')
-			call = call_content.slice(1, -1);
-		else
-			call = parse_call(call_content);
+		if (i == -1) throw ParsingError("Missing ')'");
+		call = content.slice(1, i).trim();
 		meaning = content.slice(i + 1);
 	}
-	else {
-		if (content[0] == '{') {
-			i = content.indexOf('}');
-			if (i == -1) throw 'Missing \'}\' on line ' + line_id;
-			call = content.slice(1, i);
-			meaning = content.slice(i + 1);
-		}
-		else {
-			space = content.indexOf(' ');
-			if (space == -1)
-				space = content.length;
-			call = parse_call(content.slice(0, space));
-			meaning = content.slice(space);
-		}
-		if (call === undefined) {
-			throw 'Invalid call ' + content + ' on line ' + line_id;
-		}
+	else if (content[0] == '{') {
+		matching = content.indexOf('}')
+		if (matching == -1) throw new ParsingError('Missing }')
+		call = content.slice(0, matching + 1)
+		meaning = content.slice(matching + 1)
 	}
-	return [call, ours, meaning.trim()];
+	else {
+		space = content.indexOf(' ');
+		if (space == -1)
+			space = content.length;
+		call = content.slice(0, space);
+		meaning = content.slice(space);
+	}
+	call = call.trim();
+	if (call[0] == '{' && call[call.length - 1] == '}') {
+		call = new Call(CUSTOM_CALL, call.slice(1, -1), ours ? OURS : THEIRS);
+	}
+	else {
+		call = new Call(CALL, parse_call(call), ours ? OURS : THEIRS);
+	}
+	return [call, meaning.trim()];
 }
 function parse_file(file) {
 	let lines = file.split('\n');
@@ -289,13 +326,13 @@ function parse_file(file) {
 			if (content.trim() === 'end') {
 				let name = current_function['name'];
 				if (name in functions) {
-					throw new ParsingError('Redefinition of function ' + name + ' on line '+  line_id);
+					throw new ParsingError('Redefinition of function ' + name + ' on line '+  line_id, nodes_stack[0].title);
 				}
 				functions[name] = current_function;
 				current_function = undefined;
 				return;
 			}
-			if (content[0] != '\t') throw new ParsingError('Missing indentation in function definition on line ' + line_id);
+			if (content[0] != '\t') throw new ParsingError('Missing indentation in function definition on line ' + line_id, nodes_stack[0].title);
 			current_function['body'].push([line_id, content.slice(1)])
 			return;
 		}
@@ -318,7 +355,7 @@ function parse_file(file) {
 				let body = functions[name]['body'];
 				let fun_args = functions[name]['args'];
 				if (args.length != fun_args.length) {
-					throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length);
+					throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length, nodes_stack[0].title);
 				}
 				for (let [num, code] of body) {
 					for (let i = 0; i < args.length; ++i) {
@@ -328,28 +365,54 @@ function parse_file(file) {
 				}
 			}
 			else {
-				throw new ParsingError('Unknown function: ' + name + ' on line ' + line_id); 
+				throw new ParsingError('Unknown function: ' + name + ' on line ' + line_id, nodes_stack[0].title); 
 			}
 			return;
 		}
 		if (indent >= nodes_stack.length) {
-			throw new ParsingError('Unexpected indentation on line ' + line_id);
+			throw new ParsingError('Unexpected indentation on line ' + line_id, nodes_stack[0].title, nodes_stack[0].title);
 		}
 		nodes_stack = nodes_stack.slice(0, indent + 1);
-		[call, ours, meaning] = parse_line(content, line_id);
-		let current_node = nodes_stack[indent];
-		if (call.constructor.name != 'Comment' && !ours && current_node.current_auction.length % 2 == 0) {
-			throw new ParsingError('Bidding missing our call on line ' + line_id);
+		try {
+			[call, meaning] = parse_line(content);
+		} catch(e) {
+			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, nodes_stack[0].title);
+			throw e;
 		}
-		if (ours && current_node.current_auction.length % 2)
-			current_node = current_node.append_call_to_node(0, '', false, line_id);
-		current_node = current_node.append_call_to_node(call, meaning, call !== 0, line_id);
+		let current_node = nodes_stack[indent];
+		try {
+			current_node = current_node.append_child(call, meaning);
+		} catch(e) {
+			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, nodes_stack[0].title);
+			throw e;
+		}
 		nodes_stack.push(current_node);
 	}
 	for (let line_id = 0; line_id < lines.length; ++line_id) {
 		process_line(lines[line_id], line_id + 1);
 	}
 	return nodes_stack[0];
+}
+function load(url) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', url, false); //TODO: make asynchronous 
+
+	xhr.onload = function () {
+			if (xhr.readyState === xhr.DONE) {
+					if (xhr.status === 200) {
+					}
+			}
+	};
+
+	xhr.send(null);
+	return xhr.responseText;
+}
+function set_title(title, diff_title) {
+	document.title = title;
+	document.querySelector('#page_title').innerHTML = title;
+	if (diff_title !== undefined) {
+		document.querySelector('#page_title').classList.add('diff')
+	}
 }
 function wrap_if(call, our) {
 	if (our) return call;
@@ -384,22 +447,20 @@ function display(node) {
 	let no = 0;
 	let balloons = [];
 	function dfs(node, depth) {
-		let is_comment = node.current_auction === undefined;
-		let skip = !is_comment && (node.current_auction.length == 0 ||
-			(node.current_auction[node.current_auction.length - 1] === 0 && node.current_auction.length % 2 == 0 && node.meaning.trim() === ''));
-		if (!skip) {
+		if (node.call !== undefined) { //Skip dummy initial node
 			let a = document.createElement('div');
 			a.classList.add('bidding');
 			a.setAttribute('level', depth);
 			a.classList.add('level' + String(depth).padStart(2, '0'));
-			a.innerHTML = format_str(is_comment ? node.meaning : '<call>' + wrap_if(call_to_str(node.current_auction[node.current_auction.length - 1], false), node.current_auction.length % 2) + ':</call> ' + node.meaning);
+			let is_comment = node.call.type == COMMENT;
+			a.innerHTML = format_str(is_comment ? node.call.value : '<call>' + wrap_if(call_to_str(node.call.value), node.call.whose == OURS) + ':</call> ' + node.meaning);
 			if (depth) {
 				a.setAttribute('style', "display: none;");
 			}
 			if (node.children.length) {
 				a.classList.add('relay');
 			}
-			for (let otherClass of node.otherClasses) {
+			for (let otherClass of node.other_classes) {
 				a.classList.add(otherClass);
 			}
 			if (is_comment) {
@@ -410,117 +471,308 @@ function display(node) {
 				let topmenu_node = document.createElement('li');
 				let link = document.createElement('a');
 				topmenu_node.appendChild(link);
-				for (let otherClass of node.otherClasses) {
+				for (let otherClass of node.other_classes) {
 					topmenu_node.classList.add(otherClass);
 				}
-				link.innerHTML = format_str(call_to_str(node.current_auction[0], false));
+				link.innerHTML = format_str(call_to_str(node.call.value));
 				link.setAttribute('href', '#open' + no);
 				link.classList.add('topmenu');
 				topmenu.appendChild(topmenu_node);
 				no++;
 			}
 			if (!is_comment) {
-				a.setAttribute('title', format_str(auction_to_str(node.current_auction, true)))
+				a.setAttribute('title', format_str(node.current_auction.to_table()))
 			}
 			content.appendChild(a);
 		}
-		for (let [call, subnode] of node.children) {
-			dfs(subnode, depth + !skip);
+		for (let subnode of node.children) {
+			dfs(subnode, depth + 1);
 		}
 	}
-	dfs(node, 0);
+	dfs(node, -1);
 	add_theme_switch_node()
 	$(function(){$('#bidding .bidding').balloon({position: "left"})})
 	if (node.title !== undefined) {
-		document.title = node.title;
-		document.querySelector('#page_title').innerHTML = node.title;
-		if (node.diff_title !== undefined) {
-			document.querySelector('#page_title').classList.add('diff')
-		}
+		set_title(node.title, node.diff_title);
 	}
 }
+function diff_meanings(contents) { //[[version_name, value], ...]
+	let len = contents.length;
+	let any_diff = false;
+	for (let i = 1; i < len; ++i) if (contents[i][1] != contents[0][1]) any_diff = true;
+	if (!any_diff) {return [false, contents[0][1]]}
+	let by_content = new Map();
+	for (let [version, value] of contents) {
+		if (value !== undefined) {
+			if (!by_content.has(value)) {
+				by_content.set(value, [version])
+			}
+			else {
+				by_content.get(value).push(version);
+			}
+		}
+	}
+	let diff_content = ''
+	for (let [content, versions] of by_content) {
+		if (diff_content) diff_content += '<br>';
+		//TODO: replace versions.join with something replacing V1, V2, V3, V7 with V1-3, V7
+		diff_content += '<span class="version_id">' + versions.join(', ') + "</span>: " + content
+	}
+	return [true, diff_content]
+}//[any_diff, content]
+function compare_by_indices(indices_a, indices_b) {
+	let value = 0;
+	for (let i = 0; i < indices_a.length; ++i) {
+		if (indices_a[i] !== undefined && indices_b[i] !== undefined) {
+			if (indices_a[i] < indices_b[i]) value--;
+			else if (indices_a[i] > indices_b[i]) value++;
+		}
+	}
+	return value;
+}
+function compare_by_call(call_a, call_b) {
+	if (call_a.type == CALL && call_b.type == CALL) return call_a.value - call_b.value;
+	return 0;
+}
+function compare_by_first_occurrence(indices_a, indices_b) {
+	for (let i = 0; i < indices_a.length; ++i) {
+		if ((indices_a[i] === undefined) != (indices_b[i] === undefined)) {
+			if (indices_a[i] === undefined) return 1;
+			return -1;
+		}
+	}
+	return 0;
+}
+function compare_by_custom_call(call_a, call_b) {
+	if (call_a.type == CUSTOM_CALL && call_b.type == CUSTOM_CALL) {
+		if (call_a.value < call_b.value) return -1;
+		if (call_a.value > call_b.value) return 1;
+		return 0;
+	}
+	return 0;
+}
+function compare_by_whose(call_a, call_b) {
+	if (call_a.whose == OURS && call_b.whose == THEIRS) return -1;
+	if (call_a.whose == THEIRS && call_b.whose == OURS) return 1;
+	return 0;
+}
+function call_order_compare(item_a, item_b) {
+	let [call_a, indices_a] = item_a;
+	let [call_b, indices_b] = item_b;
+	//TODO: try various orders of these tests
+	let compare_by_indices_value = compare_by_indices(indices_a, indices_b);
+	if (compare_by_indices_value != 0) {
+		return compare_by_indices_value < 0;
+	}
+	let compare_by_call_value = compare_by_call(call_a, call_b);
+	if (compare_by_call_value != 0) {
+		return compare_by_call_value < 0;
+	}
+	let compare_by_first_occurrence_value = compare_by_first_occurrence(indices_a, indices_a);
+	if (compare_by_first_occurrence_value != 0) {
+		return compare_by_first_occurrence_value < 0;
+	}
+	let compare_by_whose_value = compare_by_whose(call_a, call_b);
+	if (compare_by_whose_value != 0) {
+		return compare_by_whose_value < 0;
+	}
+	let compare_by_custom_call_value = compare_by_custom_call(call_a, call_b);
+	if (compare_by_custom_call_value != 0) {
+		return compare_by_custom_call_value < 0;
+	}
+	return true;
+}
+function extract_words(s) {
+	if (s === undefined) return []
+	let words = s.match(/[\p{Letter}\p{Mark}0-9-+♠♥♦♣]+/gu);
+	if (words === null) return [];
+	return words.map((x) => x.toLowerCase());
+}
+function calc_str_diff(string1, string2) {
+	let words1 = extract_words(string1);
+	let words2 = extract_words(string2);
+	let occs = new Map();
+	for (let word1 of words1) {
+		if (!occs.has(word1)) occs.set(word1, [0, 0]);
+		occs.get(word1)[0]++;
+	}
+	for (let word2 of words2) {
+		if (!occs.has(word2)) occs.set(word2, [0, 0]);
+		occs.get(word2)[0]++;
+	}
+	let score = 0;
+	for (let [word, count] of occs) {
+		let [c1, c2] = count;
+		score += Math.max(c1, c2) - 2 * Math.min(c1, c2);
+	}
+	return score;
+}
+function calc_children_diff(children1, children2) {
+	let occs = new Map();
+	for (let child1 of children1) {
+		let call_1 = child1.call.to_key();
+		if (!occs.has(call_1)) occs.set(call_1, [0, 0])
+		occs.get(call_1)[0]++;
+	}
+	for (let child2 of children2) {
+		let call_2 = child2.call.to_key();
+		if (!occs.has(call_2)) occs.set(call_2, [0, 0])
+		occs.get(call_2)[1]++;
+	}
+	let score = 0;
+	for (let [call, count] of occs) {
+		let [c1, c2] = count;
+		score += (Math.max(c1, c2) - 2 * Math.min(c1, c2)) * (call[0] == '@' ? 1 : 5);
+	}
+	return score;
+}
+function calc_diff(node1, id1, len1, node2, id2, len2) {
+	let pos_diff = 0;
+	if (len1 > 1 && len2 > 1) {
+		let pos_1 = id1 / (len1 - 1);
+		let pos_2 = id2 / (len2 - 1);
+		pos_diff = Math.abs(pos_1 - pos_2);
+	}
+	let children_diff = calc_children_diff(node1.children, node2.children);
+	let meaning_diff = calc_str_diff(node1.meaning, node2.meaning);
+	return 1e10 * children_diff + 1e5 * meaning_diff + pos_diff;
+}
+//TODO: rename to diff or anything alike
 function compare(starting_nodes) {
+	let N = starting_nodes.length;
+	if (N <= 1) {
+		throw new Error("Don't run diff on just one node lol");
+	}
 	ret = new Node();
-	function dfs(input_nodes, output_node) {
-		let meanings = [];
-		for (let [name, node] of input_nodes) {
-			meanings.push(node === undefined ? '' : format_str(node.meaning.trim()));
-		}
-		let equal = true;
-		for (let meaning of meanings) if (meaning != meanings[0]) equal = false;
-		let meaning = '';
+	function dfs(input_nodes, output_node) { //TODO: if there's only one node left just relabel everything rather than creating new nodes
+		//TODO: if all children match along all nodes just proceed without any matching algorithm
 		let any_diff = false;
-		if (equal) {
-			meaning = meanings[0];
-		}
-		else {
+		let meanings = [];
+		for (let i = 0; i < starting_nodes.length; ++i)
+			meanings.push([input_nodes[i][0], input_nodes[i][1] === undefined ? undefined : input_nodes[i][1].meaning]);
+		[diff_here, diff_meaning] = diff_meanings(meanings);
+		output_node.meaning = diff_meaning;
+		if (diff_here) {
+			output_node.other_classes.add('diff');
 			any_diff = true;
-			let first = true;
-			for (let i = 0; i < input_nodes.length; ++i) {
-				if (input_nodes[i][1] !== undefined) {
-					if (!first) {
-						meaning += '<br>';
+		}
+		let joins = new Array(N);
+		for (let i = 0; i < input_nodes.length; ++i) {
+			if (input_nodes[i][1] === undefined) continue;
+			joins[i] = new Array(input_nodes[i][1].children.length);
+			for (let j = 0; j < input_nodes[i][1].children.length; ++j) {
+				joins[i][j] = new Array(N);
+				joins[i][j][i] = j;
+			}
+		}
+		function try_join(version1, node1, version2, node2) {
+			let ids_1 = joins[version1][node1];
+			let ids_2 = joins[version2][node2];
+			for (let i = 0; i < N; ++i) if (ids_1[i] !== undefined && ids_2[i] !== undefined) return false;
+			ids_1 = ids_1.slice();
+			ids_2 = ids_2.slice();
+			for (let i = 0; i < N; ++i) if (ids_1[i] !== undefined)
+				for (let j = 0; j < N; ++j) if (ids_2[j] !== undefined) {
+					joins[i][ids_1[i]][j] = ids_2[j];
+					joins[j][ids_2[j]][i] = ids_1[i];
+				}
+			return true;
+		};
+		let call_maps = new Array(N);
+		for (let i = 0; i < N; ++i) {
+			if (input_nodes[i][1] == undefined) continue;
+			call_maps[i] = new Map();
+			for (let j = 0; j < input_nodes[i][1].children.length; ++j) {
+				let child = input_nodes[i][1].children[j];
+				let key = child.call.to_key();
+				// if (key[0] == '@') //TODO: remove comments from this part of algorithm
+				if (!call_maps[i].has(key)) call_maps[i].set(key, [[child, j]])
+				else call_maps[i].get(key).push([child, j])
+			}
+		}
+		let merges = [];
+		for (let i = 0; i < N; ++i) for (let j = i + 1; j < N; ++j) {
+			let map_i = call_maps[i], map_j = call_maps[j];
+			if (map_i !== undefined && map_j !== undefined) {
+				for (let [call, nodes] of map_i) {
+					let oth_nodes = map_j.get(call);
+					if (oth_nodes !== undefined) {
+						for (let [node, id] of nodes) {
+							for (let [oth_node, oth_id] of oth_nodes) {
+								let score = calc_diff(node, id, input_nodes[i][1].children.length, oth_node, oth_id, input_nodes[j][1].children.length); //TODO: omit if definitely unnecessary i.e. this call is used at most once in every version
+								merges.push([score, i, id, j, oth_id]);
+							}
+						}
 					}
-					first = false;
-					meaning += input_nodes[i][0] + ': ' + meanings[i];
 				}
 			}
-			output_node.otherClasses.add('diff');
 		}
-		output_node.meaning = meaning;
-		let valid_calls = new Set();
-		for (let [_, node] of input_nodes) {
-			if (node !== undefined) {
-				for (let [call, subnode] of node.children) valid_calls.add(call);
+		merges.sort(function(a, b){return a[0] - b[0];});
+		for (let [_priority, v1, node1, v2, node2] of merges) {
+			try_join(v1, node1, v2, node2);
+		}
+		let all_calls_array = [];
+		for (let i = 0; i < N; ++i) if (input_nodes[i][1] !== undefined) {
+			for (let joined_node of joins[i]) {
+				let already_used = false;
+				for (let x = 0; x < i; ++x) if (joined_node[x] !== undefined) already_used = true;
+				if (already_used) continue;
+				let actual_call = input_nodes[i][1].children[joined_node[i]].call;
+				all_calls_array.push([actual_call, joined_node]);
 			}
 		}
-		let done_comments = new Set();
-		for (let valid_call of valid_calls) {
-			let next_run = [];
-			for (let sub of input_nodes) next_run.push(sub.slice());
-			for (let i = 0; i < next_run.length; ++i) {
-				if (next_run[i][1] !== undefined)
-					next_run[i][1] = next_run[i][1].getChild(valid_call);
-			}
-			let new_output = output_node.append_call_to_node(valid_call, '', false);
-			let sub_diff = dfs(next_run, new_output);
-			if (sub_diff) any_diff = true;
+		let order = hamilton_path(all_calls_array, call_order_compare);
+		// TODO: some comment if nodes were reordered
+		for (let [call, indices] of order) {
+			let sub_output = output_node.append_child(call, '')
+			let sub_nodes = new Array(N);
+			for (let i = 0; i < N; ++i)
+				sub_nodes[i] = [input_nodes[i][0], indices[i] === undefined ? undefined : input_nodes[i][1].children[indices[i]]];
+			let ret = dfs(sub_nodes, sub_output);
+			if (ret) any_diff = true;
 		}
-		if (any_diff) output_node.otherClasses.add('subtreediff');
+		// let comments = new Array(input_nodes.length);
+		// for (let i = 0; i < input_nodes.length; ++i) {
+			// comments[i] = new Array();
+			// if (input_nodes[i][1] !== undefined) {
+				// for (let node of input_nodes[i][1].children) {
+					// 
+					// if (node.call.type == COMMENT) comments[i].push();
+				// }
+			// }
+		// }
+		if (any_diff) output_node.other_classes.add('subtreediff');
 		return any_diff;
 	}
 	dfs(starting_nodes, ret);
-	titles = [];
-	for (let i = 0; i < starting_nodes.length; ++i) titles.push(starting_nodes[i][1].title);
-	let equal = true;
-	for (let title of titles) {
-		if (title != titles[0]) equal = false;
-	}
-	if (equal) {
-		ret.title = titles[0];
-	}
-	else {
-		new_title = ''
-		let first = true;
-		for (let i = 0; i < starting_nodes.length; ++i) {
-			if (titles[i] === undefined) continue;
-			if (!first) new_title += '<br>';
-			first = false;
-			new_title += starting_nodes[i][0] + ': ' + titles[i];
-		}
-		ret.title = new_title;
-		ret.diff_title = true;
-	}
+	let titles = [];
+	for (let i = 0; i < starting_nodes.length; ++i) titles.push([starting_nodes[i][0], starting_nodes[i][1].title]);
+	[diff_title, title_content] = diff_meanings(titles);
+	ret.title = title_content;
+	console.log(diff_title);
+	// if (diff_title) ret.diff_title = true;
 	return ret;
 }
 function get_url(owner, repo, version = 'main', file = 'description.txt') {
 	return ('https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + version + '/' + file);
 }
+function hamilton_path(array, compare) {
+	if (array.length <= 1) return array.slice();
+	let pivot = Math.floor(array.length / 2);
+	let bef = [], aft = [];
+	for (let i = 0; i < array.length; ++i) if (i != pivot) {
+		if (compare(array[i], array[pivot]))
+			bef.push(array[i]);
+		else
+			aft.push(array[i]);
+	}
+	return hamilton_path(bef, compare).concat([array[pivot]]).concat(hamilton_path(aft, compare))
+}
 function init() {
 	window.addEventListener('load', function() {
 		try {
 			if (hardcoded !== undefined) {
-				nodes = [];
+				let nodes = [];
 				for (let i = 0; i < hardcoded.length; ++i) {
 					nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
 				}
@@ -608,8 +860,11 @@ function display_error(e) {
 	if (e instanceof ParsingError) {
 		let errorNode = document.createElement('div');
 		errorNode.classList.add('error');
-		errorNode.innerText = 'Error: ' + e.message;
+		errorNode.innerHTML = 'Error: ' + e.message;
 		document.querySelector('#bidding').appendChild(errorNode);
+		if (e.title !== undefined) {
+			set_title(e.title);
+		}
 	}
 	else throw e;
 }
