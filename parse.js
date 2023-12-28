@@ -195,10 +195,10 @@ function parse_call(x) {
 		let rank = parseInt(x[0]);
 		let suit = undefined;
 		let suit_str = x.slice(1);
-		if (['c', '♣'].includes(suit_str)) suit = 0;
-		if (['d', '♦'].includes(suit_str)) suit = 1;
-		if (['h', '♥'].includes(suit_str)) suit = 2;
-		if (['s', '♠'].includes(suit_str)) suit = 3;
+		if (['!c', 'c', '♣'].includes(suit_str)) suit = 0;
+		if (['!d', 'd', '♦'].includes(suit_str)) suit = 1;
+		if (['!h', 'h', '♥'].includes(suit_str)) suit = 2;
+		if (['!s', 's', '♠'].includes(suit_str)) suit = 3;
 		if (['n', 'nt', 'ba'].includes(suit_str)) suit = 4;
 		if (suit !== undefined) return rank * 5 + suit - 4;
 	}
@@ -321,6 +321,52 @@ function parse_line(content) {
 	}
 	return [call, meaning.trim(), mode];
 }
+const num_regex = /^-?\d+$/;
+const bid_regex = /^[1-7](c|d|h|s|n|nt|!c|!d|!h|!s|ba|♣|♦|♥|♠)$/
+function eval_sum(str, args, vals) {
+	let operators = [...str.matchAll(/\+|-/g)];
+	let operands = str.split(/\+|-/g);
+	let N = args.length;
+	if (operands.length == 1) {
+		let op = operands[0].trim();
+		for (let i = 0; i < N; ++i) if (op == args[i]) return vals[i];
+		throw new ParsingError('Unknown variable ' + op);
+	}
+	let val = 0;
+	let call = false;
+	for (let i = 0; i < operands.length; ++i) {
+		let sign = (i == 0 || operators[i - 1] == '+' ? 1 : -1)
+		let op = operands[i].trim()
+		if (op == '') continue;
+		let was_replaced = false;
+		for (let j = 0; j < N; ++j) {
+			if (op == args[j]) {
+				op = vals[j];
+				was_replaced = true;
+				break;
+			}
+		}
+		if (op.match(num_regex)) {
+			val += sign * op;
+		}
+		else if (i == 0 && op.toLowerCase().match(bid_regex)) {
+			call = true;
+			val = parse_call(op);
+		}
+		else {
+			if (was_replaced)
+				throw new ParsingError('Invalid number in arithmetic operation' + op);
+			else
+				throw new ParsingError('Unknown variable ' + op);
+		}
+	}
+	if (call) {
+		if (val <= 0) throw new ParsingError('Evaluating ' + str + ' results in bid of less than 1');
+		if (val > HIGHEST_CONTRACT) throw new ParsingError('Evaluating ' + str + ' results in bid of more than 7');
+		return call_to_str(val);
+	}
+	return '' + val;
+}
 function parse_file(file) {
 	let lines = file.split('\n');
 	let current_function = undefined
@@ -373,10 +419,16 @@ function parse_file(file) {
 					throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length, nodes_stack[0].title);
 				}
 				for (let [num, code] of body) {
-					for (let i = 0; i < args.length; ++i) {
-						code = code.replaceAll('$(' + fun_args[i] + ')', args[i]);
+					let var_regex_with_group = /\$\(([^()]*)\)/g;
+					let var_regex_without_group = /\$\([^()]*\)/g;
+					let vars = [...code.matchAll(var_regex_with_group)];
+					let rest = code.split(var_regex_without_group);
+					let new_content = rest[0];
+					for (let i = 0; i < vars.length; ++i) {
+						new_content += eval_sum(vars[i][1], fun_args, args);
+						new_content += rest[i + 1];
 					}
-					process_line(code, line_id + ', ' + num, indent);
+					process_line(new_content, line_id + ', ' + num, indent);
 				}
 			}
 			else {
@@ -768,7 +820,6 @@ function compare(starting_nodes) {
 	for (let i = 0; i < starting_nodes.length; ++i) titles.push([starting_nodes[i][0], starting_nodes[i][1].title]);
 	[diff_title, title_content] = diff_meanings(titles);
 	ret.title = title_content;
-	console.log(diff_title);
 	// if (diff_title) ret.diff_title = true;
 	return ret;
 }
