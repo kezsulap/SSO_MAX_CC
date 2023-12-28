@@ -2,6 +2,7 @@ const PASS = 0, DOUBLE = -1, REDOUBLE = -2;
 const CALL = 0, CUSTOM_CALL = 1, COMMENT = 2;
 const OURS = 0, THEIRS = 1;
 const HIGHEST_CONTRACT = 35;
+const NORMAL_MODE = 0, IF_MODE = 1, FORCE_MODE = 2;
 class ParsingError extends Error {
   constructor(message, title = undefined) {
     super(message);
@@ -227,10 +228,22 @@ class Node {
 		this.their_calls = new Set();
 		return;
 	}
-	append_child(call, meaning) {
-		let new_auction = this.current_auction.append(call)
-		if ((call.whose == OURS && call.type != COMMENT && this.our_calls.has(call.value)) || (call.whose == THEIRS && call.type != COMMENT && this.their_calls.has(call.value))) { //TODO: allow some type of "force"
-			throw new ParsingError('Redefined sequence ' + new_auction.to_table());
+	append_child(call, meaning, adding_mode) {
+		if (adding_mode == IF_MODE) {
+			try {
+				var new_auction = this.current_auction.append(call)
+			}
+			catch {
+				return undefined;
+			}
+		}
+		else
+			var new_auction = this.current_auction.append(call)
+		if ((call.whose == OURS && call.type != COMMENT && this.our_calls.has(call.value)) || (call.whose == THEIRS && call.type != COMMENT && this.their_calls.has(call.value))) { 
+			if (adding_mode == NORMAL_MODE) {
+				throw new ParsingError('Redefined sequence ' + new_auction.to_table());
+			}
+			else if (adding_mode == IF_MODE) return undefined;
 		}
 		if (call.type != COMMENT) {
 			if (call.whose == OURS) this.our_calls.add(call.value);
@@ -264,7 +277,6 @@ function parse_function(content, exception, is_definition) {
 	if (is_definition) for (let a of args) if (!a.match(R)) throw exception;
 	return [name, args];
 }
-const NORMAL_MODE = 0, IF_MODE = 1, FORCE_MODE = 2;
 function parse_line(content) {
 	content = content.trim();
 	if (content[0] == '@') {
@@ -307,13 +319,14 @@ function parse_line(content) {
 	else {
 		call = new Call(CALL, parse_call(call), ours ? OURS : THEIRS);
 	}
-	return [call, meaning.trim()];
+	return [call, meaning.trim(), mode];
 }
 function parse_file(file) {
 	let lines = file.split('\n');
 	let current_function = undefined
 	let functions = {}
 	let nodes_stack = [new Node()]
+	let skip_above = undefined
 	function process_line(content, line_id, offset = 0) {
 		content = content.split('#')[0]
 		if (!content.trim()) return;
@@ -348,6 +361,8 @@ function parse_file(file) {
 		}
 		content = content.trim();
 		indent += offset;
+		if (skip_above !== undefined && indent > skip_above) return;
+		else skip_above = undefined;
 		if (content[0] == ':') {
 			let invalid_str = 'Invalid function call syntax on line ' + line_id;
 			let [name, args] = parse_function(content.slice(1), new ParsingError(invalid_str), false);
@@ -374,14 +389,18 @@ function parse_file(file) {
 		}
 		nodes_stack = nodes_stack.slice(0, indent + 1);
 		try {
-			[call, meaning] = parse_line(content);
+			var [call, meaning, mode] = parse_line(content);
 		} catch(e) {
 			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, nodes_stack[0].title);
 			throw e;
 		}
 		let current_node = nodes_stack[indent];
 		try {
-			current_node = current_node.append_child(call, meaning);
+			current_node = current_node.append_child(call, meaning, mode);
+			if (current_node === undefined) {
+				skip_above = indent;
+				return;
+			}
 		} catch(e) {
 			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, nodes_stack[0].title);
 			throw e;
