@@ -1,0 +1,43 @@
+function after_transfer_to_h()
+	1h exactly 3!h
+	1s 4!s, no 3!h
+	1n etc.
+end
+function after_transfer_to_s()
+	1s exactly 3!s
+	1n etc.
+end
+function after_transfer_to_nt_after_1c()
+	1n automatic with 12-14
+	2c 15+ 5+♣
+	{2d and higher} 18+ natural
+end
+function after_transfer_to_nt_after_1d()
+	1n 12-14 5332
+	2c 12+ 5+♦, 4+♣
+	2d 12-14 6+♦
+end
+function 1_level_transfers(double_transfers_to, which_bidding_after_transfer_to_NT)
+	#question mark means the bid will be added only if it's valid, otherwise it'll be omitted with no error
+	?dbl 4+!$(double_transfers_to) 
+		#variable substitution does basic text substitution before processing the whole line, so all sorts of trickery like this will work
+		:after_transfer_to_$(double_transfers_to)() 
+	?1d 4+♥ 
+		:after_transfer_to_h()
+	?1h 4+♠
+		:after_transfer_to_s()
+	?1s transfer to NT
+		:$(which_bidding_after_transfer_to_NT)()
+end
+1c 12-14 balanced/15+ 5+♣/18+ any
+	(dbl)
+		pass 0-6PC, any shape
+		rdbl 12+, 3+♣
+		:1_level_transfers(-, after_transfer_to_nt_after_1c) #double will be considered invalid anyway, $(double_transfers_to) can be set to anything
+	(1d)
+		:1_level_transfers(h, after_transfer_to_nt_after_1c)
+	(1h)
+		:1_level_transfers(s, after_transfer_to_nt_after_1c)
+1d 12-17 5+♦
+	(1h)
+		:1_level_transfers(s, after_transfer_to_nt_after_1d)

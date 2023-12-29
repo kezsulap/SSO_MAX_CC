@@ -1,0 +1,11 @@
+function open_1s(lower_strength)
+	!1s 5+♠ $(lower_strength)-$(lower_strength + 5) PC
+		1n $(17 - lower_strength)-$(20 - lower_strength) PC, no 4♠
+		2c $(24 - lower_strength)+PC, GF
+end
+@Nonvulnerable
+:open_1s(10)
+@Both red
+:open_1s(11)
+@Red vs White
+:open_1s(12)

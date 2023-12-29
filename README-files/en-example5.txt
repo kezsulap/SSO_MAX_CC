@@ -1,0 +1,25 @@
+function kings(start_bid)
+	?$(start_bid) no kings
+	$(start_bid + 1) king of ♣ or ♦+♥
+	$(start_bid + 2) king of ♦ or ♣+♥
+	$(start_bid + 3) king of ♥ or ♣+♦
+	$(start_bid + 4) kings of ♣+♦+♥
+end
+4NT blackwood on !s
+	5c 1/4
+		5d ask for Q of ♠
+			5h no
+			@other show Q of ♠
+			:kings(5s)
+	5d 0/3
+		5h ask for Q of ♠
+			5s no
+			@other show Q of ♠
+			:kings(5n)
+	5h 2 without Q
+		5n ask for Ks
+			:kings(6c)
+		(dbl)
+			pass ask for Ks
+				xx no kings
+				:kings(5h) #response 5h will be omitted as it's insufficient, that's a workaround to make show only responses with 1 or more kings

@@ -1,0 +1,43 @@
+&Title of the system can be optionally put in the first line of the file after & symbol
+pass start each line with the description of the call and then put it's meaning
+	1c then describe responses in a line starting with a single tab character
+		1d then responses to that bid with double tab character at the start
+			1h etc.
+			1s and to describe responses for some previous bid use one more tab then the bid we're responding to, so this is a response to 1d
+			1n and so is this
+		1h and this is a response to 1c
+			(1s) to describe competitive bidding put a call in parentheses to make it opponent's call
+				dbl double can be described as x, dbl, db or ktr
+					(rdbl) redouble as xx, rdb, rdbl, rktr or re
+						p pass as p, pa, pas, pass
+							(PasS) also all bid descriptions can use upper or lowercase letters and it's still fine
+								2♦ denomination of suited bids can be described using ♦/d/!d
+									2!h 
+										2nT notrump can be n/nt/ba
+				(2c) it is OK to specify either 2 our or 2 opponent's calls in a row and this assumes the player in-between has passed
+@Lines starting with @ are notes they don't describe specific calls, but can be used to convey other information
+	@And can also have subnodes as well
+@For example
+@Slam bidding
+	4NT blackwood
+		5c 1/4
+		5d 0/3
+		5h 2 without Q of trumps
+		5s 2 with Q of trumps and no side kings
+1c
+	({1 level overcall}) also you can put any text describing a call in curly braces to mean ({op's call}) or {our call}
+		{2 of opponent suit} GF
+1d Can have for example %(Qx;JTx;Q98xx;AKx)
+	@A hand can be described using this syntax, to indicade a void just leave the space between semicolons blank %(;;;AKQJTxxxxxxxx)
+#Lines starting with '#' are ignored by the parser and can be used to make the file more readable for yourself
+1h Also you can #put a '#' sign in the middle of the line and everything after it is a comment as well
+@Non vulnerable
+1nt 12-14
+@Vulnerable
+#Defining 1nt again would result in an error of redefining a sequence
+!1nt 15-17 #you can put ! before the call to override it
+	(2c) majors
+		x Penalty
+	#The same goes for opponent's calls, so (2c) will result in an error
+	!(2c) natural #But this is fine
+		x Stayman
