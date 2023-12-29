@@ -883,7 +883,10 @@ function init() {
 						file = b ? b : 'description.txt';
 						nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
 					}
-					display(compare(nodes));
+					if (nodes.length == 1)
+						display(nodes[0][1]);
+					else
+						display(compare(nodes));
 				}
 				else {
 					display(parse_file(load(get_url(owner, repo))));
