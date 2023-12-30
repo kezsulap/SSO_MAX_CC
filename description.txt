@@ -2128,13 +2128,13 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 :open2s(8-12, 13+, 2sbaserelay)
 
 @Vulnerable both 3♣/♦ and 2NT promise a 7-card suit
-	@Minimum for 3♣/♦ is x xx xxx AKQxxxx or Kx xx xx AQJxxxx
-	@Minimum for 2NT both vul is x xxx xx AJ10xxxx or xx xx Kx Axxxxxx
-	@Minimum for 2NT red vs white is xxx xx x AKxxxxx or KQx xx x Kxxxxxx
+	@Minimum for 3♣/♦ is %(x xx xxx AKQxxxx) or %(Kx xx xx AQJxxxx)
+	@Minimum for 2NT both vul is %(x xxx xx AJ10xxxx) or %(xx xx Kx Axxxxxx)
+	@Minimum for 2NT red vs white is %(xxx xx x AKxxxxx) or %(KQx xx x Kxxxxxx)
 	@Non-vulnerable 3♣/♦ shows a 7-card suit, while 2NT doesn't
-	@Minimum for 3♣/♦ is xxx xx x AKxxxxx or KQx xx x Kxxxxxx
-	@Minimum for 2NT both non-vul is x xxx xx AJTxxxx or xx xx Kx Axxxxxx
-	@Minimum for 2NT white vs red is xx xx xx xxxxxxx or xx xx xxx KQTxxx
+	@Minimum for 3♣/♦ is %(xxx xx x AKxxxxx) or %(KQx xx x Kxxxxxx)
+	@Minimum for 2NT both non-vul is %(x xxx xx AJ10xxxx) or %(xx xx Kx Axxxxxx)
+	@Minimum for 2NT white vs red is %(xx xx xx xxxxxxx) or %(xx xx xxx KQ10xxx) 
 2n destructive preempt with clubs or diamonds
 3c constructive preempt
 3d constructive preempt
