@@ -83,3 +83,20 @@ return false;
 });
 
 });
+function fold_everything() {
+	count = 0
+	$('#bidding .bidding').each(function() {
+		depth = parseInt($(this).attr("level"));
+		$(this).removeClass('rozwiniete')
+		if (depth > 0) {
+			curr = $(this).css('display')
+			if (curr != 'none') {
+				count++
+				if (count < 20)
+					$(this).hide("slow");
+				else
+					$(this).hide()
+			}
+		}
+	})
+}
