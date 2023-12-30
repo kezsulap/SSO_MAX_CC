@@ -550,6 +550,14 @@ function add_theme_switch_node() {
 	topmenu.appendChild(ret)
 	topmenu.children[topmenu.children.length - 1].addEventListener('click', handle_theme_switch)
 }
+function add_fold_everything_node() {
+	let topmenu = document.querySelector('#topmenulist')
+	let ret = document.createElement('li');
+	ret.id = 'fold_everything_button'
+	ret.innerHTML = '<div onclick=fold_everything()>↩</div>'
+	topmenu.appendChild(ret)
+	topmenu.children[topmenu.children.length - 1].addEventListener('click', fold_everything)
+}
 function display(node) {
 	$.balloon.defaults.classname = "my-balloon";
 	$.balloon.defaults.css = {}
@@ -603,6 +611,7 @@ function display(node) {
 	}
 	dfs(node, -1);
 	add_theme_switch_node()
+	add_fold_everything_node()
 	$(function(){$('#bidding .bidding').balloon({position: "left"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	if (node.title !== undefined) {
