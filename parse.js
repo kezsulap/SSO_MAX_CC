@@ -489,16 +489,57 @@ function wrap_if(call, our) {
 	if (our) return call;
 	return '(' + call + ')';
 }
+const club_string = '<cl></cl>', diamond_string = '<di></di>', heart_string = '<he></he>', spade_string = '<sp></sp>';
+function parse_hand(s) {
+	console.log(s);
+	let suits = s.trim().split(/\s+/g);
+	if (suits.length != 4) throw new ParsingError('Hand containing ' + suits.length + ' suit' + (suits.length == 1 ? '' : 's'));
+	let parsed_suits = new Array(4);
+	for (let i = 0; i < 4; ++i)
+		parsed_suits[i] = [...suits[i].matchAll(/10|./g)].map((x) => x[0])
+	let cards = 0;
+	for (let i = 0; i < 4; ++i) cards += suits[i] == '-' ? 0 : parsed_suits[i].length;
+	if (cards != 13) throw new ParsingError('Hand containing ' + cards + ' card' + (cards == 1 ? '' : 's'));
+	all_cards = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
+	function find_rank(x) {
+		if (x == 'x') return -1;
+		for (let i = 0; i < 13; ++i) if (all_cards[i] == x) return 14 - i;
+		throw new ParsingError('Unrecognised card: ' + x);
+	}
+	let HCP = 0;
+	let parsed_hand = '';
+	for (let suit = 0; suit < 4; ++suit) {
+		let suit_str = [spade_string, heart_string, diamond_string, club_string][suit];
+		let last = 15;
+		let last_spot = 15;
+		let xes = 0;
+		if (parsed_suits[suit] != '-') {
+			for (let card of parsed_suits[suit]) {
+				let rank = find_rank(card);
+				if (rank == -1) xes++;
+				else last_spot = rank;
+				if (rank == last && last != -1) throw new ParsingError('Duplicated card ' + suit_str + card);
+				if (rank > last) throw new ParsingError('Cards not in decreasing order in ' + suit_str)
+				last = rank;
+				if (rank >= 11) HCP += (rank - 10);
+			}
+			let left_xes = Math.min(9, last_spot - 2);
+			if (left_xes < xes) throw new ParsingError('More xes than existing spot cards in ' + suits[suit]);
+		}
+		parsed_hand += '<span class="' + 'shdc'[suit] + '">' + suit_str + suits[suit].replaceAll('x', '⨉') + '</span>'
+	}
+	return '<span class="hand" title="' + HCP + ' HCP">' + parsed_hand + '</span>';
+}
 function format_str(s) {
-	s = s.replaceAll('♣', '<cl></cl>');
-	s = s.replaceAll('!c', '<cl></cl>');
-	s = s.replaceAll('♦', '<di></di>');
-	s = s.replaceAll('!d', '<di></di>');
-	s = s.replaceAll('♥', '<he></he>');
-	s = s.replaceAll('!h', '<he></he>');
-	s = s.replaceAll('♠', '<sp></sp>');
-	s = s.replaceAll('!s', '<sp></sp>');
-	s = s.replaceAll(/(\p{Emoji}+)/ug, '<span class="emoji">$1</span>')
+	s = s.replaceAll(/♣|!c/g, club_string);
+	s = s.replaceAll(/♦|!d/g, diamond_string);
+	s = s.replaceAll(/♥|!h/g, heart_string);
+	s = s.replaceAll(/♠|!s/g, spade_string);
+	let hand_regex = /%\(([^()]*)\)/g;
+	let hands = s.split(hand_regex)
+	for (let i = 1; i < hands.length; i += 2) hands[i] = parse_hand(hands[i])
+	s = hands.join("");
+	s = s.replaceAll(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>')
 	return s;
 }
 function add_theme_switch_node() {
@@ -563,6 +604,7 @@ function display(node) {
 	dfs(node, -1);
 	add_theme_switch_node()
 	$(function(){$('#bidding .bidding').balloon({position: "left"})})
+	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	if (node.title !== undefined) {
 		set_title(node.title, node.diff_title);
 	}

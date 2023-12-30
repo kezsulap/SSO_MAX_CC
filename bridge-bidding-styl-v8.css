@@ -173,6 +173,9 @@ call {
 .emoji {
 	font-style: normal;
 }
+.hand {
+	font-style: normal;
+}
 body.bright .bidding:hover {
 	border-color: #b3ffb3;
 }
@@ -467,16 +470,16 @@ body.bright .t2 {
 body.bright .t3 {
 	border: solid 1px #ADD6FF;
 }
-body.bright cl:after {
+body.bright cl:after, body.bright .hand .c {
 	color: #005416;
 }
-body.bright di:after {
+body.bright di:after, body.bright .hand .d {
 	color: #ff6600;
 }
-body.bright he:after {
+body.bright he:after, body.bright .hand .h {
 	color: red;
 }
-body.bright sp:after {
+body.bright sp:after, body.bright .hand .s {
 	color: blue;
 }
 
@@ -569,16 +572,16 @@ body.dark .t2 {
 body.dark .t3 {
 	border: solid 1px #0056B3;
 }
-body.dark cl:after {
+body.dark cl:after, body.dark .hand .c {
 	color: #00e63d;
 }
-body.dark di:after {
+body.dark di:after, body.dark .hand .d {
 	color: #ffc14d;
 }
-body.dark he:after {
+body.dark he:after, body.dark .hand .h {
 	color: #ff3333;
 }
-body.dark sp:after {
+body.dark sp:after, body.dark .hand .s {
 	color: #9999ff;
 }
 /***********************************************SPECIAL THEMES*************************************/
