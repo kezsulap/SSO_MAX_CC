@@ -911,22 +911,16 @@ function init() {
 				}
 				let keys = [...params.keys()];
 				let params_list = [];
+				if (repo === undefined) {
+					display_error(new ParsingError('To host your system outside of github pages generate index.html using python script, for more see <a href="https://github.com/kezsulap/SSO_MAX_CC?tab=readme-ov-file#advanced-mode">this</a>'));
+					return;
+				}
 				let paste = repo === undefined;
 				for (let k of keys) {
 					if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
-					if (k === 'paste') {
-						paste = true;
-						continue;
-					}
 					params_list.push([k, params.get(k)]);
 				}
-				if (paste) {
-					document.querySelector('#paste').style.display = '';
-					if (repo === undefined) {
-						document.querySelector('#compare_origin_div').style.display='none';
-					}
-				}
-				else if (params_list.length) {
+				if (params_list.length) {
 					let nodes = [];
 					for (let [name, url] of params_list) {
 						let [a, b] = url.split(':');
@@ -946,38 +940,8 @@ function init() {
 		}
 	})
 }
-function paste_update() {
-	let mode = document.querySelector('input[name="mode"]:checked').value;
-	document.querySelector('#input2').style.display = mode === 'compare_two' ? '' : 'none';
-}
-function render_from_paste() {
-	try {
-		document.querySelector('#paste').style = 'display: none';
-		let mode = document.querySelector('input[name="mode"]:checked').value;
-		let file1 = undefined, file2 = undefined;
-		if (mode === 'display_one') {
-			file1 = document.querySelector('#input1').value;
-		}
-		else if (mode === 'compare_two') {
-			file1 = document.querySelector('#input1').value;
-			file2 = document.querySelector('#input2').value;
-		}
-		else if (mode === 'compare_origin') {
-			file1 = document.querySelector('#input1').value;
-			file2 = load(get_url(owner, repo));
-		}
-		if (file2 === undefined) {
-			display(parse_file(file1));
-		}
-		else {
-			display(compare([['V1', parse_file(file1)], ['V2', parse_file(file2)]]));
-		}
-	}
-	catch (e) {
-		display_error(e);
-	}
-}
 function display_error(e) {
+	add_theme_switch_node()
 	if (e instanceof ParsingError) {
 		let errorNode = document.createElement('div');
 		errorNode.classList.add('error');
