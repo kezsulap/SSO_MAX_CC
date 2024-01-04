@@ -2,7 +2,7 @@ const PASS = 0, DOUBLE = -1, REDOUBLE = -2;
 const CALL = 0, CUSTOM_CALL = 1, COMMENT = 2;
 const OURS = 0, THEIRS = 1;
 const HIGHEST_CONTRACT = 35;
-const NORMAL_MODE = 0, IF_MODE = 1, FORCE_MODE = 2;
+const NORMAL_MODE = 0, IF_MODE = 1, FORCE_MODE = 2, IF_MODE_WITH_REDEFINED = 3;
 class ParsingError extends Error {
   constructor(message, title = undefined) {
     super(message);
@@ -229,7 +229,7 @@ class Node {
 		return;
 	}
 	append_child(call, meaning, adding_mode) {
-		if (adding_mode == IF_MODE) {
+		if (adding_mode == IF_MODE || adding_mode == IF_MODE_WITH_REDEFINED) {
 			try {
 				var new_auction = this.current_auction.append(call)
 			}
@@ -283,7 +283,11 @@ function parse_line(content) {
 		return [new Call(COMMENT, content.slice(1), undefined), undefined, NORMAL_MODE]
 	}
 	let mode = NORMAL_MODE;
-	if (content[0] == '!') {
+	if (content.slice(0, 2) == '!?') {
+		mode = IF_MODE_WITH_REDEFINED;
+		content = content.slice(2);
+	}
+	else if (content[0] == '!') {
 		mode = FORCE_MODE;
 		content = content.slice(1);
 	}
@@ -542,21 +546,19 @@ function format_str(s) {
 	s = s.replaceAll(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>')
 	return s;
 }
-function add_theme_switch_node() {
+function add_button(name, action, label) {
 	let topmenu = document.querySelector('#topmenulist')
 	let ret = document.createElement('li');
-	ret.id = 'theme_switch_button'
-	ret.innerHTML = '<div onclick=handle_theme_switch()>☀</div>'
+	ret.id = name
+	ret.innerHTML = '<div onclick=' + action.name + '()>' + label + '</div>'
 	topmenu.appendChild(ret)
-	topmenu.children[topmenu.children.length - 1].addEventListener('click', handle_theme_switch)
+	// topmenu.children[topmenu.children.length - 1].addEventListener('click', action)
+}
+function add_theme_switch_node() {
+	add_button('theme_switch_button', handle_theme_switch, '☀️');
 }
 function add_fold_everything_node() {
-	let topmenu = document.querySelector('#topmenulist')
-	let ret = document.createElement('li');
-	ret.id = 'fold_everything_button'
-	ret.innerHTML = '<div onclick=fold_everything()>↩</div>'
-	topmenu.appendChild(ret)
-	topmenu.children[topmenu.children.length - 1].addEventListener('click', fold_everything)
+	add_button('fold_everything_button', fold_everything, '↩')
 }
 function display(node) {
 	$.balloon.defaults.classname = "my-balloon";
@@ -762,8 +764,8 @@ function calc_diff(node1, id1, len1, node2, id2, len2) {
 //TODO: rename to diff or anything alike
 function compare(starting_nodes) {
 	let N = starting_nodes.length;
-	if (N <= 1) {
-		throw new Error("Don't run diff on just one node lol");
+	if (N == 1) {
+		return starting_nodes[0][1];
 	}
 	ret = new Node();
 	function dfs(input_nodes, output_node) { //TODO: if there's only one node left just relabel everything rather than creating new nodes
@@ -874,7 +876,7 @@ function compare(starting_nodes) {
 	// if (diff_title) ret.diff_title = true;
 	return ret;
 }
-function get_url(owner, repo, version = 'main', file = 'description.txt') {
+function get_url(owner, repo, version, file) {
 	return ('https://raw.githubusercontent.com/' + owner + '/' + repo + '/' + version + '/' + file);
 }
 function hamilton_path(array, compare) {
@@ -889,57 +891,6 @@ function hamilton_path(array, compare) {
 	}
 	return hamilton_path(bef, compare).concat([array[pivot]]).concat(hamilton_path(aft, compare))
 }
-function init() {
-	window.addEventListener('load', function() {
-		try {
-			if (hardcoded !== undefined) {
-				let nodes = [];
-				for (let i = 0; i < hardcoded.length; ++i) {
-					nodes.push(['V' + (i + 1), parse_file(hardcoded[i])]);
-				}
-				if (nodes.length == 1) display(nodes[0][1]);
-				else display(compare(nodes))
-			}
-			else {
-				let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
-				repo = undefined, owner = undefined;
-				if (protocol === 'http:' || protocol === 'https:') {
-					if (domain.match('.github.io$')) {
-						repo = path.split('/')[1];
-						owner = domain.split('.')[0];
-					}
-				}
-				let keys = [...params.keys()];
-				let params_list = [];
-				if (repo === undefined) {
-					display_error(new ParsingError('To host your system outside of github pages generate index.html using python script, for more see <a href="https://github.com/kezsulap/SSO_MAX_CC?tab=readme-ov-file#advanced-mode">this</a>'));
-					return;
-				}
-				let paste = repo === undefined;
-				for (let k of keys) {
-					if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
-					params_list.push([k, params.get(k)]);
-				}
-				if (params_list.length) {
-					let nodes = [];
-					for (let [name, url] of params_list) {
-						let [a, b] = url.split(':');
-						version = a ? a : 'main';
-						file = b ? b : 'description.txt';
-						nodes.push([name, parse_file(load(get_url(owner, repo, version, file)))]);
-					}
-					display(compare(nodes));
-				}
-				else {
-					display(parse_file(load(get_url(owner, repo))));
-				}
-			}
-		}
-		catch (e) {
-			display_error(e);
-		}
-	})
-}
 function display_error(e) {
 	add_theme_switch_node()
 	if (e instanceof ParsingError) {
@@ -953,4 +904,27 @@ function display_error(e) {
 	}
 	else throw e;
 }
-init();
+function get_versions() {
+	let domain = window.location.hostname, params = new URLSearchParams(window.location.search), path = window.location.pathname, protocol = window.location.protocol;
+	repo = undefined, owner = undefined;
+	if (protocol === 'http:' || protocol === 'https:') {
+		if (domain.match('.github.io$')) {
+			owner = domain.split('.')[0];
+			repo = path.split('/')[1];
+		}
+	}
+	let keys = [...params.keys()];
+	let params_list = [];
+	let paste = repo === undefined;
+	for (let k of keys) {
+		if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
+		let v = params.get(k)
+		let [a, b] = v.split(':')
+		let version = a ? a : 'main';
+		let file = b ? b : 'description.txt';
+		params_list.push([k, version, file]);
+	}
+	if (!params_list.length) params_list = [['', 'main', 'description.txt']]; 
+	if (owner === undefined) {owner = 'kezsulap', repo = 'SSO_MAX_CC'} //Uncomment for local testing of web related features
+	return [owner, repo, params_list]
+}

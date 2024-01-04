@@ -482,9 +482,13 @@ body.bright he:after, body.bright .hand .h {
 body.bright sp:after, body.bright .hand .s {
 	color: blue;
 }
-
+textarea {
+    -moz-tab-size : 2;
+      -o-tab-size : 2;
+         tab-size : 2;
+}
 /*****************************************************Dark theme*****************************************************/
-body.dark {
+body.dark, body.dark textarea {
 	background-color: #222222;
 	color: #dddddd;
 }

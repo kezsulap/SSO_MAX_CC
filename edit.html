@@ -8,13 +8,22 @@
 	<script src="./jquery-bridge-bidding-3.js"></script>
 	<script src="./theme-min-2.js"></script>
 	<script src="./parse.js"></script>
-	<script src="./main.js"></script>
+	<script src="./edit.js"></script>
 	<script>hardcoded=undefined</script>
 </head>
 <body>
 <div id="content">
 <!-- początek strony -->
-
+<div id="edit_panel">
+<ul class="topmenu">
+<li onclick=show(true) class="bidding" id="preview_changes"> Preview changes </li>
+<li onclick=show(false) class="bidding"> Preview single file </li>
+<li onclick=save() class="bidding"> 💾 </li>
+<li onclick=handle_theme_switch() class="bidding">☀️</li>
+</ul>
+<div><textarea id="input" cols="100" rows="50"></textarea></div>
+</div>
+<div id="preview_panel" style="display: none">
 <div class="bidding level00" level="0" id="page_title"></div>
 <div id="topmenu">
 <ul class="topmenu" id="topmenulist">
@@ -22,6 +31,7 @@
 <div style="clear: both;"></div>
 </div>
 <div id="bidding">
+</div>
 
 
 </div><!-- koniec #bidding -->
