@@ -494,7 +494,7 @@ function load(url) {
 	return xhr.responseText;
 }
 function set_HTML_title(title) {
-	document.title = title;
+	document.title = title ?? 'Convention card ♠♥♦♣';
 }
 function set_system_title(title, diff_title) {
 	if (title === undefined) title = '';
@@ -633,7 +633,7 @@ function display(node, HTML_title=true) {
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	set_system_title(node.title, node.diff_title);
 	if (HTML_title) {
-		set_HTML_title(node.HTMLtitle ?? node.title);
+		set_HTML_title(node.HTML_title ?? node.title);
 	}
 }
 function join_versions(versions) {
@@ -924,7 +924,13 @@ function compare(starting_nodes) {
 	[diff_title, title_content] = diff_meanings(titles);
 	ret.title = title_content;
 	if (diff_title) ret.diff_title = true;
-	ret.HTML_title = starting_nodes[0].title;
+	for (let i = 0; i < N; ++i) {
+		let tried = starting_nodes[i][1].title;
+		if (tried) {
+			ret.HTML_title = tried;
+			break;
+		}
+	}
 	return ret;
 }
 function get_url(owner, repo, version, file) {
