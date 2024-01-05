@@ -167,6 +167,9 @@ font-size: 55%;
 call {
 	font-weight: bold;
 }
+.version_id {
+	font-weight: bold;
+}
 .comment {
 	font-style: italic;
 }
