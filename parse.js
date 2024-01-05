@@ -422,17 +422,28 @@ function parse_file(file) {
 				if (args.length != fun_args.length) {
 					throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length, nodes_stack[0].title);
 				}
-				for (let [num, code] of body) {
+				function process_call_line(num, code) {
 					let var_regex_with_group = /\$\(([^()]*)\)/g;
 					let var_regex_without_group = /\$\([^()]*\)/g;
 					let vars = [...code.matchAll(var_regex_with_group)];
 					let rest = code.split(var_regex_without_group);
 					let new_content = rest[0];
 					for (let i = 0; i < vars.length; ++i) {
-						new_content += eval_sum(vars[i][1], fun_args, args);
+						console.log(rest, vars)
+						let allow_errors = new_content == '?' || new_content == '!?'
+						try {
+							new_content += eval_sum(vars[i][1], fun_args, args);
+						}
+						catch (e) {
+							if (allow_errors && e instanceof ParsingError) return;
+							throw e;
+						}
 						new_content += rest[i + 1];
 					}
 					process_line(new_content, line_id + ', ' + num, indent);
+				}
+				for (let [num, code] of body) {
+					process_call_line(num, code)
 				}
 			}
 			else {
