@@ -222,6 +222,8 @@ class Node {
 		this.call = call;
 		this.meaning = meaning;
 		this.current_auction = (current_auction === undefined ? new Bidding() : current_auction);
+		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
+		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<call>' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</call> ' + this.meaning);
 		this.children = [];
 		this.other_classes = new Set();
 		this.our_calls = new Set();
@@ -589,7 +591,7 @@ function display(node, HTML_title=true) {
 			a.setAttribute('level', depth);
 			a.classList.add('level' + String(depth).padStart(2, '0'));
 			let is_comment = node.call.type == COMMENT;
-			a.innerHTML = format_str(is_comment ? node.call.value : '<call>' + wrap_if(call_to_str(node.call.value), node.call.whose == OURS) + ':</call> ' + node.meaning);
+			a.innerHTML = node.innerHTML 
 			if (depth) {
 				a.setAttribute('style', "display: none;");
 			}
