@@ -631,6 +631,32 @@ function display(node) {
 		set_title(node.title, node.diff_title);
 	}
 }
+function join_versions(versions) {
+	let added = new Map();
+	for (let version of versions) {
+		let [name, num] = version.split(/([0-9]*)$/g);
+		if (!added.has(name)) added.set(name, []);
+		added.get(name).push(num === undefined ? 0 : +num)
+	}
+	let ret = [];
+	for (let [name, nums] of added) {
+		nums.sort((a,b) => a-b);
+		let curr = []
+		let prev_beg = undefined, prev_end = undefined;
+		for (let x of nums) {
+			if (x - 1 === prev_end) prev_end++;
+			else {
+				if (prev_beg !== undefined) {
+					curr = curr.concat(name + prev_beg + (prev_end !== prev_beg ? '-' + prev_end : ''));
+				}
+				prev_beg = prev_end = x;
+			}
+		}
+		curr = curr.concat(name + prev_beg + (prev_end !== prev_beg ? '-' + prev_end : ''));
+		ret = ret.concat(curr);
+	}
+	return ret.join(", ")
+}
 function diff_meanings(contents) { //[[version_name, value], ...]
 	let len = contents.length;
 	let any_diff = false;
@@ -650,8 +676,7 @@ function diff_meanings(contents) { //[[version_name, value], ...]
 	let diff_content = ''
 	for (let [content, versions] of by_content) {
 		if (diff_content) diff_content += '<br>';
-		//TODO: replace versions.join with something replacing V1, V2, V3, V7 with V1-3, V7
-		diff_content += '<span class="version_id">' + versions.join(', ') + "</span>: " + content
+		diff_content += '<span class="version_id">' + join_versions(versions) + "</span>: " + content
 	}
 	return [true, diff_content]
 }//[any_diff, content]
@@ -778,7 +803,7 @@ function compare(starting_nodes) {
 	if (N == 1) {
 		return starting_nodes[0][1];
 	}
-	ret = new Node();
+	let ret = new Node();
 	function dfs(input_nodes, output_node) { //TODO: if there's only one node left just relabel everything rather than creating new nodes
 		//TODO: if all children match along all nodes just proceed without any matching algorithm
 		let any_diff = false;
