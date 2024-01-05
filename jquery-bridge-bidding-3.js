@@ -1,7 +1,4 @@
 $( document ).ready(function() {
-var str = document.getElementById("content").innerHTML; 
-var res = str.replace(/@♣/g, "<i>[4♣:ES]</i>").replace(/@♦/g, "<i>[4♦:ES]</i>").replace(/@♥/g, "<i>[4♥:ES]</i>").replace(/@♠/g, "<i>[4♠:ES]</i>");
-document.getElementById("content").innerHTML = res;
 });
 $(function() {
 	$( "div.bidding" ).each(function() {

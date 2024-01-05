@@ -8,10 +8,10 @@ function show(with_diff) {
 		return;
 	}
 	if (with_diff) {
-		display(compare([["OLD", original_node], ["NEW", node]]))
+		display(compare([["OLD", original_node], ["NEW", node]]), false)
 	}
 	else {
-		display(node)
+		display(node, false)
 	}
 	add_button('save_button', save, '💾')
 	add_button('back_to_edit_button', back_to_edit, 'Back to edit')
@@ -40,6 +40,7 @@ function init() {
 		document.querySelector('#input').innerHTML = original_file_content;
 		try {
 			original_node = parse_file(original_file_content)
+			set_HTML_title(original_node.title);
 		} catch (e) {
 			$('#preview_changes').hide()
 			original_node = undefined;

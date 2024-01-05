@@ -493,8 +493,10 @@ function load(url) {
 	xhr.send(null);
 	return xhr.responseText;
 }
-function set_title(title, diff_title) {
+function set_HTML_title(title) {
 	document.title = title;
+}
+function set_system_title(title, diff_title) {
 	document.querySelector('#page_title').innerHTML = title;
 	if (diff_title !== undefined) {
 		document.querySelector('#page_title').classList.add('diff')
@@ -571,7 +573,7 @@ function add_theme_switch_node() {
 function add_fold_everything_node() {
 	add_button('fold_everything_button', fold_everything, '↩')
 }
-function display(node) {
+function display(node, HTML_title=true) {
 	$.balloon.defaults.classname = "my-balloon";
 	$.balloon.defaults.css = {}
 	init_theme()
@@ -628,7 +630,10 @@ function display(node) {
 	$(function(){$('#bidding .bidding').balloon({position: "left"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	if (node.title !== undefined) {
-		set_title(node.title, node.diff_title);
+		set_system_title(node.title, node.diff_title);
+	}
+	if (HTML_title) {
+		set_HTML_title(node.HTMLtitle ?? node.title);
 	}
 }
 function join_versions(versions) {
@@ -918,7 +923,8 @@ function compare(starting_nodes) {
 	for (let i = 0; i < starting_nodes.length; ++i) titles.push([starting_nodes[i][0], starting_nodes[i][1].title]);
 	[diff_title, title_content] = diff_meanings(titles);
 	ret.title = title_content;
-	// if (diff_title) ret.diff_title = true;
+	if (diff_title) ret.diff_title = true;
+	ret.HTML_title = starting_nodes[0].title;
 	return ret;
 }
 function get_url(owner, repo, version, file) {
