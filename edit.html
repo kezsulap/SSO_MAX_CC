@@ -22,7 +22,7 @@
 <li onclick=save() class="bidding"> 💾 </li>
 <li onclick=handle_theme_switch() class="bidding">☀️</li>
 </ul>
-<div><textarea id="input" cols="100" rows="50"></textarea></div>
+<div><textarea id="input" cols="100" rows="50" onkeydown=textarea_listener(event)></textarea></div>
 </div>
 <div id="preview_panel" style="display: none">
 <div class="bidding level00" level="0" id="page_title"></div>
