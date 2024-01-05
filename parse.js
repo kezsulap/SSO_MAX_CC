@@ -202,7 +202,7 @@ function parse_call(call) {
 		if (['n', 'nt', 'ba'].includes(suit_str)) suit = 4;
 		if (suit !== undefined) return rank * 5 + suit - 4;
 	}
-	return undefined;
+	throw new ParsingError('Invalid call: ' + call)
 }
 function call_to_str(x) {
 	if (x === undefined) return '';
