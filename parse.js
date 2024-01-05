@@ -636,14 +636,20 @@ function join_versions(versions) {
 	for (let version of versions) {
 		let [name, num] = version.split(/([0-9]*)$/g);
 		if (!added.has(name)) added.set(name, []);
-		added.get(name).push(num === undefined ? 0 : +num)
+		added.get(name).push(num === undefined ? undefined : +num)
 	}
 	let ret = [];
 	for (let [name, nums] of added) {
+
 		nums.sort((a,b) => a-b);
 		let curr = []
 		let prev_beg = undefined, prev_end = undefined;
+		let has_undefined = false;
 		for (let x of nums) {
+			if (x === undefined) {
+				has_undefined = true;
+				continue;
+			}
 			if (x - 1 === prev_end) prev_end++;
 			else {
 				if (prev_beg !== undefined) {
@@ -652,7 +658,10 @@ function join_versions(versions) {
 				prev_beg = prev_end = x;
 			}
 		}
-		curr = curr.concat(name + prev_beg + (prev_end !== prev_beg ? '-' + prev_end : ''));
+		if (has_undefined) ret.push(name);
+		if (prev_beg !== undefined) {
+			curr = curr.concat(name + prev_beg + (prev_end !== prev_beg ? '-' + prev_end : ''));
+		}
 		ret = ret.concat(curr);
 	}
 	return ret.join(", ")
