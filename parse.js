@@ -581,6 +581,7 @@ function display(node, HTML_title=true) {
 	init_theme()
 	let content = document.querySelector('#bidding')
 	let topmenu = document.querySelector('#topmenulist')
+	topmenu.innerHTML = ''
 	let no = 0;
 	let balloons = [];
 	function dfs(node, depth) {
@@ -948,13 +949,14 @@ function hamilton_path(array, compare) {
 	}
 	return hamilton_path(bef, compare).concat([array[pivot]]).concat(hamilton_path(aft, compare))
 }
-function display_error(e) {
+function display_error(e, where=undefined) {
+	if (where === undefined) where = document.querySelector('#bidding');
 	add_theme_switch_node()
 	if (e instanceof ParsingError) {
 		let errorNode = document.createElement('div');
 		errorNode.classList.add('error');
 		errorNode.innerHTML = 'Error: ' + e.message;
-		document.querySelector('#bidding').appendChild(errorNode);
+		where.appendChild(errorNode);
 		if (e.title !== undefined) {
 			set_title(e.title);
 		}

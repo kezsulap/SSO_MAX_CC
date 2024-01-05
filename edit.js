@@ -1,10 +1,11 @@
 function show(with_diff) {
 	let content = document.querySelector('#input').value;
+	document.querySelector('#errors').innerHTML = ''
 	try {
 		var node = parse_file(content);
 	}
 	catch (e) {
-		display_error(e)
+		display_error(e, document.querySelector('#errors'))
 		return;
 	}
 	if (with_diff) {
