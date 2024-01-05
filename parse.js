@@ -177,8 +177,8 @@ class Bidding {
 		return ret;
 	}
 }
-function parse_call(x) {
-	x = x.toLowerCase();
+function parse_call(call) {
+	let x = call.toLowerCase();
 	if ('pass'.startsWith(x)) {
 		return 0;
 	}
@@ -222,13 +222,16 @@ class Node {
 		this.call = call;
 		this.meaning = meaning;
 		this.current_auction = (current_auction === undefined ? new Bidding() : current_auction);
-		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
-		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<call>' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</call> ' + this.meaning);
 		this.children = [];
 		this.other_classes = new Set();
 		this.our_calls = new Set();
 		this.their_calls = new Set();
+		this.update_innerHTML()
 		return;
+	}
+	update_innerHTML() {
+		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
+		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<call>' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</call> ' + this.meaning);
 	}
 	append_child(call, meaning, adding_mode) {
 		if (adding_mode == IF_MODE || adding_mode == IF_MODE_WITH_REDEFINED) {
@@ -306,7 +309,7 @@ function parse_line(content) {
 		meaning = content.slice(i + 1);
 	}
 	else if (content[0] == '{') {
-		matching = content.indexOf('}')
+		matching = content.indexOf('}') //{ to make vim get pairings correctly...
 		if (matching == -1) throw new ParsingError('Missing }')
 		call = content.slice(0, matching + 1)
 		meaning = content.slice(matching + 1)
@@ -827,6 +830,7 @@ function compare(starting_nodes) {
 			meanings.push([input_nodes[i][0], input_nodes[i][1] === undefined ? undefined : input_nodes[i][1].meaning]);
 		[diff_here, diff_meaning] = diff_meanings(meanings);
 		output_node.meaning = diff_meaning;
+		output_node.update_innerHTML()
 		if (diff_here) {
 			output_node.other_classes.add('diff');
 			any_diff = true;
