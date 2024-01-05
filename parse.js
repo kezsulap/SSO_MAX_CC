@@ -512,7 +512,10 @@ function wrap_if(call, our) {
 	if (our) return call;
 	return '(' + call + ')';
 }
-const club_string = '<cl></cl>', diamond_string = '<di></di>', heart_string = '<he></he>', spade_string = '<sp></sp>';
+const club_string = '<span class="club suit"><span class="suit-label">♣</span><span class="club-image"></span></span>';
+const diamond_string = '<span class="diamond suit"><span class="suit-label">♦</span><span class="diamond-image"></span></span>';
+const heart_string = '<span class="heart suit"><span class="suit-label">♥</span><span class="heart-image"></span></span>';
+const spade_string = '<span class="spade suit"><span class="suit-label">♠</span><span class="spade-image"></span></span>';
 function parse_hand(s) {
 	let suits = s.trim().split(/\s+/g);
 	if (suits.length != 4) throw new ParsingError('Hand containing ' + suits.length + ' suit' + (suits.length == 1 ? '' : 's'));

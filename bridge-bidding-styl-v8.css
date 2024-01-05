@@ -173,7 +173,7 @@ call {
 .comment {
 	font-style: italic;
 }
-.emoji {
+.emoji, .suit {
 	font-style: normal;
 }
 .hand {
@@ -360,20 +360,7 @@ background-color: #009900; font-weight: normal;
 .ramkaalert {
 background-color: #ffff00; font-size: 90%;
 }
-cl:after {
-	content: "\2663";
-	font-style: normal;
-}
-di:after {
-	content: "\2666";
-	font-style: normal;
-}
-he:after {
-	content: "\2665";
-	font-style: normal;
-}
-sp:after {
-	content: "\2660";
+.suit-label {
 	font-style: normal;
 }
 .bidding {
@@ -473,16 +460,16 @@ body.bright .t2 {
 body.bright .t3 {
 	border: solid 1px #ADD6FF;
 }
-body.bright cl:after, body.bright .hand .c {
+body.bright .club, body.bright .hand .c {
 	color: #005416;
 }
-body.bright di:after, body.bright .hand .d {
+body.bright .diamond, body.bright .hand .d {
 	color: #ff6600;
 }
-body.bright he:after, body.bright .hand .h {
+body.bright .heart, body.bright .hand .h {
 	color: red;
 }
-body.bright sp:after, body.bright .hand .s {
+body.bright .spade, body.bright .hand .s {
 	color: blue;
 }
 textarea {
@@ -579,16 +566,16 @@ body.dark .t2 {
 body.dark .t3 {
 	border: solid 1px #0056B3;
 }
-body.dark cl:after, body.dark .hand .c {
+body.dark .club, body.dark .hand .c {
 	color: #00e63d;
 }
-body.dark di:after, body.dark .hand .d {
+body.dark .diamond, body.dark .hand .d {
 	color: #ffc14d;
 }
-body.dark he:after, body.dark .hand .h {
+body.dark .heart, body.dark .hand .h {
 	color: #ff3333;
 }
-body.dark sp:after, body.dark .hand .s {
+body.dark .spade, body.dark .hand .s {
 	color: #9999ff;
 }
 /***********************************************SPECIAL THEMES*************************************/
@@ -596,8 +583,11 @@ div.bidding:not(.relay) {
 	backdrop-filter: blur(30px);
 }
 /******************** April-fool *********************/
-body.april-fool he:after {
+body.april-fool .heart-image:after {
 	content: "\1f921";
+}
+body.april-fool .heart .suit-label {
+	font-size: 0;
 }
 body.april-fool.dark {
 	background-image: url("./special-themes/dark-april-fool.jpg");
@@ -612,12 +602,18 @@ body.april-fool.bright {
 	background-position: left;
 }
 /******************** Autumn ***********************/
-body.autumn di:after {
+body.autumn .diamond-image:after {
 	content: "\1f341";
 }
+body.autumn .diamond .suit-label {
+	font-size: 0;
+}
 /******************** Children *********************/
-body.children di:after {
+body.children .diamond-image:after {
 	content: "\1f476";
+}
+body.children .diamond .suit-label {
+	font-size: 0;
 }
 body.children.dark {
 	background-image: url("./special-themes/dark-children.jpg");
@@ -632,8 +628,11 @@ body.children.bright {
 	background-position: left;
 }
 /******************** Christmas *********************/
-body.christmas cl:after {
+body.christmas .club-image:after {
 	content: "\1F384";
+}
+body.christmas .club .suit-label {
+	font-size: 0;
 }
 body.christmas.dark {
 	background-image: url("./special-themes/dark-christmas.png");
@@ -646,8 +645,11 @@ body.christmas.bright {
 	background-position: left;
 }
 /******************** Earth *********************/
-body.earth sp:after {
+body.earth .spade-image:after {
 	content: "\1F4A7";
+}
+body.earth .spade .suit-label {
+	font-size: 0;
 }
 body.earth.dark {
 	background-image: url("./special-themes/dark-earth.jpg");
@@ -662,8 +664,11 @@ body.earth.bright {
 	background-position: left;
 }
 /******************** Easter *********************/
-body.easter di:after {
+body.easter .diamond-image:after {
 	content: "\1f425";
+}
+body.easter .diamond .suit-label {
+	font-size: 0;
 }
 body.easter.dark {
 	background-image: url("./special-themes/dark-easter.jpg");
@@ -678,8 +683,11 @@ body.easter.bright {
 	background-position: left;
 }
 /******************** Education *********************/
-body.education sp:after {
+body.education .spade-image:after {
 	content: "\1f393"
+}
+body.education .spade .suit-label {
+	font-size: 0;
 }
 /******************** Halloween *********************/
 body.halloween.dark {
@@ -698,8 +706,11 @@ body.halloween.bright {
 body.halloween.bright .bidding:not(.relay) {
 	background-color: white
 }
-body.halloween di:after {
+body.halloween .diamond-image:after {
 	content: "\1F383";
+}
+body.halloween .diamond .suit-label {
+	font-size: 0;
 }
 /******************** Independence *********************/
 body.independence.dark {
@@ -739,12 +750,18 @@ body.independence.bright {
 	background-color:#990000;
 }
 /******************** Men *********************/
-body.men sp:after {
+body.men .spade-image:after {
 	content: "\1f3a9";
 }
+body.men .spade .suit-label {
+	font-size: 0;
+}
 /******************** Moon *********************/
-body.moon di:after {
+body.moon .diamond-image:after {
 	content: "\1F316";
+}
+body.moon .diamond .suit-label {
+	font-size: 0;
 }
 body.moon {
 	background-image: url("./special-themes/dark-moon.jpg");
@@ -756,8 +773,11 @@ body.moon.bright div.bidding:not(.relay) {
 	backdrop-filter: brightness(200%) blur(30px);
 }
 /******************** New-year *********************/
-body.new-year di:after {
+body.new-year .diamond-image:after {
 	content: "\1f973";
+}
+body.new-year .diamond .suit-label {
+	font-size: 0;
 }
 body.new-year.dark {
 	background-image: url("./special-themes/dark-new-year.jpg");
@@ -864,8 +884,11 @@ body.rainbow.dark .bidding.diff.relay, body.rainbow.dark .bidding.subtreediff.re
 	background-color:gray !important;
 }
 /******************** Santa *********************/
-body.santa he:after {
+body.santa .heart-image:after {
 	content: "\01F385";
+}
+body.santa .heart .suit-label {
+	font-size: 0;
 }
 body.santa.dark {
 	background-image: url("./special-themes/dark-santa.jpg");
@@ -880,12 +903,18 @@ body.santa.bright {
 	background-position: top;
 }
 /******************** Spring **********************/
-body.spring cl:after {
+body.spring .club-image:after {
 	content: "\1f331"
 }
+body.spring .club .suit-label {
+	font-size: 0;
+}
 /******************** Summer **********************/
-body.summer di:after {
+body.summer .diamond-image:after {
 	content: "\2600\fe0f"
+}
+body.summer .diamond .suit-label {
+	font-size: 0;
 }
 /******************** Ukraine *********************/
 body.ukraine.dark {
@@ -925,8 +954,11 @@ body.ukraine.bright {
 	background-color:#c8a900;
 }
 /******************** Valentines *********************/
-body.valentines he:after {
+body.valentines .heart-image:after {
 	content: "\1F498";
+}
+body.valentines .heart .suit-label {
+	font-size: 0;
 }
 body.valentines.bright {
 	background-image: url("./special-themes/bright-valentines.jpg");
@@ -939,16 +971,25 @@ body.valentines.dark {
 	background-position: left;
 }
 /******************** Veggie ********************/
-body.veggie cl:after {
+body.veggie .club-image:after {
 	content: "\1f966"
 }
+body.veggie .club .suit-label {
+	font-size: 0;
+}
 /******************** Winter ********************/
-body.winter sp:after {
+body.winter .spade-image:after {
 	content: "\2744"
 }
+body.winter .spade .suit-label {
+	font-size: 0;
+}
 /******************** Women *********************/
-body.women he:after {
+body.women .heart-image:after {
 	content: "\1F339";
+}
+body.women .heart .suit-label {
+	font-size: 0;
 }
 body.women.bright {
 	background-image: url("./special-themes/bright-women.jpg");
