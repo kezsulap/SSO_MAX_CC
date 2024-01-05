@@ -497,10 +497,12 @@ function set_HTML_title(title) {
 	document.title = title;
 }
 function set_system_title(title, diff_title) {
-	document.querySelector('#page_title').innerHTML = title;
-	if (diff_title !== undefined) {
-		document.querySelector('#page_title').classList.add('diff')
-	}
+	if (title === undefined) title = '';
+	let title_element = document.querySelector('#page_title');
+	title_element.innerHTML = title;
+	if (diff_title !== undefined) title_element.classList.add('diff')
+	else title_element.classList.remove('diff')
+	title_element.style.display = title ? '' : 'none';
 }
 function wrap_if(call, our) {
 	if (our) return call;
@@ -629,9 +631,7 @@ function display(node, HTML_title=true) {
 	add_fold_everything_node()
 	$(function(){$('#bidding .bidding').balloon({position: "left"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
-	if (node.title !== undefined) {
-		set_system_title(node.title, node.diff_title);
-	}
+	set_system_title(node.title, node.diff_title);
 	if (HTML_title) {
 		set_HTML_title(node.HTMLtitle ?? node.title);
 	}
