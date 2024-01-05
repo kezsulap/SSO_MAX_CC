@@ -429,7 +429,6 @@ function parse_file(file) {
 					let rest = code.split(var_regex_without_group);
 					let new_content = rest[0];
 					for (let i = 0; i < vars.length; ++i) {
-						console.log(rest, vars)
 						let allow_errors = new_content == '?' || new_content == '!?'
 						try {
 							new_content += eval_sum(vars[i][1], fun_args, args);
@@ -510,7 +509,6 @@ function wrap_if(call, our) {
 }
 const club_string = '<cl></cl>', diamond_string = '<di></di>', heart_string = '<he></he>', spade_string = '<sp></sp>';
 function parse_hand(s) {
-	console.log(s);
 	let suits = s.trim().split(/\s+/g);
 	if (suits.length != 4) throw new ParsingError('Hand containing ' + suits.length + ' suit' + (suits.length == 1 ? '' : 's'));
 	let parsed_suits = new Array(4);
@@ -958,7 +956,7 @@ function display_error(e, where=undefined) {
 		errorNode.innerHTML = 'Error: ' + e.message;
 		where.appendChild(errorNode);
 		if (e.title !== undefined) {
-			set_title(e.title);
+			set_system_title(e.title);
 		}
 	}
 	else throw e;
