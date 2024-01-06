@@ -1,41 +1,65 @@
-Polish below
-## How to start
-Fork this repository and set the name to 
+## How to get started
+Fork this repository and set the name to name of your system as the repository name
 
-Create code branch and copy all the commits from my repo (discarding )
+Create main branch and copy all the commits from my repo (discarding all the commits you had in code branch)
 
-Deploy the page via github pages
+Deploy the page via github pages from code branch
 
-Go to <your-username>.github.io/<your-fork-name> and your system should be there (it may take github a few minutes to process it and actually make your site happen)
+Go to \<your-username\>.github.io/\<your-system-name\> and your system should be there (it may take github a few minutes to process it and actually make your site happen)
 
-Create description of your system in main:description.txt (intructions below)
+Your site should contain current version of SSO_MAX system, to put your system there see below how to edit
 
-##How to edit
+## How to edit
+Go to \<your-username\>.github.io/\<your-system-name\>/edit.html
 
-##description.txt
+Edit the description file (instruction how to use it below), once you're done click save, this will copy current system into your clipboard and take you to github site,
+select all, paste new version instead and hit commit changes. It's recommended to put some description of what you've changed into "Commit Message" box to make your life
+easier when searching for some older version, but it's not required, select "Commit directly to the main branch" and hit "Commit changes" to make your changes appear on the site (github may take
+up to a few minutes to process this change, to view it immediately go to <your-username>.github.io/<your-system-name>?v=<commit-id>), or "Create a new branch for this commit and start a pull request" and hit "Propose Changes" and then "Create pull request"
+to mark them as in progress/review you can get a link <your-username>.github.io/<your-system-name>?OLD=<>&NEW=<> to highlight the changes
+
+After review go to pull requests and the change you've made and hit "Merge pull request" to put the version directly on your site (again it make take a few minutes for them to appear there), or go to "Files Changed" and edit file to put more changes,
+hit commit, or if you've decided to revoke them completely
+
+## Having multiple systems 
+Github won't allow you to fork the repository more than once on the same account, to have multiple systems go to https://github.com/\<your-username\>/\<your-system-name\>/tree/main type in the name of your new system and hit create branch,
+this will create your new system at \<your-username\>.github.io/\<your-system-name\>?v=\<new-system-name\> which will be identical to your main system, go to \<your-username\>.github.io/\<your-system-name\>/edit.html?v=\<new-system-name\>
+to edit it the same way as you edit your main system
+
+## description.txt
 ```
-&Title of the system can be optionally put in the first line of the file after & symbol
+&Title of the system can be optionally put on the first line of the file after & symbol
 pass start each line with the description of the call and then put it's meaning
 	1c then describe responses in a line starting with a single tab character
 		1d then responses to that bid with double tab character at the start
 			1h etc.
-			1s and to describe responses for some previous bid use one more tab then the bid we're responding to, so this is a response to 1d
-			1n and so is this
-			2c Click a bid to fold/unfold direct responses to it
-			2d Right click/long tap on a touch-screen to unfold resposnses to it, all subsequent nodes
-			2h suit symbols described using either ♠/♥/♦/♣ or !s/!h/!d/!c are automatically replaced with actual symbols and coloured blue/red/orange/green
-		1h and this is a response to 1c
-			(1s) to describe competitive bidding put a call in parentheses to make it opponent's call
-				dbl double can be described as x, dbl, db or ktr
-					(rdbl) redouble as xx, rdb, rdbl, rktr or re
-						p pass as p, pa, pas, pass
-							(PasS) also all bid descriptions can use upper or lowercase letters and it's still fine
-								2♦ denomination of suited bids can be described using ♦/d/!d
-									2!h 
-										2nT notrump can be n/nt/ba
-				(2c) it is OK to specify either 2 our or 2 opponent's calls in a row and this assumes the player in-between has passed
-@Lines starting with @ are notes they don't describe specific calls, but can be used to convey other information
-	@And can also have subnodes as well
+		#Lines starting with '#' are comments, they are ignored by the parser
+		#and can be used to make the file more readable for yourself
+		#to describe responses for some previous bid use one more tab
+		#then the bid we're responding to
+		1h so this is a response to 1c
+		1s and so is this
+		1n Comments #can also be put at the end 
+		2c Click a bid to fold/unfold direct responses to it
+		2d Right click/long tap on a touch-screen to unfold
+			2h all subsequent nodes
+		2h suit symbols described using either ♠/♥/♦/♣ or !s/!h/!d/!c
+			2s are automatically replaced with actual symbols and
+			2n coloured blue/red/orange/green
+	1d This is a response to pass
+		(1h) for competitive bidding put a call in () to make it opp's call
+			dbl double can be described as x, dbl, db or ktr
+				(rdbl) redouble as xx, rdb, rdbl, rktr or re
+					p pass as p, pa, pas or pass
+		PasS bid descriptions can use upper or lowercase letters
+			(2♦) denomination of bids can be described using ♦/d/!d
+				2!h 
+					2nT notrump can be n/nt/ba
+		(2c) it is OK to specify either 2 our or 2 opponent's calls in a row
+			(2d) and this assumes the player in-between passes
+@Lines starting with @ are notes they don't describe specific calls,
+	@but can be used to convey other information
+	@and can also have subnodes as well
 @For example
 @Slam bidding
 	4NT blackwood
@@ -44,12 +68,14 @@ pass start each line with the description of the call and then put it's meaning
 		5h 2 without Q of trumps
 		5s 2 with Q of trumps and no side kings
 1c
-	({1 level overcall}) also you can put any text describing a call in curly braces to mean ({op's call}) or {our call}
-		{2 of opponent suit} GF
-1d Can have for example %(Qx;JTx;Q98xx;AKx)
-	@A hand can be described using this syntax, to indicade a void just leave the space between semicolons blank %(;;;AKQJTxxxxxxxx)
-#Lines starting with '#' are ignored by the parser and can be used to make the file more readable for yourself
-1h Also you can #put a '#' sign in the middle of the line and everything after it is a comment as well
+	({1 level overcall}) also you can put any text describing a call
+		{2 of opponent suit} in curly braces to mean ({op's call}) or {our call}
+1d You can use this syntax %(Qx J10x Q98xx AKx) to show a hand
+	@To indicade a void use a hyphen %(- - - AKQJ10xxxxxxxx)
+
+#Any number of blank lines anywhere in the file is OK
+
+
 @Non vulnerable
 1nt 12-14
 @Vulnerable
@@ -62,12 +88,15 @@ pass start each line with the description of the call and then put it's meaning
 		x Stayman
 	
 ```
-This will result in [https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:README-files/en-example1.txt](this output)
-###Defining a sequence
+This will result in [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-example1.txt)
+### Defining a sequence
 If a sequence occurs multiple times can be defined once and pasted into multiple places in the file
 ```
-function 1nt_open(strength, inv_strength) #define a part of code occurring in multiple spaces with naming any parts which are different
-	1nt $(strength) balanced
+#define a part of system occurring in multiple spaces
+#with naming any parts which are different
+function 1nt_open(strength, inv_strength)
+	#$(variable_name) will be replaced by parameter given below
+	1nt $(strength) balanced 
 		2c Stayman
 			2d no 4M
 		2d 5+♥
@@ -76,6 +105,7 @@ function 1nt_open(strength, inv_strength) #define a part of code occurring in mu
 end
 1c 12-14 balanced/15+ 5+♣/18+ any
 	1d 0-6 any
+		#Replace all $(strength) with 18-21 and all $(inv_strength) with 4-5
 		:1nt_open(18-21, 4-5)
 :1nt_open(15-17, 8-9)
 ```
@@ -96,12 +126,21 @@ This would expand to
 	2h 5+♠
 	2n 8-9, no 4M
 ```
-and be processed accordingly to [https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:README-files/en-example2.txt](this output)
+and be processed accordingly to [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-example2.txt)
 ```
 function after_transfer_to_h()
 	1h exactly 3!h
 	1s 4!s, no 3!h
 	1n etc.
+	#? means the bid will be added only if it's valid and not repeated,
+	#otherwise it'll be omitted with no error
+	?(dbl) takeout
+		rdbl strong
+	#!? means the bid will be added only if it's valid even if repeated
+	#otherwise it'll be omitted with no error
+	!?(dbl) diamonds 
+		rdbl 3+♦
+end
 function after_transfer_to_s()
 	1s exactly 3!s
 	1n etc.
@@ -117,9 +156,9 @@ function after_transfer_to_nt_after_1d()
 	2d 12-14 6+♦
 end
 function 1_level_transfers(double_transfers_to, which_bidding_after_transfer_to_NT)
-	#question mark means the bid will be added only if it's valid, otherwise it'll be omitted with no error
 	?dbl 4+!$(double_transfers_to) 
-		#variable substitution does basic text substitution before processing the whole line, so all sorts of trickery like this will work
+		#variable substitution does basic text substitution before processing
+		#the whole line, so all sorts of trickery like this will work
 		:after_transfer_to_$(double_transfers_to)() 
 	?1d 4+♥ 
 		:after_transfer_to_h()
@@ -132,7 +171,8 @@ end
 	(dbl)
 		pass 0-6PC, any shape
 		rdbl 12+, 3+♣
-		:1_level_transfers(-, after_transfer_to_nt_after_1c) #double will be considered invalid anyway, $(double_transfers_to) can be set to anything
+		#double will be considered invalid anyway, $(double_transfers_to) can be set to anything
+		:1_level_transfers(-, after_transfer_to_nt_after_1c)
 	(1d)
 		:1_level_transfers(h, after_transfer_to_nt_after_1c)
 	(1h)
@@ -194,8 +234,11 @@ And then to
 			1h exactly 3!h
 			1s 4!s, no 3!h
 			1n etc.
+			?(dbl) takeout #included
+				rdbl strong
+			!?(dbl) diamonds #included
+				rdbl 3+♦
 		?1h 4+♠
-			:after_transfer_to_s()
 			1s exactly 3!s
 			1n etc.
 		?1s transfer to NT
@@ -207,8 +250,11 @@ And then to
 			1h exactly 3!h
 			1s 4!s, no 3!h
 			1n etc.
+			?(dbl) takeout #Invalid double, ommited
+				rdbl strong
+			!?(dbl) diamonds #Invalid double, ommited
+				rdbl 3+♦
 		?1h 4+♠
-			:after_transfer_to_s()
 			1s exactly 3!s
 			1n etc.
 		?1s transfer to NT
@@ -226,7 +272,6 @@ And then to
 1d 12-17 5+♦
 	(1h)
 		?dbl 4+!s
-			:after_transfer_to_s() 
 			1s exactly 3!s
 			1n etc.
 		?1s transfer to NT
@@ -235,8 +280,8 @@ And then to
 			2d 12-14 6+♦
 
 ```
-Eventually resulting in [https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:README-files/en-function-example3.txt](this output)
-###Arithmetic operators in functions
+Eventually resulting in [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example3.txt)
+### Arithmetic operators in functions
 Functions support addition and subtractions of variables on numbers and calculating bid x steps above/below some bid
 ```
 function open_1s(lower_strength)
@@ -251,7 +296,7 @@ end
 @Red vs White
 :open_1s(12)
 ```
-[https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:README-files/en-function-example4.txt](Output)
+[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example4.txt)
 ```
 function kings(start_bid)
 	?$(start_bid) no kings
@@ -277,131 +322,45 @@ end
 		(dbl)
 			pass ask for Ks
 				xx no kings
-				:kings(5h) #response 5h will be omitted as it's insufficient, that's a workaround to make show only responses with 1 or more kings
+				#response 5h will be omitted as it's insufficient
+				#that's a workaround to make show only responses with 1+ kings
+				:kings(5h)
 ```
-[https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:README-files/en-function-example5.txt](Output)
-## Deployment instruction
-Default index.html loads system description from description.txt on main branch if hosted from github pages or asks to paste description manually if any other source, including local.
-You can use index.html?file=version or index.html?v1=version1&v2=version2 to display both files and highlight differences between them. Version could be `commit_hash` `branch_name` `:filename` `commit_hash:filename` `branch_name:filename`, for example:
-[https://kezsulap.github.io/SSO_MAX_CC/index.html?OLD=c9f700339f3c5094ea545bd3b5bc88a748311ad0&NEW=94fca5d0cf06e41dba93c41a173b88510c31dc6f](https://kezsulap.github.io/SSO_MAX_CC/index.html?OLD=c9f700339f3c5094ea545bd3b5bc88a748311ad0&NEW=94fca5d0cf06e41dba93c41a173b88510c31dc6f)
-[https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:tests/custom.txt](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=:tests/custom.txt)
+[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example5.txt)
+```
+function test_function(bid)
+	#? to skip the bid if it's below 1♣, without it this file would give an error
+	?$(bid - 6) 5 steps below $(bid) 
+	?$(bid - 5) 4 steps below $(bid)
 
-To get index file for hosting on different site run `python generate.py file1.txt [file2.txt] > output.html` which will generate html file displaying one specific file, rather than fetching
-from github. Don't overwrite index.html with `python generate.py > index.html` as generate.py script is using it.
-
-## description.txt syntax
-### System title
-Put
-```
-&Title
-```
-anywhere in the system file to set title at the top of the page and HTML page title
-### Basic costructive bidding
-Indentation only using tabs is supported.
-```
-opening1 meaning
-	response1 meaning
-	response2 meaning
-		opener_rebid_1 meaning
-		opener_rebid_2 meaning
-opening2 meaning
-	response1 meaning
-	response2 meaning
-```
-Bid's denomination can be described with c/d/h/s or ♣/♦/♥/♠, notrump can be n, nt or ba
-Pass can be described as p, pa, pas, pass, double as db, dbl, ktr, x, redouble as rdb, rdbl, re, rktr, xx.
-All of this is case-insensitive.
-### Competitive bidding
-Uses the same format, except opponent's call needs to be parenthesised
-Example:
-```
-1♣ 12+ natural
-	(1♠)
-		dbl 4+♥
-		1NT 7-10 with a ♠ stopper
-	(1NT)
-		dbl penalty
-			(rdbl)
-				7♥ = cue-bid
-```
-Opponent's calls if not included are automatically supposed to be passes, however our bids always have to be present. For example this file is invalid
-```
-1♣ 12+ natural
-	(1♥)
-		(1♠)
-```
-### Defining a sequence 
-You can define a sequence once and paste it in multiple places in the file.
-Definition example:
-```
-function 1nt_open(strength)
-	1nt $(strength) balanced
-		2c Stayman
-			2d no 4M
-		2d 5+♥
-		2h 5+♠
+	?$(bid + 29) 29 steps above $(bid)
+	?$(bid + 30) 30 steps above $(bid) #? to skip the bid if it's above 7NT
 end
+:test_function(2♣)
 ```
-Call example:
-```
-1c 12-14 balanced/15+ 5+♣/18+ any
-	1d
-		:1nt_open(18-21)
-:1nt_open(15-17)
-```
-This would expand to
-```
-1c 12-14 balanced/15+ 5+♣/18+ any
-	1d
-		1nt 18-21 balanced
-			2c Stayman
-				2d no 4M
-			2d 5+♥
-			2h 5+♠
-1nt 15-17 balanced
-	2c Stayman
-		2d no 4M
-	2d 5+♥
-	2h 5+♠
-```
-and then be processed accordingly. Functions are allowed to have multiple comma-seperated parameters, or no parameters at all.
-### Suit symbols
-Any ♣/♦/♥/♠/!c/!d/!h/!s in call meaning gets automatically replaced with an appropriate symbol and coloured.
-### Comments
-Anything appearing in a line after a number sign `#` is considered a comment and is ignored. Empty lines including empty after deleting the comment content are allowed and are also ignored.
-### Custom calls
-Calls can also be defined by text descriptions put in `{}`. Sequences using those are only checked if there's any way of replacing them with any calls to get a valid sequence.
-Example:
-```
-1♣
-	({1 level overcall})
-		{2 of opponent's suit} something
-```
+[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example6.txt)
 
-```
-1♣
-	({some mysterious call})
-		dbl
-			1♦ #error, insufficient bid
-```
+## Updating the code
+To merge all future changes I make to the code go to https://github.com/\<your-username\>/SSO_MAX_CC/tree/code and hit Sync Fork (processing this and actually making your site run with new version of code may again take GitHub a few minutes)
 
-```
-1♣
-	({2 level overcall})
-		1NT #clearly not what you intended, but no way for the parser to know it
-```
-### Notes (BETA)
-Line starting with '@' will be considered a note.
+## Giving other people access
+To let anyone else edit go to Settings > Collaborators > Add people, find the user you want to give access to, hit "Add <username> to the repository", once they go to github.com/<your-username>/<your-repository-name> they should see an invitation
+and once they accept it, they can edit the system the exact same way you do
 
-Currently notes can only have other notes as subnodes and diffing algorithm for them is very basic.
-```
-1♣ 8-12 balanced
-	@Note this relay is sometimes a bluff
-		@just sometimes
-	1♦ relay 13+
-		1♥ = no 4M, 5m
-		1♠ ...
-```
+To revoke someone's access go to Settings > Collaborators > Remove
 
-## Future updates
-Main branch of this repository will contain changes both to the code and to the system. If you're setting up your own instance merge changes to the code only from code branch.
+## Quiz
+Go to \<your-username\>.github.io/\<your-repository-name\>/quiz.html or \<your-username\>.github.io/\<your-repository-name\>/quiz.html?v=\<name-of-the-system\> if you have multiple systems in your repository and learn your own system
+
+
+## Advanced mode
+
+Default index.html loads system description from description.txt on main branch.
+You can set any version(s) via URL parameters ?\<V1_NAME\>=v1&\<V2_NAME\>=v2, for example https://kezsulap.github.io/SSO_MAX_CC/index.html?OLD=c9f700339f3c5094ea545bd3b5bc88a748311ad0&NEW=94fca5d0cf06e41dba93c41a173b88510c31dc6f where V1_NAME can by anything, v1 is either `version` `version:file_path` `:file_path`, version could be branch name, commit_id or tag, not specified version defaults to main and file path to description.txt
+
+For local testing/deployment outside of github pages use generate.py `python generate.py -h` for more info when on branch with description. It fetches files from code branch, so keep it up-to-date before running.
+
+If you're using Vim you can copy [vimrc](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/code/vimrc) to your .vimrc to have Ctrl+F to fold all the blocks, and Ctrl+J/K to increase/decrease all bids in visual block by 1
+
+
+
