@@ -962,7 +962,7 @@ function display_error(e, where=undefined) {
 	if (e instanceof ParsingError) {
 		let errorNode = document.createElement('div');
 		errorNode.classList.add('error');
-		errorNode.innerHTML = 'Error: ' + e.message;
+		errorNode.innerHTML = 'Error: ' + format_str(e.message);
 		where.appendChild(errorNode);
 		if (e.title !== undefined) {
 			set_system_title(e.title);
