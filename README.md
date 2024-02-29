@@ -1,25 +1,7 @@
+()[PL]
+()[DE]
 ## How to get started
-Fork this repository
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/3.png)
-and set the name to name of your system as the repository name
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/4.png)
-Hit "Create Fork"
-
-Create main branch and copy all the commits from my repo (discarding all the commits you had in code branch)
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/17.png)
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/18.png)
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/19.png)
-
-Deploy the page via github pages from code branch
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/10.png)
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/11.png)
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/12.png)
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/13.png)
-
-Go to \<your-username\>.github.io/\<your-system-name\> and your system should be there (it may take github a few minutes to process it and actually make your site happen)
-
-Your site should contain current version of SSO_MAX system, to put your system there see below how to edit
-
+(Check out)[https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/en-getting-started]
 ## How to edit
 Go to \<your-username\>.github.io/\<your-system-name\>/edit.html
 
