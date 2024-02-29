@@ -1,7 +1,7 @@
 ()[PL]
 ()[DE]
 ## How to get started
-(Check out)[https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/en-getting-started]
+[Check out](https://github.com/kezsulap/SSO_MAX_CC/blob/move-stuff-draft/en-getting-started.md)
 ## How to edit
 Go to \<your-username\>.github.io/\<your-system-name\>/edit.html
 
