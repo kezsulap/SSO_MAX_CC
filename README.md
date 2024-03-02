@@ -1,6 +1,7 @@
 [Polish version]()
 
 [How to get started](https://github.com/kezsulap/SSO_MAX_CC/blob/move-stuff-draft/en-getting-started.md)
+
 [How to get edit](https://github.com/kezsulap/SSO_MAX_CC/blob/move-stuff-draft/en-editing.md)
 
 ## Having multiple systems 
