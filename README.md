@@ -1,8 +1,7 @@
-()[PL]
-()[DE]
-## How to get started
-[Check out](https://github.com/kezsulap/SSO_MAX_CC/blob/move-stuff-draft/en-getting-started.md)
-## How to edit
+[Polish version]()
+
+[How to get started](https://github.com/kezsulap/SSO_MAX_CC/blob/move-stuff-draft/en-getting-started.md)
+[How to get edit](https://github.com/kezsulap/SSO_MAX_CC/blob/move-stuff-draft/en-editing.md)
 
 ## Having multiple systems 
 Github won't allow you to fork the repository more than once on the same account, to have multiple systems go to https://github.com/\<your-username\>/\<your-system-name\>/tree/main type in the name of your new system and hit create branch,
