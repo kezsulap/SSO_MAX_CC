@@ -1,70 +1,77 @@
 &System amposki ®
-1c 12-16PC, 3-piki, 4-kiery, lub 17+PC
+1c 12-16PC, 3-♠, 4-♥, lub 17+PC
 	1D negat
-	1H 4+H, 8+PC
+	1H 4+♥, 8+PC
 		1S 17+PC, GF, skład dowolny
 			1NT automat
-				2C 5+ trefli
-				2D 5+ kar
-				2H 3+ kiery
-				2S 5+ pików
+				2C 5+♣
+				2D 5+♦
+				2H 3+♥
+				2S 5+♠
 				2NT reszta
-		1NT 12-14PC, bez czterech kierów, bez sześciokartu, bez 55
-		2C 12-14PC, 6+trefli
-		2D 12-14PC, 6+ kar
-		2H 12-14PC, 4 kiery
-		2S 12-14PC, 55 na młodych
-		2NT 15-16PC, bez czterech kierów, bez sześciokartu, bez 55
-		3C 15-16PC, 6+ trefli
-		3D 15-16PC, 6+ kar
-		3H 15-16PC, 4 kiery
-		3S 15-16PC, F1, 55 na młodych
+		1NT 12-14PC, bez 4♥, bez sześciokartu, bez 55
+		2C 12-14PC, 6+♣
+		2D 12-14PC, 6+♦
+		2H 12-14PC, 4♥
+		2S 12-14PC, 55♣♦
+		2NT 15-16PC, bez 4♥, bez sześciokartu, bez 55
+		3C 15-16PC, 6+♣
+		3D 15-16PC, 6+♦
+		3H 15-16PC, 4♥
+		3S 15-16PC, F1, 55♣♦
 	1S 8-10(11)PC w równym lub 9-11(12)PC na kolorze (5)6+
 		1NT nic ciekawego
-		2C 12-14PC, (5)6+ trefli
-		2D 12-14PC, (5)6+ kar
-		2H 17+PC, 5+ kierów
-		2S 17+PC, 4- kiery
+		2C 12-14PC, (5)6+♣
+		2D 12-14PC, (5)6+♦
+		2H 17+PC, 5+♥
+		2S 17+PC, 4-♥
 			2NT 8-10(11)PC w równym
-				@dalsze 3!h z dowolnej ręki to 4 piki
+				@dalsze 3!h z dowolnej ręki to 4♠
 			3C kolor
 			3D kolor
 			3H kolor
 			3S kolor
 		2NT 15-16PC, nat
-		3C 15-16PC, 6+ trefli
-		3D  15-16PC, 6+ kar
-	1NT trefle, 4-8 PC lub GF
-	2C kara, 4-8 PC lub GF
-	2D GF, 5+ pików
-	2H 4-8 PC, (5)6+ kierów
-	2S 4-8 PC, (5)6+ pików
+		3C 15-16PC, 6+♣
+		3D  15-16PC, 6+♦
+	1NT ♣, 4-8 PC lub GF
+	2C ♦, 4-8 PC lub GF
+	2D GF, 5+♠
+	2H 4-8 PC, (5)6+♥
+	2S 4-8 PC, (5)6+♠
 	2NT 11-12PC, nat
-1d 4piki, 8-16 PC
+1d 4♠, 8-16 PC
 	1H pytanie, 11+
 		1S 8-10PC
-			{1NT/2C/2D/2H} NF
-			2S inwit,
-			2NT jakiś GF,
-				3C jakaś piątka młodsza
+			1NT NF
+			2C NF
+			2D NF
+			2H NF
+			2S inwit
+			2NT jakiś GF
+				3C 5♣/♦
 					3D pytanie
 						3H trefle
-							3S pytanie o 3 kiery
+							3S pytanie o 3 ♥
 								3NT nie mam
-						3S kara bez trzech kierów
-						3NT kara z trzema kierami
-				3D 3-4 kiery
-					3H 4+ kiery, brak czterech pików
-						3NT mam tylko 3 kiery
-						{reszta} 4 kiery, cue bid
+						3S kara bez 3♥
+						3NT kara z 3♥
+				3D 3-4♥
+					3H 4+ ♥, brak 4♠
+						3NT mam tylko 3♥
+						{reszta} 4♥, cue bid
 				3H reszta
-			{3C/D/H/S/NT} GF nat
-		1NT 11-16 PC, pięć trefli
-		2C 11-16 PC, pięć kar
-		2D 11-16 PC, cztery kiery
-		2H 11-13 PC, trzy kiery
-		2S 11-13 PC, bez trzech kierów
-		2NT 14-16 PC, bez piątki młodszej i czterech kierów
+			3C GF nat
+			3D GF nat
+			3H GF nat
+			3S GF nat
+			3N GF nat
+		1NT 11-16 PC, 5♣
+		2C 11-16 PC, 5♦
+		2D 11-16 PC, 4♥
+		2H 11-13 PC, 3♥
+		2S 11-13 PC, bez 3♥
+		2NT 14-16 PC, bez 5♣/♦ i 4♥
 
 		@Nie forsują odpowiedzi na poziomie 2, forsują te na poziomie 3.
 
@@ -72,15 +79,15 @@
 	1NT NF, 10-PC
 		2C sześciokart, NF
 		2D sześciokart, NF
-		2H 4 kiery, 15-16PC
-		2S 3 kiery, 15-16PC
-		2NT najwyżej 2 kiery, 15-16PC
+		2H 4♥, 15-16PC
+		2S 3♥, 15-16PC
+		2NT najwyżej 2♥, 15-16PC
 		3C sześciokart, 15-16PC
 		3D sześciokart, 15-16PC
 	2C NF
 	2D NF
 	2H NF
-	2S NF, 4+piki, 10-PC
+	2S NF, 4+♠, 10-PC
 		@ruszamy z wartości w 14-16PC
 	2NT 14-15PC, nat
 	3C blok
@@ -89,56 +96,56 @@
 	3S blok
 	3NT do gry
 
-1H 5+H, 8-16PC
+1H 5+♥, 8-16PC
 	1S  nat, NF
 	1NT (9)10-13(14)PC
 		pas 8-10PC
-		2C 3+, 11-14PC
-		2D 3+, 11-14PC
-		2H 4 piki, 11-14PC
-		2S 6+ kierów, 14-16PC, F1
+		2C 3+♣, 11-14PC
+		2D 3+♦, 11-14PC
+		2H 4♠, 11-14PC
+		2S 6+♥, 14-16PC, F1
 		2NT 15-16PC, GF
 	2C 14+PC na semirównym lub z fitem lub (15)16+ na własnym
 		2D 8-10PC
 		2H 11+PC, nic do pokazania
-		2S 11+PC, 4 piki
-		2NT 14+PC, 6+ kierów
-		3C 11+PC, 5+ trefli
-		3D 11+PC, 5+ kar
+		2S 11+PC, 4♠
+		2NT 14+PC, 6+♥
+		3C 11+PC, 5+♣
+		3D 11+PC, 5+♦
 	2D 11-13PC, trzykartowy fit
 	2H 7-10 PC z fitem
-	2S 12-14(15) PC, 5+ pików
+	2S 12-14(15) PC, 5+♠
 	2NT 10-13PC, czterokartowy fit
-	3C 12-14(15)PC, 6+ trefli
-	3D 12-14(15)PC, 6+kar
+	3C 12-14(15)PC, 6+♣
+	3D 12-14(15)PC, 6+♦
 	3H blok
 	3S minisplinter
 
-1S 5+S, 8-16PC
+1S 5+♠, 8-16PC
 	1NT (9)10-13(14)PC
 		pas 8-10PC
-		2C 3+, 11-14PC
-		2D 3+, 11-14PC
-		2H 4+ kiery, 11-14PC
-		2S 6+pików, 11-14PC, NF
+		2C 3+♣, 11-14PC
+		2D 3+♦, 11-14PC
+		2H 4+♥, 11-14PC
+		2S 6+♠, 11-14PC, NF
 		2NT 15-16PC, GF
 	2C 14+PC na semirównym lub z fitem lub (15)16+ na własnym
 		2D 8-10PC
-		2H 11+, 4 kiery
+		2H 11+, 4♥
 		2S 11+, nic do pokazania
-		2NT 11+, 6+ pików
-		3C 11+, 5+ trefli
-		3D 11+, 5+ kar
+		2NT 11+, 6+♠
+		3C 11+, 5+♣
+		3D 11+, 5+♦
 	2D 11-13PC, trzykartowy fit
-	2H 12-14(15) PC, 5+ kierów
+	2H 12-14(15) PC, 5+♥
 	2S 7-10 PC z fitem
 	2NT 10-13PC, czterokartowy fit
-	3C 12-14(15)PC, 6+ trefli
-	3D 12-14(15)PC, 6+kar
+	3C 12-14(15)PC, 6+♣
+	3D 12-14(15)PC, 6+♦
 	3H splinter
 	3S blok
 
-1NT 4 kiery bez 4 pików, 8-11PC
+1NT 4♥ bez 4♠, 8-11PC
 	2C do gry
 	2D do gry
 	2H do gry
@@ -147,13 +154,13 @@
 		3C młodsza piątka
 			3D pytanie
 				3H trefle
-				3S  kara i maks 2 piki
-				3NT kara i 3 piki
+				3S  kara i maks 2♠
+				3NT kara i 3♠
 			3H uzgodnienie kierów
-			3S 5+pików
+			3S 5+♠
 		3D skład równy
 			3H uzgodnienie kierów
-			3S 5+pików
+			3S 5+♠
 				3NT dubel
 		3H 1444
 			3S jedyne silne uzgodnienie kierów
@@ -161,13 +168,13 @@
 		3C młodsza piątka
 			3D pytanie
 				3H trefle
-				3S  kara i maks 2 piki
-				3NT kara i 3 piki
+				3S  kara i maks 2♠
+				3NT kara i 3♠
 			3H uzgodnienie kierów
-			3S 5+pików
+			3S 5+♠
 		3D skład równy
 			3H uzgodnienie kierów
-			3S 5+pików
+			3S 5+♠
 				3NT dubel
 		3H 1444
 			3S jedyne silne uzgodnienie kierów
@@ -210,14 +217,14 @@
 	3H blok do koloru
 	3S blok z własnego
 	3NT do gry
-2H 6+kierów, 10-13PC
+2H 6+♥, 10-13PC
 	2S nat, NF
 	2NT nat, inwit
 	3C GF 
 		3D automat
 			3H nat
-			3S 6+ pików
-			3NT 5 pików, NF
+			3S 6+♠
+			3NT 5♠, NF
 			4C nat
 			4D nat
 	3D inwit z fitem
@@ -268,54 +275,54 @@
 	4S do gry
 @Otwarcia na 3 ręku
 	1C WJ
-		1H 5 kierów, 0-7PC
-		1S 5 pików, 0-7PC
+		1H 5♥, 0-7PC
+		1S 5♠, 0-7PC
 	1D 8-17PC, nat
-		1H 5 kierów, 0-7PC
-		1S 5 pików, 0-7PC
+		1H 5♥, 0-7PC
+		1S 5♠, 0-7PC
 	1H 8-17PC, nat
-		1S 5 pików, 0-7PC
+		1S 5♠, 0-7PC
 	1S 8-17PC, nat
 	1NT 14-16PC, nat
-	2C 5+ trefli, 13-PC
-	2D 5+ kar, 13-PC
-	2H 5+ kierów, 13-PC
-	2S 5+ pików, 13-PC
+	2C 5+♣, 13-PC
+	2D 5+♦, 13-PC
+	2H 5+♥, 13-PC
+	2S 5+♠, 13-PC
 	2NT 20-21PC, nat
 @Otwarcia na 4 ręku
 	1C WJ
-		1H 5 kierów, 0-7PC
-		1S 5 pików, 0-7PC
+		1H 5♥, 0-7PC
+		1S 5♠, 0-7PC
 	1D 12-17PC, nat
-		1H 5 kierów, 0-7PC
-		1S 5 pików, 0-7PC
+		1H 5♥, 0-7PC
+		1S 5♠, 0-7PC
 	1H 12-17PC, nat
-		1S 5 pików, 0-7PC
+		1S 5♠, 0-7PC
 	1S 12-17PC, nat
 	1NT 14-16PC, nat
-	2C 6+ trefli, 10-13PC
-	2D 6+ kar, 10-13PC
-	2H 6+ kierów, 10-13PC
-	2S 6+ pików, 10-13PC
+	2C 6+♣, 10-13PC
+	2D 6+♦, 10-13PC
+	2H 6+♥, 10-13PC
+	2S 6+♠, 10-13PC
 	2NT 20-21PC, nat
 
 @Ustalenia różne:
-	@Kontra na 1C jest “wywoławcza” - punkty i fity w starych. Dalej bez negatu, 2C od partnera to kolor przeciwnika.
-	@2D na wejściu po 1C/1D to stare, 55+, mniej więcej 8+ przed partią, 10+ po partii.
-	@W pozycji okołolebensohlowej 2NT nigdy nie jest naturalne, a na młodych jest dokładnie wtedy, gdy nie ma sensu Lebensohl. Gramy autolebensohlem w sekwencjach typu 1C - (1M) - 1NT - (2M).
-	@1D - (1H) - x to w pierwszym czytaniu młode. W dalszej licytacji odzywka w piki od otwierającego to generalnie silna karta bez wygodnej zapowiedzi. 1D - (1H) - x - (2H) - 3m to kolor 5+ i jakieś 11+PC (NF), inaczej x (albo 2S z bardzo silną kartą).
+	@Kontra na 1♣ jest “wywoławcza” - punkty i fity w starych. Dalej bez negatu, 2♣ od partnera to kolor przeciwnika.
+	@2♦ na wejściu po 1♣/♦ to stare, 55+, mniej więcej 8+ przed partią, 10+ po partii.
+	@W pozycji okołolebensohlowej 2NT nigdy nie jest naturalne, a na młodych jest dokładnie wtedy, gdy nie ma sensu Lebensohl. Gramy autolebensohlem w sekwencjach typu 1♣ - (1♥/♠) - 1NT - (2♥/♠).
+	@1♦ - (1♥) - x to w pierwszym czytaniu młode. W dalszej licytacji odzywka w piki od otwierającego to generalnie silna karta bez wygodnej zapowiedzi. 1♦ - (1♥) - x - (2♥) - 3♣/♦ to kolor 5+ i jakieś 11+PC (NF), inaczej x (albo 2♠ z bardzo silną kartą).
 	@Po kontrze przeciwnika:
-		@po 1D rekontra SOS, reszta system on
-		@po 1M rekontra siłowa, transfery, podniesienie koloru otwarcia 10-12, 2NT - 13-14
-		@po 1NT rekontra karna, 2S - piki, 2NT - młode, pas nie forsuje
-		@po 2C pas propozycyjny, 2D nat NF, rekontra do koloru
-		@po 2D pas propozycyjny, rekontra silniejsza do koloru, 2M słabsze do koloru
-		@po 2H rekontra siłowa, 2NT leb (chcę zagrać 3 w swój młody), 3C z fitem (GF)
-		@po 2S rekontra siłowa, system on
+		@po 1♦ rekontra SOS, reszta system on
+		@po 1♥/♠ rekontra siłowa, transfery, podniesienie koloru otwarcia 10-12, 2NT - 13-14
+		@po 1NT rekontra karna, 2♠ - piki, 2NT - młode, pas nie forsuje
+		@po 2♣ pas propozycyjny, 2♦ nat NF, rekontra do koloru
+		@po 2♦ pas propozycyjny, rekontra silniejsza do koloru, 2♥/♠ słabsze do koloru
+		@po 2♥ rekontra siłowa, 2NT leb (chcę zagrać 3 w swój młody), 3♣ z fitem (GF)
+		@po 2♠ rekontra siłowa, system on
 		@po 2NT rekontra siłowa, pas do koloru, reszta system on
 	@Leaping i nonleaping micheals.
-	@Po 1NT (8-11) i wejściu kontry karne, 1NT - (2H) - 2S - młode 54+, 2NT - nat, 1NT - (2S) - 2NT młode.
-	@Po wejściu kolorem starszym na poziomie 1 nowy kolor bez przeskoku nie forsuje, 2C drury, po otwarciu 1C nie obiecuje fitu.
+	@Po 1NT (8-11) i wejściu kontry karne, 1NT - (2♥) - 2♠ - młode 54+, 2NT - nat, 1NT - (2♠) - 2NT młode.
+	@Po wejściu kolorem starszym na poziomie 1 nowy kolor bez przeskoku nie forsuje, 2♣ drury, po otwarciu 1♣ nie obiecuje fitu.
 
 
 
