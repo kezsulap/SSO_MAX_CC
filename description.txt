@@ -194,9 +194,9 @@
 		3H nieprzyjęcie z pikami
 		3S przyjęcie z 45xx
 		3NT przyjęcie z 54xx
-	4C przyjęcie z 55xx
-	4D przyjęcie z 46xx
-	4H przyjęcie z 64xx 
+		4C przyjęcie z 55xx
+		4D przyjęcie z 46xx
+		4H przyjęcie z 64xx 
 	3D blok z fitami
 	3H blok
 	3S blok
