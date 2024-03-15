@@ -19,4 +19,4 @@ Go to \<your-username\>.github.io/\<your-system-name\> and your system should be
 
 Your site should contain current version of SSO_MAX system, to put your system there check out [How to edit](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/en-how-to-edit.md)
 
-If something goes wrong, github won't allow you to have multiple copies (forks) at the same time, if you wanna try again first go to Settings, scroll down to Danger Zone and hit "Delete this repository"
+If something goes wrong, github won't allow you to have multiple copies (forks) at the same time, if you wanna try again from scratch first go to Settings, scroll down to Danger Zone and hit "Delete this repository"
