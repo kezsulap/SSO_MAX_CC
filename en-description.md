@@ -59,7 +59,7 @@ pass start each line with the description of the call and then put it's meaning
 		x Stayman
 	
 ```
-This will result in [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-example1.txt)
+This will result in [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=move-stuff-draft:README-files/en-example1.txt)
 ### Defining a sequence
 If a sequence occurs multiple times can be defined once and pasted into multiple places in the file
 ```
@@ -97,7 +97,7 @@ This would expand to
 	2h 5+♠
 	2n 8-9, no 4M
 ```
-and be processed accordingly to [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-example2.txt)
+and be processed accordingly to [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=move-stuff-draft:README-files/en-example2.txt)
 ```
 function after_transfer_to_h()
 	1h exactly 3!h
@@ -251,7 +251,7 @@ And then to
 			2d 12-14 6+♦
 
 ```
-Eventually resulting in [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example3.txt)
+Eventually resulting in [this output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=move-stuff-draft:README-files/en-example3.txt)
 ### Arithmetic operators in functions
 Functions support addition and subtractions of variables on numbers and calculating bid x steps above/below some bid
 ```
@@ -267,7 +267,7 @@ end
 @Red vs White
 :open_1s(12)
 ```
-[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example4.txt)
+[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=move-stuff-draft:README-files/en-example4.txt)
 ```
 function kings(start_bid)
 	?$(start_bid) no kings
@@ -297,7 +297,7 @@ end
 				#that's a workaround to make show only responses with 1+ kings
 				:kings(5h)
 ```
-[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example5.txt)
+[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=move-stuff-draft:README-files/en-example5.txt)
 ```
 function test_function(bid)
 	#? to skip the bid if it's below 1♣, without it this file would give an error
@@ -309,5 +309,5 @@ function test_function(bid)
 end
 :test_function(2♣)
 ```
-[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=code:README-files/en-function-example6.txt)
+[Output](https://kezsulap.github.io/SSO_MAX_CC/index.html?v=move-stuff-draft:README-files/en-function-example6.txt)
 
