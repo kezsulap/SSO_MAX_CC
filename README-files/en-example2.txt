@@ -1,11 +1,16 @@
-function 1nt_open(strength)
-	1nt $(strength) balanced
+#define a part of system occurring in multiple spaces
+#with naming any parts which are different
+function 1nt_open(strength, inv_strength)
+	#$(variable_name) will be replaced by parameter given below
+	1nt $(strength) balanced 
 		2c Stayman
 			2d no 4M
 		2d 5+♥
 		2h 5+♠
+		2n $(inv_strength), no 4M
 end
 1c 12-14 balanced/15+ 5+♣/18+ any
-	1d
-		:1nt_open(18-21)
-:1nt_open(15-17)
+	1d 0-6 any
+		#Replace all $(strength) with 18-21 and all $(inv_strength) with 4-5
+		:1nt_open(18-21, 4-5)
+:1nt_open(15-17, 8-9)

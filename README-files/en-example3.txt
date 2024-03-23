@@ -2,6 +2,14 @@ function after_transfer_to_h()
 	1h exactly 3!h
 	1s 4!s, no 3!h
 	1n etc.
+	#? means the bid will be added only if it's valid and not repeated,
+	#otherwise it'll be omitted with no error
+	?(dbl) takeout
+		rdbl strong
+	#!? means the bid will be added only if it's valid even if repeated
+	#otherwise it'll be omitted with no error
+	!?(dbl) diamonds 
+		rdbl 3+♦
 end
 function after_transfer_to_s()
 	1s exactly 3!s
@@ -18,9 +26,9 @@ function after_transfer_to_nt_after_1d()
 	2d 12-14 6+♦
 end
 function 1_level_transfers(double_transfers_to, which_bidding_after_transfer_to_NT)
-	#question mark means the bid will be added only if it's valid, otherwise it'll be omitted with no error
 	?dbl 4+!$(double_transfers_to) 
-		#variable substitution does basic text substitution before processing the whole line, so all sorts of trickery like this will work
+		#variable substitution does basic text substitution before processing
+		#the whole line, so all sorts of trickery like this will work
 		:after_transfer_to_$(double_transfers_to)() 
 	?1d 4+♥ 
 		:after_transfer_to_h()
@@ -33,7 +41,8 @@ end
 	(dbl)
 		pass 0-6PC, any shape
 		rdbl 12+, 3+♣
-		:1_level_transfers(-, after_transfer_to_nt_after_1c) #double will be considered invalid anyway, $(double_transfers_to) can be set to anything
+		#double will be considered invalid anyway, $(double_transfers_to) can be set to anything
+		:1_level_transfers(-, after_transfer_to_nt_after_1c)
 	(1d)
 		:1_level_transfers(h, after_transfer_to_nt_after_1c)
 	(1h)

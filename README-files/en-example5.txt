@@ -22,4 +22,6 @@ end
 		(dbl)
 			pass ask for Ks
 				xx no kings
-				:kings(5h) #response 5h will be omitted as it's insufficient, that's a workaround to make show only responses with 1 or more kings
+				#response 5h will be omitted as it's insufficient
+				#that's a workaround to make show only responses with 1+ kings
+				:kings(5h)

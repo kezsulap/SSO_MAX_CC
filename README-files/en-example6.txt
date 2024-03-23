@@ -1,0 +1,8 @@
+function test_function(bid)
+	?$(bid - 6) 6 steps below $(bid) #? to skip the bid if it's below 1♣, without it this file would give an error
+	?$(bid - 5) 5 steps below $(bid)
+
+	?$(bid + 29) 29 steps above $(bid)
+	?$(bid + 30) 30 steps above $(bid) #? to skip the bid if it's above 7NT
+end
+:test_function(2♣)
