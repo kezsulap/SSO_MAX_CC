@@ -2,7 +2,7 @@ Fork this repository
 ![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/3.png)
 and set the name of your system as the repository name, check the
 `Copy the code branch only` box and hit "Create Fork"
-![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/4.png)
+![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/16.png)
 
 Create main branch and copy all the commits from my repo (discarding all the commits you had in code branch)
 ![](https://raw.githubusercontent.com/kezsulap/SSO_MAX_CC/move-stuff-draft/README-files/17.png)
