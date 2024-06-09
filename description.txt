@@ -107,6 +107,14 @@
 		2NT 15-16PC, GF
 	2C 14+PC na semirównym lub z fitem lub (15)16+ na własnym
 		2D 8-10PC
+			2H  do gry
+			2S  sztuczny inwit lub GF na 5 pikach
+				2NT  dół
+				3C  góra, 4 trefle
+				3D  góra, 4 kara
+				3H  góra, 3 piki
+				3S  góra, 2 piki
+			2NT do gry
 		2H 11+PC, nic do pokazania
 		2S 11+PC, 4♠
 		2NT 14+PC, 6+♥
@@ -131,6 +139,17 @@
 		2NT 15-16PC, GF
 	2C 14+PC na semirównym lub z fitem lub (15)16+ na własnym
 		2D 8-10PC
+			2H  sztuczny inwit lub GF na 5 kierach
+				2S  dół
+				2NT  wolne
+				3C  góra, 4 trefle
+				3D  góra, 4 kara
+				3H  góra, 3 kiery
+				3S  góra, 2 kiery
+			2S  do gry
+			2NT  do gry
+
+
 		2H 11+, 4♥
 		2S 11+, nic do pokazania
 		2NT 11+, 6+♠
