@@ -40,13 +40,15 @@ function negative1d(r1, r2, r3, r4)
 							4♥ NF
 						3s 5♠
 					3d 4♥
-						3h ask for 4♠
-							3s no 4♠
-							3n 4♠
-						3s ask for 3♠
-							3n no 3♠
-							{4♣/4♦/4♥} 3♠, cue-bid
-							4♠ NF
+						3h 4-5♠
+							3s 0-2♠
+							3n 3♠
+							{4♣/♦/♥} 4+♠, cue-bid
+							4s 4+♠, no cue-bids
+						3s 6+♠
+							3n 0-1♠
+							{4♣/4♦/4♥} 2+♠, cue-bid
+							4♠ 2+♠, no cue-bids
 						3n sign-off
 						{4♣/♦/♥} agreeing ♥
 					3h 5+♠
@@ -1731,6 +1733,8 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 									3c 6♣
 										3d relay
 											3h 4♦
+												3s relay
+													3n 
 											3s 4♥
 											3n 4♠
 									3d 6♦, 4♣
