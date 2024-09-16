@@ -1779,7 +1779,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 							3s 5512
 					2s (5332) with 5♣/♦
 						2n relay
-							3c (322)5
+							3c (332)5
 								3d relay
 									3h 2335
 									3s 3235
