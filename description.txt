@@ -1673,8 +1673,8 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 									3h 6♠
 							3c 44(41)
 								3d relay
-									3h 4441
-									3s 4414
+									3h 4414
+									3s 4441
 							3d 1534
 							3h 1543
 							3s 1444 
