@@ -340,6 +340,81 @@ function open1h(open_strength, relay_strength, 5s_responses)
 					4d maximum
 			3n 7♥ with a ♣ void, maximum
 			4c 7♥ with a ♣ void, minimum
+			(2c)
+				x short ♥, 3♠
+				p short ♥, 4♠
+					x penalty
+				2d natural, NF
+				2h natural, NF
+				2s natural, NF
+				2n 5♠ 5♦
+				3c 6+♦, no ♣ stopper, GF
+				3h 5♠, GF
+				3s 6+♥, GF
+				3n 6+♦, ♣ stopper, GF
+			(2d)
+				2h natural, NF
+				2s natural, NF
+				2n 5♠ 5♣
+				3c natural, NF
+				3d 6+♣, no ♦ stopper, GF
+				3h 5♠, GF
+				3s 6+♠, GF
+				3n 6+♣, ♦ stopper, GF
+			(2h)
+				x 6♥ or short ♥, 3♠
+				p short ♥, 4♠
+				2s 5♠, NF
+				2n 5♠, 5+♣/♦
+				3c natural, NF
+				3d natural, NF
+				3h 6+♣/♦, GF
+				3s 5♠, GF
+				3n 3055, GF
+			(2s)
+				x penalty
+				2n 6+♥, NF
+				3c natural, NF
+				3d natural, NF
+				3h 6+♥, GF
+				3s 6+♣/♦, GF
+				3n 3055, GF
+			(3c)
+				x GF (except 7♥, short ♥ =3♠)
+					3h interest in playing in ♠
+						3s 4♠
+						3n 6+♥
+						{4♣ and higher} 5♠
+					3s no interest in ♠, interest in ♥
+						3n short ♥
+						{4♣ and higher} 6+♥
+					3n no interest in majors
+				3d natural, NF
+				3h 6+♥, NF
+				3s 5♠, NF
+				3n short ♥, 3♠, GF
+				4h 7+♥, GF
+			(3d)
+				x GF (except 7♥, short ♥ =3♠)
+					3h interest in playing in ♠
+						3s 4♠
+						3n 6+♥
+						{4♣ and higher} 5♠
+					3s no interest in ♠, interest in ♥
+						3n short ♥
+						{4♣ and higher} 6+♥
+					3n no interest in majors
+				3h 6+♥, NF
+				3s 5♠, NF
+				3n short ♥, 3♠, GF
+				4h 7+♥, GF
+			(3h)
+				x 4♠, GF
+				3s 5♠, NF
+				3n 5♠, GF
+			(3s)
+				3n sign-off
+				x 6+♥, GF
 		2c natural, 3- ♠, NF
 			2d 6♦
 			2h 6♥
@@ -604,6 +679,80 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					4d maximum
 			3n 7♠ with a ♣ void, maximum
 			4c 7♠ with a ♣ void, minimum
+			(2c)
+				x short ♥, 3♠
+				p short ♥, 4♠
+				2d natural, NF
+				2h natural, NF
+				2s natural, NF
+				2n 5♥ 5♦
+				3c 6+♦ without ♣ stopper, GF
+				3h 5♠, GF
+				3s 6+♥, GF
+				3n 6+♦ with ♣ stopper, GF
+			(2d)
+				x short ♥, 3♠
+				p short ♥, 4♠
+				2h natural, NF
+				2s natural, NF
+				2n 5♥ 5♣
+				3c natural, NF
+				3d 6+♣ without ♦ stopper, GF
+				3h 5♠, GF
+				3s 6+♥, GF
+				3n 6+♣ with ♦ stopper, GF
+			(2h)
+				x penalty
+				2s 6♠, NF
+				2n 6♠, 4♣/♦
+				3c natural, NF
+				3d natural, NF
+				3h 6+♣/♦, GF
+				3s 6+♠, GF
+				3n 0355, GF
+			(2s)
+				x 6♠ or short ♠, 3♥
+				p short ♠, 4♥
+				2n 5♥, NF
+				3c natural, NF
+				3d natural, NF
+				3h 5♥, GF
+				3s 6+♣/♦, GF
+				3n 0355, GF
+			(3c)
+				x GF, (except 7♠, short ♠ =3♥)
+					3h interest in ♥
+						3s 4♥
+						3n 6♠
+						{4♣ and higher} 5♥
+					3s no interest in ♥, interest in ♠
+						3n short ♠
+						{4♣ and higher} 6♠
+				3d natural, NF
+				3h natural, NF
+				3s natural, NF
+				3n short ♠, 3♥, GF
+				4s 7♠, GF
+			(3d)
+				x GF, (except 7♠, short ♠ =3♥)
+					3h interest in ♥
+						3s 4♥
+						3n 6♠
+						{4♣ and higher} 5♥
+					3s no interest in ♥, interest in ♠
+						3n short ♠
+						{4♣ and higher} 6♠
+				3h natural, NF
+				3s natural, NF
+				3n short ♠, 3♥, GF
+				4s 7♠, GF
+			(3h)
+				x 6+♠, GF
+				3s 6+♠, NF
+				3n sign-off
+			(3s)
+				x 4♥, GF
+				3n 5♥, GF
 		2c natural, 3- ♥, NF
 			2d 6♦
 			2h 5♥, 5♦
