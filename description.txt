@@ -1556,17 +1556,17 @@ function 2cbalanced_relay()
 								4c minimum
 						3s 3424, maximum
 						3n 3424, minimum
-				3c 4+ ♦, maximum
+				3c 4 ♦ or 3433, maximum
 					3d relay
-						3h 2452
-						3s 2443
-						3n 3442
-				3d 4 ♦, minimum
+						3h 2443
+						3s 3442
+						3n 3433
+				3d 2452
 					3h relay
-						3s 2443
-						3n 3442
-				3h 2452, minimum
-				3s 3433, maximum
+						3s maximum
+						3n minimum
+				3h 2443, minimum
+				3s 3442, minimum
 				3n 3433, minimum
 		2h 4 ♠, no 4♥
 			2s relay
@@ -1582,60 +1582,62 @@ function 2cbalanced_relay()
 								4c minimum
 						3s 4324, maximum
 						3n 4324, minimum
-				3c 4+ ♦, maximum
+				3c 4 ♦ or 4333, maximum
 					3d relay
-						3h 4252
-						3s 4243
-						3n 4342
-				3d 4 ♦, minimum
+						3h 4243
+						3s 4342
+						3n 4333
+				3d 4252
 					3h relay
-						3s 4243
-						3n 4342
-				3h 4252, minimum
-				3s 4333, maximum
+						3s maximum
+						3n minimum
+				3h 4243, minimum
+				3s 4342, minimum
 				3n 4333, minimum
-		2s 5-card minor, no 4♥/♠, maximum
+		2s 5♣, no 4M
 			2n relay
-				3c (332)5
+				3c (332)5, max
 					3d relay
 						3h 2335
 						3s 3235
 						3n 3325
-				3d (32)53
+				3d 2245
 					3h relay
-						3s 2353
-						3n 3253
-				3h 3352
-				3s 2245
-				3n 2254
-		2n no 4-card major, no 5-card minor, maximum, or 22(54), minimum
+						3s max
+						3n min
+				3h 2335, min
+				3s 3235, min
+				3n 3325, min
+		2n 33)5(2
 			3c relay
-				3d 22(54), minimum
+				3d 2353
 					3h relay
-						3s 2245
-						3n 2254
-				3h 33(43), maximum
+						3s max
+						3n min
+				3h 3253
 					3s relay
-						3n 3334
-						4c 3343
-				3s 2344, maximum
-				3n 3244, maximum
-		3c (332)5, minimum
+						3n max
+						4c min
+				3s 3352, max
+				3n 3352, min
+		3c (32)44
 			3d relay
-				3h 2335
-				3s 3235
-				3n 3325
-		3d 33)5(2, minimum
+				3h 2344
+					3s relay
+						3n max
+						4c min
+				3s 3244, max
+				3n 3244, min
+		3d 2254
 			3h relay
-				3s 2353
-				3n 3253
-				4c 3352
-		3h 33(43), minimum
+				3s max
+				3n min
+		3h 3334
 			3s relay
-				3n 3334
-				4c 3343
-		3s 2344, minimum
-		3n 3244, minimum
+				3n max
+				4c min
+		3s 3343, max
+		3n 3343, min
 end
 function clubs_relay_with_2137()
 	2n (21)37
