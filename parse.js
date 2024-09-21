@@ -636,7 +636,7 @@ function display(node, HTML_title=true) {
 	dfs(node, -1);
 	add_theme_switch_node()
 	add_fold_everything_node()
-	$(function(){$('#bidding .bidding').balloon({position: "left"})})
+	$(function(){$('#bidding .bidding').balloon({position: "bottom"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	set_system_title(node.title, node.diff_title);
 	if (HTML_title) {
