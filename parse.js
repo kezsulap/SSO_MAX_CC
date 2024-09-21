@@ -590,12 +590,15 @@ function display(node, HTML_title=true) {
 	topmenu.innerHTML = ''
 	let no = 0;
 	let balloons = [];
+	let max_level = 0;
 	function dfs(node, depth) {
 		if (node.call !== undefined) { //Skip dummy initial node
 			let a = document.createElement('div');
 			a.classList.add('bidding');
 			a.setAttribute('level', depth);
 			a.classList.add('level' + String(depth).padStart(2, '0'));
+			if (depth > max_level)
+				max_level = depth;
 			let is_comment = node.call.type == COMMENT;
 			a.innerHTML = node.innerHTML 
 			if (depth) {
@@ -636,7 +639,8 @@ function display(node, HTML_title=true) {
 	dfs(node, -1);
 	add_theme_switch_node()
 	add_fold_everything_node()
-	$(function(){$('#bidding .bidding').balloon({position: "bottom"})})
+	for (let i = 0; i <= max_level; ++i)
+		$(function(){$('#bidding .bidding.level' + String(i).padStart(2, '0')).balloon({position: i <= 1 ? "bottom" : "left"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	set_system_title(node.title, node.diff_title);
 	if (HTML_title) {
