@@ -2204,7 +2204,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						3n ♦, GF
 				3d 5224, F1
 				3h 5242, F1
-				3s 5322, GF
+				3s 5233, GF
 				3n 53(32), GF
 			2n relay, GF
 				3c 53(41)
