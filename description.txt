@@ -813,29 +813,29 @@ end
 function open1n(open_strength, relay_strength)
 	1n $(open_strength) PC, (54)/55/(64) ♥♠ or 55/(64) ♣♦
 		2c relay, $(relay_strength) PC
-			2d 45xx minimum or (54)xx maximum or 46xx maximum
+			2d 45xx, minimum or (54)xx, maximum or 46xx, maximum
 				2h non forcing
 					p minimum
-					2s 54xx maximum
+					2s 54xx, maximum
 						2n relay
-							3c 5404 maximum
-							3d 5440 maximum
-							3h 5413 maximum
-							3s 5431 maximum
-							3n 5422 maximum
-					2n 46xx maximum
+							3c 5404
+							3d 5440
+							3h 5413
+							3s 5431
+							3n 5422
+					2n 46xx, maximum
 						3c relay
 							3d 4603
 							3h 4630
 							3s 4612
 							3n 4621
-					3c 4504 maximum
-					3d 4540 maximum
-					3h 4513 maximum
-					3s 4531 maximum
-					3n 4522 maximum
+					3c 4504, maximum
+					3d 4540, maximum
+					3h 4513, maximum
+					3s 4531, maximum
+					3n 4522, maximum
 				2s relay
-					2n (45)xx maximum (excluding 4531 and 4540)
+					2n (45)xx, maximum (excluding 4531 and 4540)
 						3c relay
 							3d 4504 or 4513 or 4522
 								3h relay
@@ -849,7 +849,7 @@ function open1n(open_strength, relay_strength)
 							3s 5431
 							3n 5422
 							4c 5440
-					3c 45xx minimum
+					3c 45xx, minimum
 						3d relay
 							3h 4513 or 4504
 								3s relay
@@ -858,29 +858,29 @@ function open1n(open_strength, relay_strength)
 							3s 4531
 							3n 4522
 							4c 4540
-					3d 46xx (excluding 4630)
+					3d 46xx, maximum (excluding 4630)
 						3h relay
 							3s 4612
 							3n 4621
 							4c 4603
-					3h 4630
-					3s 4540
-					3n 4531
-			2h 54xx minimum or 64xx maximum or 55xx maximum
+					3h 4630, maximum
+					3s 4540, maximum
+					3n 4531, maximum
+			2h 54xx, minimum or 64xx, maximum or 55xx, maximum
 				2s non forcing
 					p minimum
-					2n 64xx maximum
+					2n 64xx, maximum
 						3c relay
 							3d 6403
 							3h 6430
 							3s 6412
 							3n 6421
-					3c 5503
-					3d 5530
-					3h 5512
-					3s 5521
+					3c 5503, maximum
+					3d 5530, maximum
+					3h 5512, maximum
+					3s 5521, maximum
 				2n relay
-					3c 54xx
+					3c 54xx, minimum
 						3d relay
 							3h 5413 or 5404
 								3s relay
@@ -889,18 +889,18 @@ function open1n(open_strength, relay_strength)
 							3s 5431
 							3n 5422
 							4c 5440
-					3d 64xx (excluding 6430)
+					3d 64xx, maximum (excluding 6430)
 						3h relay
 							3s 6412
 							3n 6421
 							4c 6403
-					3h 55(21)
+					3h 55(21), maximum
 						3s relay
 							3n 5512
 							4c 5521
-					3s 5503
-					3n 5530
-					4c 6430
+					3s 5503, maximum
+					3n 5530, maximum
+					4c 6430, maximum
 			2s (64)xx or 55xx, minimum
 				2n relay
 					3c 55xx
@@ -980,7 +980,7 @@ function open1n(open_strength, relay_strength)
 				x penalty (usually 5+♥) or ♥ singleton
 				pass 5♠4♥
 				2♠ 6♠, NF
-				2n 1255 minimum, or 12(64) maximum
+				2n 1255, minimum, or 12(64), maximum
 					3c NF
 						3h 6+♣
 							3s asks for J+ in ♥
@@ -997,13 +997,13 @@ function open1n(open_strength, relay_strength)
 						3n 6+♦ with J+ in ♥
 				3c 1246, minimum
 				3d 1264, minimum
-				3h 1255 maximum, without J+ in ♥
+				3h 1255, maximum, without J+ in ♥
 				3s 6♠, GF
-				3n 1255 maximum with J+ in ♥
+				3n 1255, maximum with J+ in ♥
 			(2♠)
 				x penalty (usually 5+♠) or ♠ singleton
 				pass 5♥4♠
-				2n 2155 minimum, or 21(64) maximum
+				2n 2155, minimum, or 21(64), maximum
 					3c NF
 						3h 6+♣
 							3s asks for J+ in ♥
@@ -1021,8 +1021,8 @@ function open1n(open_strength, relay_strength)
 				3c 2146, minimum
 				3d 2164, minimum
 				3h 6♥
-				3s 2155 maximum, without J+ in ♠
-				3n 2155 maximum, with J+ in ♠
+				3s 2155, maximum, without J+ in ♠
+				3n 2155, maximum, with J+ in ♠
 			(3c)
 				pass 54♠♥ minimum or minors, but see 3♦
 				x 5♥4♠ GF or 6♥
@@ -1134,7 +1134,7 @@ end
 function open2c(open_strength, relay_strength)
 	2c $(open_strength) PC, 3-4 ♥, 3-4 ♠, minor shortness, 5+ cards in the other minor
 		2d relay, $(relay_strength) PC
-			2h 34xx full range or 44(50) maximum
+			2h 34xx full range or 44(50), maximum
 				2s relay, GF
 					2n 5+♣
 						3c relay
