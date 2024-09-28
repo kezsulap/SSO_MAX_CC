@@ -1556,7 +1556,7 @@ function open2s(open_strength, relay_strength, which_relay)
 		4s signoff
 		(dbl)
 			pass pass or correct
-				rdbl 3505, extras
+				rdbl 3550, extras
 				2n ♦+♥, extras without 3♠
 				3c ♣+♠ with much stronger ♣
 				3d ♦+♥
