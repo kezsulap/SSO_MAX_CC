@@ -157,7 +157,7 @@ class Bidding {
 		}
 		throw Error('Invalid call type ' + call.type);
 	}
-	to_table() {
+	to_table() { //TODO: refactor so the string returned from this function is automatically formated, rather than use format_str(to_table()) everywhere
 		let competitive = false;
 		for (let i = 1; i < this.bidding_sequence.length; i += 2) if (this.bidding_sequence[i] !== 0) competitive = true;
 		let ret = '';
@@ -581,13 +581,15 @@ function add_theme_switch_node() {
 function add_fold_everything_node() {
 	add_button('fold_everything_button', fold_everything, '↩')
 }
-function display(node, HTML_title=true) {
+function display(node, HTML_title=true, do_topmenu=true) {
 	$.balloon.defaults.classname = "my-balloon";
 	$.balloon.defaults.css = {}
 	init_theme()
 	let content = document.querySelector('#bidding')
 	let topmenu = document.querySelector('#topmenulist')
-	topmenu.innerHTML = ''
+	if (do_topmenu) {
+		topmenu.innerHTML = ''
+	}
 	let no = 0;
 	let balloons = [];
 	let max_level = 0;
@@ -613,7 +615,7 @@ function display(node, HTML_title=true) {
 			if (is_comment) {
 				a.classList.add('comment')
 			}
-			if (depth == 0 && !is_comment) {
+			if (depth == 0 && !is_comment && do_topmenu) {
 				a.setAttribute('id', 'open' + no);
 				let topmenu_node = document.createElement('li');
 				let link = document.createElement('a');
@@ -637,12 +639,16 @@ function display(node, HTML_title=true) {
 		}
 	}
 	dfs(node, -1);
-	add_theme_switch_node()
-	add_fold_everything_node()
+	if (do_topmenu) {
+		add_theme_switch_node()
+		add_fold_everything_node()
+	}
 	for (let i = 0; i <= max_level; ++i)
 		$(function(){$('#bidding .bidding.level' + String(i).padStart(2, '0')).balloon({position: i <= 1 ? "bottom" : "left"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
-	set_system_title(node.title, node.diff_title);
+	if (do_topmenu) {
+		set_system_title(node.title, node.diff_title);
+	}
 	if (HTML_title) {
 		set_HTML_title(node.HTML_title ?? node.title);
 	}

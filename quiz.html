@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://mimuw.edu.pl/~km371194/System.html -->
+<html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="stylesheet" href="./bridge-bidding-styl-v8.css">
+	<link rel="stylesheet" href="./quiz.css">
+	<script src="./jquery.min.js"></script>
+	<script src="./jquery-balloon.js"></script>
+	<script src="./jquery-bridge-bidding-3.js"></script>
+	<script src="./theme-min-2.js"></script>
+	<script src="./parse.js"></script>
+	<script src="./quiz.js"></script>
+	<!-- <script>hardcoded=undefined</script> -->
+	<script>hardcoded=undefined</script>
+</head>
+<body>
+<div id="content">
+<!-- początek strony -->
+<div id="errors"></div>
+<div id="control_panel">
+<div class="button" onclick=handle_show_answer() id="show_answer_button">👀</div>
+<div class="button" onclick=handle_score(0) id="wrong_answer_button" style="display:none">👎</div>
+<div class="button" onclick=handle_score(1) id="medium_answer_button" style="display:none">🟡</div>
+<div class="button" onclick=handle_score(2) id="correct_answer_button" style="display:none">👍</div>
+<div class="button" onclick=handle_next_question() id="next_question_button" style="display:none">⏭️</div>
+<div class="button" onclick=handle_theme_switch()>☀️</div>
+</div>
+<div id="question"></div>
+<div id="answer"></div>
+<div id="context" style="display:none">
+<div id="show_context_button" class="button" onclick=handle_toggle_context()>
+Show context:
+</div>
+<div id="bidding" style="display:none">
+</div><!-- koniec #bidding -->
+</div>
+
+<!-- koniec strony -->
+</div><!-- /content -->
+
+
+<div style="min-width: 20px; padding: 5px; border-radius: 6px; border: 1px solid rgb(119, 119, 119); box-shadow: rgb(85, 85, 85) 4px 4px 4px; color: rgb(102, 102, 102); background-color: rgb(239, 239, 239); z-index: 32767; text-align: left; visibility: visible; position: absolute; top: 171px; left: 65.9219px; display: none;">Open 1♦<div style="position: absolute; height: 0px; width: 0px; border-width: 7px 0px 7px 12px; border-style: solid; border-color: transparent transparent transparent rgb(119, 119, 119); border-image: initial; left: 79.0781px; top: 10.5px;"></div><div style="position: absolute; height: 0px; width: 0px; border-width: 6px 0px 6px 10px; border-style: solid; border-color: transparent transparent transparent rgb(239, 239, 239); border-image: initial; left: 79.0781px; top: 11.5px;"></div></div><div style="min-width: 20px; padding: 5px; border-radius: 6px; border: 1px solid rgb(119, 119, 119); box-shadow: rgb(85, 85, 85) 4px 4px 4px; color: rgb(102, 102, 102); background-color: rgb(239, 239, 239); z-index: 32767; text-align: left; visibility: visible; position: absolute; top: 204px; left: 376.75px; display: none;">Open 1♥<div style="position: absolute; height: 0px; width: 0px; border-width: 7px 0px 7px 12px; border-style: solid; border-color: transparent transparent transparent rgb(119, 119, 119); border-image: initial; left: 80.75px; top: 10.5px;"></div><div style="position: absolute; height: 0px; width: 0px; border-width: 6px 0px 6px 10px; border-style: solid; border-color: transparent transparent transparent rgb(239, 239, 239); border-image: initial; left: 80.75px; top: 11.5px;"></div></div><div style="min-width: 20px; padding: 5px; border-radius: 6px; border: 1px solid rgb(119, 119, 119); box-shadow: rgb(85, 85, 85) 4px 4px 4px; color: rgb(102, 102, 102); background-color: rgb(239, 239, 239); z-index: 32767; text-align: left; visibility: visible; position: absolute; top: 138px; left: 63px; display: none;">Open 1♣<div style="position: absolute; height: 0px; width: 0px; border-width: 7px 0px 7px 12px; border-style: solid; border-color: transparent transparent transparent rgb(119, 119, 119); border-image: initial; left: 82px; top: 10.5px;"></div><div style="position: absolute; height: 0px; width: 0px; border-width: 6px 0px 6px 10px; border-style: solid; border-color: transparent transparent transparent rgb(239, 239, 239); border-image: initial; left: 82px; top: 11.5px;"></div></div><div style="min-width: 20px; padding: 5px; border-radius: 6px; border: 1px solid rgb(119, 119, 119); box-shadow: rgb(85, 85, 85) 4px 4px 4px; color: rgb(102, 102, 102); background-color: rgb(239, 239, 239); z-index: 32767; text-align: left; visibility: visible; position: absolute; top: 533px; left: 64.25px; display: none;">Open 3♥<div style="position: absolute; height: 0px; width: 0px; border-width: 7px 0px 7px 12px; border-style: solid; border-color: transparent transparent transparent rgb(119, 119, 119); border-image: initial; left: 80.75px; top: 10.5px;"></div><div style="position: absolute; height: 0px; width: 0px; border-width: 6px 0px 6px 10px; border-style: solid; border-color: transparent transparent transparent rgb(239, 239, 239); border-image: initial; left: 80.75px; top: 11.5px;">
+</div>
+</div>
+</body>
+</html>
+

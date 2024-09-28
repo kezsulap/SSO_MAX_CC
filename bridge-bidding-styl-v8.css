@@ -13,9 +13,6 @@ page-break-inside: avoid;
 td {
 font-size: 1em;
 }
-div.bidding:last-child {
-margin-bottom: 2em;
-}
 
 title {font-size: 200%;}
 .level {
@@ -24,7 +21,7 @@ margin: .2em .2em .2em .2em;
 border-radius: 5px;
 font-size: 100%;
 }
-.level00 {
+.level00, .answer_meaning, #show_context_button {
 text-indent: -1.4em;
 padding-left: 1.9em;
 margin: .2em .2em .2em .2em;
@@ -178,28 +175,28 @@ call {
 .hand {
 	font-style: normal;
 }
-body.bright .bidding:hover {
+body.bright .bidding:hover, body.bright .answer_meaning:hover, body.bright #show_context_button:hover {
 	border-color: #b3ffb3;
 }
 body.bright .topmenu li:hover {
 	border-color: #b3ffb3;
 	background-color: #b3ffb3;
 }
-body.bright .relay:hover {
+body.bright .relay:hover, body.bright #show_context_button:hover {
 	background-color: #b3ffb3;
 	cursor: n-resize;
 }
 body.bright .relay.rozwiniete:hover {
 	background-color: #80ff80;	
 }
-body.dark .bidding:hover {
+body.dark .bidding:hover, body.dark .answer_meaning:hover, body.dark #show_context_button:hover {
 	border-color: #00b000;
 }
 body.dark .topmenu li:hover {
 	border-color: #00b000;
 	background-color: #00b000;
 }
-body.dark .relay:hover {
+body.dark .relay:hover, body.dark #show_context_button:hover {
 	background-color:  #00b000;
 	cursor: n-resize;
 }
@@ -362,7 +359,7 @@ background-color: #ffff00; font-size: 90%;
 .suit-label {
 	font-style: normal;
 }
-.bidding {
+.bidding, .answer_meaning {
 	position: relative;
 }
 
@@ -375,13 +372,13 @@ background-color: #ffff00; font-size: 90%;
 }
 /****************************************************Bright theme****************************************************/
 
-body.bright div.bidding, body.bright .my-balloon {
+body.bright div.bidding, body.bright .my-balloon, body.bright .answer_meaning {
 	border: solid #ADD6FF 2px;
 }
 body.bright .my-balloon {
 	background-color: white;
 }
-body.bright .relay {
+body.bright .relay, body.bright #show_context_button {
 	background-color: #ADD6FF;
 }
 body.bright .OtherPage {
@@ -409,7 +406,7 @@ body.bright .bidding.diff.relay:hover, body.bright .bidding.subtreediff.relay:no
 body.bright .bidding.diff.relay.rozwiniete:hover {
 	background-color:#ff66b3 !important;
 }
-body.bright ul.topmenu li {
+body.bright ul.topmenu li, body.bright #control_panel .button {
 	border: solid #ADD6FF 2px;
 	background-color: #ADD6FF;
 }
@@ -481,13 +478,13 @@ body.dark, body.dark textarea {
 	background-color: #222222;
 	color: #dddddd;
 }
-body.dark div.bidding, body.dark .my-balloon {
+body.dark div.bidding, body.dark .my-balloon, body.dark .answer_meaning, body.dark #show_context_button {
 	border: solid #0056B3 2px;
 }
 body.dark .my-balloon {
 	background-color: #222222;
 }
-body.dark .relay {
+body.dark .relay, body.dark #show_context_button {
 	background-color: #0056B3;
 }
 body.dark .OtherPage {
@@ -515,7 +512,7 @@ body.dark .bidding.diff.relay:hover, body.dark .bidding.subtreediff.relay:not(.r
 body.dark .bidding.diff.relay.rozwiniete:hover {
 	background-color: #99004d !important;
 }
-body.dark ul.topmenu li {
+body.dark ul.topmenu li, body.dark #control_panel .button {
 	border: solid #0056B3 2px;
 	background-color: #0056B3;
 }
@@ -1001,4 +998,22 @@ body.women.dark {
 	background-size: 100%;
 	background-attachment: fixed;
 	background-position: left;
+}
+
+
+/******************** Quiz related stuff *********************/
+.answer_meaning .call, .answer_meaning .call_meaning {
+	display: inline;
+}
+.answer_meaning .call {
+	font-weight: bold;
+}
+#control_panel .button {
+	display: inline;
+	margin: 1px;
+	padding: 0;
+	border-radius: 5px;
+	min-width: 30px;
+	height: 1.25em;
+	text-align: center;
 }
