@@ -159,6 +159,9 @@ font-size: 55%;
 .mia {text-decoration: none; color: #003366;}
 .mia:hover {color: #cc0000;}
 .gruby {font-weight: bold;}
+.bidding, .button, .answer_meaning, #topmenu li {
+	cursor: pointer;
+}
 
 call {
 	font-weight: bold;
@@ -184,7 +187,6 @@ body.bright .topmenu li:hover {
 }
 body.bright .relay:hover, body.bright #show_context_button:hover {
 	background-color: #b3ffb3;
-	cursor: n-resize;
 }
 body.bright .relay.rozwiniete:hover {
 	background-color: #80ff80;	
@@ -198,7 +200,6 @@ body.dark .topmenu li:hover {
 }
 body.dark .relay:hover, body.dark #show_context_button:hover {
 	background-color:  #00b000;
-	cursor: n-resize;
 }
 body.dark .relay.rozwiniete:hover {
 	background-color:  #008000;
