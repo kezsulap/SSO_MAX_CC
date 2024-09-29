@@ -955,12 +955,51 @@ function open1n(open_strength, relay_strength)
 				xx penalty or 5♥4♠
 				pass 5♠4♥
 					xx penalty
+					2d relay, GF
+						2h short ♦
+							2s relay
+								2n 5404, maximum
+								3c 5404, minimum
+								3d 5413, maximum
+								3h 5413, minimum
+						2s 5440
+							2n relay
+								3c maximum
+								3d minimum
+						2n 5431, maximum
+						3c 5431, minimum
+						3d 5422, maximum
+						3h 5422, minimum
+					2h NF
+					2s NF
 				2♦ 6♦, too weak ♣ to redouble
 				2♥ 6♥, minimum
+					2s sign-off
+					2n relay, GF
+						3c 4603
+						3d 4630
+						3h 4612
+						3s 4621
 				2♠ 6♠, minimum
+					2n relay, GF
+						3c 6403
+						3d 6430
+						3h 6412
+						3s 6421
 				2n 55♣♦ too weak suit to redouble, minimum
 				3c 55♥♠, minimum
+					3d relay, GF
+						3h 5503
+						3s 5512
+						3n 5521
+						4c 5530
+					3h sign-off
+					3s sign-off
 				3d 55♥♠, maximum
+					3h relay, GF
+						3s short ♦
+						3n 5521
+						4c 5530
 				3♥ 6♠, maximum
 				3♠ 6♥, maximum
 				3n 6♦ or 55♣♦ too weak suit to redouble, maximum
@@ -969,10 +1008,32 @@ function open1n(open_strength, relay_strength)
 				pass 5♠4♥
 					x penalty
 				2♥ 6♥, minimum
+					2s sign-off
+					2n relay, GF
+						3c 4603
+						3d 4630
+						3h 4612
+						3s 4621
 				2♠ 6♠, minimum
+					2n relay, GF
+						3c 6403
+						3d 6430
+						3h 6412
+						3s 6421
 				2n 6♣, minimum
 				3c 55♥♠, minimum
+					3d relay, GF
+						3h 5503
+						3s 5512
+						3n 5521
+						4c 5530
+					3h sign-off
+					3s sign-off
 				3d 55♥♠, maximum
+					3h relay, GF
+						3s short ♦
+						3n 5521
+						4c 5530
 				3♥ 6♠, maximum
 				3♠ 6♥, maximum
 				3n 6♣, maximum
