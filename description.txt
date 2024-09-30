@@ -1324,12 +1324,12 @@ function old2d(open_strength, relay_strength)
 					3h 3514, maximum
 					3s 3514, minimum
 					3n 3541, minimum
-			3d 5 ♠, minimum
+			3d 5314
 				3h relay, GF
-					3s 5314
-					3n 5341
-			3h 5314, maximum
-			3s 5341, maximum
+					3s maximum
+					3n minimum
+			3h 5341, maximum
+			3s 5341, minimum
 			3n 3541, maximum
 		3c pass or correct, preemptive
 		3d with supports in majors, preemptive or invitational
