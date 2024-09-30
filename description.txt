@@ -1145,13 +1145,11 @@ function open2c(open_strength, relay_strength)
 							3h 4405, maximum
 							3s 3415, maximum
 							3n 3415, minimum
-					3c 3460
-						3d relay
-							3h maximum
-							3s minimum
-					3d 4450, maximum
-					3h 3451, maximum
-					3s 3451, minimum
+					3c 3460, maximum
+					3d 3460, minimum
+					3h 4450, maximum
+					3s 3451, maximum
+					3n 3451, minimum
 			2s 4♠, minimum
 				2n relay, GF
 					3c 5+♣
