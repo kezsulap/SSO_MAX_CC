@@ -1150,6 +1150,30 @@ function open2c(open_strength, relay_strength)
 					3h 4450, maximum
 					3s 3451, maximum
 					3n 3451, minimum
+				2n NF
+					3c 3406, minimum
+					3d 3460, minimum
+					3h 5+♣, maximum
+						3s 4♠
+							3n 3♠
+							4s 4♠
+					3s 5+♦, no 4♠, maximum
+					3n 4450, maximum
+				3c p/c
+					3d 5+♦, minimum
+					3h 5+♣, maximum
+						3s 4♠
+							3n 3♠
+							4s 4♠
+					3s 5+♦, no 4♠, maximum
+					3n 4450, maximum
+				3d p/c, GF if partner has clubs
+					3h 5+♣
+						3s 4♠
+							3n 3♠
+							4s 4♠
+					3s 5+♦, no 4♠, maximum
+					3n 4450, maximum
 			2s 4♠, minimum
 				2n relay, GF
 					3c 5+♣
