@@ -956,18 +956,18 @@ function open1n(open_strength, relay_strength)
 					2d relay, GF
 						2h short ♦
 							2s relay
-								2n 5404, maximum
-								3c 5404, minimum
-								3d 5413, maximum
-								3h 5413, minimum
-						2s 5440
+								2n 4504, maximum
+								3c 4504, minimum
+								3d 4513, maximum
+								3h 4513, minimum
+						2s 4540
 							2n relay
 								3c maximum
 								3d minimum
-						2n 5431, maximum
-						3c 5431, minimum
-						3d 5422, maximum
-						3h 5422, minimum
+						2n 4531, maximum
+						3c 4531, minimum
+						3d 4522, maximum
+						3h 4522, minimum
 						3s I had a penalty redouble with 6♣
 						3n I had a penalty redouble with 4-5♣
 					2h NF
@@ -1035,17 +1035,17 @@ function open1n(open_strength, relay_strength)
 										4c minimum
 								3s 4513, maximum
 								3n 4513, minimum
-						3d 5431
+						3d 4531
 							3h relay
 								3s maximum
 								3n minimum
-						3h 5422
+						3h 4522
 							3s relay
 								3n maximum
 								4c minimum
-						3s 5440, maximum
+						3s 4540, maximum
 						3n I had a penalty double
-						4c 5440, minimum
+						4c 4540, minimum
 				pass 5♠4♥
 					x penalty
 					2h NF
