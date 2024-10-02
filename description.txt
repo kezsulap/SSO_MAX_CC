@@ -953,6 +953,25 @@ function open1n(open_strength, relay_strength)
 			3n 2164, maximum
 			(x)
 				xx penalty or 5♥4♠
+					2d relay, GF
+						2h short ♦
+							2s relay
+								2n 5404, maximum
+								3c 5404, minimum
+								3d 5413, maximum
+								3h 5413, minimum
+						2s 5440
+							2n relay
+								3c maximum
+								3d minimum
+						2n 5431, maximum
+						3c 5431, minimum
+						3d 5422, maximum
+						3h 5422, minimum
+						3s I had a penalty redouble with 6♣
+						3n I had a penalty redouble with 4-5♣
+					2h NF
+					2s NF
 				pass 5♠4♥
 					xx penalty
 					2d relay, GF
@@ -1005,8 +1024,51 @@ function open1n(open_strength, relay_strength)
 				3n 6♦ or 55♣♦ too weak suit to redouble, maximum
 			(2♦)
 				x penalty or 5♥4♠
+					2h NF
+					2s NF
+					2n relay, GF
+						3c short ♦
+							3d relay
+								3h 4504
+									3s relay
+										3n maximum
+										4c minimum
+								3s 4513, maximum
+								3n 4513, minimum
+						3d 5431
+							3h relay
+								3s maximum
+								3n minimum
+						3h 5422
+							3s relay
+								3n maximum
+								4c minimum
+						3s 5440, maximum
+						3n I had a penalty double
+						4c 5440, minimum
 				pass 5♠4♥
 					x penalty
+					2h NF
+					2s NF
+					2n relay, GF
+						3c short ♦
+							3d relay
+								3h 4504
+									3s relay
+										3n maximum
+										4c minimum
+								3s 4513, maximum
+								3n 4513, minimum
+						3d 5431
+							3h relay
+								3s maximum
+								3n minimum
+						3h 5422
+							3s relay
+								3n maximum
+								4c minimum
+						3s 5440, maximum
+						3n 5440, minimum
 				2♥ 6♥, minimum
 					2s sign-off
 					2n relay, GF
