@@ -2285,14 +2285,18 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		2h 5♥
 		2s 5♠
 	2c 5+ ♣, NF
-		2d 6♦
+		2d 6+♦
 		2h 3541
 		2s 5341
+		2n 5♥ 4♣ (usually 3514)
+		3c 5♠ 4♣ (usually 5314)
 	2d 5+ ♦, NF
 		2h 3514
 		2s 5314
-		2n 2416
-		3c 4216
+		2n (42)16 or 7♣ or good hand with (4)5+♦
+			3c pass or correct
+		3c 5♥, 4♦ (usually 3541)
+		3d 5♠, 4♦ (usually 5341)
 	2h natural, preemptive or invitational
 		2s accepting invitation, ♠ values
 		2n accepting invitation, spread values
