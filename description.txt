@@ -1053,12 +1053,12 @@ function open1n(open_strength, relay_strength)
 					2n relay, GF
 						3c short ♦
 							3d relay
-								3h 4504
+								3h 5404
 									3s relay
 										3n maximum
 										4c minimum
-								3s 4513, maximum
-								3n 4513, minimum
+								3s 5413, maximum
+								3n 5413, minimum
 						3d 5431
 							3h relay
 								3s maximum
