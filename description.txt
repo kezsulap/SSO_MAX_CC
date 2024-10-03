@@ -968,8 +968,8 @@ function open1n(open_strength, relay_strength)
 						3c 4531, minimum
 						3d 4522, maximum
 						3h 4522, minimum
-						3s I had a penalty redouble with 6♣
-						3n I had a penalty redouble with 4-5♣
+						3s I had a penalty redouble with 6♦
+						3n I had a penalty redouble with 4-5♦
 					2h NF
 					2s NF
 				pass 5♠4♥
