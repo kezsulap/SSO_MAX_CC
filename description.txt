@@ -2230,6 +2230,15 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 						3s 4♠
 						3n none
 						4h both
+					3c 5+♣
+					3d 5♠
+						3h 4♥, no 3♠
+						3s no 4♥, no 3♠
+						4s 3+♠
+					3h 5♥
+						3s no 3♥, no 4♠
+						3n 4♠, no 3♥
+					3s 5+♦
 				2nt no 4-card major, no 54 distribution, maximum, good hand to bid NT
 				3c (42)25, maximum
 				3d (42)52, maximum
