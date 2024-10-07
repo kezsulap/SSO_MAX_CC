@@ -2425,23 +2425,25 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 				3h 5323
 				3s 5332
 	1h 4+ ♥, NF
-		1s 5♠
-		1n 22(54), extras
+		1s 5♠, or 4♠ 2♥, or 4♠3♥ extras
+		1n 2♥, 5♣/♦
+			2c pass or correct
+			2d own suit
 		2c 6♣
 		2d 6♦
-		2h 4+♥
-		3h 4+♥, extraordinary hand
+		2h 4+♥, maximum
 	1s 4+ ♠, NF
-		1n 22(54), extras
+		1n 2♠, 5♣/♦/♥
+			2c pass or correct
+			2d own suit
+			2h own suit
 		2c 6♣
 		2d 6♦
-		2h 5♥
-		2s 4+♠
-		3s 4+♠, extraordinary hand
+		2s 4+♠, maximum
 	1n natural, NF
 		pass no 5M, 6m
-		2c 6♣
-		2d 6♦
+		2c 6+♣
+		2d 6+♦
 		2h 5♥
 		2s 5♠
 	2c 5+ ♣, NF
