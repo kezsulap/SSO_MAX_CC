@@ -2415,6 +2415,10 @@ p 13+ PC, any distribution (but see 2♦ opening)
 		2c 6♣
 		2d 6♦
 		2h 4+♥, maximum
+		(dbl)
+			pass 3244
+			rdbl 3♥
+			{1♠ and higher} system on
 	1s 4+ ♠, NF
 		1n 2♠, 5♣/♦/♥
 			2c pass or correct
@@ -2423,6 +2427,9 @@ p 13+ PC, any distribution (but see 2♦ opening)
 		2c 6♣
 		2d 6♦
 		2s 4+♠, maximum
+		(dbl)
+			rdbl 3♠
+			{1NT and higher} system on
 	1n natural, NF
 		p no 5M, 6m
 		2c 6+♣
