@@ -33,6 +33,10 @@ def main():
 		print(index, file=output_file)
 	subprocess.run(['rm', '-rf', 'resources_main'])
 	os.mkdir('resources_main')
+	for dirname in subprocess.run(['git', 'show', 'code:resources/all_directories_list'], capture_output=True, text=True).stdout.split('\n'):
+		if not dirname:
+			continue
+		os.mkdir('resources_main/' + dirname)
 	for filename in subprocess.run(['git', 'show', 'code:resources/all_files_list'], capture_output=True, text=True).stdout.split('\n'):
 		if not filename:
 			continue
