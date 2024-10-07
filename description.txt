@@ -1949,6 +1949,19 @@ function 2nspades_relay()
 		3n 5242, minimum
 end
 
+function shortness_relay(suit1, suit2, bid)
+	$(bid) relay
+		$(bid + 1) short $(suit1)
+		$(bid + 2) short $(suit2)
+	?3s agreeing ♠, forcing
+	3n NF
+	4c agreeing ♣, forcing
+	4d agreeing ♦, forcing
+	4h NF
+	4s NF
+
+end
+
 pa 13+ PC, any distribution (but see 2♦ opening)
 	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
 		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
@@ -2061,32 +2074,43 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 									3c 6♣
 										3d relay
 											3h 4♦
-												3s relay
-													3n 
+												:shortness_relay(♥, ♠, 3s)
 											3s 4♥
 											3n 4♠
 									3d 6♦, 4♣
-										3h relay
-											3s short ♥
-											3n short ♠
+										:shortness_relay(♥, ♠, 3h)
 									3h 6♦, 4♥
+										3s relay
+											3n short ♣
+											4c short ♠
+										3n NF
+										4c agreeing ♣, forcing
+										4d agreeing ♦, forcing
+										4h NF
+										4s NF
 									3s 6♦, 4♠
 							2n 6♥
 								3c relay
 									3d 4♣
-										3h relay
-											3s short ♦
-											3n short ♠
+										:shortness_relay(♦, ♠, 3h)
 									3h 4♦
+										:shortness_relay(♣, ♠, 3s)
 									3s 4♠
 							3c 6♠, 4+♣/♦
 								3d relay
 									3h 4♣
+										:shortness_relay(♦, ♥, 3s)
 									3s 4♦
 							3d 6430 or 6421
 								3h relay
 									3s 6430
 									3n 6421
+								3s agreeing ♠, forcing
+								3n NF
+								4c agreeing ♣, forcing
+								4d agreeing ♦, forcing
+								4h NF
+								4s NF
 							3h 6403
 							3s 6412
 					2h 55
@@ -2094,14 +2118,14 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 							2n 5+♣
 								3c relay
 									3d 5+♦
-										3h relay
-											3s short ♥
-											3n short ♠
+										:shortness_relay(♥, ♠, 3h)
 									3h 5+♥
+										:shortness_relay(♦, ♠, 3s)
 									3s 5+♠
 							3c 5+♦, 5+♥/♠
 								3d relay
 									3h 5+♥
+										:shortness_relay(♣, ♠, 3s)
 									3s 5+♠
 							3d ♥+♠, short ♣
 								3h relay
