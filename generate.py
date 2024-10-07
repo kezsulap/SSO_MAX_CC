@@ -1,21 +1,30 @@
 import sys
 import subprocess
 import os
+def escape(c):
+	c = c.replace('\\', '\\\\');
+	c = c.replace('\r', '\\r');
+	c = c.replace('\n', '\\n');
+	c = c.replace('\'', '\\\'');
+	c = '\'' + c + '\''
+	return c
+
 def main():
 	script, *files = sys.argv
+	diff = False
+	if files and files[0] == '-d':
+		files = files[1:]
+		diff = True
 	if not files:
-		print(f'Usage: {script} file [files]', file=sys.stderr)
-		sys.exit(1)
+		files = ['description.txt']
 	content = []
-
 	for filename in files:
-		with open(filename, 'r') as f:
-			c = f.read();
-		c = c.replace('\\', '\\\\');
-		c = c.replace('\r', '\\r');
-		c = c.replace('\n', '\\n');
-		c = c.replace('\'', '\\\'');
-		content.append('\'' + c + '\'');
+		if type(filename) == str:
+			with open(filename, 'r') as f:
+				c = f.read();
+		content.append(escape(c))
+		if diff:
+			content.append(escape(subprocess.run(['git', 'show', 'HEAD:' + filename], capture_output=True, text=True).stdout))
 	output = '[' + ','.join(content) + ']'
 	
 	index = subprocess.run(['git', 'show', 'code:index.html'], capture_output=True, text=True).stdout.strip()
