@@ -1,10 +1,12 @@
 import sys
+import subprocess
 def main():
 	script, *files = sys.argv
 	if not files:
 		print(f'Usage: {script} file [files]', file=sys.stderr)
 		sys.exit(1)
-	content = [];
+	content = []
+
 	for filename in files:
 		with open(filename, 'r') as f:
 			c = f.read();
@@ -14,10 +16,11 @@ def main():
 		c = c.replace('\'', '\\\'');
 		content.append('\'' + c + '\'');
 	output = '[' + ','.join(content) + ']'
-	with open('index.html') as index:
-		c = index.read();
-		c = c.replace('hardcoded=undefined', 'hardcoded=' + output);
-		print(c)
 	
+	index = subprocess.run(['git', 'show', 'code:index.html'], capture_output=True, text=True).stdout.strip()
+	with open('output.html', 'w') as output_file:
+		index = index.replace('hardcoded=undefined', 'hardcoded=' + output);
+		print(index, file=output_file)
+
 if __name__ == '__main__':
 	main()
