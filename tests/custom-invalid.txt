@@ -1,0 +1,6 @@
+1c
+	(dbl)
+		rdbl
+			pass
+				({sth})
+					1d could be insufficient bid or bid after the auction ended, but definitely is invalid

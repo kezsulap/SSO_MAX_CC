@@ -1,0 +1,9 @@
+@comment 1
+	1h One of these comments will be displayed once
+		1s Even though both have subtle differences
+			1n Hello, hello
+@comment 2
+	1s The other should have 2 separate copies
+		1n Even though both have subtle differences
+			2c Hello, hello
+

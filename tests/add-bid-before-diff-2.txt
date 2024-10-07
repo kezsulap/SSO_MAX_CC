@@ -1,0 +1,7 @@
+&These bids should be in order
+1h 5+♥
+	1s 4+♠
+	1n no 4♠
+	2c GF
+	2d GF
+	2s transfer to NT

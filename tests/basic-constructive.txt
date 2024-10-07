@@ -1,0 +1,9 @@
+&Basic constructive bidding
+pass 13+
+	1c 6-10 balanced/11+ anything
+		1d 13-16 balanced/17+ anything
+			1h 11+ anything
+1c 8-12 balanced
+1d 0-7 anything
+1h short ♥/6+♥
+1s etc.

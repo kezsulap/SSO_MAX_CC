@@ -1,0 +1,5 @@
+@This comment is before 3♣  in V1 and before 3♦ in V2 should be duplicated
+3c preempt
+3d preempt
+3h preempt
+@And this one is before 3♥ in V1 and at the end in V2, also duplicated

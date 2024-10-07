@@ -1,0 +1,6 @@
+&These bids should be in order
+1h 5+♥
+	1n no 4♠
+	2c GF
+	2d GF
+	2h nat, NF

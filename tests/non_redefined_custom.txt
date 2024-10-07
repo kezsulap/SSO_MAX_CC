@@ -1,0 +1,4 @@
+1h
+	(1s) legitimate 1s
+	({1♠}) custom call pretending to be 1s
+	({1!s}) custom call with exclamation s

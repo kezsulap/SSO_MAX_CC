@@ -1,0 +1,28 @@
+1c
+	(dbl) dbl
+		RDbL RDbL
+	p p
+1d
+	(db) db
+		rdBl rdBl
+	PA PA
+1H
+	(x) x
+		rdb rdb
+	pa pa
+1♠
+	(ktr) ktr
+		rktr rktr
+	pA pa
+1Ba 1Ba
+	(kTr) kTr
+		re re
+	PaSs PaSs
+2bA 2bA
+	(kTR) kTR
+		xx xx
+	PAs PAs
+3n 3n
+4NT 4NT
+5nT 5nT
+
