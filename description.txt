@@ -1192,6 +1192,10 @@ function open1n(open_strength, relay_strength)
 			3s 6+ ♠, 4♥, extras
 			3n minors, extras
 			4c 65+ minors
+			(dbl)
+				pass 6♦
+				xx equal majors
+				{2♥ and higher} system on
 		2h pass or correct
 		2s pass or correct
 		2n preemptive with at least one 4-card major and at least one 4-card minor
