@@ -704,28 +704,28 @@ body.independence.bright {
 	background-attachment: fixed;
 	background-position: top;
 }
-.bright.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .bright.independence .topmenu li:nth-child(odd) {
+.bright.independence .topmenu li:nth-child(odd) {
 	border-color:white;
 }
-.bright.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .bright.independence .topmenu li:nth-child(odd) {
+.bright.independence .topmenu li:nth-child(odd) {
 	background-color:white;
 }
-.dark.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .dark.independence .topmenu li:nth-child(odd) {
+.dark.independence .topmenu li:nth-child(odd) {
 	border-color:#aaaaaa;
 }
-.dark.independence .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .dark.independence .topmenu li:nth-child(odd) {
+.dark.independence .topmenu li:nth-child(odd) {
 	background-color:#aaaaaa;
 }
-.bright.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])), .bright.independence .topmenu li:nth-child(even) {
+.bright.independence .topmenu li:nth-child(even) {
 	border-color:#ff9999;
 }
-.bright.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .bright.independence .topmenu li:nth-child(even) {
+.bright.independence .topmenu li:nth-child(even) {
 	background-color:#ff9999;
 }
-.dark.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])), .dark.independence .topmenu li:nth-child(even) {
+.dark.independence .topmenu li:nth-child(even) {
 	border-color:#990000;
 }
-.dark.independence .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .dark.independence .topmenu li:nth-child(even) {
+.dark.independence .topmenu li:nth-child(even) {
 	background-color:#990000;
 }
 /******************** Men *********************/
@@ -772,95 +772,77 @@ body.new-year.bright {
 }
 /******************** Rainbow *********************/
 
-.bright.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+1) {
+.bright.rainbow .topmenu li:nth-child(6n+1) {
 	border-color:#ff9999;
 }
-.bright.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+1) {
+.bright.rainbow .topmenu li:nth-child(6n+1) {
 	background-color:#ff9999;
 }
-.dark.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+1) {
+.dark.rainbow .topmenu li:nth-child(6n+1) {
 	border-color:#990000;
 }
-.dark.rainbow .bidding:nth-child(6n+1 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+1) {
+.dark.rainbow .topmenu li:nth-child(6n+1) {
 	background-color:#990000;
 }
-.bright.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+2) {
+.bright.rainbow .topmenu li:nth-child(6n+2) {
 	border-color:#ffdb99;;
 }
-.bright.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+2) {
+.bright.rainbow .topmenu li:nth-child(6n+2) {
 	background-color:#ffdb99;;
 }
-.dark.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+2) {
+.dark.rainbow .topmenu li:nth-child(6n+2) {
 	border-color:#996300;
 }
-.dark.rainbow .bidding:nth-child(6n+2 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+2) {
+.dark.rainbow .topmenu li:nth-child(6n+2) {
 	background-color:#996300;
 }
-.bright.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+3) {
+.bright.rainbow .topmenu li:nth-child(6n+3) {
 	border-color:#ffff99;
 }
-.bright.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+3) {
+.bright.rainbow .topmenu li:nth-child(6n+3) {
 	background-color:#ffff99;
 }
-.dark.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+3) {
+.dark.rainbow .topmenu li:nth-child(6n+3) {
 	border-color:#c8a900;
 }
-.dark.rainbow .bidding:nth-child(6n+3 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+3) {
+.dark.rainbow .topmenu li:nth-child(6n+3) {
 	background-color:#c8a900;
 }
-.bright.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+4) {
+.bright.rainbow .topmenu li:nth-child(6n+4) {
 	border-color:#99ff99;
 }
-.bright.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+4) {
+.bright.rainbow .topmenu li:nth-child(6n+4) {
 	background-color:#99ff99;
 }
-.dark.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+4) {
+.dark.rainbow .topmenu li:nth-child(6n+4) {
 	border-color:#009900;
 }
-.dark.rainbow .bidding:nth-child(6n+4 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+4) {
+.dark.rainbow .topmenu li:nth-child(6n+4) {
 	background-color:#009900;
 }
-.bright.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+5) {
+.bright.rainbow .topmenu li:nth-child(6n+5) {
 	border-color:#ADD6FF;
 }
-.bright.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+5) {
+.bright.rainbow .topmenu li:nth-child(6n+5) {
 	background-color:#ADD6FF;
 }
-.dark.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+5) {
+.dark.rainbow .topmenu li:nth-child(6n+5) {
 	border-color:blue;
 }
-.dark.rainbow .bidding:nth-child(6n+5 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+5) {
+.dark.rainbow .topmenu li:nth-child(6n+5) {
 	background-color:blue;
 }
-
-.bright.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])), .bright.rainbow .topmenu li:nth-child(6n+6) {
+.bright.rainbow .topmenu li:nth-child(6n+6) {
 	border-color:#ff99ff;
 }
-.bright.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])).relay, .bright.rainbow .topmenu li:nth-child(6n+6) {
+.bright.rainbow .topmenu li:nth-child(6n+6) {
 	background-color:#ff99ff;
 }
-.dark.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])), .dark.rainbow .topmenu li:nth-child(6n+6) {
+.dark.rainbow .topmenu li:nth-child(6n+6) {
 	border-color:#990099;
 }
-.dark.rainbow .bidding:nth-child(6n+6 of .bidding:not([style*="display: none"])).relay, .dark.rainbow .topmenu li:nth-child(6n+6) {
+.dark.rainbow .topmenu li:nth-child(6n+6) {
 	background-color:#990099;
-}
-
-body.rainbow.bright .bidding.diff, body.rainbow.bright .bidding.subtreediff:not(.rozwiniete) {
-	border-color:red !important;
-	background-color:silver !important;
-}
-body.rainbow.bright .bidding.diff.relay, body.rainbow.bright .bidding.subtreediff.relay:not(.rozwiniete) {
-	border-color:red !important;
-	background-color:gray !important;
-}
-body.rainbow.dark .bidding.diff, body.rainbow.dark .bidding.subtreediff:not(.rozwiniete) {
-	border-color:red !important;
-	background-color:#505050 !important;
-}
-body.rainbow.dark .bidding.diff.relay, body.rainbow.dark .bidding.subtreediff.relay:not(.rozwiniete) {
-	border-color:red !important;
-	background-color:gray !important;
 }
 /******************** Santa *********************/
 body.santa .heart-image:after {
@@ -908,28 +890,28 @@ body.ukraine.bright {
 	background-attachment: fixed;
 	background-position: top;
 }
-.bright.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .bright.ukraine .topmenu li:nth-child(odd) {
+.bright.ukraine .topmenu li:nth-child(odd) {
 	border-color:#ADD6FF;
 }
-.bright.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .bright.ukraine .topmenu li:nth-child(odd) {
+.bright.ukraine .topmenu li:nth-child(odd) {
 	background-color:#ADD6FF;
 }
-.dark.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])), .dark.ukraine .topmenu li:nth-child(odd) {
+.dark.ukraine .topmenu li:nth-child(odd) {
 	border-color:blue;
 }
-.dark.ukraine .bidding:nth-child(odd of .bidding:not([style*="display: none"])).relay, .dark.ukraine .topmenu li:nth-child(odd) {
+.dark.ukraine .topmenu li:nth-child(odd) {
 	background-color:blue;
 }
-.bright.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])), .bright.ukraine .topmenu li:nth-child(even) {
+.bright.ukraine .topmenu li:nth-child(even) {
 	border-color:yellow;
 }
-.bright.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .bright.ukraine .topmenu li:nth-child(even) {
+.bright.ukraine .topmenu li:nth-child(even) {
 	background-color:yellow;
 }
-.dark.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])), .dark.ukraine .topmenu li:nth-child(even) {
+.dark.ukraine .topmenu li:nth-child(even) {
 	border-color:#c8a900;
 }
-.dark.ukraine .bidding:nth-child(even of .bidding:not([style*="display: none"])).relay, .dark.ukraine .topmenu li:nth-child(even) {
+.dark.ukraine .topmenu li:nth-child(even) {
 	background-color:#c8a900;
 }
 /******************** Valentines *********************/
