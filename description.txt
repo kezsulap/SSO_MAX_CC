@@ -1476,10 +1476,17 @@ function old2d(open_strength, relay_strength)
 			3h 5314, maximum
 			3s 5314, minimum
 			3n 3541, maximum
-		3c pass or correct, preemptive
-		3d with supports in majors, preemptive or invitational
-		3h natural, preemptive or invitational
-		3s natural, preemptive or invitational
+		3c pass or correct
+		3d invitational with supports in majors
+		3h natural invitational
+		3s natural invitational
+		3n sign-off
+		4c bid your major with transfer
+			4d 5♥
+			4h 5♠
+		4d bid your major naturally
+			4h 5♥
+			4s 5♠
 		(x)
 			p bid major
 			xx penalty, own diamonds
