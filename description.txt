@@ -1,16 +1,16 @@
 &System MAX by Jakub Andruszkiewicz and Konrad Paluszek based on the concept by Lech Ohrysko
 function 1hSOS()
 	1h 4+ ♥ or 4 ♣, 4 ♠ or 5 ♣, 3 ♠
-		(DB)
-			pa
-				(PA)
+		(x)
+			p
+				(p)
 					1s 4 ♣, 4 ♠
-					re 5 ♣, 3 ♠
-		(PA)
-			pa
-				(DB)
+					xx 5 ♣, 3 ♠
+		(p)
+			p
+				(x)
 					1s 4 ♣, 4 ♠
-					re 5 ♣, 3 ♠
+					xx 5 ♣, 3 ♠
 end
 function negative1d(r1, r2, r3, r4)
 	1d $(r1) PC, any distribution
@@ -117,20 +117,20 @@ function negative1d(r1, r2, r3, r4)
 		3d natural, preemptive or invitational
 		3h natural, preemptive or invitational
 		3s natural, preemptive or invitational
-		(DB)
-			pa 3+ ♦
-				(pa)
+		(x)
+			p 3+ ♦
+				(p)
 					:1hSOS()
-			re SOS
+			xx SOS
 			:1hSOS()
 			1n system on
-		(PA)
-			pa
-				(DB)
-					pa 2+ ♦
-						(pa)
+		(p)
+			p
+				(x)
+					p 2+ ♦
+						(p)
 							:1hSOS()
-					re SOS
+					xx SOS
 					:1hSOS()
 					1n 55+ distribution
 end
@@ -446,8 +446,8 @@ function open1h(open_strength, relay_strength, 5s_responses)
 		4d natural with ♥ support, preemptive
 		4h signoff
 		4s signoff
-		(dbl)
-			rdbl one of us has ♥, let's double them
+		(x)
+			xx one of us has ♥, let's double them
 		(2c)
 			x pass with short ♥ and 3+♣
 				2d 6♦, 4♠
@@ -783,8 +783,8 @@ function open1s(open_strength, relay_strength, 5h_responses)
 		4d natural with ♠ support, preemptive
 		4h signoff
 		4s signoff
-		(dbl)
-			rdbl one of us has ♠, let's double them
+		(x)
+			xx one of us has ♠, let's double them
 		(2c)
 			x pass with short ♠ and 3+♣
 				2d 6♦, 4♥
@@ -972,7 +972,7 @@ function open1n(open_strength, relay_strength)
 						3n I had a penalty redouble with 4-5♦
 					2h NF
 					2s NF
-				pass 5♠4♥
+				p 5♠4♥
 					xx penalty
 					2d relay, GF
 						2h short ♦
@@ -1046,7 +1046,7 @@ function open1n(open_strength, relay_strength)
 						3s 4540, maximum
 						3n I had a penalty double
 						4c 4540, minimum
-				pass 5♠4♥
+				p 5♠4♥
 					x penalty
 					2h NF
 					2s NF
@@ -1101,7 +1101,7 @@ function open1n(open_strength, relay_strength)
 				3n 6♣, maximum
 			(2♥)
 				x penalty (usually 5+♥) or ♥ singleton
-				pass 5♠4♥
+				p 5♠4♥
 				2♠ 6♠, NF
 				2n 1255, minimum, or 12(64), maximum
 					3c NF
@@ -1125,7 +1125,7 @@ function open1n(open_strength, relay_strength)
 				3n 1255, maximum with J+ in ♥
 			(2♠)
 				x penalty (usually 5+♠) or ♠ singleton
-				pass 5♥4♠
+				p 5♥4♠
 				2n 2155, minimum, or 21(64), maximum
 					3c NF
 						3h 6+♣
@@ -1147,7 +1147,7 @@ function open1n(open_strength, relay_strength)
 				3s 2155, maximum, without J+ in ♠
 				3n 2155, maximum, with J+ in ♠
 			(3c)
-				pass 54♠♥ minimum or minors, but see 3♦
+				p 54♠♥ minimum or minors, but see 3♦
 				x 5♥4♠ GF or 6♥
 					3h NF
 						3♠ 6♥ GF
@@ -1161,7 +1161,7 @@ function open1n(open_strength, relay_strength)
 				3s 6♠, minimum
 				3n 5♠4♥ GF
 			(3d)
-				pass 54♠♥ minimum or minors
+				p 54♠♥ minimum or minors
 				x 5♥4♠ GF or 6♥
 					3h NF
 						3♠ 6♥ GF
@@ -1181,7 +1181,7 @@ function open1n(open_strength, relay_strength)
 				x (21)55, GF
 				3n (21)(46), GF
 		2d weak relay
-			pa 6 ♦
+			p 6 ♦
 			2h longer ♥/equal
 				2s invitational if partner has 5♠
 			2s longer ♠
@@ -1205,12 +1205,12 @@ function open1n(open_strength, relay_strength)
 		3d natural, preemptive or invitational
 		3h natural, preemptive or invitational
 		3s natural, preemptive or invitational
-		(dbl)
-			pass show longer suit
-				rdbl equal
+		(x)
+			p show longer suit
+				xx equal
 					2c pass or correct
 						2d majors
-			rdbl strong, let's double them
+			xx strong, let's double them
 			2c system on
 			2d own suit
 			{2!h and higher} system on
@@ -1339,7 +1339,7 @@ function open2c(open_strength, relay_strength)
 					{2♠/2NT/3♣} natural, NF
 					3d inv with 44+♥♠
 					3h natural, NF
-				pass 5+♦, too weak to redouble
+				p 5+♦, too weak to redouble
 					xx penalty
 					2h relay, GF
 						:open2c_2d_x_p_2h_relay()
@@ -1375,7 +1375,7 @@ function open2c(open_strength, relay_strength)
 				3n 4315, maximum
 			(2h)
 				x 4♥
-				pass 4♠
+				p 4♠
 				2s 43(60), minimum
 				2n 43(60), GF
 				3c 6♣, NF
@@ -1387,7 +1387,7 @@ function open2c(open_strength, relay_strength)
 				3n 6♦ with ♥ stopper
 			(2s)
 				x 4♠
-				pass 4♥
+				p 4♥
 				2n 34(60), minimum
 				3c 6♣, NF
 				3d 6♦, NF
@@ -1437,18 +1437,18 @@ function open2c(open_strength, relay_strength)
 		3d natural, preemptive
 		3h preemptive or invitational
 		3s preemptive or invitational
-		(DB)
-			pa pass or correct
-				re 5!d
+		(x)
+			p pass or correct
+				xx 5!d
 				2d 6!d
-			re bid longer major
+			xx bid longer major
 				2d 6♦
 					2h NF
 						2s 4360
 			{2!d and higher} system on
-		pa
-			(db)
-				re 5!d
+		p
+			(x)
+				xx 5!d
 				2d 6!d
 end
 function old2d(open_strength, relay_strength)
@@ -1480,16 +1480,16 @@ function old2d(open_strength, relay_strength)
 		3d with supports in majors, preemptive or invitational
 		3h natural, preemptive or invitational
 		3s natural, preemptive or invitational
-		(DB)
-			pa bid major
-			re penalty, own diamonds
+		(x)
+			p bid major
+			xx penalty, own diamonds
 			2h signoff
 			{2!s and higher} system on
 end
 function new2d()
 	2d 5-card major, 5-card minor, at most 2 cards in the shorter major, 13-17 (18) PC
 		2h pass or correct
-			pa 5 ♥, 13-15 (16) PC
+			p 5 ♥, 13-15 (16) PC
 			2s 5 ♠, 13-15 (16) PC
 			2n ♥♣ or ♠♦, 16-17 (18) PC
 				{3/4♣/♦/♥/♠} pass or correct
@@ -1561,9 +1561,9 @@ function new2d()
 		3s long good minor suit
 		3n signoff
 		4c preemptive with minor supports
-		(dbl)
-			pass bid major
-			rdbl points, can play 2♦xx if opener has ♦
+		(x)
+			p bid major
+			xx points, can play 2♦xx if opener has ♦
 			2h own suit
 end
 function 2hbaserelay()
@@ -1629,12 +1629,12 @@ function open2h(open_strength, relay_strength, which_relay)
 		4d three-suiter with ♠ shortness
 		4h signoff
 		4s signoff
-		(dbl)
-			pass pass or correct
-				rdbl ♦+♠, extras
+		(x)
+			p pass or correct
+				xx ♦+♠, extras
 				2s ♦+♠
 				3c ♣+♥ with much stronger ♣
-			rdbl one of us has ♥, let's double them
+			xx one of us has ♥, let's double them
 end
 function 2sbaserelay()
 	@⚠️ these responses are different after PASS - 1♣ - 2♠
@@ -1699,13 +1699,13 @@ function open2s(open_strength, relay_strength, which_relay)
 		4d three-suiter with ♥ shortness
 		4h signoff
 		4s signoff
-		(dbl)
-			pass pass or correct
-				rdbl 3550, extras
+		(x)
+			p pass or correct
+				xx 3550, extras
 				2n ♦+♥, extras without 3♠
 				3c ♣+♠ with much stronger ♣
 				3d ♦+♥
-			rdbl one of us has ♠, let's double them
+			xx one of us has ♠, let's double them
 end
 function 2cbalanced_relay()
 	2c relay, GF
@@ -1945,7 +1945,7 @@ function 2nspades_relay()
 		3n 5242, minimum
 end
 
-pa 13+ PC, any distribution (but see 2♦ opening)
+p 13+ PC, any distribution (but see 2♦ opening)
 	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
 		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
 			1h 11+ PC, any distribution
@@ -2411,7 +2411,7 @@ pa 13+ PC, any distribution (but see 2♦ opening)
 		2s 4+♠
 		3s 4+♠, extraordinary hand
 	1n natural, NF
-		pass no 5M, 6m
+		p no 5M, 6m
 		2c 6♣
 		2d 6♦
 		2h 5♥
