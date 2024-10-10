@@ -45,10 +45,9 @@ def main():
 			content_branch = 'main'
 	content = []
 	for filename in files:
-		c = get_file(filename, content_branch)
-		content.append(escape(c))
 		if diff:
 			content.append(escape(get_file(filename, 'HEAD')))
+		content.append(escape(get_file(filename, content_branch)))
 	output = '[' + ','.join(content) + ']'
 	
 	index = get_file('index.html', from_branch)
