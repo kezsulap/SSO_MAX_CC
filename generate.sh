@@ -1,1 +1,1 @@
-python3 <(git show code:generate.py) "$@"
+python3 <(git show code:generate.py) -c "$@"
