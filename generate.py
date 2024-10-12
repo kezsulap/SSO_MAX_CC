@@ -54,10 +54,20 @@ def main():
 		content.append(escape(get_file(filename, content_branch)))
 	output = '[' + ','.join(content) + ']'
 	
-	index = get_file('index.html', from_branch)
-	with open('output.html', 'w') as output_file:
-		index = index.replace('resources', 'resources_main').replace('hardcoded=undefined', 'hardcoded=' + output);
-		print(index, file=output_file)
+	to_process = [['index.html', 'output.html']]
+	if len(content) == 1:
+		to_process.append(['quiz.html', 'quiz-output.html'])
+	else:
+		try:
+			os.remove('quiz-output.html')
+		except FileNotFoundError:
+			pass
+
+	for input_name, output_name in to_process:
+		content = get_file(input_name, from_branch)
+		with open(output_name, 'w') as output_file:
+			content = content.replace('resources', 'resources_main').replace('hardcoded=undefined', 'hardcoded=' + output);
+			print(content, file=output_file)
 	subprocess.run(['rm', '-rf', 'resources_main'])
 	os.mkdir('resources_main')
 	for dirname in get_file('resources/all_directories_list', from_branch).split('\n'):
