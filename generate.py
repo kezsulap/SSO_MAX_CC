@@ -12,6 +12,10 @@ def escape(c):
 	return c
 
 def get_file(filename, version):
+	if ':' in filename:
+		version, filename = filename.split(':', 1)
+		if not filename:
+			filename = 'description.txt'
 	if version is None:
 		with open(filename, 'r') as f:
 			return f.read()
