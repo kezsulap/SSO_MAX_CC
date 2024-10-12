@@ -576,7 +576,19 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					3h 1363, maximum
 					3s 0355, maximum
 					3n 0355, minimum
-				2s invitational+ with exactly 4♥
+				2s 4+2+♣♦, usually without 4♥, invitational
+					2n 44+♣♦
+						3c NF
+							3h 5+♣, GF
+							3s 5+♦, GF
+						3d NF
+							3h 5+♣, GF
+							3s 5+♦, GF
+					3c 5+♣ without 4♦ (or 0346), NF
+					3d 5+♦ without 4♣ (or 0364), NF
+					3h 5+♣ without 4♦, GF
+					3s 5+♦ without 4♣, GF
+					3n sign-off
 				2n natural, invitational
 					3c 5+♣, minimum
 					3d 5+♦, minimum
