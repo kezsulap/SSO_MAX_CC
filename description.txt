@@ -2419,6 +2419,7 @@ p 13+ PC, any distribution (but see 2♦ opening)
 			pass 3244
 			rdbl 3♥
 			{1♠ and higher} system on
+			2h 4+♥, doesn't show extras
 	1s 4+ ♠, NF
 		1n 2♠, 5♣/♦/♥
 			2c pass or correct
@@ -2428,8 +2429,10 @@ p 13+ PC, any distribution (but see 2♦ opening)
 		2d 6♦
 		2s 4+♠, maximum
 		(dbl)
+			pass 2♠
 			rdbl 3♠
 			{1NT and higher} system on
+			2s 4+♠, doesn't show extras
 	1n natural, NF
 		p no 5M, 6m
 		2c 6+♣
