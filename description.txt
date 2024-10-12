@@ -2083,18 +2083,16 @@ p 13+ PC, any distribution (but see 2♦ opening)
 											3h 4♦
 												:shortness_relay(♥, ♠, 3s)
 											3s 4♥
+												3n NF
+												:shortness_relay(♦, ♠, 4c)
+												4n agreeing ♣
 											3n 4♠
+												:shortness_relay(♦, ♥, 4c)
+												4n agreeing ♣
 									3d 6♦, 4♣
 										:shortness_relay(♥, ♠, 3h)
 									3h 6♦, 4♥
-										3s relay
-											3n short ♣
-											4c short ♠
-										3n NF
-										4c agreeing ♣, forcing
-										4d agreeing ♦, forcing
-										4h NF
-										4s NF
+										:shortness_relay(♣, ♠, 3s)
 									3s 6♦, 4♠
 										3n NF
 										:shortness_relay(♣, ♥, 4c)
