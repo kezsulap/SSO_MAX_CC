@@ -304,9 +304,9 @@ function open1h(open_strength, relay_strength, 5s_responses)
 					3n 3136
 			3d 6+ ♦ without 4-card, minimum
 				3h relay, GF
-					3s 3073
-					3n 3172
-					4c 3163
+					3s 3172
+					3n 3163
+					4c 3073
 			3h 7♥ with a ♠ void
 				3s relay
 					3n maximum
@@ -651,9 +651,9 @@ function open1s(open_strength, relay_strength, 5h_responses)
 					3n 1336
 			3d 6+ ♦ without 4-card, minimum
 				3h relay, GF
-					3s 0373
-					3n 1372
-					4c 1363
+					3s 1372
+					3n 1363
+					4c 0373
 			3h 7♠ with a ♥ void
 				3s relay
 					3n maximum
