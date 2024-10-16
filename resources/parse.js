@@ -591,7 +591,6 @@ function display(node, HTML_title=true, do_topmenu=true) {
 		topmenu.innerHTML = ''
 	}
 	let no = 0;
-	let balloons = [];
 	let max_level = 0;
 	function dfs(node, depth) {
 		if (node.call !== undefined) { //Skip dummy initial node
