@@ -9,6 +9,7 @@ $(function() {
 	});
 	
 	$( "body" ).on("click", "div.relay:not('rozwiniete')", function() {
+		count = 0;
 		clicked = parseInt($(this).attr("level"));
 		$(this).nextAll().each(function() {
 			sibling_number = parseInt($(this).attr("level"));
@@ -16,7 +17,11 @@ $(function() {
 				return false;
 			}
 			if (sibling_number == clicked + 1) {
-				$(this).show("slow");
+				count++;
+				if (count < 20)
+					$(this).show("slow");
+				else
+					$(this).css("display", "");
 			}
 		});
 		$(this).addClass( "rozwiniete" );	
@@ -37,7 +42,7 @@ $(function() {
 					if (count < 20)
 						$(this).hide("slow");
 					else
-						$(this).hide()
+						$(this).css("display", "none")
 				}
 			}
 		});
@@ -56,7 +61,7 @@ $(function() {
 			if (count < 20)
 				$(this).show("slow");
 			else
-				$(this).show()
+				$(this).css("display", "");
 			if ($(this).hasClass('relay'))
 				$(this).addClass('rozwiniete')
 		});
@@ -92,7 +97,7 @@ function fold_everything() {
 				if (count < 20)
 					$(this).hide("slow");
 				else
-					$(this).hide()
+					$(this).css("display", "none")
 			}
 		}
 	})
