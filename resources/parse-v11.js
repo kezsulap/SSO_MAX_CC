@@ -559,7 +559,7 @@ function parse_hand(s) {
 			let left_xes = Math.min(9, last_spot - 2);
 			if (left_xes < xes) throw new ParsingError('More xes than existing spot cards in ' + suits[suit]);
 		}
-		parsed_hand += '<span class="' + 'shdc'[suit] + '">' + suit_str + suits[suit].replaceAll('x', '⨉') + '</span>'
+		parsed_hand += '<span class="' + 'shdc'[suit] + '">' + suit_str + suits[suit].replaceAll('10', 'T') + '</span>'
 	}
 	return '<span class="hand" title="' + HCP + ' HCP">' + parsed_hand + '</span>';
 }
