@@ -144,32 +144,6 @@ call {
 .hand {
 	font-style: normal;
 }
-body.bright .bidding:hover, body.bright .answer_meaning:hover, body.bright #show_context_button:hover {
-	border-color: #b3ffb3;
-}
-body.bright .topmenu li:hover {
-	border-color: #b3ffb3;
-	background-color: #b3ffb3;
-}
-body.bright .relay:hover, body.bright #show_context_button:hover {
-	background-color: #b3ffb3;
-}
-body.bright .relay.rozwiniete:hover {
-	background-color: #80ff80;	
-}
-body.dark .bidding:hover, body.dark .answer_meaning:hover, body.dark #show_context_button:hover {
-	border-color: #00b000;
-}
-body.dark .topmenu li:hover {
-	border-color: #00b000;
-	background-color: #00b000;
-}
-body.dark .relay:hover, body.dark #show_context_button:hover {
-	background-color:  #00b000;
-}
-body.dark .relay.rozwiniete:hover {
-	background-color:  #008000;
-}
 
 ul.topmenu {
 	list-style-type: none;
@@ -185,10 +159,6 @@ ul.topmenu li {
 	min-width: 30px;
 	height: 1.25em;
 	text-align: center;
-}
-ul.topmenu li:hover {
-	background-color: #FF5C33;
-	border-color: #FF5C33;
 }
 a.topmenu {
 	display: block;
@@ -208,191 +178,235 @@ a.topmenu {
 	box-shadow      : 4px 4px 4px #555 ;
 	z-index         : 32767 ;
 }
-/****************************************************Bright theme****************************************************/
-
-body.bright div.bidding, body.bright .my-balloon, body.bright .answer_meaning {
-	border: solid #ADD6FF 2px;
+div.bidding, .my-balloon, .answer_meaning {
+	border: solid 2px;
 }
-body.bright .my-balloon {
-	background-color: white;
-}
-body.bright .relay, body.bright #show_context_button {
-	background-color: #ADD6FF;
-}
-body.bright .OtherPage {
-background-color: #ADD6FF;
-}
-body.bright .bidding.diff, body.bright .bidding.subtreediff:not(.rozwiniete), body.bright .topmenu li.diff, body.bright .topmenu li.subtreediff {
-	border-color:#FFC500 !important;
-}
-body.bright .topmenu li.diff:hover, body.bright .topmenu li.subtreediff:hover {
-	border-color:#ff99cc !important;
-	background-color:#ff99cc !important;
-}
-body.bright .bidding.diff.relay, body.bright .bidding.subtreediff.relay:not(.rozwiniete), body.bright .topmenu li.diff, body.bright .topmenu li.subtreediff {
-	background-color:#FFC500 !important;
-}
-body.bright .bidding.diff.relay.rozwiniete {
-	background-color:#E6B000 !important;
-}
-body.bright .bidding.diff:hover, body.bright .bidding.subtreediff:not(.rozwiniete):hover {
-	border-color:#ff99cc !important;
-}
-body.bright .bidding.diff.relay:hover, body.bright .bidding.subtreediff.relay:not(.rozwiniete):hover {
-	background-color:#ff99cc !important;
-}
-body.bright .bidding.diff.relay.rozwiniete:hover {
-	background-color:#ff66b3 !important;
-}
-body.bright ul.topmenu li, body.bright #control_panel .button {
-	border: solid #ADD6FF 2px;
-	background-color: #ADD6FF;
-}
-body.bright a.topmenu {
-	color: black;
-}
-body.bright .rozwiniete {
-	background-color: #85C2FF;
-}
-body.bright table.bidding {
-	border: solid #ADD6FF 1px;
-}
-body.bright table.bidding tr:first-child td  {
-	background-color: #ADD6FF;
-}
-body.bright table.bidding tr:first-child td  {
-	border: solid #ADD6FF 1px;
-}
-body.bright table.bidding tr  td{
-	border: solid #ADD6FF 1px;
-}
-body.bright table.hands {
-	border: solid #ADD6FF 1px;
-}
-body.bright table.hands tr:first-child td  {
-	border: solid #ADD6FF 1px;
-}
-body.bright table.hands tr  td {
-	border: solid #ADD6FF 1px;
-}
-body.bright table.hands tr:first-child td  {
-	background-color: #ADD6FF;
-}
-body.bright .t2 {
-	border: solid 1px #ADD6FF;
-	background-color: #ADD6FF;
-}
-body.bright .t3 {
-	border: solid 1px #ADD6FF;
-}
-body.bright .club, body.bright .hand .c {
-	color: #005416;
-}
-body.bright .diamond, body.bright .hand .d {
-	color: #ff6600;
-}
-body.bright .heart, body.bright .hand .h {
-	color: red;
-}
-body.bright .spade, body.bright .hand .s {
-	color: blue;
+ul.topmenu li, #control_panel .button {
+	border: solid 2px;
 }
 textarea {
     -moz-tab-size : 2;
       -o-tab-size : 2;
          tab-size : 2;
 }
+
+/****************************************************Bright theme****************************************************/
+body.bright {
+	background-color: white;
+	color: black;
+	.my-balloon, .answer_meaning {
+		border-color: #ADD6FF;
+	}
+	.my-balloon {
+		background-color: white;
+	}
+	.answer_meaning:hover {
+		border-color: #ffadb7;
+	}
+	#control_panel .button, #show_context_button {
+		border-color: #ADD6FF;
+		background-color: #ADD6FF;
+	}
+	#show_context_button:hover, #control_panel .button:hover {
+		background-color: #ffadb7;
+		border-color: #ffadb7;
+	}
+	a.topmenu {
+		color: black;
+	}
+	.club, .hand .c {
+		color: #005416;
+	}
+	.diamond, .hand .d {
+		color: #ff6600;
+	}
+	.heart, .hand .h {
+		color: red;
+	}
+	.spade, .hand .s {
+		color: blue;
+	}
+	ul.topmenu li {
+		border-color: #ADD6FF;
+		background-color: #ADD6FF;
+		&:hover {
+			border-color: #ffadb7;
+			background-color: #ffadb7;
+		}
+		&.subtreediff {
+			border-color: #FFC500;
+			background-color: #FFC500;
+			&:hover {
+				border-color: #f2ff00;
+				background-color: #f2ff00;
+			}
+		}
+	}
+	.bidding {
+		&.our_call, &.title {
+			border-color: #ADD6FF;
+			&.relay {
+				background-color: #ADD6FF;
+			}
+			&.relay.rozwiniete {
+				background-color: #85C2FF;
+			}
+		}
+		&.their_call {
+			border-color: #adffcb;
+			&.relay {
+				background-color: #adffcb;
+			}
+			&.relay.rozwiniete {
+				background-color: #61ff9b;
+			}
+		}
+		&.comment {
+			border-color: #ecadff;
+			&.relay {
+				background-color: #ecadff;
+			}
+			&.relay.rozwiniete {
+				background-color: #da61ff;
+			}
+		}
+		&:hover {
+			border-color: #ffadb7;
+			&.relay {
+				background-color: #ffadb7;
+			}
+			&.relay.rozwiniete {
+				background-color: #ff7a8a;
+			}
+		}
+		&.diff, &.subtreediff:not(.rozwiniete) {
+			border-color: #FFC500;
+			&:hover {
+				border-color: #f2ff00;
+			}
+			&.relay {
+				background-color: #FFC500;
+				&:hover {
+					background-color: #f2ff00;
+				}
+			}
+			&.relay.rozwiniete {
+				background-color: #E6B000;
+				&:hover {
+					background-color: #cbd600;
+				}
+			}
+		}
+	}
+}
 /*****************************************************Dark theme*****************************************************/
-body.dark, body.dark textarea {
+body.dark {
 	background-color: #222222;
 	color: #dddddd;
-}
-body.dark div.bidding, body.dark .my-balloon, body.dark .answer_meaning, body.dark #show_context_button {
-	border: solid #0056B3 2px;
-}
-body.dark .my-balloon {
-	background-color: #222222;
-}
-body.dark .relay, body.dark #show_context_button {
-	background-color: #0056B3;
-}
-body.dark .OtherPage {
-background-color: #0056B3;
-}
-body.dark .bidding.diff, body.dark .bidding.subtreediff:not(.rozwiniete), body.dark .topmenu li.diff, body.dark .topmenu li.subtreediff {
-	border-color:#A87600 !important;
-}
-body.dark .topmenu li.diff:hover, body.dark .topmenu li.subtreediff:hover {
-	border-color:#cc0066 !important;
-	background-color:#cc0066 !important;
-}
-body.dark .bidding.diff.relay, body.dark .bidding.subtreediff.relay:not(.rozwiniete), body.dark .topmenu li.diff, body.dark .topmenu li.subtreediff {
-	background-color:#A87600 !important;
-}
-body.dark .bidding.diff.relay.rozwiniete {
-	background-color:#8A6000 !important;
-}
-body.dark .bidding.diff:hover, body.dark .bidding.subtreediff:not(.rozwiniete):hover {
-	border-color:#cc0066 !important;
-}
-body.dark .bidding.diff.relay:hover, body.dark .bidding.subtreediff.relay:not(.rozwiniete):hover {
-	background-color:#cc0066 !important;
-}
-body.dark .bidding.diff.relay.rozwiniete:hover {
-	background-color: #99004d !important;
-}
-body.dark ul.topmenu li, body.dark #control_panel .button {
-	border: solid #0056B3 2px;
-	background-color: #0056B3;
-}
-body.dark a.topmenu {
-	color: #dddddd;
-}
-body.dark .rozwiniete {
-	background-color: #003E80;
-}
-body.dark table.bidding {
-	border: solid #0056B3 1px;
-}
-body.dark table.bidding tr:first-child td  {
-	background-color: #0056B3;
-}
-body.dark table.bidding tr:first-child td  {
-	border: solid #0056B3 1px;
-}
-body.dark table.bidding tr  td{
-	border: solid #0056B3 1px;
-}
-body.dark table.hands {
-	border: solid #0056B3 1px;
-}
-body.dark table.hands tr:first-child td  {
-	border: solid #0056B3 1px;
-}
-body.dark table.hands tr  td {
-	border: solid #0056B3 1px;
-}
-body.dark table.hands tr:first-child td  {
-	background-color: #0056B3;
-}
-body.dark .t2 {
-	border: solid 1px #0056B3;
-	background-color: #0056B3;
-}
-body.dark .t3 {
-	border: solid 1px #0056B3;
-}
-body.dark .club, body.dark .hand .c {
-	color: #00e63d;
-}
-body.dark .diamond, body.dark .hand .d {
-	color: #ffc14d;
-}
-body.dark .heart, body.dark .hand .h {
-	color: #ff3333;
-}
-body.dark .spade, body.dark .hand .s {
-	color: #9999ff;
+	.my-balloon, .answer_meaning {
+		border-color: #0056B3;
+	}
+	.my-balloon {
+		background-color: #222222;
+	}
+	.answer_meaning:hover {
+		border-color: #ab0039;
+	}
+	#control_panel .button, #show_context_button {
+		border-color: #0056B3;
+		background-color: #0056B3;
+	}
+	#show_context_button:hover, #control_panel .button:hover {
+		background-color: #ab0039;
+		border-color: #ab0039;
+	}
+	a.topmenu {
+		color: #dddddd;
+	}
+	.club, .hand .c {
+		color: #00e63d;
+	}
+	.diamond, .hand .d {
+		color: #ffc14d;
+	}
+	.heart, .hand .h {
+		color: #ff3333;
+	}
+	.spade, .hand .s {
+		color: #9999ff;
+	}
+	ul.topmenu li {
+		border-color: #0056B3;
+		background-color: #0056B3;
+		&:hover {
+			border-color: #ab0039;
+			background-color: #ab0039;
+		}
+		&.subtreediff {
+			border-color: #A87600;
+			background-color: #A87600;
+			&:hover {
+				border-color: #aaa639;
+				background-color: #aaa639;
+			}
+		}
+	}
+	.bidding {
+		&.our_call, &.title {
+			border-color: #0056B3;
+			&.relay {
+				background-color: #0056B3;
+			}
+			&.relay.rozwiniete {
+				background-color: #003E80;
+			}
+		}
+		&.their_call {
+			border-color: #008f34;
+			&.relay {
+				background-color: #008f34;
+			}
+			&.relay.rozwiniete {
+				background-color: #006023;
+			}
+		}
+		&.comment {
+			border-color: #9b00ca;
+			&.relay {
+				background-color: #9b00ca;
+			}
+			&.relay.rozwiniete {
+				background-color: #740097;
+			}
+		}
+		&:hover {
+			border-color: #ab0039;
+			&.relay {
+				background-color: #ab0039;
+			}
+			&.relay.rozwiniete {
+				background-color: #750027;
+			}
+		}
+		&.diff, &.subtreediff:not(.rozwiniete) {
+			border-color: #A87600;
+			&:hover {
+				border-color: #aaa639;
+			}
+			&.relay {
+				background-color: #A87600;
+				&:hover {
+					background-color: #aaa639;
+				}
+			}
+			&.relay.rozwiniete {
+				background-color: #8A6000;
+				&:hover {
+					background-color: #797628;
+				}
+			}
+		}
+	}
 }
 /***********************************************SPECIAL THEMES*************************************/
 div.bidding:not(.relay) {

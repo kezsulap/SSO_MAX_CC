@@ -506,6 +506,7 @@ function set_system_title(title, diff_title) {
 	title_element.innerHTML = title;
 	if (diff_title !== undefined) title_element.classList.add('diff')
 	else title_element.classList.remove('diff')
+	title_element.classList.add('title');
 	title_element.style.display = title ? '' : 'none';
 }
 function wrap_if(call, our) {
@@ -611,9 +612,12 @@ function display(node, HTML_title=true, do_topmenu=true) {
 			for (let otherClass of node.other_classes) {
 				a.classList.add(otherClass);
 			}
-			if (is_comment) {
+			if (is_comment)
 				a.classList.add('comment')
-			}
+			else if (node.call.whose == OURS)
+				a.classList.add('our_call')
+			else
+				a.classList.add('their_call')
 			if (depth == 0 && !is_comment && do_topmenu) {
 				a.setAttribute('id', 'open' + no);
 				let topmenu_node = document.createElement('li');
