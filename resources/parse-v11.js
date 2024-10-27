@@ -10,6 +10,12 @@ class ParsingError extends Error {
 		this.title = title;
   }
 };
+class FileNotFound extends Error {
+	constructor(url) {
+		super("File " + url + " not found");
+		this.name = "FileNotFound";
+	}
+};
 class Call {
 	constructor(type, value, whose) {
 		this.type = type;
@@ -495,6 +501,7 @@ function load(url) {
 	};
 
 	xhr.send(null);
+	if (xhr.status == 404) throw new FileNotFound(url);
 	return xhr.responseText;
 }
 function set_HTML_title(title) {
@@ -972,7 +979,7 @@ function hamilton_path(array, compare) {
 function display_error(e, where=undefined) {
 	if (where === undefined) where = document.querySelector('#bidding');
 	add_theme_switch_node()
-	if (e instanceof ParsingError) {
+	if (e instanceof ParsingError || e instanceof FileNotFound) {
 		let errorNode = document.createElement('div');
 		errorNode.classList.add('error');
 		errorNode.innerHTML = 'Error: ' + format_str(e.message);
