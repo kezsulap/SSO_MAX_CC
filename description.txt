@@ -168,6 +168,41 @@ function 1h5Mpassed()
 	3d 5134, minimum
 	3h 5143, minimum
 end
+function unbalanced_6h_2n_3c_relay()
+	3c relay
+		3d 7♥ with a singleton
+			3h relay
+				3s ♠ singleton
+				3n ♦ singleton
+				4c ♣ singleton
+		3h 0634 or 3604
+			3s relay
+				3n 0634
+				4c 3604
+		3s 0643
+		3n 3640
+end
+function balanced_6h_3c_responses()
+	3c 6♥4m with a singleton
+		3d relay
+			3h 4♣
+				3s relay
+					3n 1624
+					4c 2614
+			3s 1642
+			3n 2641
+	3d 3)6(31
+		3h relay
+			3s 1633
+			3n 3613
+			4c 3631
+	3h 26(32)
+		3s relay
+			3n 2623
+			4c 2632
+	3s 2722
+	3n 3622
+end
 function open1h(open_strength, relay_strength, 5s_responses)
 	1h $(open_strength) PC, ♥ shortness, 3-5 ♠ or 6+ ♥, 3- ♠
 		1s 4+ ♠, NF
@@ -255,71 +290,13 @@ function open1h(open_strength, relay_strength, 5s_responses)
 			2h 6+♥, no 7♥ with a void, minimum
 				2s relay
 					2n 6♥ with a void or 7♥ with a singleton
-						3c relay
-							3d 7♥ with a singleton
-								3h relay
-									3s ♠ singleton 
-									3n ♦ singleton
-									4c ♣ singleton
-							3h 0634 or 3604
-								3s relay
-									3n 0634
-									4c 3604
-							3s 0643
-							3n 3640
-					3c 6♥4m with a singleton
-						3d relay
-							3h 4♣ 
-								3s relay
-									3n 1624
-									4c 2614
-							3s 1642
-							3n 2641
-					3d 3)6(31
-						3h relay
-							3s 1633
-							3n 3613
-							4c 3631
-					3h 26(32)
-						3s relay
-							3n 2623
-							4c 2632
-					3s 2722
-					3n 3622
-			2s 6♥ without a void or 2722, maximum 
+						:unbalanced_6h_2n_3c_relay()
+					:balanced_6h_3c_responses()
+			2s 6♥ without a void or 2722, maximum
 				2n relay
-					3c 6♥4m with a singleton
-						3d relay
-							3h 4♣ 
-								3s relay
-									3n 1624
-									4c 2614
-							3s 1642
-							3n 2641
-					3d 3)6(31)
-						3h relay
-							3s 1633
-							3n 3613
-							4c 3631
-					3h 26(32)
-						3s relay
-							3n 2623
-							4c 2632
-					3s 2722
-					3n 3622
+					:balanced_6h_3c_responses()
 			2n 6♥ with a void or 7♥ with a singleton, maximum
-				3c relay
-					3d 7♥ with a singleton
-						3h relay
-							3s ♠ singleton 
-							3n ♦ singleton
-							4c ♣ singleton
-					3h 0634 or 3604
-						3s relay
-							3n 0634
-							4c 3604
-					3s 0643
-					3n 3640
+				:unbalanced_6h_2n_3c_relay()
 			3c 6+ ♣ without 4-card, minimum
 				3d relay, GF
 					3h 3037
@@ -511,6 +488,42 @@ function 1s5Mpassed()
 	3h 1534, minimum
 	3s 1543, minimum
 end
+function unbalanced_6s_2n_3c_relay()
+	3c relay
+		3d 7♠ with a singleton
+			3h relay
+				3s ♥ singleton
+				3n ♦ singleton
+				4c ♣ singleton
+		3h 6(30)4
+			3s relay
+				3n 6034
+				4c 6304
+		3s 6043
+		3n 6340
+
+end
+function balanced_6s_3c_responses()
+	3c 6♠4m with a singleton
+		3d relay
+			3h 4♣
+				3s relay
+					3n 6124
+					4c 6214
+			3s 6142
+			3n 6241
+	3d 6(331)
+		3h relay
+			3s 6133
+			3n 6313
+			4c 6331
+	3h 62(32)
+		3s relay
+			3n 6223
+			4c 6232
+	3s 7222
+	3n 6322
+end
 function open1s(open_strength, relay_strength, 5h_responses)
 	1s $(open_strength) PC, ♠ shortness, 3-5 ♥ or 6+ ♠, 3- ♥
 		1n relay, $(relay_strength) PC
@@ -606,21 +619,10 @@ function open1s(open_strength, relay_strength, 5h_responses)
 			2h 6+♠, no 7♠ with a void, maximum
 				2s relay
 					2n 6♠ with a void or 7♠ with a singleton
-						3c relay
-							3d 7♠ with a singleton
-								3h relay
-									3s ♥ singleton 
-									3n ♦ singleton
-									4c ♣ singleton
-							3h 6(30)4
-								3s relay
-									3n 6034
-									4c 6304
-							3s 6043
-							3n 6340
+						:unbalanced_6s_2n_3c_relay()
 					3c 6♠4m with a singleton
 						3d relay
-							3h 4♣ 
+							3h 4♣
 								3s relay
 									3n 6124
 									4c 6214
@@ -637,40 +639,11 @@ function open1s(open_strength, relay_strength, 5h_responses)
 							4c 6232
 					3s 7222
 					3n 6322
-			2s 6♠ without a void or 7222, minimum 
+			2s 6♠ without a void or 7222, minimum
 				2n relay
-					3c 6♠4m with a singleton
-						3d relay
-							3h 4♣ 
-								3s relay
-									3n 6124
-									4c 6214
-							3s 6142
-							3n 6241
-					3d 6(331)
-						3h relay
-							3s 6133
-							3n 6313
-							4c 6331
-					3h 62(32)
-						3s relay
-							3n 6223
-							4c 6232
-					3s 7222
-					3n 6322
+					:balanced_6s_3c_responses()
 			2n 6♠ with a void or 7♠ with a singleton, minimum
-				3c relay
-					3d 7♠ with a singleton
-						3h relay
-							3s ♥ singleton 
-							3n ♦ singleton
-							4c ♣ singleton
-					3h 6(30)4
-						3s relay
-							3n 6034
-							4c 6304
-					3s 6043
-					3n 6340
+				:unbalanced_6s_2n_3c_relay()
 			3c 6+ ♣ without 4-card, minimum
 				3d relay, GF
 					3h 0337
