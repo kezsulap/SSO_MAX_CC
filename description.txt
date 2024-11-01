@@ -1604,16 +1604,29 @@ function 2hpassedrelay()
 end
 function open2h(open_strength, relay_strength, which_relay)
 	2h $(open_strength) PC, 55 with minor shortness/5M6m11 ♥♣ or ♠♦
-		2s pass or correct
+		2s pass or correct (could have sign-off with own ♦ or ♠)
 			2n ♣+♥, extras
+				3c sign-off
+				3d sign-off
+				3h sign-off
+				3s sign-off
 			3c ♣+♥
+				3d sign-off
+				3h sign-off
+				3s sign-off
 			3d ♦+♠, extras
 		2n relay, $(relay_strength) PC
 			:$(which_relay)()
-		3c pass or correct
+		3c pass or correct (could have sign-off with own ♣)
 			3d ♦+♠
+				3h artificial invitational
+					3s minimum
+					3n maximum, no 3♥
+					4h maximum, 3♥
+				4c sign-off
 			3h ♣+♥, extras
 			3s ♦+♠, extras
+				4c sign-off
 		3d pass or correct
 			3h ♥+♣
 			3s ♦+♠, extras
@@ -1626,9 +1639,16 @@ function open2h(open_strength, relay_strength, which_relay)
 		4h signoff
 		4s signoff
 		(x)
-			p pass or correct
+			p pass or correct (could have sign-off with own ♣ or ♥)
 				xx ♦+♠, extras
+					2s sign-off
+					3c sign-off
+					3d sign-off
+					3h sign-off
 				2s ♦+♠
+					3c sign-off
+					3d sign-off
+					3h sign-off
 				3c ♣+♥ with much stronger ♣
 			xx one of us has ♥, let's double them
 end
