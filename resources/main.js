@@ -1,5 +1,8 @@
 function init() {
 	window.addEventListener('load', function() {
+		if ($('body').hasClass('done')) {
+			return;
+		}
 		try {
 			if (hardcoded !== undefined) {
 				let nodes = [];

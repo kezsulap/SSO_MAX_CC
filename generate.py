@@ -40,12 +40,9 @@ def main():
 	parser.add_argument('--quiz-output', '-q')
 	
 	args = parser.parse_args();
-	# sys.exit(0)
-
 	files = args.files
-
 	from_branch = None
-#TODO: use some more flexible parser
+
 	diff = args.diff_auto
 	if diff and args.code_branch:
 		print('Error: --diff-auto combined with --code-branch', file=sys.stderr)
@@ -85,8 +82,6 @@ def main():
 			to_process.append(['index.html', output_file])
 		if quiz_output is not None:
 			to_process.append(['quiz.html', quiz_output])
-
-	print(to_process, args, len(content))
 
 	for input_name, output_name in to_process:
 		content = get_file(input_name, from_branch)

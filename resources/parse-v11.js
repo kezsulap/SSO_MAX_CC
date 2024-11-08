@@ -662,6 +662,7 @@ function display(node, HTML_title=true, do_topmenu=true) {
 	if (HTML_title) {
 		set_HTML_title(node.HTML_title ?? node.title);
 	}
+	$('body').addClass('done')
 }
 function join_versions(versions) {
 	let added = new Map();
