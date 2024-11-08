@@ -2,6 +2,7 @@ import sys
 import subprocess
 import os
 import shutil
+import argparse
 
 def escape(c):
 	c = c.replace('\\', '\\\\');
@@ -31,45 +32,61 @@ def copy_file(filename, destination, version):
 			
 
 def main():
-	script, *files = sys.argv
+	parser = argparse.ArgumentParser()
+	parser.add_argument('files', nargs='*')
+	parser.add_argument('--code-branch', '-c', action='store_true')
+	parser.add_argument('--diff-auto', '-d', action='store_true')
+	parser.add_argument('--output-file', '-o')
+	parser.add_argument('--quiz-output', '-q')
+	
+	args = parser.parse_args();
+	# sys.exit(0)
+
+	files = args.files
+
 	from_branch = None
-	flag_c = False
 #TODO: use some more flexible parser
-	if files and files[0] == '-c':
+	diff = args.diff_auto
+	if diff and args.code_branch:
+		print('Error: --diff-auto combined with --code-branch', file=sys.stderr)
+		sys.exit(1)
+	if args.code_branch:
 		from_branch = 'code'
-		files = files[1:]
-		flag_c = True
-	diff = False
-	if files and files[0] == '-d':
-		files = files[1:]
-		diff = True
-	output_file = None
-	if files and files[0] == '-o':
-		output_file = files[1]
-		files = files[2:]
+	output_file = args.output_file
 	content_branch = None
 	if not files:
 		files = ['description.txt']
-		if not flag_c:
+		if not args.code_branch:
 			content_branch = 'main'
 	content = []
 	for filename in files:
 		if diff:
 			content.append(escape(get_file(filename, 'HEAD')))
 		content.append(escape(get_file(filename, content_branch)))
+	quiz_output = args.quiz_output
 	output = '[' + ','.join(content) + ']'
 	
-	if output_file is None:
+	if quiz_output is not None and len(files) > 1:
+		print('Quiz not supported with multiple input files', file=sys.stderr)
+		sys.exit(1)
+
+	if output_file is None and quiz_output is None:
 		to_process = [['index.html', 'output.html']]
 		if len(content) == 1:
-			to_process.append(['quiz.html', 'quiz-output.html'])
+			to_process.append(['quiz.html', quiz_output if quiz_output is not None else 'quiz-output.html'])
 		else:
 			try:
 				os.remove('quiz-output.html')
 			except FileNotFoundError:
 				pass
 	else:
-		to_process = [['index.html', output_file]]
+		to_process = []
+		if output_file is not None:
+			to_process.append(['index.html', output_file])
+		if quiz_output is not None:
+			to_process.append(['quiz.html', quiz_output])
+
+	print(to_process, args, len(content))
 
 	for input_name, output_name in to_process:
 		content = get_file(input_name, from_branch)
