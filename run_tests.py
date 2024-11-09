@@ -49,6 +49,7 @@ def main():
 	parser.add_argument('--add-new-outputs', '-n', action='store_true')
 	parser.add_argument('--add-alternate-outputs', '-a', action='store_true')
 	parser.add_argument('--output_name', '-o')
+	parser.add_argument('--open-all', '-p', action='store_true')
 	args = parser.parse_args()
 	if args.add_new_outputs and args.add_alternate_outputs:
 		print('Combining --add-new-outputs with --add-alternate-outputs is invalid')
@@ -62,6 +63,8 @@ def main():
 			print(f'Unknown test {file}', file=sys.stderr)
 			sys.exit(1)
 
+	test_outputs = []
+
 	for inputs, output in tests:
 		test_name = get_test_name(output)
 		if args.files and test_name not in args.files: #O(n^2)
@@ -70,6 +73,7 @@ def main():
 			output_name = f.name
 		subprocess.run(['./generate.sh'] + [filename for _, filename in inputs] + ['-o', output_name])
 		print(f'{test_name} file://{output_name} ', end='')
+		test_outputs.append(f'file://{output_name}')
 		test_output = get_content(f'file://{output_name}')
 		try:
 			os.mkdir(output)
@@ -122,6 +126,9 @@ def main():
 	if failed_tests:
 		failed_tests_names = " ".join(failed_tests)
 		print(f'FAILED: {len(failed_tests)} tests: {failed_tests_names}')
+	
+	if args.open_all and test_outputs:
+		subprocess.run(['google-chrome'] + test_outputs)
 		
 
 if __name__ == "__main__":
