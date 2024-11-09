@@ -20,16 +20,11 @@ def get_content(url):
 		page.goto(url)
 		return page.content()
 
-# def get_file(filename):
-	# with open(filename, 'r') as f:
-		# return f.read()
-
 def fetch_test_files():
 	input_files = []
 	for root, _, files in os.walk('integration-tests'):
 		input_files += [os.path.join(root, filename) for filename in files if filename.endswith('.in')]
 	input_files.sort()
-	print(input_files)
 	groups = {}
 	for filename in input_files:
 		version = None
@@ -64,7 +59,7 @@ def main():
 	test_names = [get_test_name(output) for (input, output) in tests]
 	for file in args.files:
 		if file not in test_names:
-			print(f'Unknown test {file}', file=sys.stderr)
+			print(f'Unknown test {file}')
 			sys.exit(1)
 
 	test_outputs = []
