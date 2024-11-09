@@ -71,7 +71,8 @@ def main():
 		with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
 			output_name = f.name
 		subprocess.run(['./generate.sh'] + [filename for _, filename in inputs] + ['-o', output_name])
-		print(f'{test_name} file://{output_name} ', end='')
+		all_inputs = " ".join([f'file://{os.getcwd()}/{x[1]}' for x in inputs])
+		print(f'{test_name} {all_inputs} file://{output_name} ', end='')
 		test_outputs.append(f'file://{output_name}')
 		test_output = get_content(f'file://{output_name}')
 		try:
