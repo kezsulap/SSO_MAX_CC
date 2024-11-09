@@ -25,7 +25,11 @@ def get_content(url):
 		# return f.read()
 
 def fetch_test_files():
-	input_files = sorted([filename for filename in os.listdir('integration-tests') if filename.endswith('.in')])
+	input_files = []
+	for root, _, files in os.walk('integration-tests'):
+		input_files += [os.path.join(root, filename) for filename in files if filename.endswith('.in')]
+	input_files.sort()
+	print(input_files)
 	groups = {}
 	for filename in input_files:
 		version = None
@@ -34,14 +38,14 @@ def fetch_test_files():
 			output_filename = test_name + '-out'
 		else:
 			output_filename = filename.split('.in')[0] + '-out'
-		output_filename = os.path.join('integration-tests', output_filename)
+		output_filename = output_filename
 		if output_filename not in groups:
 			groups[output_filename] = []
-		groups[output_filename].append([version, os.path.join('integration-tests', filename)])
+		groups[output_filename].append([version, filename])
 	return [(input, output) for output, input in groups.items()]
 
 def get_test_name(output):
-	return output.split("/")[-1].split("-out")[0]
+	return output.split("/", 1)[-1].split("-out")[0]
 
 def main():
 	parser = argparse.ArgumentParser()
