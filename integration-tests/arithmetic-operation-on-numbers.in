@@ -1,7 +1,12 @@
-function f1(a):
-	1n
-		:f2(2)
-	2c
-		:f2(3)
-
+function f(a, b)
+	2c $(a + 1)
+		2d $(a + b) * $(21 + 37)
+		$(a - b)n preempt
 end
+
+1c
+	:f(3, 1)
+1d
+	:f(4, 1)
+1h
+	:f(6, 4)

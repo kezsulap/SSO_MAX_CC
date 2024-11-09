@@ -1,0 +1,13 @@
+function f(bid, offset)
+	$(bid) hello
+		$(bid + offset) world
+		$(bid + 10) xd
+		$(3n + offset) test
+		$(7c - offset) test2
+		$(7n - 1) test3
+		$(7s - offset) test4
+end
+
+:f(1c, 1)
+:f(1d, 2)
+:f(1h, 3)
