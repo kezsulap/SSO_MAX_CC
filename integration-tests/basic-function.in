@@ -1,0 +1,30 @@
+function no_parameters()
+	1c
+		1d
+			1h
+	1d
+end
+
+function one_parameter(x)
+	3n $(x) $(x) $(x)
+end
+
+function two_parameters(a, b)
+	3c
+		:one_parameter(x)
+	3d
+		:one_parameter($(a))
+	3h
+		:one_parameter($(a)$(b))
+	3s $(b) $(a)
+end
+
+pass
+	:no_parameters()
+:no_parameters()
+1h
+	:one_parameter(response to 1h!)
+	:two_parameters(x, d)
+1s
+	:one_parameter(response to 1s!)
+	:two_parameters(a, b)
