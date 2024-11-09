@@ -10,6 +10,11 @@ import sys
 
 from playwright.sync_api import sync_playwright, Playwright
 
+RED = "\u001b[31m";
+GREEN = "\u001b[32m";
+YELLOW = "\u001b[33m";
+RESET = "\u001b[0m";
+
 def get_content(url):
 	# playwright = sync_playwright().__enter__()
 	with sync_playwright() as playwright:
@@ -71,8 +76,12 @@ def main():
 		with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
 			output_name = f.name
 		subprocess.run(['./generate.sh'] + [filename for _, filename in inputs] + ['-o', output_name])
-		all_inputs = " ".join([f'file://{os.getcwd()}/{x[1]}' for x in inputs])
-		print(f'{test_name} {all_inputs} file://{output_name} ', end='')
+		input_links = [f'file://{os.getcwd()}/{x[1]}' for x in inputs]
+		if len(input_links) == 1:
+			all_inputs = f'\tINPUT: {input_links[0]}'
+		else:
+			all_inputs = '\tINPUTS: ' + '\n\t\t'.join(input_links)
+		test_log = f'RUNNING TEST: {test_name}\n{all_inputs}\n\tOUTPUT: file://{output_name}\n'
 		test_outputs.append(f'file://{output_name}')
 		test_output = get_content(f'file://{output_name}')
 		try:
@@ -84,24 +93,27 @@ def main():
 			output_name = args.output_name if args.output_name else 'out'
 			with open(os.path.join(output, output_name + '.html'), 'w') as f:
 				f.write(test_output)
-			print(f'No output file found, generated file://{os.path.join(os.getcwd(), output, output_name + ".html")}')
+			test_log += f'No output file found, generated file://{os.path.join(os.getcwd(), output, output_name + ".html")}\n'
+			color_code = YELLOW
 		else:
 			if args.add_new_outputs:
 				existing_outputs = sorted(os.listdir(output))
-				print(f'Deleting existing output files: {", ".join(existing_outputs)}')
+				test_log += f'Deleting existing output files: {", ".join(existing_outputs)}\n'
 				for x in existing_outputs:
 					os.remove(os.path.join(output, x))
 				output_name = args.output_name if args.output_name else 'out'
 				with open(os.path.join(output, output_name + '.html'), 'w') as f:
 					f.write(test_output)
-				print(f'Succesfully saved new output as file://{os.getcwd()}/{output}/{output_name}.html')
+				test_log += f'Succesfully saved new output as file://{os.getcwd()}/{output}/{output_name}.html\n'
+				color_code = YELLOW
 			else:
 				found = False
 				for possible_output in possible_outputs:
 					with open(os.path.join(output, possible_output), 'r') as f:
 						if f.read() == test_output:
 							found = True;
-							print(f'Matching file://{os.getcwd()}/{output}/{possible_output}')
+							test_log += f'\tMATCHING: file://{os.getcwd()}/{output}/{possible_output}\n'
+							color_code = GREEN
 							break;
 				if not found:
 					if args.add_alternate_outputs:
@@ -110,22 +122,25 @@ def main():
 							try:
 								with open(os.path.join(output, tried_filename), 'x') as f:
 									f.write(test_output)
-								print(f'Succesfully saved new output as file://{os.getcwd()}/{output}/{tried_filename}')
+								test_log += f'Succesfully saved new output as file://{os.getcwd()}/{output}/{tried_filename}\n'
+								color_code = YELLOW
 								break;
 							except FileExistsError:
 								continue
 					else:
 						failed_tests.append(test_name)
 						if len(possible_outputs) == 1:
-							print(f'expected output file://{os.getcwd()}/{output}/{possible_outputs[0]}')
+							test_log += f'EXPECTED OUTPUT: file://{os.getcwd()}/{output}/{possible_outputs[0]}\n'
 						else:
 							outputs = " ".join([f"file://{os.getcwd()}/{output}/{x}" for x in possible_outputs])
-							print(f'valid outputs: {outputs}')
-						print(f'FAILED')
+							test_log += f'VALID OUTPUTS: {outputs}\n'
+						test_log += 'FAILED\n'
+						color_code = RED
+		print(color_code + test_log + RESET)
 
 	if failed_tests:
 		failed_tests_names = " ".join(failed_tests)
-		print(f'FAILED: {len(failed_tests)} tests: {failed_tests_names}')
+		print(RED + f'FAILED: {len(failed_tests)} tests: {failed_tests_names}' + RESET)
 	
 	if args.open_all and test_outputs:
 		subprocess.run(['google-chrome'] + test_outputs)
