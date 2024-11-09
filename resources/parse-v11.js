@@ -988,6 +988,7 @@ function display_error(e, where=undefined) {
 		if (e.title !== undefined) {
 			set_system_title(e.title);
 		}
+		$('body').addClass('done')
 	}
 	else throw e;
 }
