@@ -50,6 +50,7 @@ def get_test_name(output):
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('files', nargs='*')
+	parser.add_argument('--dont-create-if-no-output', '-d', action='store_true')
 	parser.add_argument('--add-new-outputs', '-n', action='store_true')
 	parser.add_argument('--add-alternate-outputs', '-a', action='store_true')
 	parser.add_argument('--output_name', '-o')
@@ -90,11 +91,16 @@ def main():
 			pass
 		possible_outputs = sorted(os.listdir(output))
 		if not possible_outputs:
-			output_name = args.output_name if args.output_name else 'out'
-			with open(os.path.join(output, output_name + '.html'), 'w') as f:
-				f.write(test_output)
-			test_log += f'No output file found, generated file://{os.path.join(os.getcwd(), output, output_name + ".html")}\n'
-			color_code = YELLOW
+			if args.dont_create_if_no_output:
+				test_log += f'\tNo output file found, ERROR'
+				color_code = RED
+				failed_tests.append(test_name)
+			else:
+				output_name = args.output_name if args.output_name else 'out'
+				with open(os.path.join(output, output_name + '.html'), 'w') as f:
+					f.write(test_output)
+				test_log += f'\tNo output file found, generated file://{os.path.join(os.getcwd(), output, output_name + ".html")}\n'
+				color_code = YELLOW
 		else:
 			if args.add_new_outputs:
 				existing_outputs = sorted(os.listdir(output))
