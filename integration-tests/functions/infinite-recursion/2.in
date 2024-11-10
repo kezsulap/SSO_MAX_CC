@@ -1,0 +1,9 @@
+function a()
+	1c
+		:b()
+end
+function b()
+	@hello
+		:a()
+end
+:a()

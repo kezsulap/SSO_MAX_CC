@@ -388,7 +388,11 @@ function parse_file(file) {
 	let functions = {}
 	let nodes_stack = [new Node()]
 	let skip_above = undefined
-	function process_line(content, line_id, offset = 0) {
+	const RECURSION_DEPTH_LIMIT = 1000;
+	function process_line(content, line_id, offset = 0, rec_depth = 0) {
+		if (rec_depth > RECURSION_DEPTH_LIMIT) {
+			throw new ParsingError('Too many function calls at line ' + line_id.split(',').slice(0, 20).join(','));
+		}
 		content = content.split('#')[0]
 		if (!content.trim()) return;
 		if (content.trim()[0] == '&') {
@@ -450,7 +454,7 @@ function parse_file(file) {
 						}
 						new_content += rest[i + 1];
 					}
-					process_line(new_content, line_id + ', ' + num, indent);
+					process_line(new_content, line_id + ', ' + num, indent, rec_depth + 1);
 				}
 				for (let [num, code] of body) {
 					process_call_line(num, code)
