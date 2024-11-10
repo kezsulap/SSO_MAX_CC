@@ -47,6 +47,15 @@ def fetch_test_files():
 def get_test_name(output):
 	return output.split("/", 1)[-1].split("-out")[0]
 
+def matches(test_matcher, test_name):
+	test_name = test_name.removesuffix('.in')
+	parts = test_name.split('/')
+	for i in range(len(parts)):
+		got = "/".join(parts[:(i + 1)])
+		if got == test_matcher:
+			return True
+	return False
+
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('files', nargs='*')
@@ -64,7 +73,7 @@ def main():
 	tests = fetch_test_files()
 	test_names = [get_test_name(output) for (input, output) in tests]
 	for file in args.files:
-		if file not in test_names:
+		if not any([matches(file, get_test_name(x[1])) for x in tests]):
 			print(f'Unknown test {file}')
 			sys.exit(1)
 
@@ -72,7 +81,7 @@ def main():
 
 	for inputs, output in tests:
 		test_name = get_test_name(output)
-		if args.files and test_name not in args.files: #O(n^2)
+		if args.files and not any([matches(matcher, test_name) for matcher in args.files]):
 			continue;
 		with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
 			output_name = f.name
