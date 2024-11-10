@@ -64,9 +64,14 @@ def main():
 	parser.add_argument('--add-alternate-outputs', '-a', action='store_true')
 	parser.add_argument('--output_name', '-o')
 	parser.add_argument('--open-all', '-p', action='store_true')
+	parser.add_argument('--generate-missing-only', '-g', action='store_true')
 	args = parser.parse_args()
 	if args.add_new_outputs and args.add_alternate_outputs:
 		print('Combining --add-new-outputs with --add-alternate-outputs is invalid')
+		sys.exit(1)
+
+	if args.dont_create_if_no_output and args.generate_missing_only:
+		print('Combining --dont-create-if-no-output with --generate-missing-only is invalid')
 		sys.exit(1)
 
 	failed_tests = []
@@ -81,6 +86,13 @@ def main():
 
 	for inputs, output in tests:
 		test_name = get_test_name(output)
+		try:
+			os.mkdir(output)
+		except FileExistsError:
+			pass
+		possible_outputs = sorted(os.listdir(output))
+		if possible_outputs and args.generate_missing_only:
+			continue
 		if args.files and not any([matches(matcher, test_name) for matcher in args.files]):
 			continue;
 		with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
@@ -94,11 +106,6 @@ def main():
 		test_log = f'RUNNING TEST: {test_name}\n{all_inputs}\n\tOUTPUT: file://{output_name}\n'
 		test_outputs.append(f'file://{output_name}')
 		test_output = get_content(f'file://{output_name}')
-		try:
-			os.mkdir(output)
-		except FileExistsError:
-			pass
-		possible_outputs = sorted(os.listdir(output))
 		if not possible_outputs:
 			if args.dont_create_if_no_output:
 				test_log += f'\tNo output file found, ERROR'
