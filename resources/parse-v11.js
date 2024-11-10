@@ -111,17 +111,6 @@ function append_call(state, call) {
 		return [true, [call, 0, 0]]
 	}
 }
-function generate_all_states() {
-	let ret = [];
-	for (let p = 0; p <= 3; ++p)
-		ret.push([0, 0, p]);
-	for (let i = 1; i <= 35; ++i)
-		for (let p = 0; p < 3; ++p)
-			for (let d = 0; d <= 2; ++d)
-				ret.push([i, d, p]);
-	ret.push(undefined);
-	return ret;
-}
 class UNDEFINED_BIDDING {};
 undefined_bidding = new UNDEFINED_BIDDING();
 class Bidding {
@@ -186,13 +175,13 @@ class Bidding {
 function parse_call(call) {
 	let x = call.toLowerCase();
 	if ('pass'.startsWith(x)) {
-		return 0;
+		return PASS;
 	}
 	if (['db', 'dbl', 'ktr', 'x'].includes(x)) {
-		return -1;
+		return DOUBLE;
 	}
 	if (['rdb', 'rdbl', 'rktr', 'xx', 're'].includes(x)) {
-		return -2;
+		return REDOUBLE;
 	}
 	if (x[0] == '{' && x.slice(-1) == '}') {
 		return x.slice(1, -1);
