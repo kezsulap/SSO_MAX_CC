@@ -1,0 +1,17 @@
+function f1()
+	2h
+end
+
+function f2()
+	2s
+end
+
+function arithmetic_picker(a)
+	2c
+		:f$(a + 1)()
+end
+
+1c
+	:arithmetic_picker(0)
+1d
+	:arithmetic_picker(1)

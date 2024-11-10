@@ -1,0 +1,16 @@
+function f1()
+	2h
+end
+
+function f2()
+	2s
+end
+
+function picker(f)
+	1n
+		:$(f)()
+end
+1c
+	:picker(f1)
+1d
+	:picker(f2)

@@ -1,0 +1,7 @@
+function arithmetic_making_bid(x) 
+	$(x + 1)c x=$(x)
+end
+1c
+	:arithmetic_making_bid(3)
+	:arithmetic_making_bid(4)
+	:arithmetic_making_bid(5)
