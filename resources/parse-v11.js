@@ -432,8 +432,8 @@ function parse_file(file) {
 					let vars = [...code.matchAll(var_regex_with_group)];
 					let rest = code.split(var_regex_without_group);
 					let new_content = rest[0];
+					let allow_errors = new_content.slice(-1) == '?' || new_content.slice(-2) == '!?'
 					for (let i = 0; i < vars.length; ++i) {
-						let allow_errors = new_content == '?' || new_content == '!?'
 						try {
 							new_content += eval_sum(vars[i][1], fun_args, args);
 						}
