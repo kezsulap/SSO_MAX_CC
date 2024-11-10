@@ -1,0 +1,12 @@
+function f(x, y)
+	$(x) open
+		?$(x + 3) reply
+		!?$(x + 4) reply
+		!?$(7c + y) other reply
+end
+:f(6n, 2)
+:f(7c, 3)
+:f(7d, 4)
+:f(7h, 5)
+:f(7s, 6)
+:f(7n, 7)

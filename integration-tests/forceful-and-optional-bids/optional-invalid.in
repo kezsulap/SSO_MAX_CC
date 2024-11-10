@@ -1,0 +1,28 @@
+1c
+	?1c
+	!?1c
+	1d
+		?1c
+		!?1c
+		?1d
+		!?1d
+		!?1h
+		!?1h
+	!1d
+	!1h
+	?dbl
+	!?dbl
+	?rdbl
+	!?rdbl
+	?(dbl)
+		!rdbl
+?dbl
+!?dbl
+?rdbl
+!?rdbl
+1d
+	!(dbl)
+		!rdbl
+			?rdbl
+		?(dbl)
+		!?(dbl)

@@ -1,0 +1,4 @@
+function f(x)
+	$(x + 1) bid
+end
+:f(7n)
