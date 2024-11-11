@@ -24,6 +24,9 @@ function Easter(Y) {
 	return [M, D];
 }
 function pick_special_theme() {
+	let url_params_theme = new URLSearchParams(window.location.search).get('theme');
+	if (url_params_theme === 'disable') return '';
+	if (url_params_theme !== null) return url_params_theme;
 	const date = new Date();
 
 	let day = date.getDate();

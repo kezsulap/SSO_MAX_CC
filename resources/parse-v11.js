@@ -299,7 +299,7 @@ function parse_line(content) {
 	if (content[0] == '(') {
 		ours = false;
 		let i = content.indexOf(')');
-		if (i == -1) throw ParsingError("Missing ')'");
+		if (i == -1) throw new ParsingError("Missing ')'");
 		call = content.slice(1, i).trim();
 		meaning = content.slice(i + 1);
 	}
@@ -359,7 +359,7 @@ function eval_sum(str, args, vals) {
 		}
 		else {
 			if (was_replaced)
-				throw new ParsingError('Invalid number in arithmetic operation' + op);
+				throw new ParsingError('Invalid number in arithmetic operation ' + op);
 			else
 				throw new ParsingError('Unknown variable ' + op);
 		}
@@ -480,6 +480,7 @@ function parse_file(file) {
 	for (let line_id = 0; line_id < lines.length; ++line_id) {
 		process_line(lines[line_id], line_id + 1);
 	}
+	if (current_function !== undefined) throw new ParsingError('Unterminated function ' + current_function['name']);
 	return nodes_stack[0];
 }
 function load(url) {
@@ -998,7 +999,7 @@ function get_versions() {
 	let params_list = [];
 	let paste = repo === undefined;
 	for (let k of keys) {
-		if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid') continue;
+		if (k === 'fbclid' || k === 'gclid' || k === 'dclid' || k === 'gclsrc' || k === 'msclkid' || k === 'theme') continue;
 		let v = params.get(k)
 		let [a, b] = v.split(':')
 		let version = a ? a : 'main';

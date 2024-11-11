@@ -16,7 +16,6 @@ YELLOW = "\u001b[33m";
 RESET = "\u001b[0m";
 
 def get_content(url):
-	# playwright = sync_playwright().__enter__()
 	with sync_playwright() as playwright:
 		webkit = playwright.webkit
 		browser = webkit.launch()
@@ -105,7 +104,7 @@ def main():
 			all_inputs = '\tINPUTS: ' + '\n\t\t'.join(input_links)
 		test_log = f'RUNNING TEST: {test_name}\n{all_inputs}\n\tOUTPUT: file://{output_name}\n'
 		test_outputs.append(f'file://{output_name}')
-		test_output = get_content(f'file://{output_name}')
+		test_output = get_content(f'file://{output_name}?theme=disable')
 		if not possible_outputs:
 			if args.dont_create_if_no_output:
 				test_log += f'\tNo output file found, ERROR'

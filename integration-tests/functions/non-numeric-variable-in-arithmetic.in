@@ -1,0 +1,4 @@
+function add(a)
+	1c $(a + 1)
+end
+:add(x)

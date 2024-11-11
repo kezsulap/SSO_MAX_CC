@@ -1,0 +1,4 @@
+function f(a)
+	1c $(a + b)
+end
+:f(3)
