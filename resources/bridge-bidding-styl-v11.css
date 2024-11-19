@@ -766,3 +766,6 @@ body.women.dark {
 		width: 25%;
 	}
 }
+ol, ul {
+	margin: 0px;
+}
