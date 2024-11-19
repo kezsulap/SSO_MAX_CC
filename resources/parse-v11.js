@@ -226,7 +226,7 @@ class Node {
 	}
 	update_innerHTML() {
 		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
-		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<call>' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</call> ' + this.meaning);
+		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<call>' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</call> <meaning>' + this.meaning + '</meaning>');
 	}
 	append_child(call, meaning, adding_mode) {
 		if (adding_mode == IF_MODE || adding_mode == IF_MODE_WITH_REDEFINED) {
@@ -711,8 +711,8 @@ function diff_meanings(contents) { //[[version_name, value], ...]
 	}
 	let diff_content = ''
 	for (let [content, versions] of by_content) {
-		if (diff_content) diff_content += '<br>';
-		diff_content += '<span class="version_id">' + join_versions(versions) + "</span>: " + content
+		// if (diff_content) diff_content += '<br>';
+		diff_content += '<span class="version_id">' + join_versions(versions) + ':</span><span class="version_content">' + content + '</span>'
 	}
 	return [true, diff_content]
 }//[any_diff, content]

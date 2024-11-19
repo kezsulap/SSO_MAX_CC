@@ -18,113 +18,63 @@ td {
 	grid-auto-columns: 1fr;
 	grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
 }
-.level00, .answer_meaning, #show_context_button {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
-	margin: .2em 1% .2em 1%;
+.bidding {
+	padding-left: 0.4em;
 	border-radius: 5px;
+}
+.level00, .answer_meaning, #show_context_button {
+	margin: .2em 1% .2em 1%;
 }
 .level01 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 5%;
-	border-radius: 5px;
 }
 .level02 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 9%;
-	border-radius: 5px;
 }
 .level03 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 13%;
-	border-radius: 5px;
 }
 .level04 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 17%;
-	border-radius: 5px;
 }
 .level05 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 21%;
-	border-radius: 5px;
 }
 .level06 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 25%;
-	border-radius: 5px;
 }
 .level07 {
-	text-indent: -1.4em;
-	padding-left: 1.9em;
 	margin: .2em 1% .2em 29%;
-	border-radius: 5px;
 }
 .level08 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 33%;
-	border-radius: 5px;
 }
 .level09 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 37%;
-	border-radius: 5px;
 }
 .level10 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 41%;
-	border-radius: 5px;
 }
 .level11 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 45%;
-	border-radius: 5px;
 }
 .level12 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 49%;
-	border-radius: 5px;
 }
 .level13 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 53%;
-	border-radius: 5px;
 }
 .level14 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 57%;
-	border-radius: 5px;
 }
 .level15 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 61%;
-	border-radius: 5px;
 }
 .level16 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 65%;
-	border-radius: 5px;
 }
 .level17 {
-	text-indent: -1.4em;
-	padding-left: 1.8em;
 	margin: .2em 1% .2em 69%;
-	border-radius: 5px;
 }
 #topmenu {
 	margin-left: 1%;
@@ -133,9 +83,22 @@ td {
 .bidding, .button, .answer_meaning, #topmenu li {
 	cursor: pointer;
 }
-
+.bidding:has(call):has(meaning) {
+	display: grid;
+	grid-template-columns: max-content auto;
+}
 call {
 	font-weight: bold;
+}
+meaning {
+	padding-left: 3px;
+}
+meaning:has(.version_id):has(.version_content) {
+	display: grid;
+	grid-template-columns: max-content auto;
+}
+.version_content {
+	padding-left: 3px;
 }
 .version_id {
 	font-weight: bold;
