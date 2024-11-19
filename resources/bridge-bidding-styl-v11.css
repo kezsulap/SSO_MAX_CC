@@ -83,7 +83,7 @@ td {
 .bidding, .button, .answer_meaning, #topmenu li {
 	cursor: pointer;
 }
-.bidding:has(call):has(meaning) {
+.bidding.our_call, .bidding.their_call {
 	display: grid;
 	grid-template-columns: max-content auto;
 }
@@ -93,7 +93,7 @@ call {
 meaning {
 	padding-left: 3px;
 }
-meaning:has(.version_id):has(.version_content) {
+.diff meaning {
 	display: grid;
 	grid-template-columns: max-content auto;
 }
