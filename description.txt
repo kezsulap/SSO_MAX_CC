@@ -1942,8 +1942,8 @@ function 2nspades_relay()
 end
 
 p 13+ PC, any distribution (but see 2♦ opening)
-	1c A) 11+ PC, any distribution or B) 6-10 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
-		1d A) 17+ PC, any distribution or B) 13-16 PC, 1) no shortness, no 54 majors, no 6-card major 2) 44(41) 3) (42)(61) 4) 7-card minor, inappropriate hand for 1♥/♠
+	1c <ol> <li> 11+ PC, any distribution </li> <li> 6-10 PC <ol> <li>no shortness, no 54 majors, no 6-card major </li><li> 44(41) </li><li> (42)(61) </li><li> 7-card minor, inappropriate hand for 1♥/♠ </li> </ol> </li> </ol>
+		1d <ol> <li> 17+ PC, any distribution </li><li> 13-16 PC <ol><li> no shortness, no 54 majors, no 6-card major </li><li> 44(41) </li><li> (42)(61) </li><li> 7-card minor, inappropriate hand for 1♥/♠ </li></ol></li></ol>
 			1h 11+ PC, any distribution
 				1s 17+ PC, any distribution
 					1n (5431) or (4441) or 6+♥/♠ without other 4-card suit
@@ -2201,7 +2201,7 @@ p 13+ PC, any distribution (but see 2♦ opening)
 	3h preempt
 	3s preempt
 
-1c 8-12 PC, 1) no shortness, no 54 majors, no 6-card major or 2) 44(41) 3) (53)(41) 4) (42)(61) 5) 7-card minor with 2+♥, 2+♠
+1c 8-12 PC, <ol><li>no shortness, no 54 majors, no 6-card major</li><li>44(41)</li><li>(53)(41)</li><li>(42)(61)</li><li>7-card minor with 2+♥, 2+♠</li></ol>
 	1d relay, 13 + PC
 		1h no 5-card major, no 6-card minor, no shortness
 			1s artificial, at least invitational hand
