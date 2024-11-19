@@ -23,7 +23,7 @@ function negative1d(r1, r2, r3, r4)
 					3c 5+4+♥♠ or nothing to show, or 4♠ without 4♥
 						3d relay
 							3h nothing to show or 4♠
-								3♠ relay
+								3s relay
 									3n nothing to show
 							3s 5+♥, 4♠
 								3n sign-off
@@ -34,10 +34,10 @@ function negative1d(r1, r2, r3, r4)
 								4d agreeing ♠
 							4c 5+5+
 						3h 5♥
-							3♠ no 4♠, no 3♥
+							3s no 4♠, no 3♥
 							3n 4♠, no 3♥
 							{4♣/♦} 3♥, cue-bid
-							4♥ NF
+							4h NF
 						3s 5♠
 					3d 4♥
 						3h 4-5♠
@@ -48,7 +48,7 @@ function negative1d(r1, r2, r3, r4)
 						3s 6+♠
 							3n 0-1♠
 							{4♣/4♦/4♥} 2+♠, cue-bid
-							4♠ 2+♠, no cue-bids
+							4s 2+♠, no cue-bids
 						3n sign-off
 						{4♣/♦/♥} agreeing ♥
 					3h 5+♠
@@ -976,15 +976,15 @@ function open1n(open_strength, relay_strength)
 						3h 5422, minimum
 					2h NF
 					2s NF
-				2♦ 6♦, too weak ♣ to redouble
-				2♥ 6♥, minimum
+				2d 6♦, too weak ♣ to redouble
+				2h 6♥, minimum
 					2s sign-off
 					2n relay, GF
 						3c 4603
 						3d 4630
 						3h 4612
 						3s 4621
-				2♠ 6♠, minimum
+				2s 6♠, minimum
 					2n relay, GF
 						3c 6403
 						3d 6430
@@ -1004,10 +1004,10 @@ function open1n(open_strength, relay_strength)
 						3s short ♦
 						3n 5521
 						4c 5530
-				3♥ 6♠, maximum
-				3♠ 6♥, maximum
+				3h 6♠, maximum
+				3s 6♥, maximum
 				3n 6♦ or 55♣♦ too weak suit to redouble, maximum
-			(2♦)
+			(2d)
 				x penalty or 5♥4♠
 					2h NF
 					2s NF
@@ -1054,14 +1054,14 @@ function open1n(open_strength, relay_strength)
 								4c minimum
 						3s 5440, maximum
 						3n 5440, minimum
-				2♥ 6♥, minimum
+				2h 6♥, minimum
 					2s sign-off
 					2n relay, GF
 						3c 4603
 						3d 4630
 						3h 4612
 						3s 4621
-				2♠ 6♠, minimum
+				2s 6♠, minimum
 					2n relay, GF
 						3c 6403
 						3d 6430
@@ -1081,13 +1081,13 @@ function open1n(open_strength, relay_strength)
 						3s short ♦
 						3n 5521
 						4c 5530
-				3♥ 6♠, maximum
-				3♠ 6♥, maximum
+				3h 6♠, maximum
+				3s 6♥, maximum
 				3n 6♣, maximum
-			(2♥)
+			(2h)
 				x penalty (usually 5+♥) or ♥ singleton
 				p 5♠4♥
-				2♠ 6♠, NF
+				2s 6♠, NF
 				2n 1255, minimum, or 12(64), maximum
 					3c NF
 						3h 6+♣
@@ -1108,7 +1108,7 @@ function open1n(open_strength, relay_strength)
 				3h 1255, maximum, without J+ in ♥
 				3s 6♠, GF
 				3n 1255, maximum with J+ in ♥
-			(2♠)
+			(2s)
 				x penalty (usually 5+♠) or ♠ singleton
 				p 5♥4♠
 				2n 2155, minimum, or 21(64), maximum
@@ -1135,7 +1135,7 @@ function open1n(open_strength, relay_strength)
 				p 54♠♥ minimum or minors, but see 3♦
 				x 5♥4♠ GF or 6♥
 					3h NF
-						3♠ 6♥ GF
+						3s 6♥ GF
 						3n 5♥4♠
 					3s relay
 					3n sign-off
@@ -1149,7 +1149,7 @@ function open1n(open_strength, relay_strength)
 				p 54♠♥ minimum or minors
 				x 5♥4♠ GF or 6♥
 					3h NF
-						3♠ 6♥ GF
+						3s 6♥ GF
 						3n 5♥4♠
 					3s relay
 					3n sign-off
@@ -1162,7 +1162,7 @@ function open1n(open_strength, relay_strength)
 				x (21)55, GF
 				3s (21)46, GF
 				3n (21)64, GF
-			(3♠)
+			(3s)
 				x (21)55, GF
 				3n (21)(46), GF
 		2d weak relay
@@ -1177,8 +1177,8 @@ function open1n(open_strength, relay_strength)
 			3s 6+ ♠, 4♥, extras
 			3n minors, extras
 			4c 65+ minors
-			(dbl)
-				pass 6♦
+			(x)
+				p 6♦
 				xx equal majors
 				{2♥ and higher} system on
 		2h pass or correct
@@ -1211,8 +1211,8 @@ function open1n(open_strength, relay_strength)
 				2n 55♥♠, extras
 				3c 6♥, 4♠, extras
 				3h 6♠, 4♥, extras
-			2♦ pass or correct
-				2♥ majors, doesn't specify longer suit
+			2d pass or correct
+				2h majors, doesn't specify longer suit
 		(2d)
 			x pass or correct
 				2h longer ♥/equal
@@ -1404,15 +1404,15 @@ function open2c(open_strength, relay_strength)
 		2h signoff
 			2s 4♥, club shortness, extras
 			2n 43(51), extras
-				3♣ pass or correct
-				3♦ pass or correct
+				3c pass or correct
+				3d pass or correct
 			3c 3♥, 6♣, extras
 			3d 3♥, 6♦, extras
 			3h 4♥, diamond shortness, extras
 		2s signoff
 			2n 34(51), extras
-				3♣ pass or correct
-				3♦ pass or correct
+				3c pass or correct
+				3d pass or correct
 			3c 3♠, 6♣, extras
 			3d 3♠, 6♦, extras
 			3h 4♠, club shortness, extras
@@ -1546,7 +1546,7 @@ function new2d()
 			3d 5 ♦, 13-14 PC
 				3h pass or correct
 				3s pass or correct
-				3nt signoff
+				3n signoff
 			3h 5 ♥, 15+ PC
 				3n signoff
 			3s 5 ♠, 15+ PC
@@ -1680,7 +1680,7 @@ function open2s(open_strength, relay_strength, which_relay)
 		3c pass or correct
 			3d ♦+♥
 			3h ♦+♥, extras
-			3♠ ♣+♠, extras
+			3s ♣+♠, extras
 		3d pass or correct
 			3h ♦+♥, extras
 			3s ♣+♠
@@ -2130,8 +2130,8 @@ p 13+ PC, any distribution (but see 2♦ opening)
 							3n 3433
 							4c 4333
 						3n NF
-							4♣ 3433, extras
-							4♦ 4333, extras
+							4c 3433, extras
+							4d 4333, extras
 					3s 33(43)
 					
 				1n 13-16 no 5-card major, no 6-card minor, no shortness
@@ -2235,7 +2235,7 @@ p 13+ PC, any distribution (but see 2♦ opening)
 						3s no 3♥, no 4♠
 						3n 4♠, no 3♥
 					3s 5+♦
-				2nt no 4-card major, no 54 distribution, maximum, good hand to bid NT
+				2n no 4-card major, no 54 distribution, maximum, good hand to bid NT
 				3c (42)25, maximum
 				3d (42)52, maximum
 				3h 2245, maximum
@@ -2400,9 +2400,9 @@ p 13+ PC, any distribution (but see 2♦ opening)
 		2c 6♣
 		2d 6♦
 		2h 4+♥, maximum
-		(dbl)
-			pass 3244
-			rdbl 3♥
+		(x)
+			p 3244
+			xx 3♥
 			{1♠ and higher} system on
 			2h 4+♥, doesn't show extras
 	1s 4+ ♠, NF
@@ -2413,9 +2413,9 @@ p 13+ PC, any distribution (but see 2♦ opening)
 		2c 6♣
 		2d 6♦
 		2s 4+♠, maximum
-		(dbl)
-			pass 2♠
-			rdbl 3♠
+		(x)
+			p 2♠
+			xx 3♠
 			{1NT and higher} system on
 			2s 4+♠, doesn't show extras
 	1n natural, NF
