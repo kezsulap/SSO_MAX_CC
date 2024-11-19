@@ -44,8 +44,8 @@ def main():
 	from_branch = None
 
 	diff = args.diff_auto
-	if diff and args.code_branch:
-		print('Error: --diff-auto combined with --code-branch', file=sys.stderr)
+	if diff and not args.code_branch:
+		print('Error: --diff-auto not available when on code branch', file=sys.stderr)
 		sys.exit(1)
 	if args.code_branch:
 		from_branch = 'code'
