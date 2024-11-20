@@ -712,7 +712,7 @@ function diff_meanings(contents) { //[[version_name, value], ...]
 	let diff_content = ''
 	for (let [content, versions] of by_content) {
 		// if (diff_content) diff_content += '<br>';
-		diff_content += '<span class="version_id">' + join_versions(versions) + ':</span><span class="version_content">' + content + '</span>'
+		diff_content += '<div class="version"><div class="version_id">' + join_versions(versions) + ':</div><div class="version_content">' + content + '</div></div>'
 	}
 	return [true, diff_content]
 }//[any_diff, content]

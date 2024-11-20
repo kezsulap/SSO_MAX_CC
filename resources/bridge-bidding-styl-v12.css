@@ -84,8 +84,7 @@ td {
 	cursor: pointer;
 }
 .bidding.our_call, .bidding.their_call {
-	display: grid;
-	grid-template-columns: max-content auto;
+	display: flex;
 }
 .call {
 	font-weight: bold;
@@ -93,9 +92,8 @@ td {
 .meaning {
 	padding-left: 3px;
 }
-.diff .meaning {
-	display: grid;
-	grid-template-columns: max-content auto;
+.diff .meaning .version {
+	display: flex;
 }
 .version_content {
 	padding-left: 3px;
