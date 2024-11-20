@@ -226,7 +226,7 @@ class Node {
 	}
 	update_innerHTML() {
 		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
-		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<call>' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</call> <meaning>' + this.meaning + '</meaning>');
+		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<div class="call">' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</div> <div class="meaning">' + this.meaning + '</div>');
 	}
 	append_child(call, meaning, adding_mode) {
 		if (adding_mode == IF_MODE || adding_mode == IF_MODE_WITH_REDEFINED) {

@@ -87,13 +87,13 @@ td {
 	display: grid;
 	grid-template-columns: max-content auto;
 }
-call {
+.call {
 	font-weight: bold;
 }
-meaning {
+.meaning {
 	padding-left: 3px;
 }
-.diff meaning {
+.diff .meaning {
 	display: grid;
 	grid-template-columns: max-content auto;
 }
