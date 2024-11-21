@@ -1006,3 +1006,21 @@ function get_versions() {
 	if (owner === undefined) {owner = 'kezsulap', repo = 'SSO_MAX_CC'} //Uncomment for local testing of web related features
 	return [owner, repo, params_list]
 }
+function doesOverflowVertically(el) {
+	let curOverflow = el.style.overflow;
+	if (!curOverflow || curOverflow === "visible")
+		el.style.overflow = "hidden";
+	let isOverflowing = el.clientWidth < el.scrollWidth;
+	el.style.overflow = curOverflow;
+	return isOverflowing;
+}
+function align_topmenu() {
+	let topmenu = document.querySelector('#topmenulist');
+	let all_answers = topmenu.children;
+	for (let i = all_answers.length; i >= 1; --i) {
+		document.querySelector('#topmenulist').style.gridTemplateColumns = 'repeat(' + i + ', ' + (100 / i - 0.00001) + '%)';
+		let any_overflow = false;
+		for (let x of all_answers) if (doesOverflowVertically(x)) any_overflow = true;
+		if (!any_overflow) break;
+	}
+}

@@ -26,6 +26,8 @@ function init() {
 		catch (e) {
 			display_error(e);
 		}
+		align_topmenu();
+		addEventListener("resize", (event) => {align_topmenu()});
 	})
 }
 init();

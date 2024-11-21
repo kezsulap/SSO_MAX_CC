@@ -13,6 +13,9 @@ table {
 td {
 	font-size: 1em;
 }
+#topmenulist {
+	display: grid;
+}
 .bidding {
 	padding-left: 0.4em;
 	border-radius: 5px;
@@ -117,10 +120,8 @@ ul.topmenu li {
 	margin: 2px;
 	padding: 0;
 	border-radius: 5px;
-	min-width: 50px;
 	height: 1.25em;
 	text-align: center;
-	width: min-content;
 }
 a.topmenu {
 	display: block;
