@@ -575,7 +575,6 @@ function add_button(name, action, label) {
 	ret.id = name
 	ret.innerHTML = '<div onclick=' + action.name + '()>' + label + '</div>'
 	topmenu.appendChild(ret)
-	// topmenu.children[topmenu.children.length - 1].addEventListener('click', action)
 }
 function add_theme_switch_node() {
 	add_button('theme_switch_button', handle_theme_switch, '☀️');
@@ -709,7 +708,6 @@ function diff_meanings(contents) { //[[version_name, value], ...]
 	}
 	let diff_content = ''
 	for (let [content, versions] of by_content) {
-		// if (diff_content) diff_content += '<br>';
 		diff_content += '<div class="version"><div class="version_id">' + join_versions(versions) + ':</div><div class="version_content">' + content + '</div></div>'
 	}
 	return [true, diff_content]
