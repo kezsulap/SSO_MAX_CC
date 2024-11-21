@@ -13,11 +13,6 @@ table {
 td {
 	font-size: 1em;
 }
-#topmenulist {
-	display: grid;
-	grid-auto-columns: 1fr;
-	grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
-}
 .bidding {
 	padding-left: 0.4em;
 	border-radius: 5px;
