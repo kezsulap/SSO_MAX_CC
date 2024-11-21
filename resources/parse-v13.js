@@ -634,7 +634,7 @@ function display(node, HTML_title=true, do_topmenu=true) {
 				no++;
 			}
 			if (!is_comment) {
-				a.setAttribute('title', format_str(node.current_auction.to_table()))
+				$(a).balloon({position: depth <= 1 ? "bottom" : "left", contents: format_str(node.current_auction.to_table())});
 			}
 			content.appendChild(a);
 		}
@@ -647,8 +647,6 @@ function display(node, HTML_title=true, do_topmenu=true) {
 		add_theme_switch_node()
 		add_fold_everything_node()
 	}
-	for (let i = 0; i <= max_level; ++i)
-		$(function(){$('#bidding .bidding.level' + String(i).padStart(2, '0')).balloon({position: i <= 1 ? "bottom" : "left"})})
 	$(function(){$('#bidding .hand').balloon({position: "top"})})
 	if (do_topmenu) {
 		set_system_title(node.title, node.diff_title);
