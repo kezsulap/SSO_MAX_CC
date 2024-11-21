@@ -5,13 +5,6 @@ body {
 #content {
 	margin: auto;
 }
-table {
-	border-collapse: collapse;
-	page-break-inside: avoid;
-}
-td {
-	font-size: 1em;
-}
 #topmenulist {
 	display: grid;
 }
