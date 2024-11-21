@@ -1,6 +1,6 @@
 body {
 	font-family: calibri;
-	font-size: 20px;
+	font-size: 30px;
 	margin-bottom: 1000px;
 }
 #content {
@@ -763,11 +763,6 @@ body.women.dark {
 	#control_panel .button {
 		width: 25%;
 	}
-}
-@media (max-width: 800px) {
-  body {
-    font-size: 30px;
-  }
 }
 ol, ul {
 	margin: 0px;
