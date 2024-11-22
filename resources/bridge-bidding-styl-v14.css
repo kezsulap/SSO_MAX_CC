@@ -392,6 +392,35 @@ body.autumn .diamond-image:after {
 body.autumn .diamond .suit-label {
 	font-size: 0;
 }
+/******************** Colour-blind *****************/
+body.colour-blind.bright {
+	.club, .hand .c {
+		color: #ff6600;
+	}
+	.diamond, .hand .d {
+		color: blue;
+	}
+	.heart, .hand .h {
+		color: #005416;
+	}
+	.spade, .hand .s {
+		color: red;
+	}
+}
+body.colour-blind.dark {
+	.club, .hand .c {
+		color: #ffc14d;
+	}
+	.diamond, .hand .d {
+		color: #9999ff;
+	}
+	.heart, .hand .h {
+		color: #00e63d;
+	}
+	.spade, .hand .s {
+		color: #ff3333;
+	}
+}
 /******************** Children *********************/
 body.children .diamond-image:after {
 	content: "\1f476";
@@ -728,7 +757,6 @@ body.women.dark {
 	background-attachment: fixed;
 	background-position: left;
 }
-
 
 /******************** Quiz related stuff *********************/
 .answer_meaning .call, .answer_meaning .call_meaning {

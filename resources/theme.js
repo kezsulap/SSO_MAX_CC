@@ -36,6 +36,7 @@ function pick_special_theme() {
 	if (month == 4 && day == 1) return 'april-fool'
 	if (month == 9 && day == 23) return 'autumn'
 	if (month == 12 && day >= 24 && day <= 26) return 'christmas'
+	if (month == 9 && day == 6) return 'colour-blind'
 	if (month == 6 && day == 1) return 'children'
 	if (month == 4 && day == 24) return 'earth'
 	if (month == 10 && day == 14) return 'education'
@@ -55,6 +56,7 @@ function pick_special_theme() {
 	if (month == 12 && day == 22) return 'winter'
 	if (month == 3 && day == 8) return 'women'	
 
+	//Deliberately giving easter lower priority than other days that could overlap
 	let [easter_m, easter_d] = Easter(year)
 	let days_til_easter = (new Date(year + '-' + month + '-' + day).getTime() - new Date(year + '-' + easter_m + '-' + easter_d).getTime()) / (24 * 60 * 60 * 1000)
 	if (days_til_easter >= -2 && days_til_easter <= 1) return 'easter'
