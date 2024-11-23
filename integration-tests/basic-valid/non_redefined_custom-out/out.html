@@ -5,9 +5,10 @@
 	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-balloon-v2.js"></script>
 	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-bridge-bidding-3.js"></script>
 	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/theme.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/parse-v11.js"></script>
+	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/parse-v14.js"></script>
 	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/main.js"></script>
 	<script>hardcoded=['1h\n	(1s) legitimate 1s\n	({1♠}) custom call pretending to be 1s\n	({1!s}) custom call with exclamation s\n']</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Convention card ♠♥♦♣</title></head>
 <body class="dark done">
 <div id="content">
@@ -15,13 +16,13 @@
 
 <div class="bidding level00 title" level="0" id="page_title" style="display: none;"></div>
 <div id="topmenu">
-<ul class="topmenu" id="topmenulist"><li><a href="#open0" class="topmenu">1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span></span><span class="heart-image"></span></span></a></li><li id="theme_switch_button"><div onclick="handle_theme_switch()">☀️</div></li><li id="fold_everything_button"><div onclick="fold_everything()">↩</div></li></ul>
+<ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(3, 33.333323%);"><li style=""><a href="#open0" class="topmenu">1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span></span><span class="heart-image"></span></span></a></li><li id="theme_switch_button" style=""><div onclick="handle_theme_switch()">☀️</div></li><li id="fold_everything_button" style=""><div onclick="fold_everything()">↩</div></li></ul>
 <div style="clear: both;"></div>
 </div>
 <div id="bidding">
 
 
-<div class="bidding level00 relay our_call" level="0" id="open0" title="Open 1<span class=&quot;heart suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♥</span></span><span class=&quot;heart-image&quot;></span></span>"><call>1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span></span><span class="heart-image"></span></span>:</call> <meaning></meaning></div><div class="bidding level01 their_call" level="1" style="display: none;" title="<table><tr><td class=&quot;ours&quot;>1<span class=&quot;heart suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♥</span></span><span class=&quot;heart-image&quot;></span></span></td><td class=&quot;theirs&quot;>1<span class=&quot;spade suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♠</span></span><span class=&quot;spade-image&quot;></span></span></td></tr></table>"><call>(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span></span><span class="spade-image"></span></span>):</call> <meaning>legitimate 1s</meaning></div><div class="bidding level01 their_call" level="1" style="display: none;" title="<table><tr><td class=&quot;ours&quot;>1<span class=&quot;heart suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♥</span></span><span class=&quot;heart-image&quot;></span></span></td><td class=&quot;theirs&quot;>1<span class=&quot;spade suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♠</span></span><span class=&quot;spade-image&quot;></span></span></td></tr></table>"><call>(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span></span><span class="spade-image"></span></span>):</call> <meaning>custom call pretending to be 1s</meaning></div><div class="bidding level01 their_call" level="1" style="display: none;" title="<table><tr><td class=&quot;ours&quot;>1<span class=&quot;heart suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♥</span></span><span class=&quot;heart-image&quot;></span></span></td><td class=&quot;theirs&quot;>1<span class=&quot;spade suit&quot;><span class=&quot;suit-label&quot;><span class=&quot;emoji&quot;>♠</span></span><span class=&quot;spade-image&quot;></span></span></td></tr></table>"><call>(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span></span><span class="spade-image"></span></span>):</call> <meaning>custom call with exclamation s</meaning></div></div><!-- koniec #bidding -->
+<div class="bidding level00 relay our_call" level="0" id="open0"><div class="call">1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span></span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span></span><span class="spade-image"></span></span>):</div> <div class="meaning">legitimate 1s</div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span></span><span class="spade-image"></span></span>):</div> <div class="meaning">custom call pretending to be 1s</div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span></span><span class="spade-image"></span></span>):</div> <div class="meaning">custom call with exclamation s</div></div></div><!-- koniec #bidding -->
 <!-- koniec strony -->
 </div><!-- /content -->
 
