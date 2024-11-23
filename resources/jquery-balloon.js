@@ -107,20 +107,17 @@ function isInViewport(el) {
 	// Adjust position of balloon body
 	function makeupBalloonWrapper($target, $balloon, options) {
 		let positions = options.position.split('-');
-		console.log('Will try', positions)
 		for (let position of positions) {
 			let my_options = {}
 			Object.assign(my_options, options);
 			my_options.position = position;
 			makeupBalloonOriginalImpl($target, $balloon, my_options);
 			if (isInViewport($balloon[0])) {
-				console.log('break');
 				break;
 			}
 		}
 	}
 	function makeupBalloonOriginalImpl($target, $balloon, options) {
-		console.log('try', options)
 		$balloon.stop(true, true);
 		var outerTip, innerTip,
 			initTipStyle = {position: "absolute", height: "0", width: "0", border: "solid 0 transparent"},
