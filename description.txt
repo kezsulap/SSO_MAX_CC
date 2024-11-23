@@ -18,7 +18,7 @@ function negative1d(r1, r2, r3, r4)
 		1s natural, NF
 		1n at least F1, GF to $(r3) PC range
 			2c $(r2)PC, any distribution
-				{2♦/2♥/2♠} NF
+				{2♦/♥/♠} NF
 				2n GF
 					3c 5+4+♥♠ or nothing to show, or 4♠ without 4♥
 						3d relay
@@ -47,7 +47,7 @@ function negative1d(r1, r2, r3, r4)
 							4s 4+♠, no cue-bids
 						3s 6+♠
 							3n 0-1♠
-							{4♣/4♦/4♥} 2+♠, cue-bid
+							{4♣/♦/♥} 2+♠, cue-bid
 							4s 2+♠, no cue-bids
 						3n sign-off
 						{4♣/♦/♥} agreeing ♥
@@ -59,7 +59,7 @@ function negative1d(r1, r2, r3, r4)
 					4c 5+5+♣♦
 					4d 6+♥
 					4h 6+♠
-				{3♣/3♦/3♥/3♠} GF, 6+
+				{3♣/♦/♥/♠} GF, 6+
 				3n GF, 5+5+♦♥
 				4c GF, 5+5+♣♥
 				4d GF, 5+5+♦♠
