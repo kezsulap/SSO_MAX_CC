@@ -1,10 +1,10 @@
 bridge-bidding-styl-v14.css
 edit.js
-jquery-balloon.js
+jquery-balloon-v2.js
 jquery-bridge-bidding-3.js
 jquery.min.js
 main.js
-parse-v13.js
+parse-v14.js
 quiz.js
 theme.js
 special-themes/bright-april-fool.png
