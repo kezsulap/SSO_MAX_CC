@@ -8,6 +8,12 @@
  * @author: Hayato Takenaka (http://urin.take-uma.net)
  * @version: 0.3.0 - 2012/02/25
 **/
+
+function isInViewport(el) {
+	let left = parseFloat(el.style.left);
+	return left >= 0;
+}
+
 ;(function($) {
 	//-----------------------------------------------------------------------------
 	// Private
@@ -99,7 +105,22 @@
 	})();
 
 	// Adjust position of balloon body
-	function makeupBalloon($target, $balloon, options) {
+	function makeupBalloonWrapper($target, $balloon, options) {
+		let positions = options.position.split('-');
+		console.log('Will try', positions)
+		for (let position of positions) {
+			let my_options = {}
+			Object.assign(my_options, options);
+			my_options.position = position;
+			makeupBalloonOriginalImpl($target, $balloon, my_options);
+			if (isInViewport($balloon[0])) {
+				console.log('break');
+				break;
+			}
+		}
+	}
+	function makeupBalloonOriginalImpl($target, $balloon, options) {
+		console.log('try', options)
 		$balloon.stop(true, true);
 		var outerTip, innerTip,
 			initTipStyle = {position: "absolute", height: "0", width: "0", border: "solid 0 transparent"},
@@ -206,7 +227,7 @@
 			if(options.url) {
 				$balloon.load($.isFunction(options.url) ? options.url(this) : options.url, function(res, sts, xhr) {
 					if(options.ajaxComplete) options.ajaxComplete(res, sts, xhr);
-					makeupBalloon($target, $balloon, options);
+					makeupBalloonWrapper($target, $balloon, options);
 				});
 			}
 			if(isNew) {
@@ -216,10 +237,10 @@
 					.css({visibility: "hidden", position: "absolute"})
 					.appendTo("body");
 				$target.data("balloon", $balloon);
-				makeupBalloon($target, $balloon, options);
+				makeupBalloonWrapper($target, $balloon, options);
 				$balloon.hide().css("visibility", "visible");
 			} else {
-				makeupBalloon($target, $balloon, options);
+				makeupBalloonWrapper($target, $balloon, options);
 			}
 			$target.data("onTimer", setTimeout(function() {
 				if(options.showAnimation) {

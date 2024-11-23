@@ -633,7 +633,7 @@ function display(node, HTML_title=true, do_topmenu=true) {
 				no++;
 			}
 			if (!is_comment) {
-				$(a).balloon({position: depth <= 1 ? "bottom" : "left", contents: format_str(node.current_auction.to_table())});
+				$(a).balloon({position: 'left-top', contents: format_str(node.current_auction.to_table())});
 			}
 			content.appendChild(a);
 		}
