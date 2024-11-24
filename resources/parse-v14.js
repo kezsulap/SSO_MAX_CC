@@ -84,30 +84,27 @@ class states_set {
 };
 const initial_sequence = [0, 0, 0];
 function append_call(state, call) {
-	if (state === undefined) {
+	if (state === undefined)
 		return [false, 'call after end of auction'];
-	}
 	let [contract, doubled, passes] = state;
 	if (call === REDOUBLE) {
-		if (doubled === 1 && passes % 2 === 0) {
+		if (doubled === 1 && passes % 2 === 0)
 			return [true, [contract, 2, 0]]
-		}
 		return [false, 'invalid redouble']
 	}
 	else if (call === DOUBLE) {
-		if (doubled === 0 && passes % 2 === 0 && contract >= 1) {
+		if (doubled === 0 && passes % 2 === 0 && contract >= 1)
 			return [true, [contract, 1, 0]];
-		}
 		return [false, 'invalid double']
 	}
 	else if (call === PASS) {
-		if (passes === (contract == 0 ? 3 : 2)) return [true, undefined];
+		if (passes === (contract == 0 ? 3 : 2))
+			return [true, undefined];
 		return [true, [contract, doubled, passes + 1]];
 	}
 	else { 
-		if (call <= contract) {
+		if (call <= contract)
 			return [false, 'insufficient bid']
-		}
 		return [true, [call, 0, 0]]
 	}
 }
@@ -226,20 +223,30 @@ class Node {
 	}
 	update_innerHTML() {
 		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
-		this.innerHTML = this.call === undefined ? undefined : format_str(is_comment ? this.call.value : '<div class="call">' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</div> <div class="meaning">' + this.meaning + '</div>');
+		this.innerHTML = this.call === undefined ? undefined : format_str(
+			is_comment ? this.call.value : '<div class="call">' + wrap_if(call_to_str(this.call.value), this.call.whose == OURS) + ':</div> <div class="meaning">' + this.meaning + '</div>'
+		);
+	}
+	already_exists(call) {
+		if (call.whose == OURS && call.type != COMMENT) return this.our_calls.has(call.value);
+		if (call.whose == THEIRS && call.type != COMMENT) return this.their_calls.has(call.value);
+		return false;
 	}
 	append_child(call, meaning, adding_mode) {
 		if (adding_mode == IF_MODE || adding_mode == IF_MODE_WITH_REDEFINED) {
 			try {
 				var new_auction = this.current_auction.append(call)
 			}
-			catch {
-				return undefined;
+			catch (e) {
+				if (e instanceof ParsingError) 
+					return undefined;
+				else
+					throw e;
 			}
 		}
 		else
 			var new_auction = this.current_auction.append(call)
-		if ((call.whose == OURS && call.type != COMMENT && this.our_calls.has(call.value)) || (call.whose == THEIRS && call.type != COMMENT && this.their_calls.has(call.value))) { 
+		if (this.already_exists(call)) { 
 			if (adding_mode == NORMAL_MODE) {
 				throw new ParsingError('Redefined sequence ' + new_auction.to_table());
 			}
@@ -277,7 +284,7 @@ function parse_function(content, exception, is_definition) {
 	if (is_definition) for (let a of args) if (!a.match(R)) throw exception;
 	return [name, args];
 }
-function parse_line(content) {
+function parse_call_line(content) {
 	content = content.trim();
 	if (content[0] == '@') {
 		return [new Call(COMMENT, content.slice(1), undefined), undefined, NORMAL_MODE]
@@ -295,9 +302,9 @@ function parse_line(content) {
 		mode = IF_MODE;
 		content = content.slice(1);
 	}
-	let call = undefined, meaning = undefined, ours = true;
+	let call = undefined, meaning = undefined, whose = OURS;
 	if (content[0] == '(') {
-		ours = false;
+		whose = THEIRS;
 		let i = content.indexOf(')');
 		if (i == -1) throw new ParsingError("Missing ')'");
 		call = content.slice(1, i).trim();
@@ -318,10 +325,10 @@ function parse_line(content) {
 	}
 	call = call.trim();
 	if (call[0] == '{' && call[call.length - 1] == '}') {
-		call = new Call(CUSTOM_CALL, call.slice(1, -1), ours ? OURS : THEIRS);
+		call = new Call(CUSTOM_CALL, call.slice(1, -1), whose);
 	}
 	else {
-		call = new Call(CALL, parse_call(call), ours ? OURS : THEIRS);
+		call = new Call(CALL, parse_call(call), whose);
 	}
 	return [call, meaning.trim(), mode];
 }
@@ -341,7 +348,10 @@ function eval_sum(str, args, vals) {
 	for (let i = 0; i < operands.length; ++i) {
 		let sign = (i == 0 || operators[i - 1] == '+' ? 1 : -1)
 		let op = operands[i].trim()
-		if (op == '') continue;
+		if (op == '') {
+			if (i == 0) continue;
+			else throw new ParsingError('Missing operand in ' + str);
+		}
 		let was_replaced = false;
 		for (let j = 0; j < N; ++j) {
 			if (op == args[j]) {
@@ -371,117 +381,156 @@ function eval_sum(str, args, vals) {
 	}
 	return '' + val;
 }
-function parse_file(file) {
-	let lines = file.split('\n');
-	let current_function = undefined
-	let functions = {}
-	let nodes_stack = [new Node()]
-	let skip_above = undefined
-	const RECURSION_DEPTH_LIMIT = 1000;
-	function process_line(content, line_id, offset = 0, rec_depth = 0) {
-		if (rec_depth > RECURSION_DEPTH_LIMIT) {
-			throw new ParsingError('Too many function calls at line ' + line_id.split(',').slice(0, 20).join(','));
+class ParsingContext {
+	constructor() {
+		this.nodes_stack = [new Node()];
+		this.functions = {};
+		this.current_function = undefined;
+		this.indentation_skip_threshold = undefined;
+		this.title = undefined;
+	}
+	end_function(indent, line_id) {
+		if (this.current_function === undefined) throw new ParsingError('end outside of function on line ' + line_id);
+		if (indent) throw new ParsingError('Unexpected indentation in end of function line ' + line_id);
+		let name = this.current_function['name'];
+		if (name in this.functions) {
+			throw new ParsingError('Redefinition of function ' + name + ' on line '+  line_id, this.title);
 		}
-		content = content.split('#')[0]
-		if (!content.trim()) return;
-		if (content.trim()[0] == '&') {
-			title = content.trim().substring(1);
-			nodes_stack[0].title = title;
-			return;
-		}
-		if (current_function) {
-			if (content.trim() === 'end') {
-				let name = current_function['name'];
-				if (name in functions) {
-					throw new ParsingError('Redefinition of function ' + name + ' on line '+  line_id, nodes_stack[0].title);
-				}
-				functions[name] = current_function;
-				current_function = undefined;
-				return;
+		this.functions[name] = this.current_function;
+		this.current_function = undefined;
+		return;
+	}
+	add_title(indent, line_id, content) {
+		if (indent) throw new ParsingError('Unexpected indentation before title on line ' + line_id);
+		this.title = content.trim();
+	}
+	append_function_content(indent, line_id, content) {
+		if (indent == 0) throw new ParsingError('Missing indentation in function definition on line ' + line_id, this.title);
+		this.current_function['body'].push([line_id, '\t'.repeat(indent - 1) + content])
+	}
+	begin_function(indent, line_id, content) {
+		let invalid_str = 'Invalid function declaration syntax on line ' + line_id;
+		let [name, args] = parse_function(content, new ParsingError(invalid_str), true);
+		this.current_function = {name : name, body : [], args : args};
+	}
+	call_function(indent, line_id, content, process_line_callable, rec_depth) {
+		let invalid_str = 'Invalid function call syntax on line ' + line_id;
+		let [name, args] = parse_function(content, new ParsingError(invalid_str), false);
+		if (name in this.functions) {
+			let body = this.functions[name]['body'];
+			let fun_args = this.functions[name]['args'];
+			if (args.length != fun_args.length) {
+				throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length, this.title);
 			}
-			if (content[0] != '\t') throw new ParsingError('Missing indentation in function definition on line ' + line_id, nodes_stack[0].title);
-			current_function['body'].push([line_id, content.slice(1)])
-			return;
-		}
-		if (content.startsWith('function')) {
-			let invalid_str = 'Invalid function declaration syntax on line ' + line_id;
-			let [name, args] = parse_function(content.slice('function'.length), new ParsingError(invalid_str), true);
-			current_function = {name : name, body : [], args : args};
-			return;
-		}
-		let indent = 0;
-		while (indent < content.length && content[indent] === '\t') {
-			indent++;
-		}
-		content = content.trim();
-		indent += offset;
-		if (skip_above !== undefined && indent > skip_above) return;
-		else skip_above = undefined;
-		if (content[0] == ':') {
-			let invalid_str = 'Invalid function call syntax on line ' + line_id;
-			let [name, args] = parse_function(content.slice(1), new ParsingError(invalid_str), false);
-			if (name in functions) {
-				let body = functions[name]['body'];
-				let fun_args = functions[name]['args'];
-				if (args.length != fun_args.length) {
-					throw new ParsingError('Wrong number of parameters in function call on line ' + line_id + ' Expected ' + fun_args.length + ', found ' + args.length, nodes_stack[0].title);
-				}
-				function process_call_line(num, code) {
-					let var_regex_with_group = /\$\(([^()]*)\)/g;
-					let var_regex_without_group = /\$\([^()]*\)/g;
-					let vars = [...code.matchAll(var_regex_with_group)];
-					let rest = code.split(var_regex_without_group);
-					let new_content = rest[0];
-					let allow_errors = new_content.slice(-1) == '?' || new_content.slice(-2) == '!?'
-					for (let i = 0; i < vars.length; ++i) {
-						try {
-							new_content += eval_sum(vars[i][1], fun_args, args);
-						}
-						catch (e) {
-							if (allow_errors && e instanceof ParsingError) return;
-							throw e;
-						}
-						new_content += rest[i + 1];
+			function process_function_body_line(num, code) {
+				let var_regex_with_group = /\$\(([^()]*)\)/g;
+				let var_regex_without_group = /\$\([^()]*\)/g;
+				let vars = [...code.matchAll(var_regex_with_group)];
+				let rest = code.split(var_regex_without_group);
+				let new_content = rest[0];
+				let allow_errors = new_content.slice(-1) == '?' || new_content.slice(-2) == '!?'
+				for (let i = 0; i < vars.length; ++i) {
+					try {
+						new_content += eval_sum(vars[i][1], fun_args, args);
 					}
-					process_line(new_content, line_id + ', ' + num, indent, rec_depth + 1);
+					catch (e) {
+						if (allow_errors && e instanceof ParsingError) return;
+						throw e;
+					}
+					new_content += rest[i + 1];
 				}
-				for (let [num, code] of body) {
-					process_call_line(num, code)
-				}
+				process_line_callable(new_content, line_id + ', ' + num, indent, rec_depth + 1);
 			}
-			else {
-				throw new ParsingError('Unknown function: ' + name + ' on line ' + line_id, nodes_stack[0].title); 
+			for (let [num, code] of body) {
+				process_function_body_line(num, code)
 			}
-			return;
 		}
-		if (indent >= nodes_stack.length) {
-			throw new ParsingError('Unexpected indentation on line ' + line_id, nodes_stack[0].title, nodes_stack[0].title);
+		else {
+			throw new ParsingError('Unknown function: ' + name + ' on line ' + line_id, this.title); 
 		}
-		nodes_stack = nodes_stack.slice(0, indent + 1);
-		try {
-			var [call, meaning, mode] = parse_line(content);
-		} catch(e) {
-			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, nodes_stack[0].title);
-			throw e;
+	}
+	add_subnode(indent, line_id, call, meaning, mode) {
+		if (indent >= this.nodes_stack.length) {
+			throw new ParsingError('Unexpected indentation on line ' + line_id, this.title);
 		}
-		let current_node = nodes_stack[indent];
+		this.nodes_stack = this.nodes_stack.slice(0, indent + 1);
+		let current_node = this.nodes_stack[indent];
 		try {
 			current_node = current_node.append_child(call, meaning, mode);
 			if (current_node === undefined) {
-				skip_above = indent;
+				this.indentation_skip_threshold = indent;
 				return;
 			}
 		} catch(e) {
-			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, nodes_stack[0].title);
+			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, this.title);
 			throw e;
 		}
-		nodes_stack.push(current_node);
+		this.nodes_stack.push(current_node);
+	}
+	finalize() {
+		if (this.current_function !== undefined) throw new ParsingError('Unterminated function ' + this.current_function['name']);
+		let ret = this.nodes_stack[0];
+		ret.title = this.title;
+		return ret;
+	}
+}
+function trim_whitespace_and_comments(raw_content, line_id) {
+	let cropped_content = raw_content.split('#')[0]
+	let indent = 0;
+	while (indent < cropped_content.length && cropped_content[indent] == '\t') indent++;
+	if (cropped_content.length > indent) {
+		let first_character = cropped_content[indent];
+		if (first_character.trim() == '') throw new ParsingError('Line beginning with whitespaces other than tabs on line ' + line_id);
+	}
+	return [indent, cropped_content.trim()];
+}
+function parse_file(file) {
+	let lines = file.split('\n');
+	let parsing_context = new ParsingContext();
+	const RECURSION_DEPTH_LIMIT = 1000;
+	function process_line(raw_content, line_id, offset = 0, rec_depth = 0) {
+		if (rec_depth > RECURSION_DEPTH_LIMIT) {
+			throw new ParsingError('Too many function calls at line ' + line_id.split(',').slice(0, 20).join(','));
+		}
+		let [indent, content] = trim_whitespace_and_comments(raw_content, line_id);
+		if (!content) return;
+		indent += offset;
+		if (parsing_context.indentation_skip_threshold !== undefined && indent > parsing_context.indentation_skip_threshold)
+			return;
+		else
+			parsing_context.indentation_skip_threshold = undefined;
+		if (content[0] == '&') {
+			parsing_context.add_title(indent, line_id, content.substring(1));
+			return;
+		}
+		if (content === 'end') {
+			parsing_context.end_function(indent, line_id);
+			return;
+		}
+		if (parsing_context.current_function) {
+			parsing_context.append_function_content(indent, line_id, content);
+			return;
+		}
+		if (content.startsWith('function')) {
+			parsing_context.begin_function(indent, line_id, content.slice('function'.length));
+			return;
+		}
+		if (content[0] == ':') {
+			parsing_context.call_function(indent, line_id, content.slice(1), process_line, rec_depth)
+			return;
+		}
+		try {
+			var [call, meaning, mode] = parse_call_line(content);
+		} catch(e) {
+			if (e instanceof ParsingError) throw new ParsingError(e.message + ' on line ' + line_id, parsing_context.title);
+			throw e;
+		}
+		parsing_context.add_subnode(indent, line_id, call, meaning, mode);
 	}
 	for (let line_id = 0; line_id < lines.length; ++line_id) {
 		process_line(lines[line_id], line_id + 1);
 	}
-	if (current_function !== undefined) throw new ParsingError('Unterminated function ' + current_function['name']);
-	return nodes_stack[0];
+	return parsing_context.finalize();
 }
 function load(url) {
 	var xhr = new XMLHttpRequest();
