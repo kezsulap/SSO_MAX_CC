@@ -44,7 +44,7 @@ def fetch_test_files():
 	return [(input, output) for output, input in groups.items()]
 
 def get_test_name(output):
-	return output.split("/", 1)[-1].split("-out")[0]
+	return output.split("/", 1)[-1].removesuffix("-out")
 
 def matches(test_matcher, test_name):
 	test_name = test_name.removesuffix('.in')
