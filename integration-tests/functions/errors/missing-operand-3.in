@@ -1,0 +1,4 @@
+function f(a)
+	$(a-)
+end
+:f(1)
