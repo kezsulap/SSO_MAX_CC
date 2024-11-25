@@ -673,7 +673,7 @@ body.spring .club .suit-label {
 }
 /******************** Summer **********************/
 body.summer .diamond-image:after {
-	content: "\2600\fe0f"
+	content: "\2600\FE0F"
 }
 body.summer .diamond .suit-label {
 	font-size: 0;
@@ -733,7 +733,7 @@ body.veggie .club .suit-label {
 }
 /******************** Winter ********************/
 body.winter .spade-image:after {
-	content: "\2744"
+	content: "\2744\FE0F"
 }
 body.winter .spade .suit-label {
 	font-size: 0;
