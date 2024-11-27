@@ -219,7 +219,14 @@ class Node {
 		this.our_calls = new Set();
 		this.their_calls = new Set();
 		this.update_innerHTML()
+		this.init_classes();
 		return;
+	}
+	init_classes() {
+		if (this.call === undefined) return;
+		if (this.call.type == COMMENT) this.other_classes.add('comment')
+		else if (this.call.whose == OURS) this.other_classes.add('our_call')
+		else this.other_classes.add('their_call')
 	}
 	update_innerHTML() {
 		let is_comment = this.call === undefined ? false : this.call.type == COMMENT;
@@ -652,21 +659,9 @@ function display(node, HTML_title=true, do_topmenu=true) {
 				max_level = depth;
 			let is_comment = node.call.type == COMMENT;
 			a.innerHTML = node.innerHTML 
-			if (depth) {
-				a.setAttribute('style', "display: none;");
-			}
-			if (node.children.length) {
-				a.classList.add('relay');
-			}
-			for (let otherClass of node.other_classes) {
-				a.classList.add(otherClass);
-			}
-			if (is_comment)
-				a.classList.add('comment')
-			else if (node.call.whose == OURS)
-				a.classList.add('our_call')
-			else
-				a.classList.add('their_call')
+			if (depth) a.setAttribute('style', "display: none;");
+			if (node.children.length) a.classList.add('relay');
+			for (let otherClass of node.other_classes) a.classList.add(otherClass);
 			if (depth == 0 && !is_comment && do_topmenu) {
 				a.setAttribute('id', 'open' + no);
 				let topmenu_node = document.createElement('li');
