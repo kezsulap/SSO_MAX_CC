@@ -1812,9 +1812,9 @@ function clubs_relay_with_2137()
 	2n (21)37
 		3c relay
 			3d 1237, maximum
-			3h 2137, maximum
+			3h 2137, maximum 🇻🇦
 			3s 1237, minimum
-			3n 2137, minimum
+			3n 2137, minimum 🇻🇦
 	3c 2317
 		3d relay
 			3h maximum
