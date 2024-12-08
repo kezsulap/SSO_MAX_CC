@@ -23,7 +23,7 @@
 								3n short ♦
 								4c short ♣
 						3s 4♥, 6♣, short ♠
-						3n 4♠, 6♣, short ♦
+						3n 4♥, 6♣, short ♦
 				2n 4♥, 5+♠ or 6♦
 					3c relay
 						3d 4♥, 6♦
