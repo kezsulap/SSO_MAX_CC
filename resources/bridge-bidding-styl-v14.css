@@ -666,6 +666,13 @@ body.santa.bright {
 	background-attachment: fixed;
 	background-position: top;
 }
+/******************** Single **********************/
+body.single .heart-image:after {
+	content: "\1F494";
+}
+body.single .heart .suit-label {
+	font-size: 0;
+}
 /******************** Spring **********************/
 body.spring .club-image:after {
 	content: "\1f331"

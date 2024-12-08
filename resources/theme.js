@@ -48,6 +48,7 @@ function pick_special_theme() {
 	if (month == 1 && day == 1) return 'new-year'
 	if (month == 5 && day == 17) return 'rainbow'
 	if (month == 12 && day == 6) return 'santa'
+	if (month == 2 && day == 15) return 'single'
 	if (month == 3 && day == 21) return 'spring'
 	if (month == 6 && day == 22) return 'summer'
 	if (month == 2 && day == 24) return 'ukraine'
