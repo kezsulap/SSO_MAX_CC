@@ -613,6 +613,100 @@ function parse_hand(s) {
 	}
 	return '<span class="hand" title="' + HCP + ' HCP">' + parsed_hand + '</span>';
 }
+function is_suit_length(str){
+    return /^\d+$/.test(str) || str == 'x';
+}
+function calc_min_max_in_shape(s) {
+	let curr_depth = 0, min_depth = 0, max_depth = 0;
+	for (let x of s) {
+		if (x == '(') curr_depth++;
+		if (x == ')') curr_depth--;
+		min_depth = Math.min(min_depth, curr_depth);
+		max_depth = Math.max(max_depth, curr_depth);
+	}
+	if (curr_depth) throw new ParsingError('Mismatched parentheses in shape: ' + s);
+	return [min_depth, max_depth];
+}
+function extract_groups_from_shape(s) {
+	let [min_depth, max_depth] = calc_min_max_in_shape(s);
+	let groups = [];
+	let curr_depth = 0;
+	let group_before = [], curr_group = [];
+	let initial_group = (min_depth == -1);
+	for (let x of s) {
+		if (x == '(') curr_depth++;
+		if (x == ')') {
+			curr_depth--;
+			if (initial_group) {
+				group_before = curr_group;
+				initial_group = false;
+			}
+			else {
+				groups.push(curr_group);
+			}
+			curr_group = [];
+		}
+		if (is_suit_length(x) && curr_depth == max_depth) {
+			curr_group.push(x);
+		}
+	}
+	if (min_depth == -1) {
+		groups.push(group_before.concat(curr_group));
+	}
+	return groups;
+}
+function all_equal(s) {
+	for (let x of s) if (x != s[0]) return false;
+	return true;
+}
+function is_sorted(s) {
+	for (let i = 0; i + 1 < s.length; ++i) {
+		if ((s[i] == 'x' && s[i + 1] != 'x') || (s[i] != 'x' && s[i + 1] != 'x' && s[i] < s[i + 1])) {
+			return false;
+		}
+	}
+	return true;
+}
+function colour_shape(s) {
+	let r = '';
+	let i = 0;
+	let classes = ['s', 'h', 'd', 'c'];
+	let curr_depth = 0;
+	for (let x of s)
+		if (x != ')' && x != '(' && !is_suit_length(x))
+			throw new ParsingError('Invalid character in shape: ' + x);
+	let [min_depth, max_depth] = calc_min_max_in_shape(s);
+	let sum = 0, xes = 0;
+	if (max_depth - min_depth >= 2) throw new ParsingError('Nested parentheses in shape: ' + s);
+	if (s[0] == ')') throw new ParsingError('Shape beginning with ")": ' + s);
+	if (s[s.length - 1] == '(') throw new ParsingError('Shape ending with "(": ' + s);
+	curr_depth = 0;
+	let groups = extract_groups_from_shape(s);
+	for (let group of groups) {
+		if (group.length == 0) throw new ParsingError('Empty group in shape: ' + s);
+		if (group.length == 1) throw new ParsingError('Group with 1 suit: ' + s);
+		if (all_equal(group)) throw new ParsingError('Group containing only suits of the same length ' + group[0] + ': ' + s);
+		if (!is_sorted(group)) throw new ParsingError('Group ' + group + ' not sorted: ' + s)
+	}
+	for (let x of s) {
+		if (x == '(') curr_depth++;
+		if (x == ')') curr_depth--;
+		if (is_suit_length(x)) {
+			if (x == 'x') xes++;
+			else sum += parseInt(x);
+			if (curr_depth == min_depth)
+				r += '<span class="' + classes[i] + '">' + x + '</span>';
+			else
+				r += x;
+			i++;
+		}
+		else
+			r += x;
+	}
+	if (xes == 0 && sum != 13) throw new ParsingError('Shape ' + s + ' containing ' + sum + ' cards');
+	if (xes == 1) throw new ParsingError('Shape ' + s + ' containing exactly one x');
+	return '<span class="shape">' + r + "</span>";
+}
 function format_str(s) {
 	s = s.replaceAll(/♣|!c/g, club_string);
 	s = s.replaceAll(/♦|!d/g, diamond_string);
@@ -623,6 +717,10 @@ function format_str(s) {
 	for (let i = 1; i < hands.length; i += 2) hands[i] = parse_hand(hands[i])
 	s = hands.join("");
 	s = s.replaceAll(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>')
+	let shape_regex = /\!\{([()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*)\}/g
+	let shapes = s.split(shape_regex);
+	for (let i = 1; i < shapes.length; i += 2) shapes[i] = colour_shape(shapes[i]);
+	s = shapes.join("");
 	return s;
 }
 function add_button(name, action, label) {

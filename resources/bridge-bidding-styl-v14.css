@@ -170,16 +170,16 @@ body.bright {
 	a.topmenu {
 		color: black;
 	}
-	.club, .hand .c {
+	.club, .hand .c, .shape .c {
 		color: #005416;
 	}
-	.diamond, .hand .d {
+	.diamond, .hand .d, .shape .d {
 		color: #ff6600;
 	}
-	.heart, .hand .h {
+	.heart, .hand .h, .shape .h {
 		color: red;
 	}
-	.spade, .hand .s {
+	.spade, .hand .s, .shape .s {
 		color: blue;
 	}
 	ul.topmenu li {
@@ -279,16 +279,16 @@ body.dark {
 	a.topmenu {
 		color: #dddddd;
 	}
-	.club, .hand .c {
+	.club, .hand .c, .shape .c {
 		color: #00e63d;
 	}
-	.diamond, .hand .d {
+	.diamond, .hand .d, .shape .d {
 		color: #ffc14d;
 	}
-	.heart, .hand .h {
+	.heart, .hand .h, .shape .h {
 		color: #ff3333;
 	}
-	.spade, .hand .s {
+	.spade, .hand .s, .shape .s {
 		color: #9999ff;
 	}
 	ul.topmenu li {
@@ -396,30 +396,30 @@ body.autumn .diamond .suit-label {
 }
 /******************** Colour-blind *****************/
 body.colour-blind.bright {
-	.club, .hand .c {
+	.club, .hand .c, .shape .c {
 		color: #ff6600;
 	}
-	.diamond, .hand .d {
+	.diamond, .hand .d, .shape .d {
 		color: blue;
 	}
-	.heart, .hand .h {
+	.heart, .hand .h, .shape .h {
 		color: #005416;
 	}
-	.spade, .hand .s {
+	.spade, .hand .s, .shape .s {
 		color: red;
 	}
 }
 body.colour-blind.dark {
-	.club, .hand .c {
+	.club, .hand .c, .shape .c {
 		color: #ffc14d;
 	}
-	.diamond, .hand .d {
+	.diamond, .hand .d, .shape .d {
 		color: #9999ff;
 	}
-	.heart, .hand .h {
+	.heart, .hand .h, .shape .h {
 		color: #00e63d;
 	}
-	.spade, .hand .s {
+	.spade, .hand .s, .shape .s {
 		color: #ff3333;
 	}
 }
