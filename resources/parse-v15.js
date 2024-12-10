@@ -3,6 +3,9 @@ const CALL = 0, CUSTOM_CALL = 1, COMMENT = 2;
 const OURS = 0, THEIRS = 1;
 const HIGHEST_CONTRACT = 35;
 const NORMAL_MODE = 0, IF_MODE = 1, FORCE_MODE = 2, IF_MODE_WITH_REDEFINED = 3;
+const PASS_STR = 'pass';
+const DOUBLE_STR = 'dbl';
+const REDOUBLE_STR = 'rdbl';
 class ParsingError extends Error {
   constructor(message, title = undefined) {
     super(message);
@@ -41,46 +44,75 @@ class states_set {
 		this.in_progress[0][0][0] = initial
 	}
 	append(call) {
-		let low = typeof(call) == 'string' ? REDOUBLE : call;
-		let high = typeof(call) == 'string' ? HIGHEST_CONTRACT : call;
-		let errors = new Set();
-		let ret = new states_set(false, false);
-		let any = false;
+		const low = typeof(call) === 'string' ? REDOUBLE : call;
+		const high = typeof(call) === 'string' ? HIGHEST_CONTRACT : call;
+		const errors = new Set();
+
 		if (this.over) errors.add('call after end of auction');
+
+		const ret = this.createInitialState();
+
+		this.iterateThroughContracts(low, high, errors, ret);
+
+		if (!ret.any()) this.handleErrors(errors, call);
+		return ret;
+	}
+
+	any() {
+		for (let a1 of this.in_progress)
+			for (let a2 of a1)
+				for (let a3 of a2)
+					if (a3)
+						return true;
+		if (this.over) return true;
+		return false;
+	}
+
+	createInitialState() {
+		return new states_set(false, false);
+	}
+
+	iterateThroughContracts(low, high, errors, ret) {
 		for (let contract = 0; contract <= HIGHEST_CONTRACT; ++contract) {
 			for (let doubled = 0; doubled <= 2; ++doubled) {
-				for (let passes = 0; passes <= (contract == 0 ? 3 : 2); ++passes) {
+				for (let passes = 0; passes <= (contract === 0 ? 3 : 2); ++passes) {
 					if (this.in_progress[contract][doubled][passes]) {
-						let curr_state = [contract, doubled, passes];
-						for (let call = low; call <= high; ++call) {
-							let would_be = append_call(curr_state, call);
-							if (would_be[0]) {
-								any = true;
-								if (would_be[1] === undefined) ret.over = true;
-								else {
-									let [contract2, doubled2, passes2] = would_be[1];
-									ret.in_progress[contract2][doubled2][passes2] = true;
-								}
-							}
-							else {
-								errors.add(would_be[1]);
-							}
-						}
+						this.checkCalls(low, high, errors, ret, contract, doubled, passes);
 					}
 				}
 			}
 		}
-		if (!any) {
-			if (errors.size == 1) {
-				let [error] = errors;
-				throw new ParsingError(error + ': ' + call_to_str(call));
-			}
-			else {
-				throw new ParsingError('invalid call: ' + call_to_str(call));
-			}
-		}
-		return ret;
 	}
+
+	checkCalls(low, high, errors, ret, contract, doubled, passes) {
+		let curr_state = [contract, doubled, passes];
+		for (let call = low; call <= high; ++call) {
+			let would_be = append_call(curr_state, call);
+			this.handleCall(would_be, ret, errors, call);
+		}
+	}
+
+	handleCall(would_be, ret, errors, call) {
+		if (would_be[0]) {
+			if (would_be[1] === undefined) ret.over = true;
+			else {
+				let [contract2, doubled2, passes2] = would_be[1];
+				ret.in_progress[contract2][doubled2][passes2] = true;
+			}
+		} else {
+			errors.add(would_be[1]);
+		}
+	}
+
+	handleErrors(errors, call) {
+		if (errors.size === 1) {
+			let [error] = errors;
+			throw new ParsingError(error + ': ' + call_to_str(call));
+		} else {
+			throw new ParsingError('invalid call: ' + call_to_str(call));
+		}
+	}
+
 };
 const initial_sequence = [0, 0, 0];
 function append_call(state, call) {
@@ -200,9 +232,9 @@ function call_to_str(x) {
 	if (x === undefined) return '';
 	if (typeof(x) == 'string') return x;
 	if (typeof(x) == 'number') {
-		if (x === -2) return 'rdbl';
-		if (x === -1) return 'dbl';
-		if (x === 0) return 'pass';
+		if (x === -2) return REDOUBLE_STR;
+		if (x === -1) return DOUBLE_STR;
+		if (x === 0) return PASS_STR;
 		if (x <= 35) {
 			return Math.floor((x + 4) / 5) + ['♣', '♦', '♥', '♠', 'NT'][(x + 4) % 5];
 		}
