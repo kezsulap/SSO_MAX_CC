@@ -633,6 +633,7 @@ function extract_groups_from_shape(s) {
 	let curr_depth = 0;
 	let group_before = [], curr_group = [];
 	let initial_group = (min_depth == -1);
+	let all_in_one_group = true;
 	for (let x of s) {
 		if (x == '(') curr_depth++;
 		if (x == ')') {
@@ -646,13 +647,15 @@ function extract_groups_from_shape(s) {
 			}
 			curr_group = [];
 		}
-		if (is_suit_length(x) && curr_depth == max_depth) {
-			curr_group.push(x);
+		if (is_suit_length(x)) {
+			if (curr_depth == max_depth)
+				curr_group.push(x);
+			else
+				all_in_one_group = false;
 		}
 	}
-	if (min_depth == -1) {
-		groups.push(group_before.concat(curr_group));
-	}
+	if (min_depth == -1 && all_in_one_group) throw new ParsingError('Invalid way to group everything into one group in shape: ' + s);
+	if (min_depth == -1) groups.push(group_before.concat(curr_group));
 	return groups;
 }
 function all_equal(s) {
@@ -704,6 +707,8 @@ function colour_shape(s) {
 			r += x;
 	}
 	if (xes == 0 && sum != 13) throw new ParsingError('Shape ' + s + ' containing ' + sum + ' cards');
+	if (sum > 13) throw new ParsingError('Shape ' + s + ' containing more than 13 cards');
+	if (xes > 0 && sum == 13) throw new ParsingError('Shape containing 13 cards and xes: ' + s);
 	if (xes == 1) throw new ParsingError('Shape ' + s + ' containing exactly one x');
 	return '<span class="shape">' + r + "</span>";
 }
