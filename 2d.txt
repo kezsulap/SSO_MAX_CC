@@ -3,7 +3,7 @@
 		2c 0-4 PC, any distribution
 		2d 4+♥ (could have longer ♠)
 			2h relay
-				2s 5♥ or 4♥6♣
+				2s 5♥ or 6♥4♣
 					2n relay
 						3c 5♥, 5♣/♦
 							3d relay
@@ -22,35 +22,38 @@
 							3s relay
 								3n short ♦
 								4c short ♣
-						3s 4♥, 6♣, short ♠
-						3n 4♥, 6♣, short ♦
-				2n 4♥, 5+♠ or 6♦
+						3s 6♥, 4♣, short ♠
+						3n 6♥, 4♣, short ♦
+				2n !{3433}, or 4♥ 6+♣/♦
 					3c relay
-						3d 4♥, 6♦
+						3d 4♥, 6♣
 							3h relay
 								3s short ♠
-								3n short ♣
-						3h 4♥, 6♠, short ♣
-						3s 4♥, 6♠, short ♦
-						3n 4♥, 5♠
-				3c 6♥, 4♣/♦
+								3n short ♦
+						3h 4♥, 6♦, short ♣
+						3s 4♥, 6♦, short ♠
+						3n !{3433}
+				3c 6♥, 4♦/♠
 					3d relay
-						3h 4♣
+						3h 4♦
 							3s relay
 								3n short ♠
-								4c short ♦
-						3s 4♦, short ♠
-						3n 4♦, short ♣
-				3d 4♥, 0-4♠
-					3h relay
-						3s 0-2♠
-						3n 3♠
-						4c 4♠
-				3h 6♥ 4♠
+								4c short ♣
+						3s 4♠, short ♦
+						3n 4♠, short ♣
+				3d 4♥, no 6-card
+					3h 3-4♠
+						3s 0-3♠
+						3n 4♠
+						{4♣ and higher} 5♠
+					3s 5♠
+						3n 0-2♠
+						{4♣ and higher} 3+♠
+				3h 4♥ 6♠
 					3s relay
 						3n short ♦
 						4c short ♣
-				3s 6♥ 0-2♠
+				3s 6♥ 1-2♠
 				3n 6♥ 3♠
 			2s 6+♠ or 5♠5♣/♦ (so after 2♥ we don't distinguish between 0, 1 or 2 spades)
 		2h
