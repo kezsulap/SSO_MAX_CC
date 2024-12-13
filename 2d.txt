@@ -1,7 +1,7 @@
 1d 0-7 PC, any distribution
 	1n relay
-		2c 0-4 PC, any distribution
-		2d 4+♥ (could have longer ♠)
+		2c 0-4 PC, any distribution (except 6+♠)
+		2d 4+♥, 5-7 PC (could have longer ♠)
 			2h relay
 				2s 5♥ or 6♥4♣
 					2n relay
@@ -56,8 +56,42 @@
 				3s 6♥ 1-2♠
 				3n 6♥ 3♠
 			2s 6+♠ or 5♠5♣/♦ (so after 2♥ we don't distinguish between 0, 1 or 2 spades)
-		2h
-		2s
+		2h 4+♠, no 4♥, 5-7 PC (except 4♠ 6+♦)
+			2s relay
+				2n 4♠ 6♣ or 4♠, no 6-card, or 5♠ no 3♥ no 5♣/♦
+					3c relay
+						3d 4♠ 6♣
+							3h relay
+								3s short ♥
+								3n short ♦
+						3h !{43xx}
+							3s relay
+								3n !{4333}
+								4c no !{4333}
+						3s !{5xxx}
+						3n !{4xxx}
+				3c 6♠ 4+♣/♦
+					3d relay
+						3h 4♣
+							3s relay
+								3n short ♥
+								4c short ♦
+						3s 4♦, short ♥
+						3n 4♦, short ♣
+				3d !{53xx}, !{63xx} or !{6xxx}
+					3h relay
+						3s !{6xxx}
+						3n !{53xx}
+						4c !{63xx}
+				3h 5♠ 5♣
+					3s relay
+						3n short ♥
+						4c short ♦
+				3s 5♠ 5♦, short ♥
+				3n 5♠ 5♦, short ♣
+
+
+		2s 6+♠, 0-4 PC
 		2n
 		3c
 		3d
@@ -74,6 +108,7 @@
 			4h sign-off
 			4s sign-off
 			4n Blackwood on ♥
+
 
 # 2d
 # 2h
