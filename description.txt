@@ -620,25 +620,7 @@ function open1s(open_strength, relay_strength, 5h_responses)
 				2s relay
 					2n 6♠ with a void or 7♠ with a singleton
 						:unbalanced_6s_2n_3c_relay()
-					3c 6♠4m with a singleton
-						3d relay
-							3h 4♣
-								3s relay
-									3n !{6124}
-									4c !{6214}
-							3s !{6142}
-							3n !{6241}
-					3d !{6(331)}
-						3h relay
-							3s !{6133}
-							3n !{6313}
-							4c !{6331}
-					3h !{62(32)}
-						3s relay
-							3n !{6223}
-							4c !{6232}
-					3s !{7222}
-					3n !{6322}
+					:balanced_6s_3c_responses()
 			2s 6♠ without a void or !{7222}, minimum
 				2n relay
 					:balanced_6s_3c_responses()
