@@ -9,6 +9,7 @@ import subprocess
 import sys
 
 from playwright.sync_api import sync_playwright, Playwright
+import bs4
 
 RED = "\u001b[31m";
 GREEN = "\u001b[32m";
@@ -55,6 +56,68 @@ def matches(test_matcher, test_name):
 			return True
 	return False
 
+def diff_HTML(output, expected_output):
+	expected_output_soup = bs4.BeautifulSoup(expected_output, 'html.parser')
+	output_soup = bs4.BeautifulSoup(output, 'html.parser')
+	errors = []
+	def extract_attrs_in_canonical_form(element):
+		attrs = dict(element.attrs)
+		if 'class' in attrs:
+			attrs['class'] = sorted(attrs['class'])
+		return attrs
+
+	def filter_children_elements(element):
+		def process(subelement):
+			if isinstance(subelement, bs4.element.Comment):
+				return None
+			if isinstance(subelement, str):
+				subelement = subelement.strip()
+				if subelement:
+					return subelement
+				return None
+			if isinstance(subelement, bs4.element.Tag):
+				return subelement
+			print(RED + f'Unknown element type: {type(subelement)}' + RESET, file=sys.stderr)
+			assert False
+
+		return [px for px in (process(x) for x in element.contents) if px is not None]
+
+	def format(element):
+		LEN_THRESHOLD = 100
+		ret = repr(element)
+		if len(ret) > LEN_THRESHOLD:
+			ret = ret[:LEN_THRESHOLD] + '...'
+		return ret.replace('\n', r'\n')
+
+	def format_list(element_list):
+		return f'{len(element_list)} elements: ' + ", ".join((format(x) for x in element_list))
+
+	def rec_cmp(output_element, expected_output_element):
+		output_element_canonical_form_attrs = extract_attrs_in_canonical_form(output_element)
+		expected_output_element_canonical_form_attrs = extract_attrs_in_canonical_form(expected_output_element)
+		if output_element.name != expected_output_element.name:
+			errors.append(f'Mismatched tag type, expected: {expected_output_element.name}, found {output_element.name} at {format(output_element)}')
+
+		if output_element_canonical_form_attrs != expected_output_element_canonical_form_attrs:
+			errors.append(f'Mismatched attributes, expected: {expected_output_element_canonical_form_attrs}, found: {output_element_canonical_form_attrs}')
+
+		output_element_filtered_children = filter_children_elements(output_element)
+		expected_output_element_filtered_children = filter_children_elements(expected_output_element)
+		if len(output_element_filtered_children) != len(expected_output_element_filtered_children):
+			errors.append(f'Mismatched element length: expected: {format_list(expected_output_element_filtered_children)}, found: {format_list(output_element_filtered_children)}')
+		else:
+			for output_subelement, expected_output_subelement in zip(output_element_filtered_children, expected_output_element_filtered_children):
+				if type(output_subelement) != type(expected_output_subelement):
+					errors.append(f'Mismatched types of subcontent, expected: {format(expected_output_subelement)}, found: {output_subelement}')
+				if isinstance(output_subelement, str):
+					if output_subelement != expected_output_subelement:
+						errors.append(f'Mismatched content, expected: {expected_output_subelement}, found {output_subelement}')
+				else:
+					rec_cmp(output_subelement, expected_output_subelement)
+
+	rec_cmp(output_soup.select('body')[0], expected_output_soup.select('body')[0])
+	return errors
+
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('files', nargs='*')
@@ -89,7 +152,7 @@ def main():
 			os.mkdir(output)
 		except FileExistsError:
 			pass
-		possible_outputs = sorted(os.listdir(output))
+		possible_outputs = sorted([x for x in os.listdir(output) if x.endswith('.html')])
 		if possible_outputs and args.generate_missing_only:
 			continue
 		if args.files and not any([matches(matcher, test_name) for matcher in args.files]):
@@ -128,14 +191,20 @@ def main():
 				test_log += f'Succesfully saved new output as file://{os.getcwd()}/{output}/{output_name}.html\n'
 				color_code = YELLOW
 			else:
+				all_mismatches = []
 				found = False
 				for possible_output in possible_outputs:
+					print(os.path.join(output, possible_output))
 					with open(os.path.join(output, possible_output), 'r') as f:
-						if f.read() == test_output:
-							found = True;
-							test_log += f'\tMATCHING: file://{os.getcwd()}/{output}/{possible_output}\n'
-							color_code = GREEN
-							break;
+						found_content = f.read()
+					errors = diff_HTML(test_output, found_content)
+					if errors:
+						all_mismatches.append(errors)
+					else:
+						found = True;
+						test_log += f'\tMATCHING: file://{os.getcwd()}/{output}/{possible_output}\n'
+						color_code = GREEN
+						break;
 				if not found:
 					if args.add_alternate_outputs:
 						for i in itertools.count(1):
@@ -151,10 +220,10 @@ def main():
 					else:
 						failed_tests.append(test_name)
 						if len(possible_outputs) == 1:
-							test_log += f'EXPECTED OUTPUT: file://{os.getcwd()}/{output}/{possible_outputs[0]}\n'
+							test_log += f'EXPECTED OUTPUT: file://{os.getcwd()}/{output}/{possible_outputs[0]}\n\t' + '\n\t'.join(all_mismatches[0]) + '\n'
 						else:
-							outputs = " ".join([f"file://{os.getcwd()}/{output}/{x}" for x in possible_outputs])
-							test_log += f'VALID OUTPUTS: {outputs}\n'
+							outputs = "\n".join([f"\tfile://{os.getcwd()}/{output}/{x}\n\t\t" + '\n\t\t'.join(errors) for x, errors in zip(possible_outputs, all_mismatches)])
+							test_log += f'VALID OUTPUTS:\n{outputs}\n'
 						test_log += 'FAILED\n'
 						color_code = RED
 		print(color_code + test_log + RESET)
