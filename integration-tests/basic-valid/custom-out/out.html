@@ -1,34 +1,108 @@
-<!DOCTYPE html><html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<link rel="stylesheet" href="file:////home/konrad/SSO_MAX_CC/resources_main/bridge-bidding-styl-v15.css">
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery.min.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-balloon-v2.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-bridge-bidding-3.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/theme.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/parse-v15.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/main.js"></script>
-	<script>hardcoded=['1c hello\n	({any}) world\n		pass oh no\n			(dbl) yes\n				pass\n	(dbl)\n		rdbl SOS\n']</script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convention card ♠♥♦♣</title></head>
 <body class="dark done">
-<div id="content">
-<!-- początek strony -->
-
-<div class="bidding level00 title" level="0" id="page_title" style="display: none;"></div>
-<div id="topmenu">
-<ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(3, 33.333323%);"><li class="our_call" style=""><a href="#open0" class="topmenu">1<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span></a></li><li id="theme_switch_button" style=""><div onclick="handle_theme_switch()">☀️</div></li><li id="fold_everything_button" style=""><div onclick="fold_everything()">↩️</div></li></ul>
-<div style="clear: both;"></div>
-</div>
-<div id="bidding">
-
-
-<div class="bidding level00 relay our_call" level="0" id="open0"><div class="call">1<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning">hello</div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(any):</div> <div class="meaning">world</div></div><div class="bidding level02 relay our_call" level="2" style="display: none;"><div class="call">pass:</div> <div class="meaning">oh no</div></div><div class="bidding level03 relay their_call" level="3" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">yes</div></div><div class="bidding level04 our_call" level="4" style="display: none;"><div class="call">pass:</div> <div class="meaning"></div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning"></div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">SOS</div></div></div><!-- koniec #bidding -->
-<!-- koniec strony -->
-</div><!-- /content -->
-
-
-
-
-
-
-</body></html>
+ <div id="content">
+  <!-- początek strony -->
+  <div class="bidding level00 title" id="page_title" level="0" style="display: none;">
+  </div>
+  <div id="topmenu">
+   <ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(3, 33.333323%);">
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open0">
+      1
+      <span class="club suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♣
+        </span>
+        ︎
+       </span>
+       <span class="club-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li id="theme_switch_button" style="">
+     <div onclick="handle_theme_switch()">
+      ☀️
+     </div>
+    </li>
+    <li id="fold_everything_button" style="">
+     <div onclick="fold_everything()">
+      ↩️
+     </div>
+    </li>
+   </ul>
+   <div style="clear: both;">
+   </div>
+  </div>
+  <div id="bidding">
+   <div class="bidding level00 relay our_call" id="open0" level="0">
+    <div class="call">
+     1
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     hello
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (any):
+    </div>
+    <div class="meaning">
+     world
+    </div>
+   </div>
+   <div class="bidding level02 relay our_call" level="2" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     oh no
+    </div>
+   </div>
+   <div class="bidding level03 relay their_call" level="3" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     yes
+    </div>
+   </div>
+   <div class="bidding level04 our_call" level="4" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     SOS
+    </div>
+   </div>
+  </div>
+  <!-- koniec #bidding -->
+  <!-- koniec strony -->
+ </div>
+ <!-- /content -->
+</body>

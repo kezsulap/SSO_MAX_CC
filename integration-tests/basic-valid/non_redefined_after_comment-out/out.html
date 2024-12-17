@@ -1,34 +1,1195 @@
-<!DOCTYPE html><html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<link rel="stylesheet" href="file:////home/konrad/SSO_MAX_CC/resources_main/bridge-bidding-styl-v15.css">
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery.min.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-balloon-v2.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-bridge-bidding-3.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/theme.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/parse-v15.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/main.js"></script>
-	<script>hardcoded=['@Competitive bidding\n	pass None of these is considered redefining a sequence\n	(pass) Literally none\n	({Hello})\n	{Hello}\n	dbl\n	(dbl)\n	rdbl\n	(rdbl)\n	1c\n	(1c)\n	1d\n	(1d)\n	1h\n	(1h)\n	1s\n	(1s)\n	1n\n	(1n)\n	2c\n	(2c)\n	2d\n	(2d)\n	2h\n	(2h)\n	2s\n	(2s)\n	2n\n	(2n)\n	3c\n	(3c)\n	3d\n	(3d)\n	3h\n	(3h)\n	3s\n	(3s)\n	3n\n	(3n)\n	4c\n	(4c)\n	4d\n	(4d)\n	4h\n	(4h)\n	4s\n	(4s)\n	4n\n	(4n)\n	5c\n	(5c)\n	5d\n	(5d)\n	5h\n	(5h)\n	5s\n	(5s)\n	5n\n	(5n)\n	6c\n	(6c)\n	6d\n	(6d)\n	6h\n	(6h)\n	6s\n	(6s)\n	6n\n	(6n)\n	7c\n	(7c)\n	7d\n	(7d)\n	7h\n	(7h)\n	7s\n	(7s)\n	7n\n	(7n)\n']</script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convention card ♠♥♦♣</title></head>
 <body class="dark done">
-<div id="content">
-<!-- początek strony -->
-
-<div class="bidding level00 title" level="0" id="page_title" style="display: none;"></div>
-<div id="topmenu">
-<ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(2, 49.99999%);"><li id="theme_switch_button" style=""><div onclick="handle_theme_switch()">☀️</div></li><li id="fold_everything_button" style=""><div onclick="fold_everything()">↩️</div></li></ul>
-<div style="clear: both;"></div>
-</div>
-<div id="bidding">
-
-
-<div class="bidding level00 relay comment" level="0">Competitive bidding</div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">None of these is considered redefining a sequence</div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(pass):</div> <div class="meaning">Literally none</div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(Hello):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">Hello:</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">dbl:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">rdbl:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(rdbl):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">1<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">1<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">1NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(1NT):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">2<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(2<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">2<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(2<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">2<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(2<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">2<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(2<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">2NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(2NT):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">3<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(3<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">3<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(3<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">3<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(3<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">3<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(3<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">3NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(3NT):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">4<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(4<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">4<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(4<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">4<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(4<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">4<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(4<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">4NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(4NT):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">5<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(5<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">5<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(5<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">5<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(5<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">5<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(5<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">5NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(5NT):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">6<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(6<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">6<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(6<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">6<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(6<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">6<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(6<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">6NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(6NT):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">7<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(7<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">7<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(7<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">7<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(7<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">7<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(7<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>):</div> <div class="meaning"></div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">7NT:</div> <div class="meaning"></div></div><div class="bidding level01 their_call" level="1" style="display: none;"><div class="call">(7NT):</div> <div class="meaning"></div></div></div><!-- koniec #bidding -->
-<!-- koniec strony -->
-</div><!-- /content -->
-
-
-
-
-
-
-</body></html>
+ <div id="content">
+  <!-- początek strony -->
+  <div class="bidding level00 title" id="page_title" level="0" style="display: none;">
+  </div>
+  <div id="topmenu">
+   <ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(2, 49.99999%);">
+    <li id="theme_switch_button" style="">
+     <div onclick="handle_theme_switch()">
+      ☀️
+     </div>
+    </li>
+    <li id="fold_everything_button" style="">
+     <div onclick="fold_everything()">
+      ↩️
+     </div>
+    </li>
+   </ul>
+   <div style="clear: both;">
+   </div>
+  </div>
+  <div id="bidding">
+   <div class="bidding level00 relay comment" level="0">
+    Competitive bidding
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     None of these is considered redefining a sequence
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (pass):
+    </div>
+    <div class="meaning">
+     Literally none
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (Hello):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     Hello:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     dbl:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (rdbl):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     1
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (1
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     1
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (1
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     1
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (1
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     1
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (1
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     1NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (1NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     2
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (2
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     2
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (2
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     2
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (2
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     2
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (2
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     2NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (2NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     3
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (3
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     3
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (3
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     3
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (3
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     3
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (3
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     3NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (3NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     4
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (4
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     4
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (4
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     4
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (4
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     4
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (4
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     4NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (4NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     5
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (5
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     5
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (5
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     5
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (5
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     5
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (5
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     5NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (5NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     6
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (6
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     6
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (6
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     6
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (6
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     6
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (6
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     6NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (6NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     7
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (7
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     7
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (7
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     7
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (7
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     7
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (7
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     ):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     7NT:
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 their_call" level="1" style="display: none;">
+    <div class="call">
+     (7NT):
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+  </div>
+  <!-- koniec #bidding -->
+  <!-- koniec strony -->
+ </div>
+ <!-- /content -->
+</body>

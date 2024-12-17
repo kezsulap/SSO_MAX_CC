@@ -1,34 +1,369 @@
-<!DOCTYPE html><html lang="pl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<link rel="stylesheet" href="file:////home/konrad/SSO_MAX_CC/resources_main/bridge-bidding-styl-v15.css">
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery.min.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-balloon-v2.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/jquery-bridge-bidding-3.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/theme.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/parse-v15.js"></script>
-	<script src="file:////home/konrad/SSO_MAX_CC/resources_main/main.js"></script>
-	<script>hardcoded=['1c\n	(dbl) dbl\n		RDbL RDbL\n	p p\n1d\n	(db) db\n		rdBl rdBl\n	PA PA\n1H\n	(x) x\n		rdb rdb\n	pa pa\n1♠\n	(ktr) ktr\n		rktr rktr\n	pA pA\n1Ba 1Ba\n	(kTr) kTr\n		re re\n	PaSs PaSs\n2bA 2bA\n	(kTR) kTR\n		xx xx\n	PAs PAs\n3n 3n\n4NT 4NT\n5nT 5nT\n\n']</script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convention card ♠♥♦♣</title></head>
 <body class="dark done">
-<div id="content">
-<!-- początek strony -->
-
-<div class="bidding level00 title" level="0" id="page_title" style="display: none;"></div>
-<div id="topmenu">
-<ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(11, 9.090899%);"><li class="our_call" style=""><a href="#open0" class="topmenu">1<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span></a></li><li class="our_call" style=""><a href="#open1" class="topmenu">1<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span></a></li><li class="our_call" style=""><a href="#open2" class="topmenu">1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span></a></li><li class="our_call" style=""><a href="#open3" class="topmenu">1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span></a></li><li class="our_call" style=""><a href="#open4" class="topmenu">1NT</a></li><li class="our_call" style=""><a href="#open5" class="topmenu">2NT</a></li><li class="our_call" style=""><a href="#open6" class="topmenu">3NT</a></li><li class="our_call" style=""><a href="#open7" class="topmenu">4NT</a></li><li class="our_call" style=""><a href="#open8" class="topmenu">5NT</a></li><li id="theme_switch_button" style=""><div onclick="handle_theme_switch()">☀️</div></li><li id="fold_everything_button" style=""><div onclick="fold_everything()">↩️</div></li></ul>
-<div style="clear: both;"></div>
-</div>
-<div id="bidding">
-
-
-<div class="bidding level00 relay our_call" level="0" id="open0"><div class="call">1<span class="club suit"><span class="suit-label"><span class="emoji">♣</span>︎</span><span class="club-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">dbl</div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">RDbL</div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">p</div></div><div class="bidding level00 relay our_call" level="0" id="open1"><div class="call">1<span class="diamond suit"><span class="suit-label"><span class="emoji">♦</span>︎</span><span class="diamond-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">db</div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">rdBl</div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">PA</div></div><div class="bidding level00 relay our_call" level="0" id="open2"><div class="call">1<span class="heart suit"><span class="suit-label"><span class="emoji">♥</span>︎</span><span class="heart-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">x</div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">rdb</div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">pa</div></div><div class="bidding level00 relay our_call" level="0" id="open3"><div class="call">1<span class="spade suit"><span class="suit-label"><span class="emoji">♠</span>︎</span><span class="spade-image"></span></span>:</div> <div class="meaning"></div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">ktr</div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">rktr</div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">pA</div></div><div class="bidding level00 relay our_call" level="0" id="open4"><div class="call">1NT:</div> <div class="meaning">1Ba</div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">kTr</div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">re</div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">PaSs</div></div><div class="bidding level00 relay our_call" level="0" id="open5"><div class="call">2NT:</div> <div class="meaning">2bA</div></div><div class="bidding level01 relay their_call" level="1" style="display: none;"><div class="call">(dbl):</div> <div class="meaning">kTR</div></div><div class="bidding level02 our_call" level="2" style="display: none;"><div class="call">rdbl:</div> <div class="meaning">xx</div></div><div class="bidding level01 our_call" level="1" style="display: none;"><div class="call">pass:</div> <div class="meaning">PAs</div></div><div class="bidding level00 our_call" level="0" id="open6"><div class="call">3NT:</div> <div class="meaning">3n</div></div><div class="bidding level00 our_call" level="0" id="open7"><div class="call">4NT:</div> <div class="meaning">4NT</div></div><div class="bidding level00 our_call" level="0" id="open8"><div class="call">5NT:</div> <div class="meaning">5nT</div></div></div><!-- koniec #bidding -->
-<!-- koniec strony -->
-</div><!-- /content -->
-
-
-
-
-
-
-</body></html>
+ <div id="content">
+  <!-- początek strony -->
+  <div class="bidding level00 title" id="page_title" level="0" style="display: none;">
+  </div>
+  <div id="topmenu">
+   <ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(11, 9.090899%);">
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open0">
+      1
+      <span class="club suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♣
+        </span>
+        ︎
+       </span>
+       <span class="club-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open1">
+      1
+      <span class="diamond suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♦
+        </span>
+        ︎
+       </span>
+       <span class="diamond-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open2">
+      1
+      <span class="heart suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♥
+        </span>
+        ︎
+       </span>
+       <span class="heart-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open3">
+      1
+      <span class="spade suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♠
+        </span>
+        ︎
+       </span>
+       <span class="spade-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open4">
+      1NT
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open5">
+      2NT
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open6">
+      3NT
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open7">
+      4NT
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open8">
+      5NT
+     </a>
+    </li>
+    <li id="theme_switch_button" style="">
+     <div onclick="handle_theme_switch()">
+      ☀️
+     </div>
+    </li>
+    <li id="fold_everything_button" style="">
+     <div onclick="fold_everything()">
+      ↩️
+     </div>
+    </li>
+   </ul>
+   <div style="clear: both;">
+   </div>
+  </div>
+  <div id="bidding">
+   <div class="bidding level00 relay our_call" id="open0" level="0">
+    <div class="call">
+     1
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     dbl
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     RDbL
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     p
+    </div>
+   </div>
+   <div class="bidding level00 relay our_call" id="open1" level="0">
+    <div class="call">
+     1
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     db
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     rdBl
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     PA
+    </div>
+   </div>
+   <div class="bidding level00 relay our_call" id="open2" level="0">
+    <div class="call">
+     1
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     x
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     rdb
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     pa
+    </div>
+   </div>
+   <div class="bidding level00 relay our_call" id="open3" level="0">
+    <div class="call">
+     1
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     ktr
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     rktr
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     pA
+    </div>
+   </div>
+   <div class="bidding level00 relay our_call" id="open4" level="0">
+    <div class="call">
+     1NT:
+    </div>
+    <div class="meaning">
+     1Ba
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     kTr
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     re
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     PaSs
+    </div>
+   </div>
+   <div class="bidding level00 relay our_call" id="open5" level="0">
+    <div class="call">
+     2NT:
+    </div>
+    <div class="meaning">
+     2bA
+    </div>
+   </div>
+   <div class="bidding level01 relay their_call" level="1" style="display: none;">
+    <div class="call">
+     (dbl):
+    </div>
+    <div class="meaning">
+     kTR
+    </div>
+   </div>
+   <div class="bidding level02 our_call" level="2" style="display: none;">
+    <div class="call">
+     rdbl:
+    </div>
+    <div class="meaning">
+     xx
+    </div>
+   </div>
+   <div class="bidding level01 our_call" level="1" style="display: none;">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     PAs
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open6" level="0">
+    <div class="call">
+     3NT:
+    </div>
+    <div class="meaning">
+     3n
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open7" level="0">
+    <div class="call">
+     4NT:
+    </div>
+    <div class="meaning">
+     4NT
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open8" level="0">
+    <div class="call">
+     5NT:
+    </div>
+    <div class="meaning">
+     5nT
+    </div>
+   </div>
+  </div>
+  <!-- koniec #bidding -->
+  <!-- koniec strony -->
+ </div>
+ <!-- /content -->
+</body>

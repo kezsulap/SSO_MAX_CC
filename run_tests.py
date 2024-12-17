@@ -12,18 +12,22 @@ from playwright.sync_api import sync_playwright, Playwright
 import bs4
 
 RED = "\u001b[31m";
+ORANGE='\033[38:2:255:165:0m';
 GREEN = "\u001b[32m";
 YELLOW = "\u001b[33m";
-RESET = "\u001b[0m";
+RESET_COLOURS = "\u001b[0m";
 
 def get_content(url):
-	with sync_playwright() as playwright:
+	with sync_playwright() as playwright: #TODO: make async
 		webkit = playwright.webkit
 		browser = webkit.launch()
 		context = browser.new_context()
 		page = context.new_page()
 		page.goto(url)
 		return page.content()
+
+def get_content_from_path(path):
+	return get_content(make_file_link(os.path.abspath(path)));
 
 def fetch_test_files():
 	input_files = []
@@ -56,7 +60,11 @@ def matches(test_matcher, test_name):
 			return True
 	return False
 
-def diff_HTML(output, expected_output):
+def strip_body(html_content):
+	return bs4.BeautifulSoup(html_content, 'html.parser').select('body')[0].prettify() #TODO: Make matching change in expected_output_to_functional_link
+	# return str(bs4.BeautifulSoup(html_content, 'html.parser').select('body')[0])
+
+def diff_HTML(output, expected_output, HTML_len_limit, children_list_len_limit):
 	expected_output_soup = bs4.BeautifulSoup(expected_output, 'html.parser')
 	output_soup = bs4.BeautifulSoup(output, 'html.parser')
 	errors = []
@@ -77,20 +85,20 @@ def diff_HTML(output, expected_output):
 				return None
 			if isinstance(subelement, bs4.element.Tag):
 				return subelement
-			print(RED + f'Unknown element type: {type(subelement)}' + RESET, file=sys.stderr)
+			print(RED + f'Unknown element type: {type(subelement)}' + RESET_COLOURS, file=sys.stderr)
 			assert False
 
 		return [px for px in (process(x) for x in element.contents) if px is not None]
 
 	def format(element):
-		LEN_THRESHOLD = 100
 		ret = repr(element)
-		if len(ret) > LEN_THRESHOLD:
-			ret = ret[:LEN_THRESHOLD] + '...'
+		if len(ret) > HTML_len_limit:
+			ret = ret[:HTML_len_limit] + '...'
 		return ret.replace('\n', r'\n')
 
 	def format_list(element_list):
-		return f'{len(element_list)} elements: ' + ", ".join((format(x) for x in element_list))
+		list_len = len(element_list)
+		return f'{list_len} element{"" if list_len == 1 else "s"}: ' + ", ".join((format(x) for x in element_list[:children_list_len_limit])) + (", ..." if list_len > children_list_len_limit else "")
 
 	def rec_cmp(output_element, expected_output_element):
 		output_element_canonical_form_attrs = extract_attrs_in_canonical_form(output_element)
@@ -118,6 +126,185 @@ def diff_HTML(output, expected_output):
 	rec_cmp(output_soup.select('body')[0], expected_output_soup.select('body')[0])
 	return errors
 
+def clean_soup(soup_obj):
+	for tag in soup_obj.find_all(True):
+		if tag.string:
+			tag.string = tag.string.strip()
+		
+		for child in tag.contents:
+			if isinstance(child, bs4.element.Comment):
+				child.replace_with('')
+			elif isinstance(child, str):
+				child.replace_with(child.strip())
+
+def expected_output_to_functional_link(path):
+	with open(path, 'r') as f:
+		body_content = f.read()
+	
+	b = bs4.BeautifulSoup(body_content, 'html.parser')
+	clean_soup(b)
+	
+	with tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False) as f:
+		f.write("<html>")
+		f.write(header_content)
+		f.write(str(b))
+		f.write("</html>")
+		output_name = f.name
+	return f'{path} processed as {make_file_link(output_name)}', make_file_link(output_name)
+
+def make_expected_outputs_only(inputs, output_dir, possible_outputs):
+	test_name = get_test_name(output_dir)
+	links = []
+	output_strings = []
+	if not possible_outputs:
+		return False, [f'NO OUTPUTS FOR {test_name} FOUND'], [], RED
+	one = len(possible_outputs) == 1
+	if not one:
+		output_strings.append(f'OUTPUTS for TEST {test_name}:')
+	for output in possible_outputs:
+		output_str, link = expected_output_to_functional_link(os.path.join(output_dir, output))
+		links.append(link)
+		if one:
+			output_str = f'OUTPUT FOR TEST {test_name}: ' + output_str
+		else:
+			output_str = '\t' + output_str;
+		output_strings.append(output_str)
+
+	return False, output_strings, links, GREEN
+
+def commit_output(test_output_path, store_path, throw_if_exists=False):
+	test_output_content = get_content_from_path(test_output_path)
+	with open(store_path, 'x' if throw_if_exists else 'w') as f:
+		f.write(strip_body(test_output_content))
+
+def record_output(inputs, output_dir, output_name, *, throw_if_exists=False):
+	test_output_path = run_test_to_new_file(inputs)
+	new_output_file = os.path.join(output_dir, (output_name or 'out') + '.html')
+	commit_output(test_output_path, new_output_file, throw_if_exists)
+	return expected_output_to_functional_link(new_output_file)
+
+def generate_new_outputs(inputs, output_dir, possible_outputs, args):
+	output_strings = []
+	if possible_outputs:
+		output_strings.append(f'Deleting existing output file{"" if len(possible_outputs) == 1 else "s"}: {", ".join(possible_outputs)} in {output_dir}')
+	else:
+		print(f'Nothing to delete in {output_dir}')
+	for x in possible_outputs:
+		os.remove(os.path.join(output_dir, x))
+	output_str, output_link = record_output(inputs, output_dir, args.output_name)
+	output_strings.append(f'Recorded new output into: {output_str}')
+	return False, output_strings, [output_link], YELLOW
+
+def generate_missing_only(inputs, output_dir, possible_outputs, args):
+	if possible_outputs:
+		return False, ['Output already exists, skipping'], [], YELLOW
+	output_strings = []
+	output_str, output_link = record_output(inputs, output_dir, args.output_name)
+	output_strings.append(f'Recorded new output into: {output_str}')
+	return False, output_strings, [output_link], GREEN
+
+def run_tests(inputs, output_dir, possible_outputs, args):
+	output_strings = []
+	if not possible_outputs:
+		if args.dont_create_if_no_output:
+			return False, ['No outputs found'], [], RED
+		else:
+			output_str, output_link = record_output(inputs, output_dir, args.output_name)
+			output_strings.append(f'No outputs found, rendered {output_str}')
+			return False, output_strings, [output_link], YELLOW
+	test_output_path = make_file_link(run_test_to_new_file(inputs))
+	test_output_content = get_content(test_output_path)
+	output_strings.append(f'Output: {test_output_path}')
+	logs = []
+	links = [test_output_path]
+	found_match = False
+	color = RED
+	passed_test = False
+	for possible_output in possible_outputs:
+		with open(os.path.join(output_dir, possible_output)) as f:
+			possible_output_content = f.read()
+		diff = diff_HTML(test_output_content, possible_output_content, args.HTML_len_limit, args.children_list_len_limit)
+		if diff:
+			logs.append([False, diff, possible_output])
+		else:
+			logs.append([True, None, possible_output])
+			found_match = True
+			color = GREEN
+			passed_test = True
+			if not args.verbose:
+				break
+	if found_match and not args.verbose:
+		logs = [logs[-1]]
+	for passed, diff, output_file in logs:
+		output_str, output_link = expected_output_to_functional_link(os.path.join(output_dir, output_file))
+		if passed:
+			output_strings.append(f'Matching expected output {output_str}')
+		else:
+			MISMATCH_LIMIT = args.mismatch_limit
+			output_strings.append(f'Mismatched expected output {output_str}\n\t\t' + '\n\t\t'.join((error_line for error_line in diff[:MISMATCH_LIMIT])) + (f'\n\t\t... {len(diff)} total mismatches' if len(diff) > MISMATCH_LIMIT else ''))
+			
+	if not found_match and args.add_alternate_outputs:
+		passed = True
+		color = YELLOW
+		for num in itertools.count(1):
+			filename = (args.output_name or 'out') + ('' if num == 1 else str(num))
+			try:
+				output_str, output_link = record_output(inputs, output_dir, filename, throw_if_exists=True)
+			except FileExistsError:
+				pass
+			else:
+				output_strings.append(f'No matching output found, stored output as {output_str}')
+				break
+		
+	return (not passed_test), output_strings, links, color
+
+def display_inputs(inputs):
+	if len(inputs) == 1:
+		return f'INPUT: {inputs[0][1]}'
+	return 'INPUTS: {' + ", ".join((f'{version_name}: {file_path}' for version_name, file_path in inputs)) + '}'
+
+def process_test(inputs, output_dir, args):
+	test_name = get_test_name(output_dir)
+	try:
+		os.mkdir(output_dir)
+	except FileExistsError:
+		pass
+	output_files = sorted([x for x in os.listdir(output_dir)])
+	possible_outputs = [x for x in output_files if x.endswith('.html')]
+	other_files = [x for x in output_files if not x.endswith('.html')]
+	output_strings = [f'Processing test {test_name}', display_inputs(inputs)]
+	if other_files:
+		output_strings.append(ORANGE + f'Warning, extra files in {output_dir}: ' + ", ".join(other_files) + RESET_COLOURS)
+	if args.expected_outputs_only:
+		is_error, outputs, links_to_open, color_code = make_expected_outputs_only(inputs, output_dir, possible_outputs)
+	elif args.generate_missing_only:
+		is_error, outputs, links_to_open, color_code = generate_missing_only(inputs, output_dir, possible_outputs, args)
+	elif args.add_new_outputs:
+		is_error, outputs, links_to_open, color_code = generate_new_outputs(inputs, output_dir, possible_outputs, args)
+	else:
+		is_error, outputs, links_to_open, color_code = run_tests(inputs, output_dir, possible_outputs, args)
+	output_strings.extend(outputs)
+	return is_error, (color_code or "") + '\n\t'.join(output_strings) + (RESET_COLOURS if color_code else ""), links_to_open
+
+def get_header_content():
+	with open('index.html', 'r') as f:
+		content = f.read()
+	b = bs4.BeautifulSoup(content, 'html.parser')
+	content = str(b.select('head')[0])
+	content = content.replace('./resources', 'file:///' + os.path.join(os.getcwd(), 'resources'))
+	return content
+
+header_content = get_header_content()
+
+def make_file_link(path):
+	return f'file://{os.path.abspath(path)}'
+
+def run_test_to_new_file(inputs):
+	with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
+		output_name = f.name
+	subprocess.run(['./generate.sh'] + [filename for version_name, filename in inputs] + ['-o', output_name]) #TODO: capture some errors
+	return os.path.abspath(output_name)
+
 def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('files', nargs='*')
@@ -127,13 +314,53 @@ def main():
 	parser.add_argument('--output_name', '-o')
 	parser.add_argument('--open-all', '-p', action='store_true')
 	parser.add_argument('--generate-missing-only', '-g', action='store_true')
-	args = parser.parse_args()
-	if args.add_new_outputs and args.add_alternate_outputs:
-		print('Combining --add-new-outputs with --add-alternate-outputs is invalid')
-		sys.exit(1)
+	parser.add_argument('--expected-outputs-only', '-e', action='store_true')
+	parser.add_argument('--verbose', '-v', action='store_true')
+	parser.add_argument("-M", "--mismatch-limit", type=int)
+	parser.add_argument("-H", "--HTML-len-limit", type=int)
+	parser.add_argument("-C", "--children-list-len-limit", type=int)
 
-	if args.dont_create_if_no_output and args.generate_missing_only:
-		print('Combining --dont-create-if-no-output with --generate-missing-only is invalid')
+	args = parser.parse_args()
+	
+	mismatched_flags = []
+	def check_flags(flag_a, flag_b):
+		if getattr(args, flag_a) and getattr(args, flag_b):
+			mismatched_flags.append((flag_a, flag_b))
+
+	check_flags('add_new_outputs', 'add_alternate_outputs')
+	check_flags('add_new_outputs', 'dont_create_if_no_output')
+	check_flags('generate_missing_only', 'dont_create_if_no_output')
+	check_flags('generate_missing_only', 'add_new_outputs')
+	check_flags('generate_missing_only', 'add_alternate_outputs')
+	check_flags('expected_outputs_only', 'dont_create_if_no_output')
+	check_flags('expected_outputs_only', 'add_alternate_outputs')
+	check_flags('expected_outputs_only', 'output_name')
+	check_flags('expected_outputs_only', 'add_new_outputs')
+	check_flags('expected_outputs_only', 'open_all')
+	check_flags('expected_outputs_only', 'generate_missing_only')
+	check_flags('add_new_outputs', 'verbose')
+	check_flags('generate_missing_only', 'verbose')
+	check_flags('expected_outputs_only', 'verbose')
+	check_flags('add_new_outputs', 'mismatch_limit')
+	check_flags('generate_missing_only', 'mismatch_limit')
+	check_flags('expected_outputs_only', 'mismatch_limit')
+	check_flags('add_new_outputs', 'HTML_len_limit')
+	check_flags('generate_missing_only', 'HTML_len_limit')
+	check_flags('expected_outputs_only', 'HTML_len_limit')
+	check_flags('add_new_outputs', 'children_list_len_limit')
+	check_flags('generate_missing_only', 'children_list_len_limit')
+	check_flags('expected_outputs_only', 'children_list_len_limit')
+
+	if args.mismatch_limit is None:
+		args.mismatch_limit = 10
+	if args.HTML_len_limit is None:
+		args.HTML_len_limit = 100
+	if args.children_list_len_limit is None:
+		args.children_list_len_limit = 10
+
+	if mismatched_flags:
+		for flag1, flag2 in mismatched_flags:
+			print(f'Combining --{flag1.replace("_", "-")} with --{flag2.replace("_", "-")} is invalid')
 		sys.exit(1)
 
 	failed_tests = []
@@ -144,96 +371,24 @@ def main():
 			print(f'Unknown test {file}')
 			sys.exit(1)
 
-	test_outputs = []
+	links_to_open = []
 
-	for inputs, output in tests:
-		test_name = get_test_name(output)
-		try:
-			os.mkdir(output)
-		except FileExistsError:
-			pass
-		possible_outputs = sorted([x for x in os.listdir(output) if x.endswith('.html')])
-		if possible_outputs and args.generate_missing_only:
-			continue
-		if args.files and not any([matches(matcher, test_name) for matcher in args.files]):
-			continue;
-		with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
-			output_name = f.name
-		subprocess.run(['./generate.sh'] + [filename for _, filename in inputs] + ['-o', output_name])
-		input_links = [f'file://{os.getcwd()}/{x[1]}' for x in inputs]
-		if len(input_links) == 1:
-			all_inputs = f'\tINPUT: {input_links[0]}'
-		else:
-			all_inputs = '\tINPUTS: ' + '\n\t\t'.join(input_links)
-		test_log = f'RUNNING TEST: {test_name}\n{all_inputs}\n\tOUTPUT: file://{output_name}\n'
-		test_outputs.append(f'file://{output_name}')
-		test_output = get_content(f'file://{output_name}?theme=disable')
-		if not possible_outputs:
-			if args.dont_create_if_no_output:
-				test_log += f'\tNo output file found, ERROR'
-				color_code = RED
+	for inputs, output_dir in tests:
+		test_name = get_test_name(output_dir)
+		if not args.files or any([matches(matcher, test_name) for matcher in args.files]):
+			is_error, message, this_links_to_open = process_test(inputs, output_dir, args)
+			print(message)
+			if is_error:
 				failed_tests.append(test_name)
-			else:
-				output_name = args.output_name if args.output_name else 'out'
-				with open(os.path.join(output, output_name + '.html'), 'w') as f:
-					f.write(test_output)
-				test_log += f'\tNo output file found, generated file://{os.path.join(os.getcwd(), output, output_name + ".html")}\n'
-				color_code = YELLOW
-		else:
-			if args.add_new_outputs:
-				existing_outputs = sorted(os.listdir(output))
-				test_log += f'Deleting existing output files: {", ".join(existing_outputs)}\n'
-				for x in existing_outputs:
-					os.remove(os.path.join(output, x))
-				output_name = args.output_name if args.output_name else 'out'
-				with open(os.path.join(output, output_name + '.html'), 'w') as f:
-					f.write(test_output)
-				test_log += f'Succesfully saved new output as file://{os.getcwd()}/{output}/{output_name}.html\n'
-				color_code = YELLOW
-			else:
-				all_mismatches = []
-				found = False
-				for possible_output in possible_outputs:
-					print(os.path.join(output, possible_output))
-					with open(os.path.join(output, possible_output), 'r') as f:
-						found_content = f.read()
-					errors = diff_HTML(test_output, found_content)
-					if errors:
-						all_mismatches.append(errors)
-					else:
-						found = True;
-						test_log += f'\tMATCHING: file://{os.getcwd()}/{output}/{possible_output}\n'
-						color_code = GREEN
-						break;
-				if not found:
-					if args.add_alternate_outputs:
-						for i in itertools.count(1):
-							tried_filename = (args.output_name if args.output_name else 'out') + (str(i) if i > 1 else '') + '.html'
-							try:
-								with open(os.path.join(output, tried_filename), 'x') as f:
-									f.write(test_output)
-								test_log += f'Succesfully saved new output as file://{os.getcwd()}/{output}/{tried_filename}\n'
-								color_code = YELLOW
-								break;
-							except FileExistsError:
-								continue
-					else:
-						failed_tests.append(test_name)
-						if len(possible_outputs) == 1:
-							test_log += f'EXPECTED OUTPUT: file://{os.getcwd()}/{output}/{possible_outputs[0]}\n\t' + '\n\t'.join(all_mismatches[0]) + '\n'
-						else:
-							outputs = "\n".join([f"\tfile://{os.getcwd()}/{output}/{x}\n\t\t" + '\n\t\t'.join(errors) for x, errors in zip(possible_outputs, all_mismatches)])
-							test_log += f'VALID OUTPUTS:\n{outputs}\n'
-						test_log += 'FAILED\n'
-						color_code = RED
-		print(color_code + test_log + RESET)
+			if this_links_to_open:
+				links_to_open.extend(this_links_to_open)
 
 	if failed_tests:
 		failed_tests_names = " ".join(failed_tests)
-		print(RED + f'FAILED: {len(failed_tests)} tests: {failed_tests_names}' + RESET)
+		print(RED + f'FAILED: {len(failed_tests)} tests: {failed_tests_names}' + RESET_COLOURS)
 	
-	if args.open_all and test_outputs:
-		subprocess.run(['google-chrome'] + test_outputs)
+	if args.open_all and links_to_open:
+		subprocess.run(['google-chrome'] + links_to_open) #TODO: are links available in all versions?
 		
 
 if __name__ == "__main__":
