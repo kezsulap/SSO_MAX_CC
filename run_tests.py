@@ -137,14 +137,24 @@ def clean_soup(soup_obj):
 			elif isinstance(child, str):
 				child.replace_with(child.strip())
 
+def get_expected_output_file_suffix(path):
+	split_path = path.split('/')
+	if not split_path[-2].endswith('-out') or not split_path[0] == 'integration-tests':
+		raise ValueError(f'Invalid output path: {path}');
+	split_path[-2] = split_path[-2].removesuffix('-out')
+	return '-expected-' + "-".join(split_path[1:]) + '.html'
+
+def get_test_output_file_suffix(test_name):
+	return '-test-' + test_name.replace('/', '-') + '.html'
+
 def expected_output_to_functional_link(path):
 	with open(path, 'r') as f:
 		body_content = f.read()
 	
 	b = bs4.BeautifulSoup(body_content, 'html.parser')
 	clean_soup(b)
-	
-	with tempfile.NamedTemporaryFile(mode='w', suffix='.html', delete=False) as f:
+
+	with tempfile.NamedTemporaryFile(mode='w', suffix=get_expected_output_file_suffix(path), delete=False) as f:
 		f.write("<html>")
 		f.write(header_content)
 		f.write(str(b))
@@ -178,7 +188,8 @@ def commit_output(test_output_path, store_path, throw_if_exists=False):
 		f.write(strip_body(test_output_content))
 
 def record_output(inputs, output_dir, output_name, *, throw_if_exists=False):
-	test_output_path = run_test_to_new_file(inputs)
+	test_name = get_test_name(output_dir)
+	test_output_path = run_test_to_new_file(inputs, test_name)
 	new_output_file = os.path.join(output_dir, (output_name or 'out') + '.html')
 	commit_output(test_output_path, new_output_file, throw_if_exists)
 	return expected_output_to_functional_link(new_output_file)
@@ -212,7 +223,8 @@ def run_tests(inputs, output_dir, possible_outputs, args):
 			output_str, output_link = record_output(inputs, output_dir, args.output_name)
 			output_strings.append(f'No outputs found, rendered {output_str}')
 			return False, output_strings, [output_link], YELLOW
-	test_output_path = make_file_link(run_test_to_new_file(inputs))
+	test_name = get_test_name(output_dir)
+	test_output_path = make_file_link(run_test_to_new_file(inputs, test_name))
 	test_output_content = get_content(test_output_path)
 	output_strings.append(f'Output: {test_output_path}')
 	logs = []
@@ -299,8 +311,8 @@ header_content = get_header_content()
 def make_file_link(path):
 	return f'file://{os.path.abspath(path)}'
 
-def run_test_to_new_file(inputs):
-	with tempfile.NamedTemporaryFile(suffix='.html', delete=False) as f:
+def run_test_to_new_file(inputs, test_name):
+	with tempfile.NamedTemporaryFile(suffix=get_test_output_file_suffix(test_name), delete=False) as f:
 		output_name = f.name
 	subprocess.run(['./generate.sh'] + [filename for version_name, filename in inputs] + ['-o', output_name]) #TODO: capture some errors
 	return os.path.abspath(output_name)
