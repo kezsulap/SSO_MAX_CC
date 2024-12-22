@@ -328,6 +328,7 @@ def main():
 	parser.add_argument('--generate-missing-only', '-g', action='store_true')
 	parser.add_argument('--expected-outputs-only', '-e', action='store_true')
 	parser.add_argument('--verbose', '-v', action='store_true')
+	parser.add_argument('--invert', '-i', action='store_true')
 	parser.add_argument("-M", "--mismatch-limit", type=int)
 	parser.add_argument("-H", "--HTML-len-limit", type=int)
 	parser.add_argument("-C", "--children-list-len-limit", type=int)
@@ -362,6 +363,10 @@ def main():
 	check_flags('add_new_outputs', 'children_list_len_limit')
 	check_flags('generate_missing_only', 'children_list_len_limit')
 	check_flags('expected_outputs_only', 'children_list_len_limit')
+	
+	mismatched_with_files = []
+	if not args.files and args.invert:
+		mismatched_with_files.append('invert')
 
 	if args.mismatch_limit is None:
 		args.mismatch_limit = 10
@@ -370,9 +375,11 @@ def main():
 	if args.children_list_len_limit is None:
 		args.children_list_len_limit = 10
 
-	if mismatched_flags:
+	if mismatched_flags or mismatched_with_files:
 		for flag1, flag2 in mismatched_flags:
 			print(f'Combining --{flag1.replace("_", "-")} with --{flag2.replace("_", "-")} is invalid')
+		for flag in mismatched_with_files:
+			print(f'Flag --{flag.replace("_", "-")} requires at least one file specified')
 		sys.exit(1)
 
 	failed_tests = []
@@ -387,7 +394,7 @@ def main():
 
 	for inputs, output_dir in tests:
 		test_name = get_test_name(output_dir)
-		if not args.files or any([matches(matcher, test_name) for matcher in args.files]):
+		if not args.files or (any([matches(matcher, test_name) for matcher in args.files]) != args.invert):
 			is_error, message, this_links_to_open = process_test(inputs, output_dir, args)
 			print(message)
 			if is_error:
