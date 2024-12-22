@@ -2,6 +2,7 @@
 import argparse
 import os
 import itertools
+import re
 
 import tempfile
 
@@ -17,17 +18,17 @@ GREEN = "\u001b[32m";
 YELLOW = "\u001b[33m";
 RESET_COLOURS = "\u001b[0m";
 
-def get_content(url):
+def get_content(url, engine_name):
 	with sync_playwright() as playwright: #TODO: make async
-		webkit = playwright.webkit
-		browser = webkit.launch()
+		engine = getattr(playwright, engine_name)
+		browser = engine.launch()
 		context = browser.new_context()
 		page = context.new_page()
 		page.goto(url)
 		return page.content()
 
-def get_content_from_path(path):
-	return get_content(make_file_link(os.path.abspath(path)));
+def get_content_from_path(path, engine_name):
+	return get_content(make_file_link(os.path.abspath(path)), engine_name);
 
 def fetch_test_files():
 	input_files = []
@@ -64,6 +65,27 @@ def strip_body(html_content):
 	return bs4.BeautifulSoup(html_content, 'html.parser').select('body')[0].prettify() #TODO: Make matching change in expected_output_to_functional_link
 	# return str(bs4.BeautifulSoup(html_content, 'html.parser').select('body')[0])
 
+class FloatCmp:
+	def __init__(self, x):
+		self.x = x
+	def __eq__(self, oth):
+		return abs(self.x - oth.x) < 1e-4
+	def __str__(self):
+		return str(self.x)
+	def __repr__(self):
+		return f'FloatCmp({repr(self.x)}%)'
+
+def fix_style_value(style_value):
+	pattern = r'repeat\((\d*), ([\d.]*)%\)'
+	match = re.match(pattern, style_value)
+	if match:
+		return 'repeat', int(match.group(1)), FloatCmp(float(match.group(2)))
+	return style_value
+
+def fix_style(style_str):
+	d = {k.strip(): fix_style_value(v.strip()) for k, v in [x.split(':') for x in style_str.split(';') if x.strip()]}
+	return d
+
 def diff_HTML(output, expected_output, HTML_len_limit, children_list_len_limit):
 	expected_output_soup = bs4.BeautifulSoup(expected_output, 'html.parser')
 	output_soup = bs4.BeautifulSoup(output, 'html.parser')
@@ -72,6 +94,9 @@ def diff_HTML(output, expected_output, HTML_len_limit, children_list_len_limit):
 		attrs = dict(element.attrs)
 		if 'class' in attrs:
 			attrs['class'] = sorted(attrs['class'])
+		if 'style' in attrs:
+			attrs['style'] = fix_style(attrs['style'])
+
 		return attrs
 
 	def filter_children_elements(element):
@@ -182,12 +207,12 @@ def make_expected_outputs_only(inputs, output_dir, possible_outputs):
 
 	return False, output_strings, links, GREEN
 
-def commit_output(test_output_path, store_path, throw_if_exists=False):
-	test_output_content = get_content_from_path(test_output_path)
+def commit_output(test_output_path, store_path, engine_name, throw_if_exists=False):
+	test_output_content = get_content_from_path(test_output_path, engine_name)
 	with open(store_path, 'x' if throw_if_exists else 'w') as f:
 		f.write(strip_body(test_output_content))
 
-def record_output(inputs, output_dir, output_name, *, throw_if_exists=False):
+def record_output(inputs, output_dir, output_name, engine_name, *, throw_if_exists=False):
 	test_name = get_test_name(output_dir)
 	test_output_path = run_test_to_new_file(inputs, test_name)
 	new_output_file = os.path.join(output_dir, (output_name or 'out') + '.html')
@@ -202,7 +227,7 @@ def generate_new_outputs(inputs, output_dir, possible_outputs, args):
 		print(f'Nothing to delete in {output_dir}')
 	for x in possible_outputs:
 		os.remove(os.path.join(output_dir, x))
-	output_str, output_link = record_output(inputs, output_dir, args.output_name)
+	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine_name)
 	output_strings.append(f'Recorded new output into: {output_str}')
 	return False, output_strings, [output_link], YELLOW
 
@@ -210,7 +235,7 @@ def generate_missing_only(inputs, output_dir, possible_outputs, args):
 	if possible_outputs:
 		return False, ['Output already exists, skipping'], [], YELLOW
 	output_strings = []
-	output_str, output_link = record_output(inputs, output_dir, args.output_name)
+	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine_name)
 	output_strings.append(f'Recorded new output into: {output_str}')
 	return False, output_strings, [output_link], GREEN
 
@@ -220,12 +245,12 @@ def run_tests(inputs, output_dir, possible_outputs, args):
 		if args.dont_create_if_no_output:
 			return False, ['No outputs found'], [], RED
 		else:
-			output_str, output_link = record_output(inputs, output_dir, args.output_name)
+			output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine_name)
 			output_strings.append(f'No outputs found, rendered {output_str}')
 			return False, output_strings, [output_link], YELLOW
 	test_name = get_test_name(output_dir)
 	test_output_path = make_file_link(run_test_to_new_file(inputs, test_name))
-	test_output_content = get_content(test_output_path)
+	test_output_content = get_content(test_output_path, args.engine)
 	output_strings.append(f'Output: {test_output_path}')
 	logs = []
 	links = [test_output_path]
@@ -261,7 +286,7 @@ def run_tests(inputs, output_dir, possible_outputs, args):
 		for num in itertools.count(1):
 			filename = (args.output_name or 'out') + ('' if num == 1 else str(num))
 			try:
-				output_str, output_link = record_output(inputs, output_dir, filename, throw_if_exists=True)
+				output_str, output_link = record_output(inputs, output_dir, filename, args.engine_name, throw_if_exists=True)
 			except FileExistsError:
 				pass
 			else:
@@ -327,6 +352,7 @@ def main():
 	parser.add_argument('--open-all', '-p', action='store_true')
 	parser.add_argument('--generate-missing-only', '-g', action='store_true')
 	parser.add_argument('--expected-outputs-only', '-e', action='store_true')
+	parser.add_argument('--engine', '-E', type=str, default='webkit', help='Possible values: webkit, firefox, chromium, default: webkit')
 	parser.add_argument('--verbose', '-v', action='store_true')
 	parser.add_argument('--invert', '-i', action='store_true')
 	parser.add_argument("-M", "--mismatch-limit", type=int)
