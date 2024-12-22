@@ -3,13 +3,14 @@ import argparse
 import os
 import itertools
 import re
+import asyncio
 
 import tempfile
 
 import subprocess
 import sys
 
-from playwright.sync_api import sync_playwright, Playwright
+from playwright.async_api import async_playwright, Playwright
 import bs4
 
 RED = "\u001b[31m";
@@ -18,17 +19,17 @@ GREEN = "\u001b[32m";
 YELLOW = "\u001b[33m";
 RESET_COLOURS = "\u001b[0m";
 
-def get_content(url, engine_name):
-	with sync_playwright() as playwright: #TODO: make async
+async def get_content(url, engine_name):
+	async with async_playwright() as playwright:
 		engine = getattr(playwright, engine_name)
-		browser = engine.launch()
-		context = browser.new_context()
-		page = context.new_page()
-		page.goto(url)
-		return page.content()
+		browser = await engine.launch()
+		context = await browser.new_context()
+		page = await context.new_page()
+		await page.goto(url)
+		return await page.content()
 
-def get_content_from_path(path, engine_name):
-	return get_content(make_file_link(os.path.abspath(path)), engine_name);
+async def get_content_from_path(path, engine_name):
+	return await get_content(make_file_link(os.path.abspath(path)), engine_name);
 
 def fetch_test_files():
 	input_files = []
@@ -207,19 +208,19 @@ def make_expected_outputs_only(inputs, output_dir, possible_outputs):
 
 	return False, output_strings, links, GREEN
 
-def commit_output(test_output_path, store_path, engine_name, throw_if_exists=False):
-	test_output_content = get_content_from_path(test_output_path, engine_name)
+async def commit_output(test_output_path, store_path, engine_name, throw_if_exists=False):
+	test_output_content = await get_content_from_path(test_output_path, engine_name)
 	with open(store_path, 'x' if throw_if_exists else 'w') as f:
 		f.write(strip_body(test_output_content))
 
-def record_output(inputs, output_dir, output_name, engine_name, *, throw_if_exists=False):
+async def record_output(inputs, output_dir, output_name, engine_name, *, throw_if_exists=False):
 	test_name = get_test_name(output_dir)
 	test_output_path = run_test_to_new_file(inputs, test_name)
 	new_output_file = os.path.join(output_dir, (output_name or 'out') + '.html')
-	commit_output(test_output_path, new_output_file, engine_name, throw_if_exists)
+	await commit_output(test_output_path, new_output_file, engine_name, throw_if_exists)
 	return expected_output_to_functional_link(new_output_file)
 
-def generate_new_outputs(inputs, output_dir, possible_outputs, args):
+async def generate_new_outputs(inputs, output_dir, possible_outputs, args):
 	output_strings = []
 	if possible_outputs:
 		output_strings.append(f'Deleting existing output file{"" if len(possible_outputs) == 1 else "s"}: {", ".join(possible_outputs)} in {output_dir}')
@@ -227,19 +228,19 @@ def generate_new_outputs(inputs, output_dir, possible_outputs, args):
 		print(f'Nothing to delete in {output_dir}')
 	for x in possible_outputs:
 		os.remove(os.path.join(output_dir, x))
-	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine)
+	output_str, output_link = await record_output(inputs, output_dir, args.output_name, args.engine)
 	output_strings.append(f'Recorded new output into: {output_str}')
 	return False, output_strings, [output_link], YELLOW
 
-def generate_missing_only(inputs, output_dir, possible_outputs, args):
+async def generate_missing_only(inputs, output_dir, possible_outputs, args):
 	if possible_outputs:
 		return False, ['Output already exists, skipping'], [], YELLOW
 	output_strings = []
-	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine)
+	output_str, output_link = await record_output(inputs, output_dir, args.output_name, args.engine)
 	output_strings.append(f'Recorded new output into: {output_str}')
 	return False, output_strings, [output_link], GREEN
 
-def run_tests(inputs, output_dir, possible_outputs, args):
+async def run_tests(inputs, output_dir, possible_outputs, args):
 	output_strings = []
 	if not possible_outputs:
 		if args.dont_create_if_no_output:
@@ -250,7 +251,7 @@ def run_tests(inputs, output_dir, possible_outputs, args):
 			return False, output_strings, [output_link], YELLOW
 	test_name = get_test_name(output_dir)
 	test_output_path = make_file_link(run_test_to_new_file(inputs, test_name))
-	test_output_content = get_content(test_output_path, args.engine)
+	test_output_content = await get_content(test_output_path, args.engine)
 	output_strings.append(f'Output: {test_output_path}')
 	logs = []
 	links = [test_output_path]
@@ -300,7 +301,7 @@ def display_inputs(inputs):
 		return f'INPUT: {inputs[0][1]}'
 	return 'INPUTS: {' + ", ".join((f'{version_name}: {file_path}' for version_name, file_path in inputs)) + '}'
 
-def process_test(inputs, output_dir, args):
+async def process_test(inputs, output_dir, args):
 	test_name = get_test_name(output_dir)
 	try:
 		os.mkdir(output_dir)
@@ -315,11 +316,11 @@ def process_test(inputs, output_dir, args):
 	if args.expected_outputs_only:
 		is_error, outputs, links_to_open, color_code = make_expected_outputs_only(inputs, output_dir, possible_outputs)
 	elif args.generate_missing_only:
-		is_error, outputs, links_to_open, color_code = generate_missing_only(inputs, output_dir, possible_outputs, args)
+		is_error, outputs, links_to_open, color_code = await generate_missing_only(inputs, output_dir, possible_outputs, args)
 	elif args.add_new_outputs:
-		is_error, outputs, links_to_open, color_code = generate_new_outputs(inputs, output_dir, possible_outputs, args)
+		is_error, outputs, links_to_open, color_code = await generate_new_outputs(inputs, output_dir, possible_outputs, args)
 	else:
-		is_error, outputs, links_to_open, color_code = run_tests(inputs, output_dir, possible_outputs, args)
+		is_error, outputs, links_to_open, color_code = await run_tests(inputs, output_dir, possible_outputs, args)
 	output_strings.extend(outputs)
 	return is_error, (color_code or "") + '\n\t'.join(output_strings) + (RESET_COLOURS if color_code else ""), links_to_open
 
@@ -342,7 +343,7 @@ def run_test_to_new_file(inputs, test_name):
 	subprocess.run(['./generate.sh'] + [filename for version_name, filename in inputs] + ['-o', output_name]) #TODO: capture some errors
 	return os.path.abspath(output_name)
 
-def main():
+async def main():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('files', nargs='*')
 	parser.add_argument('--dont-create-if-no-output', '-d', action='store_true')
@@ -418,10 +419,14 @@ def main():
 
 	links_to_open = []
 
+	tasks = []
 	for inputs, output_dir in tests:
 		test_name = get_test_name(output_dir)
 		if not args.files or (any([matches(matcher, test_name) for matcher in args.files]) != args.invert):
-			is_error, message, this_links_to_open = process_test(inputs, output_dir, args)
+			tasks.append(process_test(inputs, output_dir, args))
+	for batch in itertools.batched(tasks, 4):
+		results = await asyncio.gather(*batch)
+		for is_error, message, this_links_to_open in results:
 			print(message)
 			if is_error:
 				failed_tests.append(test_name)
@@ -437,4 +442,4 @@ def main():
 		
 
 if __name__ == "__main__":
-	main()
+	asyncio.run(main())
