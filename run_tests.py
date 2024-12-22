@@ -216,7 +216,7 @@ def record_output(inputs, output_dir, output_name, engine_name, *, throw_if_exis
 	test_name = get_test_name(output_dir)
 	test_output_path = run_test_to_new_file(inputs, test_name)
 	new_output_file = os.path.join(output_dir, (output_name or 'out') + '.html')
-	commit_output(test_output_path, new_output_file, throw_if_exists)
+	commit_output(test_output_path, new_output_file, engine_name, throw_if_exists)
 	return expected_output_to_functional_link(new_output_file)
 
 def generate_new_outputs(inputs, output_dir, possible_outputs, args):
@@ -227,7 +227,7 @@ def generate_new_outputs(inputs, output_dir, possible_outputs, args):
 		print(f'Nothing to delete in {output_dir}')
 	for x in possible_outputs:
 		os.remove(os.path.join(output_dir, x))
-	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine_name)
+	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine)
 	output_strings.append(f'Recorded new output into: {output_str}')
 	return False, output_strings, [output_link], YELLOW
 
@@ -235,7 +235,7 @@ def generate_missing_only(inputs, output_dir, possible_outputs, args):
 	if possible_outputs:
 		return False, ['Output already exists, skipping'], [], YELLOW
 	output_strings = []
-	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine_name)
+	output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine)
 	output_strings.append(f'Recorded new output into: {output_str}')
 	return False, output_strings, [output_link], GREEN
 
@@ -245,7 +245,7 @@ def run_tests(inputs, output_dir, possible_outputs, args):
 		if args.dont_create_if_no_output:
 			return False, ['No outputs found'], [], RED
 		else:
-			output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine_name)
+			output_str, output_link = record_output(inputs, output_dir, args.output_name, args.engine)
 			output_strings.append(f'No outputs found, rendered {output_str}')
 			return False, output_strings, [output_link], YELLOW
 	test_name = get_test_name(output_dir)
