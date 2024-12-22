@@ -309,7 +309,7 @@ def get_header_content():
 header_content = get_header_content()
 
 def make_file_link(path):
-	return f'file://{os.path.abspath(path)}'
+	return f'file://{os.path.abspath(path)}?theme=disable'
 
 def run_test_to_new_file(inputs, test_name):
 	with tempfile.NamedTemporaryFile(suffix=get_test_output_file_suffix(test_name), delete=False) as f:
