@@ -322,7 +322,7 @@ async def process_test(inputs, output_dir, args):
 	else:
 		is_error, outputs, links_to_open, color_code = await run_tests(inputs, output_dir, possible_outputs, args)
 	output_strings.extend(outputs)
-	return is_error, (color_code or "") + '\n\t'.join(output_strings) + (RESET_COLOURS if color_code else ""), links_to_open
+	return test_name, is_error, (color_code or "") + '\n\t'.join(output_strings) + (RESET_COLOURS if color_code else ""), links_to_open
 
 def get_header_content():
 	with open('index.html', 'r') as f:
@@ -426,7 +426,7 @@ async def main():
 			tasks.append(process_test(inputs, output_dir, args))
 	for batch in itertools.batched(tasks, 4):
 		results = await asyncio.gather(*batch)
-		for is_error, message, this_links_to_open in results:
+		for test_name, is_error, message, this_links_to_open in results:
 			print(message)
 			if is_error:
 				failed_tests.append(test_name)
