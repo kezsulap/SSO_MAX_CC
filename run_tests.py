@@ -21,7 +21,7 @@ RESET_COLOURS = "\u001b[0m";
 
 async def get_content(url, engine_name):
 	async with async_playwright() as playwright:
-		engine = getattr(playwright, engine_name)
+		engine = getattr(playwright, engine_name or 'webkit')
 		browser = await engine.launch()
 		context = await browser.new_context()
 		page = await context.new_page()
@@ -353,9 +353,10 @@ async def main():
 	parser.add_argument('--open-all', '-p', action='store_true')
 	parser.add_argument('--generate-missing-only', '-g', action='store_true')
 	parser.add_argument('--expected-outputs-only', '-e', action='store_true')
-	parser.add_argument('--engine', '-E', type=str, default='webkit', help='Possible values: webkit, firefox, chromium, default: webkit')
+	parser.add_argument('--engine', '-E', type=str, default=None, help='Possible values: webkit, firefox, chromium, default: webkit')
 	parser.add_argument('--verbose', '-v', action='store_true')
 	parser.add_argument('--invert', '-i', action='store_true')
+	parser.add_argument('--list', '-l', action='store_true', help='list all existing tests')
 	parser.add_argument("-M", "--mismatch-limit", type=int)
 	parser.add_argument("-H", "--HTML-len-limit", type=int)
 	parser.add_argument("-C", "--children-list-len-limit", type=int)
@@ -390,6 +391,18 @@ async def main():
 	check_flags('add_new_outputs', 'children_list_len_limit')
 	check_flags('generate_missing_only', 'children_list_len_limit')
 	check_flags('expected_outputs_only', 'children_list_len_limit')
+	check_flags('list', 'dont_create_if_no_output')
+	check_flags('list', 'add_new_outputs')
+	check_flags('list', 'add_alternate_outputs')
+	check_flags('list', 'output_name')
+	check_flags('list', 'open_all')
+	check_flags('list', 'generate_missing_only')
+	check_flags('list', 'expected_outputs_only')
+	check_flags('list', 'engine')
+	check_flags('list', 'verbose')
+	check_flags('list', 'mismatch_limit')
+	check_flags('list', 'HTML_len_limit')
+	check_flags('list', 'children_list_len_limit')
 	
 	mismatched_with_files = []
 	if not args.files and args.invert:
@@ -420,10 +433,17 @@ async def main():
 	links_to_open = []
 
 	tasks = []
+	filtered_tests = []
 	for inputs, output_dir in tests:
 		test_name = get_test_name(output_dir)
 		if not args.files or (any([matches(matcher, test_name) for matcher in args.files]) != args.invert):
-			tasks.append(process_test(inputs, output_dir, args))
+			filtered_tests.append((inputs, output_dir))
+	if args.list:
+		for inputs, output_dir in filtered_tests:
+			print(get_test_name(output_dir))
+		return
+	for inputs, output_dir in filtered_tests:
+		tasks.append(process_test(inputs, output_dir, args))
 	for batch in itertools.batched(tasks, 4):
 		results = await asyncio.gather(*batch)
 		for test_name, is_error, message, this_links_to_open in results:
