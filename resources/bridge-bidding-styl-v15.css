@@ -365,9 +365,6 @@ body.dark {
 	}
 }
 /***********************************************SPECIAL THEMES*************************************/
-div.bidding:not(.relay) {
-	backdrop-filter: blur(30px);
-}
 /******************** April-fool *********************/
 body.april-fool .heart-image:after {
 	content: "\1f921";
@@ -386,6 +383,12 @@ body.april-fool.bright {
 	background-size: 16.666%;
 	background-attachment: fixed;
 	background-position: left;
+}
+body.april-fool.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.april-fool.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2.5);
 }
 /******************** Autumn ***********************/
 body.autumn .diamond-image:after {
@@ -442,6 +445,12 @@ body.children.bright {
 	background-attachment: fixed;
 	background-position: left;
 }
+body.children.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.children.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(1.6);
+}
 /******************** Christmas *********************/
 body.christmas .club-image:after {
 	content: "\1F384";
@@ -458,6 +467,12 @@ body.christmas.bright {
 	background-image: url("./special-themes/bright-christmas.jpg");
 	background-attachment: fixed;
 	background-position: left;
+}
+body.christmas.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.christmas.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
 }
 /******************** Earth *********************/
 body.earth .spade-image:after {
@@ -478,6 +493,12 @@ body.earth.bright {
 	background-attachment: fixed;
 	background-position: left;
 }
+body.earth.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.earth.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
+}
 /******************** Easter *********************/
 body.easter .diamond-image:after {
 	content: "\1f425";
@@ -496,6 +517,12 @@ body.easter.bright {
 	background-size: 100%;
 	background-attachment: fixed;
 	background-position: left;
+}
+body.easter.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.easter.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
 }
 /******************** Education *********************/
 body.education .spade-image:after {
@@ -556,6 +583,12 @@ body.independence.bright {
 	border-color:#990000;
 	background-color:#990000;
 }
+body.independence.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.independence.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
+}
 /******************** Men *********************/
 body.men .spade-image:after {
 	content: "\1f3a9";
@@ -576,8 +609,11 @@ body.moon {
 	background-attachment: fixed;
 	background-position: left;
 }
+body.moon.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
 body.moon.bright div.bidding:not(.relay) {
-	backdrop-filter: brightness(200%) blur(30px);
+	backdrop-filter: contrast(0.3) brightness(2);
 }
 /******************** New-year *********************/
 body.new-year .diamond-image:after {
@@ -597,6 +633,12 @@ body.new-year.bright {
 	background-size: 25%;
 	background-attachment: fixed;
 	background-position: left;
+}
+body.new-year.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.new-year.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
 }
 /******************** Rainbow *********************/
 .bright.rainbow #topmenu .topmenu li:nth-child(6n+1) {
@@ -666,6 +708,12 @@ body.santa.bright {
 	background-attachment: fixed;
 	background-position: top;
 }
+body.santa.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.santa.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
+}
 /******************** Single **********************/
 body.single .heart-image:after {
 	content: "\1F494";
@@ -700,6 +748,12 @@ body.ukraine.bright {
 	background-attachment: fixed;
 	background-position: top;
 }
+body.ukraine.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.ukraine.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
+}
 .bright.ukraine #topmenu .topmenu li:nth-child(odd) {
 	border-color:#ADD6FF;
 	background-color:#ADD6FF;
@@ -733,6 +787,12 @@ body.valentines.dark {
 	background-attachment: fixed;
 	background-position: left;
 }
+body.valentines.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.valentines.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
+}
 /******************** Veggie ********************/
 body.veggie .club-image:after {
 	content: "\1f966"
@@ -765,6 +825,12 @@ body.women.dark {
 	background-size: 100%;
 	background-attachment: fixed;
 	background-position: left;
+}
+body.women.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.women.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2);
 }
 
 /******************** Quiz related stuff *********************/
