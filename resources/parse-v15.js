@@ -515,6 +515,7 @@ class ParsingContext {
 }
 function trim_whitespace_and_comments(raw_content, line_id) {
 	let cropped_content = raw_content.split('#')[0]
+	if (!cropped_content.trim()) return [0, '']
 	let indent = 0;
 	while (indent < cropped_content.length && cropped_content[indent] == '\t') indent++;
 	if (cropped_content.length > indent) {
