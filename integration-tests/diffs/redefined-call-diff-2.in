@@ -1,0 +1,13 @@
+1c Nonvulnerable: 15+
+	1d relay 13+
+		1h 4+♥
+		1s 4+♠
+		1n no 4M
+!1c Vulnerable: 12+ 
+	1d relay 13+
+		1h balanced
+			1n NF
+		1s 6+♣
+			2c NF
+		1n 6+♦
+			2d NF

@@ -1,0 +1,282 @@
+<body class="dark done">
+ <div id="content">
+  <!-- początek strony -->
+  <div class="bidding level00 title" id="page_title" level="0">
+   Basic constructive bidding
+  </div>
+  <div id="topmenu">
+   <ul class="topmenu" id="topmenulist" style="grid-template-columns: repeat(7, 14.285704%);">
+    <li class="our_call diff subtreediff" style="">
+     <a class="topmenu" href="#open0">
+      pass
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open1">
+      1
+      <span class="club suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♣
+        </span>
+        ︎
+       </span>
+       <span class="club-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open2">
+      1
+      <span class="diamond suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♦
+        </span>
+        ︎
+       </span>
+       <span class="diamond-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open3">
+      1
+      <span class="heart suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♥
+        </span>
+        ︎
+       </span>
+       <span class="heart-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li class="our_call" style="">
+     <a class="topmenu" href="#open4">
+      1
+      <span class="spade suit">
+       <span class="suit-label">
+        <span class="emoji">
+         ♠
+        </span>
+        ︎
+       </span>
+       <span class="spade-image">
+       </span>
+      </span>
+     </a>
+    </li>
+    <li id="theme_switch_button" style="">
+     <div onclick="handle_theme_switch()">
+      ☀️
+     </div>
+    </li>
+    <li id="fold_everything_button" style="">
+     <div onclick="fold_everything()">
+      ↩️
+     </div>
+    </li>
+   </ul>
+   <div style="clear: both;">
+   </div>
+  </div>
+  <div id="bidding">
+   <div class="bidding level00 relay our_call diff subtreediff" id="open0" level="0">
+    <div class="call">
+     pass:
+    </div>
+    <div class="meaning">
+     <div class="version">
+      <div class="version_id">
+       V1:
+      </div>
+      <div class="version_content">
+       13+
+      </div>
+     </div>
+     <div class="version">
+      <div class="version_id">
+       V2:
+      </div>
+      <div class="version_content">
+       13+ (except 2
+       <span class="diamond suit">
+        <span class="suit-label">
+         <span class="emoji">
+          ♦
+         </span>
+         ︎
+        </span>
+        <span class="diamond-image">
+        </span>
+       </span>
+       )
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="bidding level01 relay our_call" level="1" style="display: none;">
+    <div class="call">
+     1
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     6-10 balanced/11+ anything
+    </div>
+   </div>
+   <div class="bidding level02 relay our_call" level="2" style="display: none;">
+    <div class="call">
+     1
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     13-16 balanced/17+ anything
+    </div>
+   </div>
+   <div class="bidding level03 our_call" level="3" style="display: none;">
+    <div class="call">
+     1
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     11+ anything
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open1" level="0">
+    <div class="call">
+     1
+     <span class="club suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♣
+       </span>
+       ︎
+      </span>
+      <span class="club-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     8-12 balanced
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open2" level="0">
+    <div class="call">
+     1
+     <span class="diamond suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♦
+       </span>
+       ︎
+      </span>
+      <span class="diamond-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     0-7 anything
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open3" level="0">
+    <div class="call">
+     1
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     short
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+     /6+
+     <span class="heart suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♥
+       </span>
+       ︎
+      </span>
+      <span class="heart-image">
+      </span>
+     </span>
+    </div>
+   </div>
+   <div class="bidding level00 our_call" id="open4" level="0">
+    <div class="call">
+     1
+     <span class="spade suit">
+      <span class="suit-label">
+       <span class="emoji">
+        ♠
+       </span>
+       ︎
+      </span>
+      <span class="spade-image">
+      </span>
+     </span>
+     :
+    </div>
+    <div class="meaning">
+     etc.
+    </div>
+   </div>
+  </div>
+  <!-- koniec #bidding -->
+  <!-- koniec strony -->
+ </div>
+ <!-- /content -->
+</body>
