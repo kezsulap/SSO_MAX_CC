@@ -1,0 +1,13 @@
+1c
+	1d
+		1h
+	# line with smaller indentation and comment
+			1s	
+ 
+			1n
+			2c
+																																			# line with higher indentation
+		1s
+																																					
+		1n
+	1h
