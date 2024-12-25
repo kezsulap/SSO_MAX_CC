@@ -302,6 +302,17 @@ class Node {
 		for (let child of this.children) if (call.equal(child.call)) return child;
 		return undefined;
 	}
+	extract_call_map() {
+		let ret = new Map();
+		for (let i = 0; i < this.children.length; ++i) {
+			let child = this.children[i];
+			let key = child.call.to_key();
+			// if (key[0] == '@') //TODO: remove comments from this part of algorithm
+			if (!ret.has(key)) ret.set(key, [[child, i]])
+			else ret.get(key).push([child, i])
+		}
+		return ret;
+	}
 };
 function parse_function(content, exception, is_definition) {
 	content = content.trim();
@@ -1009,117 +1020,150 @@ function calc_diff(node1, id1, len1, node2, id2, len2) {
 	let meaning_diff = calc_str_diff(node1.meaning, node2.meaning);
 	return 1e10 * children_diff + 1e5 * meaning_diff + pos_diff;
 }
+class Joiner {
+	constructor(lengths) {
+		let n = lengths.length
+		this.n = n
+		this.groups = new Array(n);
+		for (let i = 0; i < n; ++i) {
+			this.groups[i] = new Array(lengths[i]);
+			for (let j = 0; j < lengths[i]; ++j) {
+				this.groups[i][j] = new Array(n);
+				this.groups[i][j][i] = j;
+			}
+		}
+	}
+	try_join(version1, node1, version2, node2) {
+		let group1 = this.groups[version1][node1], group2 = this.groups[version2][node2];
+		for (let i = 0; i < this.n; ++i)
+			if (group1[i] !== undefined && group2[i] !== undefined)
+				return false;
+		let new_group = new Array(this.n);
+		for (let i = 0; i < this.n; ++i) {
+			if (group1[i] !== undefined)
+				new_group[i] = group1[i];
+			else
+				new_group[i] = group2[i];
+		}
+		for (let i = 0; i < this.n; ++i)
+			if (group1[i] !== undefined)
+				this.groups[i][group1[i]] = new_group;
+		for (let i = 0; i < this.n; ++i)
+			if (group2[i] !== undefined)
+				this.groups[i][group2[i]] = new_group;
+		return true;
+	}
+	extract() {
+		let ret = [];
+		for (let i = 0; i < this.n; ++i) {
+			for (let j = 0; j < this.groups[i].length; ++j) {
+				let added_before = false;
+				for (let ii = 0; ii < i; ++ii) {
+					if (this.groups[i][j][ii] !== undefined) {
+						added_before = true;
+						break;
+					}
+				}
+				if (!added_before) {
+					ret.push(this.groups[i][j]);
+				}
+			}
+		}
+		return ret;
+	}
+	get_current_group(version_id, node_id) {
+		return this.groups[version_id][node_id];
+	}
+};
 //TODO: rename to diff or anything alike
+function compare_dfs(N, input_nodes, output_node) { //TODO: if there's only one node left just relabel everything rather than creating new nodes
+	//TODO: if all children match along all nodes just proceed without any matching algorithm
+	let any_diff = false;
+	let meanings = [];
+	for (let i = 0; i < N; ++i)
+		meanings.push([input_nodes[i][0], input_nodes[i][1] === undefined ? undefined : input_nodes[i][1].meaning]);
+	[diff_here, diff_meaning] = diff_meanings(meanings);
+	output_node.meaning = diff_meaning;
+	output_node.update_innerHTML()
+	if (diff_here) {
+		output_node.other_classes.add('diff');
+		any_diff = true;
+	}
+	let join_lengths = new Array(N);
+	for (let i = 0; i < input_nodes.length; ++i) {
+		if (input_nodes[i][1] === undefined) join_lengths[i] = 0;
+		else join_lengths[i] = input_nodes[i][1].children.length;
+	}
+	let joiner = new Joiner(join_lengths);
+	let call_maps = new Array(N);
+	for (let i = 0; i < N; ++i) {
+		if (input_nodes[i][1] == undefined) continue;
+		call_maps[i] = input_nodes[i][1].extract_call_map();
+	}
+	let merges = [];
+	for (let i = 0; i < N; ++i) for (let j = i + 1; j < N; ++j) {
+		let map_i = call_maps[i], map_j = call_maps[j];
+		if (map_i !== undefined && map_j !== undefined) {
+			for (let [call, nodes] of map_i) {
+				let oth_nodes = map_j.get(call);
+				if (oth_nodes !== undefined) {
+					for (let [node, id] of nodes) {
+						for (let [oth_node, oth_id] of oth_nodes) {
+							let score = calc_diff(node, id, input_nodes[i][1].children.length, oth_node, oth_id, input_nodes[j][1].children.length); //TODO: omit if definitely unnecessary i.e. this call is used at most once in every version
+							merges.push([score, i, id, j, oth_id]);
+						}
+					}
+				}
+			}
+		}
+	}
+	merges.sort(function(a, b){return a[0] - b[0];});
+	for (let [_priority, v1, node1, v2, node2] of merges) {
+		joiner.try_join(v1, node1, v2, node2);
+	}
+	let all_calls_array = [];
+
+	for (let i = 0; i < N; ++i) if (input_nodes[i][1] !== undefined) {
+		for (let joined_node of joiner.groups[i]) {
+			let already_used = false;
+			for (let x = 0; x < i; ++x) if (joined_node[x] !== undefined) already_used = true;
+			if (already_used) continue;
+			let actual_call = input_nodes[i][1].children[joined_node[i]].call;
+			all_calls_array.push([actual_call, joined_node]);
+		}
+	}
+	let order = hamilton_path(all_calls_array, call_order_compare);
+	// TODO: some comment if nodes were reordered
+	for (let [call, indices] of order) {
+		let sub_output = output_node.append_child(call, '')
+		let sub_nodes = new Array(N);
+		for (let i = 0; i < N; ++i)
+			sub_nodes[i] = [input_nodes[i][0], indices[i] === undefined ? undefined : input_nodes[i][1].children[indices[i]]];
+		let ret = compare_dfs(N, sub_nodes, sub_output);
+		if (ret) any_diff = true;
+	}
+	// let comments = new Array(input_nodes.length);
+	// for (let i = 0; i < input_nodes.length; ++i) {
+		// comments[i] = new Array();
+		// if (input_nodes[i][1] !== undefined) {
+			// for (let node of input_nodes[i][1].children) {
+				// 
+				// if (node.call.type == COMMENT) comments[i].push();
+			// }
+		// }
+	// }
+	if (any_diff) output_node.other_classes.add('subtreediff');
+	return any_diff;
+}
 function compare(starting_nodes) {
 	let N = starting_nodes.length;
 	if (N == 1) {
 		return starting_nodes[0][1];
 	}
 	let ret = new Node();
-	function dfs(input_nodes, output_node) { //TODO: if there's only one node left just relabel everything rather than creating new nodes
-		//TODO: if all children match along all nodes just proceed without any matching algorithm
-		let any_diff = false;
-		let meanings = [];
-		for (let i = 0; i < starting_nodes.length; ++i)
-			meanings.push([input_nodes[i][0], input_nodes[i][1] === undefined ? undefined : input_nodes[i][1].meaning]);
-		[diff_here, diff_meaning] = diff_meanings(meanings);
-		output_node.meaning = diff_meaning;
-		output_node.update_innerHTML()
-		if (diff_here) {
-			output_node.other_classes.add('diff');
-			any_diff = true;
-		}
-		let joins = new Array(N);
-		for (let i = 0; i < input_nodes.length; ++i) {
-			if (input_nodes[i][1] === undefined) continue;
-			joins[i] = new Array(input_nodes[i][1].children.length);
-			for (let j = 0; j < input_nodes[i][1].children.length; ++j) {
-				joins[i][j] = new Array(N);
-				joins[i][j][i] = j;
-			}
-		}
-		function try_join(version1, node1, version2, node2) {
-			let ids_1 = joins[version1][node1];
-			let ids_2 = joins[version2][node2];
-			for (let i = 0; i < N; ++i) if (ids_1[i] !== undefined && ids_2[i] !== undefined) return false;
-			ids_1 = ids_1.slice();
-			ids_2 = ids_2.slice();
-			for (let i = 0; i < N; ++i) if (ids_1[i] !== undefined)
-				for (let j = 0; j < N; ++j) if (ids_2[j] !== undefined) {
-					joins[i][ids_1[i]][j] = ids_2[j];
-					joins[j][ids_2[j]][i] = ids_1[i];
-				}
-			return true;
-		};
-		let call_maps = new Array(N);
-		for (let i = 0; i < N; ++i) {
-			if (input_nodes[i][1] == undefined) continue;
-			call_maps[i] = new Map();
-			for (let j = 0; j < input_nodes[i][1].children.length; ++j) {
-				let child = input_nodes[i][1].children[j];
-				let key = child.call.to_key();
-				// if (key[0] == '@') //TODO: remove comments from this part of algorithm
-				if (!call_maps[i].has(key)) call_maps[i].set(key, [[child, j]])
-				else call_maps[i].get(key).push([child, j])
-			}
-		}
-		let merges = [];
-		for (let i = 0; i < N; ++i) for (let j = i + 1; j < N; ++j) {
-			let map_i = call_maps[i], map_j = call_maps[j];
-			if (map_i !== undefined && map_j !== undefined) {
-				for (let [call, nodes] of map_i) {
-					let oth_nodes = map_j.get(call);
-					if (oth_nodes !== undefined) {
-						for (let [node, id] of nodes) {
-							for (let [oth_node, oth_id] of oth_nodes) {
-								let score = calc_diff(node, id, input_nodes[i][1].children.length, oth_node, oth_id, input_nodes[j][1].children.length); //TODO: omit if definitely unnecessary i.e. this call is used at most once in every version
-								merges.push([score, i, id, j, oth_id]);
-							}
-						}
-					}
-				}
-			}
-		}
-		merges.sort(function(a, b){return a[0] - b[0];});
-		for (let [_priority, v1, node1, v2, node2] of merges) {
-			try_join(v1, node1, v2, node2);
-		}
-		let all_calls_array = [];
-		for (let i = 0; i < N; ++i) if (input_nodes[i][1] !== undefined) {
-			for (let joined_node of joins[i]) {
-				let already_used = false;
-				for (let x = 0; x < i; ++x) if (joined_node[x] !== undefined) already_used = true;
-				if (already_used) continue;
-				let actual_call = input_nodes[i][1].children[joined_node[i]].call;
-				all_calls_array.push([actual_call, joined_node]);
-			}
-		}
-		let order = hamilton_path(all_calls_array, call_order_compare);
-		// TODO: some comment if nodes were reordered
-		for (let [call, indices] of order) {
-			let sub_output = output_node.append_child(call, '')
-			let sub_nodes = new Array(N);
-			for (let i = 0; i < N; ++i)
-				sub_nodes[i] = [input_nodes[i][0], indices[i] === undefined ? undefined : input_nodes[i][1].children[indices[i]]];
-			let ret = dfs(sub_nodes, sub_output);
-			if (ret) any_diff = true;
-		}
-		// let comments = new Array(input_nodes.length);
-		// for (let i = 0; i < input_nodes.length; ++i) {
-			// comments[i] = new Array();
-			// if (input_nodes[i][1] !== undefined) {
-				// for (let node of input_nodes[i][1].children) {
-					// 
-					// if (node.call.type == COMMENT) comments[i].push();
-				// }
-			// }
-		// }
-		if (any_diff) output_node.other_classes.add('subtreediff');
-		return any_diff;
-	}
-	dfs(starting_nodes, ret);
+	compare_dfs(N, starting_nodes, ret);
 	let titles = [];
-	for (let i = 0; i < starting_nodes.length; ++i) titles.push([starting_nodes[i][0], starting_nodes[i][1].title]);
+	for (let i = 0; i < N; ++i) titles.push([starting_nodes[i][0], starting_nodes[i][1].title]);
 	[diff_title, title_content] = diff_meanings(titles);
 	ret.title = title_content;
 	if (diff_title) ret.diff_title = true;
