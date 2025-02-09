@@ -35,6 +35,7 @@ function pick_special_theme() {
 
 	if (month == 4 && day == 1) return 'april-fool'
 	if (month == 9 && day == 23) return 'autumn'
+	if (month == 3 && day == 25) return 'birthday'
 	if (month == 12 && day >= 24 && day <= 26) return 'christmas'
 	if (month == 9 && day == 6) return 'colour-blind'
 	if (month == 6 && day == 1) return 'children'

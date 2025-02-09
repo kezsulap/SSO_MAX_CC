@@ -397,6 +397,31 @@ body.autumn .diamond-image:after {
 body.autumn .diamond .suit-label {
 	font-size: 0;
 }
+/******************** Birthday ***********************/
+body.birthday.dark {
+	background-image: url("./special-themes/dark-birthday.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.birthday.bright {
+	background-image: url("./special-themes/bright-birthday.jpg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: left;
+}
+body.birthday.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.6);
+}
+body.birthday.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2.5);
+}
+body.birthday .diamond-image:after {
+	content: "\1f370";
+}
+body.birthday .diamond .suit-label {
+	font-size: 0;
+}
 /******************** Colour-blind *****************/
 body.colour-blind.bright {
 	.club, .hand .c, .shape .c {
