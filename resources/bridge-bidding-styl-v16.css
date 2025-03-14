@@ -665,6 +665,22 @@ body.new-year.dark div.bidding:not(.relay) {
 body.new-year.bright div.bidding:not(.relay) {
 	backdrop-filter: contrast(0.3) brightness(2);
 }
+/*********************** Pi ***********************/
+body.pi .club .suit-label, body.pi .diamond .suit-label, body.pi .heart .suit-label, body.pi .spade .suit-label {
+	font-size: 0;
+}
+body.pi .club-image:after {
+	content: "\1f7e2";
+}
+body.pi .diamond-image:after {
+	content: "\1f7e0";
+}
+body.pi .heart-image:after {
+	content: "\1f534";
+}
+body.pi .spade-image:after {
+	content: "\1f535";
+}
 /******************** Rainbow *********************/
 .bright.rainbow #topmenu .topmenu li:nth-child(6n+1) {
 	border-color:#ff9999;
