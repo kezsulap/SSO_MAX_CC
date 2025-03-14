@@ -6,7 +6,7 @@ jquery.min.js
 main.js
 parse-v15.js
 quiz.js
-theme.js
+theme-v2.js
 special-themes/bright-april-fool.png
 special-themes/bright-birthday.jpg
 special-themes/bright-children.jpg
@@ -15,6 +15,7 @@ special-themes/bright-earth.jpg
 special-themes/bright-easter.jpg
 special-themes/bright-independence.jpg
 special-themes/bright-new-year.jpg
+special-themes/bright-pi.jpeg
 special-themes/bright-santa.jpg
 special-themes/bright-spider-web.svg
 special-themes/bright-ukraine.jpg
@@ -29,6 +30,7 @@ special-themes/dark-easter.jpg
 special-themes/dark-independence.jpg
 special-themes/dark-moon.jpg
 special-themes/dark-new-year.jpg
+special-themes/dark-pi.jpeg
 special-themes/dark-santa.jpg
 special-themes/dark-spider-web.svg
 special-themes/dark-ukraine.webp

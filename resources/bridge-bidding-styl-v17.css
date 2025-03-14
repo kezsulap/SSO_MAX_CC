@@ -681,6 +681,24 @@ body.pi .heart-image:after {
 body.pi .spade-image:after {
 	content: "\1f535";
 }
+body.pi.dark {
+	background-image: url("./special-themes/dark-pi.jpeg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top;
+}
+body.pi.bright {
+	background-image: url("./special-themes/bright-pi.jpeg");
+	background-size: 100%;
+	background-attachment: fixed;
+	background-position: top;
+}
+body.pi.dark div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(0.4);
+}
+body.pi.bright div.bidding:not(.relay) {
+	backdrop-filter: contrast(0.3) brightness(2.5);
+}
 /******************** Rainbow *********************/
 .bright.rainbow #topmenu .topmenu li:nth-child(6n+1) {
 	border-color:#ff9999;
