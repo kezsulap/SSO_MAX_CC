@@ -2030,39 +2030,52 @@ p 13+ PC, any distribution (but see 2♦ opening)
 							3s !{4342}
 					2d 64
 						2h relay
-							2s 6♣/♦
+							2s 6♣/♦ (except 6♣ 4♠)
 								2n relay
 									3c 6♣
 										3d relay
 											3h 4♦
 												3s relay
-													3n 
-											3s 4♥
-											3n 4♠
+													3n short ♠
+													4c short ♥
+											3s 4♥, short ♠
+											3n 4♥, short ♦
 									3d 6♦, 4♣
 										3h relay
-											3s short ♥
-											3n short ♠
+											3s short ♠
+											3n short ♥
 									3h 6♦, 4♥
-									3s 6♦, 4♠
+										3s relay
+											3n short ♠
+											4c short ♣
+									3s 6♦, 4♠, short ♥
+									3n 6♦, 4♠, short ♣
 							2n 6♥
 								3c relay
 									3d 4♣
 										3h relay
-											3s short ♦
-											3n short ♠
+											3s short ♠
+											3n short ♦
 									3h 4♦
-									3s 4♠
-							3c 6♠, 4+♣/♦
+										3s relay
+											3n short ♠
+											4c short ♣
+									3s 4♠, short ♥
+									3n 4♠, short ♣
+							3c 6♠, 4♣
 								3d relay
-									3h 4♣
-									3s 4♦
-							3d !{6430} or !{6421}
+									3h short ♥
+									3s short ♦
+							3d 6♠, 4♦
 								3h relay
-									3s !{6430}
-									3n !{6421}
-							3h !{6403}
-							3s !{6412}
+									3s short ♥
+									3n short ♣
+							3h 6♠, 4♥
+								3s relay
+									3n short ♦
+									4c short ♣
+							3s 6♣, 4♠, short ♥
+							3n 6♣, 4♠, short ♦
 					2h 55
 						2s relay
 							2n 5+♣
@@ -2072,11 +2085,19 @@ p 13+ PC, any distribution (but see 2♦ opening)
 											3s short ♥
 											3n short ♠
 									3h 5+♥
-									3s 5+♠
+										3s relay
+											3n short ♠
+											4c short ♦
+									3s 5+♠, short ♥
+									3n 5+♠, short ♦
 							3c 5+♦, 5+♥/♠
 								3d relay
 									3h 5+♥
-									3s 5+♠
+										3s relay
+											3n short ♠
+											4c short ♣
+									3s 5+♠, short ♥
+									3n 5+♠, short ♣
 							3d ♥+♠, short ♣
 								3h relay
 									3s !{5530}
