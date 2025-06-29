@@ -396,14 +396,14 @@ function open1h(open_strength, relay_strength, 5s_responses)
 			2d 6♦
 			2h 6♥
 			2s 5♠, 5♦
-			2n 4+♣ no 5♠, extras
-			3c 5♠, 4+♣, extras
+			2n 5♠, 4+♣, extras
+			3c 4+♣ no 5♠, extras
 		2d natural, 3- ♠, NF
 			2h 6♥
 			2s 5♠, 5♣
-			2n 4+♦, no 5♠, extras
+			2n 5♠, 4+♦, extras
 			3c 6+♣, extras
-			3d 5♠, 4+♦, extras
+			3d 4+♦, no 5♠, extras
 		2h 2+ ♥, 3 ♠, 33+ ♣♦
 			2s 5 ♠
 			2n 44 or 55 ♣♦
@@ -724,14 +724,14 @@ function open1s(open_strength, relay_strength, 5h_responses)
 			2d 6♦
 			2h 5♥, 5♦
 			2s 6♠
-			2n 4+♣, no 5♥, extras
-			3c 5♥, 4+♣, extras
+			2n 5♥, 4+♣, extras
+			3c 4+♣, no 5♥, extras
 		2d natural, 3- ♥, NF
 			2h 5♥, 5♣
 			2s 6♠
-			2n 4+♦, no 5♥, extras
+			2n 5♥, 4+♦, extras
 			3c 6+♣, extras
-			3d 5♥, 4+♦, extras
+			3d 4+♦, no 5♥, extras
 		2h 4+ ♥, NF
 		2s 2+ ♠, 3 ♥, 33+ ♣♦
 			2n 44 or 55 ♣♦ or good hand with 5 ♥
