@@ -135,50 +135,476 @@ function negative1d(r1, r2, r3, r4)
 					1n 55+ distribution
 end
 function open1h(open_strength, relay_strength)
-	1h $(open_strength) PC, 5♥, no 4♠, 5♣/♦
-		@!{0544}, !{1534}, !{1543}, !{2524}, !{2533}, !{2542}, !{3514}, !{3523}, !{3532}, !{3541} (10 shapes)
+	1h $(open_strength) PC, short ♠, 3-5♣, 3-5♦, 3-5♥ (except 5♥ 5♣/♦) or !{0(643)} with 6♣/♦
+		@!{0346}, !{0355}, !{0364}, !{0445}, !{0454}, !{0544}, !{1345}, !{1354}, !{1435}, !{1444}, !{1453}, !{1534}, !{1543} (13 shapes)
+		1s relay, $(relay_strength) PC
 end
 function open1s(open_strength, relay_strength)
-	1s $(open_strength) PC, 5♠, no 4♥, 5♣/♦
-		@!{5044}, !{5134}, !{5143}, !{5224}, !{5233}, !{5242}, !{5314}, !{5323}, !{5332}, !{5341} (10 shapes)
+	1s $(open_strength) PC, short ♥, 3-5♣, 3-5♦, 3-5♠ (except 5♠ 5♣/♦) or !{6)0(43} with 6♣/♦
+		@!{3046}, !{3055}, !{3064}, !{3145}, !{3154}, !{4045}, !{4054}, !{4135}, !{4144}, !{4153}, !{5044}, !{5134}, !{5143} (13 shapes)
 		1n relay, $(relay_strength) PC
 end
 function open1n(open_strength, relay_strength)
-	1n $(open_strength) PC, 54 or 55 ♥♠ or ♣♦
-		@minors: !{0355}, !{0445}, !{0454}, !{1255}, !{1345}, !{1354}, !{2155}, !{2245}, !{2254}, !{3055}, !{3145}, !{3154}, !{4045}, !{4054} (14 shapes)
-		@majors: !{4504}, !{4513}, !{4522}, !{4531}, !{4540}, !{5404}, !{5413}, !{5422}, !{5431}, !{5440}, !{5503}, !{5512}, !{5521}, !{5530} (14 shapes)
+	1n $(open_strength) PC, (54)/55/(64) ♥♠ or 55/(64) ♣♦
+		@Majors: !{4504}, !{4513}, !{4522}, !{4531}, !{4540}, !{4603}, !{4612}, !{4621}, !{4630}, !{5404}, !{5413}, !{5422}, !{5431}, !{5440}, !{5503}, !{5512}, !{5521}, !{5530}, !{6403}, !{6412}, !{6421}, !{6430}, (22 shapes)
+		@Minors: !{1246}, !{1255}, !{1264}, !{2146}, !{2155}, !{2164} (6 shapes)
+		2c relay, $(relay_strength) PC
+			2d !{45xx}, minimum or !{(54)xx}, maximum or !{46xx}, maximum
+				2h non forcing
+					p minimum
+					2s !{54xx}, maximum
+						2n relay
+							3c !{5404}
+							3d !{5440}
+							3h !{5413}
+							3s !{5431}
+							3n !{5422}
+					2n !{46xx}, maximum
+						3c relay
+							3d !{4603}
+							3h !{4630}
+							3s !{4612}
+							3n !{4621}
+					3c !{4504}, maximum
+					3d !{4540}, maximum
+					3h !{4513}, maximum
+					3s !{4531}, maximum
+					3n !{4522}, maximum
+				2s relay
+					2n !{(54)xx}, maximum (excluding !{4531} and !{4540})
+						3c relay
+							3d !{4504} or !{4513} or !{4522}
+								3h relay
+									3s !{4513}
+									3n !{4522}
+									4c !{4504}
+							3h !{5413} or !{5404}
+								3s relay
+									3n !{5413}
+									4c !{5404}
+							3s !{5431}
+							3n !{5422}
+							4c !{5440}
+					3c !{45xx}, minimum
+						3d relay
+							3h !{4513} or !{4504}
+								3s relay
+									3n !{4513}
+									4c !{4504}
+							3s !{4531}
+							3n !{4522}
+							4c !{4540}
+					3d !{46xx}, maximum (excluding !{4630})
+						3h relay
+							3s !{4612}
+							3n !{4621}
+							4c !{4603}
+					3h !{4630}, maximum
+					3s !{4540}, maximum
+					3n !{4531}, maximum
+			2h !{54xx}, minimum or !{64xx}, maximum or !{55xx}, maximum
+				2s non forcing
+					p minimum
+					2n !{64xx}, maximum
+						3c relay
+							3d !{6403}
+							3h !{6430}
+							3s !{6412}
+							3n !{6421}
+					3c !{5503}, maximum
+					3d !{5530}, maximum
+					3h !{5512}, maximum
+					3s !{5521}, maximum
+				2n relay
+					3c !{54xx}, minimum
+						3d relay
+							3h !{5413} or !{5404}
+								3s relay
+									3n !{5413}
+									4c !{5404}
+							3s !{5431}
+							3n !{5422}
+							4c !{5440}
+					3d !{64xx}, maximum (excluding !{6430})
+						3h relay
+							3s !{6412}
+							3n !{6421}
+							4c !{6403}
+					3h !{55(21)}, maximum
+						3s relay
+							3n !{5512}
+							4c !{5521}
+					3s !{5503}, maximum
+					3n !{5530}, maximum
+					4c !{6430}, maximum
+			2s !{(64)xx} or !{55xx}, minimum
+				2n relay
+					3c !{55xx}
+						3d relay
+							3h !{55(21)}
+								3s relay
+									3n !{5512}
+									4c !{5521}
+							3s !{5503}
+							3n !{5530}
+					3d !{46xx} (excluding !{4630})
+						3h relay
+							3s !{4612}
+							3n !{4621}
+							4c !{4603}
+					3h !{64(21)}
+						3s relay
+							3n !{6412}
+							4c !{6421}
+					3s !{6403}
+					3n !{6430}
+					4c !{4630}
+				3c weak relay
+					3d !{55xx}
+					3h !{46xx}
+					3s !{64xx}
+			2n 6♣
+				3c natural, invitational
+				3d relay, GF
+					3h !{1246}
+						3s relay
+							3n maximum
+							4c minimum
+					3s !{2146}, maximum
+					3n !{2146}, minimum
+			3c 55♣♦, minimum
+				3d signoff
+				3h relay, GF
+					3s !{1255}
+					3n !{2155}
+			3d 6 ♦, minimum
+				3h relay, GF
+					3s !{1264}
+					3n !{2164}
+			3h 55♣♦, maximum
+				3s relay, GF
+					3n !{1255}
+					4c !{2155}
+			3s !{1264}, maximum
+			3n !{2164}, maximum
+			(x)
+				xx penalty or 5♥4♠
+					2d relay, GF
+						2h short ♦
+							2s relay
+								2n !{4504}, maximum
+								3c !{4504}, minimum
+								3d !{4513}, maximum
+								3h !{4513}, minimum
+						2s !{4540}
+							2n relay
+								3c maximum
+								3d minimum
+						2n !{4531}, maximum
+						3c !{4531}, minimum
+						3d !{4522}, maximum
+						3h !{4522}, minimum
+						3s I had a penalty redouble with 6♦
+						3n I had a penalty redouble with 4-5♦
+					2h NF
+					2s NF
+				p 5♠4♥
+					xx penalty
+					2d relay, GF
+						2h short ♦
+							2s relay
+								2n !{5404}, maximum
+								3c !{5404}, minimum
+								3d !{5413}, maximum
+								3h !{5413}, minimum
+						2s !{5440}
+							2n relay
+								3c maximum
+								3d minimum
+						2n !{5431}, maximum
+						3c !{5431}, minimum
+						3d !{5422}, maximum
+						3h !{5422}, minimum
+					2h NF
+					2s NF
+				2d 6♦, too weak ♣ to redouble
+				2h 6♥, minimum
+					2s sign-off
+					2n relay, GF
+						3c !{4603}
+						3d !{4630}
+						3h !{4612}
+						3s !{4621}
+				2s 6♠, minimum
+					2n relay, GF
+						3c !{6403}
+						3d !{6430}
+						3h !{6412}
+						3s !{6421}
+				2n 55♣♦ too weak suit to redouble, minimum
+				3c 55♥♠, minimum
+					3d relay, GF
+						3h !{5503}
+						3s !{5512}
+						3n !{5521}
+						4c !{5530}
+					3h sign-off
+					3s sign-off
+				3d 55♥♠, maximum
+					3h relay, GF
+						3s short ♦
+						3n !{5521}
+						4c !{5530}
+				3h 6♠, maximum
+				3s 6♥, maximum
+				3n 6♦ or 55♣♦ too weak suit to redouble, maximum
+			(2d)
+				x penalty or 5♥4♠
+					2h NF
+					2s NF
+					2n relay, GF
+						3c short ♦
+							3d relay
+								3h !{4504}
+									3s relay
+										3n maximum
+										4c minimum
+								3s !{4513}, maximum
+								3n !{4513}, minimum
+						3d !{4531}
+							3h relay
+								3s maximum
+								3n minimum
+						3h !{4522}
+							3s relay
+								3n maximum
+								4c minimum
+						3s !{4540}, maximum
+						3n I had a penalty double
+						4c !{4540}, minimum
+				p 5♠4♥
+					x penalty
+					2h NF
+					2s NF
+					2n relay, GF
+						3c short ♦
+							3d relay
+								3h !{5404}
+									3s relay
+										3n maximum
+										4c minimum
+								3s !{5413}, maximum
+								3n !{5413}, minimum
+						3d !{5431}
+							3h relay
+								3s maximum
+								3n minimum
+						3h !{5422}
+							3s relay
+								3n maximum
+								4c minimum
+						3s !{5440}, maximum
+						3n !{5440}, minimum
+				2h 6♥, minimum
+					2s sign-off
+					2n relay, GF
+						3c !{4603}
+						3d !{4630}
+						3h !{4612}
+						3s !{4621}
+				2s 6♠, minimum
+					2n relay, GF
+						3c !{6403}
+						3d !{6430}
+						3h !{6412}
+						3s !{6421}
+				2n 6♣, minimum
+				3c 55♥♠, minimum
+					3d relay, GF
+						3h !{5503}
+						3s !{5512}
+						3n !{5521}
+						4c !{5530}
+					3h sign-off
+					3s sign-off
+				3d 55♥♠, maximum
+					3h relay, GF
+						3s short ♦
+						3n !{5521}
+						4c !{5530}
+				3h 6♠, maximum
+				3s 6♥, maximum
+				3n 6♣, maximum
+			(2h)
+				x penalty (usually 5+♥) or ♥ singleton
+				p 5♠4♥
+				2s 6♠, NF
+				2n !{1255}, minimum, or !{12(64)}, maximum
+					3c NF
+						3h 6+♣
+							3s asks for J+ in ♥
+								3n with J+ in ♥
+								{others} without
+						3s 6+♦ without J+ in ♥
+						3n 6+♦ with J+ in ♥
+					3d NF
+						3h 6+♣
+							3s asks for J+ in ♥
+								3n with J+ in ♥
+								{others} without
+						3s 6+♦ without J+ in ♥
+						3n 6+♦ with J+ in ♥
+				3c !{1246}, minimum
+				3d !{1264}, minimum
+				3h !{1255}, maximum, without J+ in ♥
+				3s 6♠, GF
+				3n !{1255}, maximum with J+ in ♥
+			(2s)
+				x penalty (usually 5+♠) or ♠ singleton
+				p 5♥4♠
+				2n !{2155}, minimum, or !{21(64)}, maximum
+					3c NF
+						3h 6+♣
+							3s asks for J+ in ♥
+								3n with J+ in ♥
+								{others} without
+						3s 6+♦ without J+ in ♥
+						3n 6+♦ with J+ in ♥
+					3d NF
+						3h 6+♣
+							3s asks for J+ in ♠
+								3n with J+ in ♠
+								{others} without
+						3s 6+♦ without J+ in ♠
+						3n 6+♦ with J+ in ♠
+				3c !{2146}, minimum
+				3d !{2164}, minimum
+				3h 6♥
+				3s !{2155}, maximum, without J+ in ♠
+				3n !{2155}, maximum, with J+ in ♠
+			(3c)
+				p 54♠♥ minimum or minors, but see 3♦
+				x 5♥4♠ GF or 6♥
+					3h NF
+						3s 6♥ GF
+						3n 5♥4♠
+					3s relay
+					3n sign-off
+					4c agreeing ♥
+					4d agreeing ♠
+				3d natural, NF
+				3h 55♥♠, minimum
+				3s 6♠, minimum
+				3n 5♠4♥ GF
+			(3d)
+				p 54♠♥ minimum or minors
+				x 5♥4♠ GF or 6♥
+					3h NF
+						3s 6♥ GF
+						3n 5♥4♠
+					3s relay
+					3n sign-off
+					4c agreeing ♥
+					4d agreeing ♠
+				3h 55♥♠, minimum
+				3s 6♠, minimum
+				3n 5♠4♥ GF
+			(3h)
+				x !{(21)55}, GF
+				3s !{(21)46}, GF
+				3n !{(21)64}, GF
+			(3s)
+				x !{(21)55}, GF
+				3n !{(21)(64)}, GF
+		2d weak relay
+			p 6 ♦
+			2h longer ♥/equal
+				2s invitational if partner has 5♠
+			2s longer ♠
+			2n 55♣♦
+			3c 6 ♣
+			3d 55+♥♠, extras
+			3h 6+ ♥, 4♠, extras
+			3s 6+ ♠, 4♥, extras
+			3n minors, extras
+			4c 65+ minors
+			(x)
+				p 6♦
+				xx equal majors
+				{2♥ and higher} system on
+		2h pass or correct
+		2s pass or correct
+		2n preemptive with at least one 4-card major and at least one 4-card minor
+			3c ♣♦
+			3d ♥♠, extras
+			3h ♥♠
+			3s 6♣, extras
+			3n 6♦, extras
+			4c 55♣♦, extras
+		3c natural, preemptive or invitational
+		3d natural, preemptive or invitational
+		3h natural, preemptive or invitational
+		3s natural, preemptive or invitational
+		(x)
+			p show longer suit
+				xx equal
+					2c pass or correct
+						2d majors
+			xx strong, let's double them
+			2c system on
+			2d own suit
+			{2!h and higher} system on
+		(2c)
+			x pass or correct
+				2d 6♦, bad hand to defend 2♣x
+				2h longer ♥/equal
+				2s longer ♠
+				2n 55♥♠, extras
+				3c 6♥, 4♠, extras
+				3h 6♠, 4♥, extras
+			2d pass or correct
+				2h majors, doesn't specify longer suit
+		(2d)
+			x pass or correct
+				2h longer ♥/equal
+				2s longer ♠
+				2n 55♥♠, extras
+				3c 6♣, bad hand to defend 2♦x
+				3d 6♥, 4♠, extras
+				3h 6♠, 4♥, extras
+
 end
 function open2c(open_strength, relay_strength)
-	2c $(open_strength) PC, 6+♣ or 5♦5♠
-		@6+♣: !{0346}, !{0436}, !{1246}, !{1336}, !{1426}, !{2146}, !{2236}, !{2326}, !{2416}, !{3046}, !{3136}, !{3226}, !{3316}, !{3406}, !{4036}, !{4126}, !{4216}, !{4306} (18 shapes)
+	2c $(open_strength) PC, (6+♣ no 4♦, no ♥/♠ void) or 5♦5♠
+		@6+♣: !{0436}, !{1336}, !{1426}, !{2236}, !{2326}, !{2416}, !{3136}, !{3226}, !{3316}, !{3406}, !{4036}, !{4126}, !{4216}, !{4306} (14 shapes)
 		@5♦5♠: !{5053}, !{5152}, !{5251}, !{5350} (4 shapes)
 		2d pass or correct
 		2h relay, $(relay_strength) PC
 		2s pass or correct
 end
 function open2d(open_strength, relay_strength)
-	2d $(open_strength) PC, 6+♦ or 5♥5♣
-		@6+♦: !{0364}, !{0463}, !{1264}, !{1363}, !{1462}, !{2164}, !{2263}, !{2362}, !{2461}, !{3064}, !{3163}, !{3262}, !{3361}, !{3460}, !{4063}, !{4162}, !{4261}, !{4360} (18 shapes)
+	2d $(open_strength) PC, (6+♦, no 4♣, no ♥/♠ void) or 5♥5♣
+		@6+♦: !{0463}, !{1363}, !{1462}, !{2263}, !{2362}, !{2461}, !{3163}, !{3262}, !{3361}, !{3460}, !{4063}, !{4162}, !{4261}, !{4360} (14 shapes)
 		@5♥5♣: !{0535}, !{1525}, !{2515}, !{3505} (4 shapes)
 		2h pass or correct
 		2s relay, $(relay_strength) PC
 end
 function open2h(open_strength, relay_strength)
-	2h $(open_strength) PC, 6+♥ or 5♠5♣
-		@6+♥: !{0634}, !{0643}, !{1624}, !{1633}, !{1642}, !{2614}, !{2623}, !{2632}, !{2641}, !{3604}, !{3613}, !{3622}, !{3631}, !{3640}, !{4603}, !{4612}, !{4621}, !{4630} (18 shapes)
+	2h $(open_strength) PC, 6+♥ no 4♠ or 5♠5♣
+		@6+♥: !{0634}, !{0643}, !{1624}, !{1633}, !{1642}, !{2614}, !{2623}, !{2632}, !{2641}, !{3604}, !{3613}, !{3622}, !{3631}, !{3640} (14 shapes)
 		@5♠5♣: !{5035}, !{5125}, !{5215}, !{5305} (4 shapes)
 		2s pass or correct
 		2n relay, $(relay_strength) PC
 end
 function open2s(open_strength, relay_strength)
-	2s $(open_strength) PC, 6+♠ or 5♥5♦
-		@6+♠: !{6034}, !{6043}, !{6124}, !{6133}, !{6142}, !{6214}, !{6223}, !{6232}, !{6241}, !{6304}, !{6313}, !{6322}, !{6331}, !{6340}, !{6403}, !{6412}, !{6421}, !{6430} (18 shapes)
+	2s $(open_strength) PC, 6+♠ no 4♥ or 5♥5♦
+		@6+♠: !{6034}, !{6043}, !{6124}, !{6133}, !{6142}, !{6214}, !{6223}, !{6232}, !{6241}, !{6304}, !{6313}, !{6322}, !{6331}, !{6340} (14 shapes)
 		@5♥5♦: !{0553}, !{1552}, !{2551}, !{3550} (4 shapes)
 		2n relay, $(relay_strength) PC
 		3c pass or correct
 end
 function open2n(open_strength, relay_strength)
-	2n TODO: $(open_strength) PC, some specific !{(64xx)}s that will be problematic having them in 2♥/♠
+	2n <b>TODO</b> $(open_strength) PC, some specific !{(64xx)}s that will be problematic having them in 2♣/♦/♥/♠
 end
 
 function 1s_strong()
@@ -371,13 +797,13 @@ function 1s_strong()
 end
 
 function 1c_shapes()
-	@!{1435}, !{1444}, !{1453}, !{2335}, !{2344}, !{2353}, !{2425}, !{2434}, !{2443}, !{2452}, !{3235}, !{3244}, !{3253}, !{3325}, !{3334}, !{3343}, !{3352}, !{3415}, !{3424}, !{3433}, !{3442}, !{3451}, !{4135}, !{4144}, !{4153}, !{4225}, !{4234}, !{4243}, !{4252}, !{4315}, !{4324}, !{4333}, !{4342}, !{4351}, !{4405}, !{4414}, !{4423}, !{4432}, !{4441}, !{4450} (total of 40 shapes)
+	@!{2245}, !{2254}, !{2335}, !{2344}, !{2353}, !{2425}, !{2434}, !{2443}, !{2452}, !{2524}, !{2533}, !{2542}, !{3235}, !{3244}, !{3253}, !{3325}, !{3334}, !{3343}, !{3352}, !{3415}, !{3424}, !{3433}, !{3442}, !{3451}, !{3514}, !{3523}, !{3532}, !{3541}, !{4225}, !{4234}, !{4243}, !{4252}, !{4315}, !{4324}, !{4333}, !{4342}, !{4351}, !{4405}, !{4414}, !{4423}, !{4432}, !{4441}, !{4450}, !{5224}, !{5233}, !{5242}, !{5314}, !{5323}, !{5332}, !{5341} (50 shapes)
 end
 
 pa 13+ PC, any distribution
-	1c A) 11+ PC, any distribution or B) 6-10 PC, no 5♥/♠, 6♣/♦ (but see 1NT)
+	1c A) 11+ PC, any distribution or B) 6-10 PC, no 6-card, no 54♥♠, no 55, no short ♥/♠
 		:1c_shapes()
-		1d A) 17+ PC, any distribution or B) 13-16 PC, no 5♥/♠, 6♣/♦ (but see 1NT)
+		1d A) 17+ PC, any distribution or B) 13-16 PC, no 6-card, no 54♥♠, no 55, no short ♥/♠
 			:1c_shapes()
 			1h 11+ PC, any distribution
 				:1s_strong()
@@ -400,7 +826,7 @@ pa 13+ PC, any distribution
 	:open2s(6-10, 15+)
 	:open2n(6-10, 15+)
 
-1c 8-12 PC, no 5♥/♠, 6♣/♦ (but see 1NT)
+1c 8-12 PC, no 6-card, no 54♥♠, no 55, no short ♥/♠
 	:1c_shapes()
 :negative1d(0-7, 0-4, 5-7, 21-22)
 :open1h(8-12, 13+)
