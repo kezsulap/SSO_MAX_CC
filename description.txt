@@ -2374,8 +2374,8 @@ p 13+ PC, any distribution (but see 2♦ opening)
 				3d !{5233}
 				3h !{5323}
 				3s !{5332}
-	1h 4+ ♥, NF
-		1s 5♠, or 4♠ 2♥, or 4♠3♥ extras
+	1h 4+ ♥, NF (but see 1NT)
+		1s 5♠, or 4♠ 2♥
 		1n 2♥, 5♣/♦
 			2c pass or correct
 			2d own suit
@@ -2387,7 +2387,7 @@ p 13+ PC, any distribution (but see 2♦ opening)
 			xx 3♥
 			{1♠ and higher} system on
 			2h 4+♥, doesn't show extras
-	1s 4+ ♠, NF
+	1s 4+ ♠, NF (but see 1NT)
 		1n 2♠, 5♣/♦/♥
 			2c pass or correct
 			2d own suit
@@ -2400,19 +2400,26 @@ p 13+ PC, any distribution (but see 2♦ opening)
 			xx 3♠
 			{1NT and higher} system on
 			2s 4+♠, doesn't show extras
-	1n natural, NF
-		p no 5M, 6m
-		2c 6+♣
-		2d 6+♦
-		2h 5♥
-		2s 5♠
-	2c 5+ ♣, NF
+	1n <ol><li>5+♣️4♦️, 0-12 PC </li><li> 5+♦️ short ♥/♠, 0-12 PC</li><li> 4♥️4♠️, 8-12PC</li></ol>
+		p no 4M
+		2c no 4+♥ or 4+♥ and 4♦
+			2d 5+♦
+			2h 4♥4♠ 8-12PC
+		2d 4+♥ or 4+♠, no 4♦
+			2h 4♥4♠ 8-12PC
+		(x)
+			p 4+♥/♠
+				xx penalty
+			xx no 4♥/♠
+			2c 6+♣
+			2d 6+♦
+	2c 5+ ♣, 2-3♥, 2-3♠, 0-3♦, NF
 		2d 6+♦
 		2h !{3541}
 		2s !{5341}
 		2n 5♥ 4♣ (usually !{3514})
 		3c 5♠ 4♣ (usually !{5314})
-	2d 5+ ♦, NF
+	2d 5+ ♦, 2-3♥, 2-3♠, NF
 		2h !{3514}
 		2s !{5314}
 		2n !{(42)16} or 7♣ or good hand with (4)5+♦
