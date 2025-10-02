@@ -109,7 +109,7 @@ function negative1d(r1, r2, r3, r4)
 				3s agreeing ♠
 			3s 55+ minors
 		2c natural, NF
-		2d natural, NF
+		2d 5+♥5+♠
 		2h 6+ ♥, preemptive or invitational
 		2s 6+ ♠, preemptive or invitational
 		2n $(r4), balanced
