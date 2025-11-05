@@ -5,9 +5,9 @@ pass * oznacza alert
 1c 11-21 lepszy młodszy
 1d 11-21 *mogą być 3 kara
 1h 11-21 5+!h
-1sp 11-21 5+!s
+1s 11-21 5+!s
 1nt (14)15-17 bal
-2cl 11-14 5+!c bez 4!h/!s *
+2c 11-14 5+!c bez 4!h/!s *
 2d multi/Acol
-2h/sp dwukolorówki
+2h/s dwukolorówki
     2h 5+!h 4+!c/!d
