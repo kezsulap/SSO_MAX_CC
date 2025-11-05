@@ -9,5 +9,8 @@ pass * oznacza alert
 1nt (14)15-17 bal
 2c 11-14 5+!c bez 4!h/!s *
 2d multi/Acol
-2h/s dwukolorówki
-    2h 5+!h 4+!c/!d
+2h 5+!h 4+!c/!d
+2s 5+!s 4+!c/!d
+2n 20-21 bal
+@ wszystko na poz 3 to bloki
+3n gambling
