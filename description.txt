@@ -2,18 +2,18 @@
 # @ to taki faktyczny wyświetlany na stronie komentarz
 & 2/1 z forsującym 1nt
 pass * oznacza alert
-    @ z trzeciej ręki otwarcia mogą być mocno naciągane
-    @ drury 3WDRD
-        1h otw
-            2c góra 4+!h
-                2d pełnoprawne otwarcie
-                2h naciągane było
-            2d góra 3!h
-        1s otw
-            2c góra 4+!s
-                2d pełnoprawne otwarcie
-                2s naciągane było
-            2d góra 3!s
+	@ z trzeciej ręki otwarcia mogą być mocno naciągane
+	@ drury 3WDRD
+		1h otw
+			2c góra 4+!h
+				2d pełnoprawne otwarcie
+				2h naciągane było
+			2d góra 3!h
+		1s otw
+			2c góra 4+!s
+				2d pełnoprawne otwarcie
+				2s naciągane było
+			2d góra 3!s
 1c 11-21 lepszy młodszy
 1d 11-21 *mogą być 3 kara
 1h 11-21 5+!h
@@ -21,65 +21,65 @@ pass * oznacza alert
 1nt (14)15-17 bal
 #gdanski trefl
 2c 11-14 5+!c bez 4!h/!s *wszystko do alertu
-    @ W dalszej licytacji obowiązuje wywołanie końcowe oraz odzywka szlemowo-wywoławcza
-    @ http://brydz.wikidot.com/wywolanie-koncowe http://brydz.wikidot.com/osw 
-    2d relay GF
-        2h 3!h możliwe 3!s
-            2n GF
-                3c 6!c/3!h dół
-                    3d pyt o krótkość
-                        3h singiel !d
-                        3s singiel !s
-                        3n brak krótkości
-                3d  2335/3325
-                    3h pyt o dubla
-                        3s dubel !d
-                        3n dubel !s
-                3h  1345/0346 dół
-                    3s pyt singiel/renons
-                    3n singiel !s
-                    4c renons !s
-                3s  1345/0346 góra
-                    3n pyt singiel/renons
-                    4c singiel !s
-                    4d renons !s
-                3n  6+!c/2326 góra
-        2s 3!s
-            2n NF
-                pass 3235 dół
-                3c 6!c/3!s dół
-                    3d pyt o krótkość
-                        3h singiel !d
-                        3s singiel !h
-                        3n brak krótkości
-                3d  3235 góra
-                3h  3145/3046 dół
-                    3s pyt singiel/renons
-                    3n singiel !h
-                    4c renons !h
-                3s  3145/3046 góra
-                    3n pyt singiel/renons
-                    4c singiel !h
-                    4d renons !h
-                3n  6+!c/3226 góra
-        2n 6+!c dół
-            3d GF
-                3h 7+!c
-                3s 2236 11-pc
-                3n 2236 12-13pc
-        3c 5!c 4!d bez 3!h/!s
-        3d 6+!c 4!d bez 3!h/!s góra
-            3h pyt o singla
-                3s singiel !h
-                3n singiel !s
-        3h 6+!c góra krótkość !h
-        3s 6+!c góra krótkość !s
-        3n 6+!c góra monokolor
+	@ W dalszej licytacji obowiązuje wywołanie końcowe oraz odzywka szlemowo-wywoławcza
+	@ http://brydz.wikidot.com/wywolanie-koncowe http://brydz.wikidot.com/osw 
+	2d relay GF
+		2h 3!h możliwe 3!s
+			2n GF
+				3c 6!c/3!h dół
+					3d pyt o krótkość
+						3h singiel !d
+						3s singiel !s
+						3n brak krótkości
+				3d  2335/3325
+					3h pyt o dubla
+						3s dubel !d
+						3n dubel !s
+				3h  1345/0346 dół
+					3s pyt singiel/renons
+					3n singiel !s
+					4c renons !s
+				3s  1345/0346 góra
+					3n pyt singiel/renons
+					4c singiel !s
+					4d renons !s
+				3n  6+!c/2326 góra
+		2s 3!s
+			2n NF
+				pass 3235 dół
+				3c 6!c/3!s dół
+					3d pyt o krótkość
+						3h singiel !d
+						3s singiel !h
+						3n brak krótkości
+				3d  3235 góra
+				3h  3145/3046 dół
+					3s pyt singiel/renons
+					3n singiel !h
+					4c renons !h
+				3s  3145/3046 góra
+					3n pyt singiel/renons
+					4c singiel !h
+					4d renons !h
+				3n  6+!c/3226 góra
+		2n 6+!c dół
+			3d GF
+				3h 7+!c
+				3s 2236 11-pc
+				3n 2236 12-13pc
+		3c 5!c 4!d bez 3!h/!s
+		3d 6+!c 4!d bez 3!h/!s góra
+			3h pyt o singla
+				3s singiel !h
+				3n singiel !s
+		3h 6+!c góra krótkość !h
+		3s 6+!c góra krótkość !s
+		3n 6+!c góra monokolor
 #koniec
-    2h nat
-    2s nat
-    @ 2nt/3!d/!h/!s inv
-    3c signoff
+	2h nat
+	2s nat
+	@ 2nt/3!d/!h/!s inv
+	3c signoff
 2d multi/Acol
 2h 5+!h 4+!c/!d
 2s 5+!s 4+!c/!d
@@ -87,18 +87,18 @@ pass * oznacza alert
 @ wszystko na poz 3 to bloki
 3n gambling
 @ strefa szlemikowa
-    4nt Blackwood
-        5c 0/3
-        5d 1/4
-        5h 2 bez damy
-        5s 2 z damą
-        @ nastepna zagrywka pyt o damę (pomijając powrót na atu)
-            @ kolor Q atu + dany król 
-            @ 5nt 2 króle z damą 
-            @ 6 atu brak damy
-        @ przeskok to pyt o króla/króle
-            @ w atu odp najmłodszym królem
-            @ w bez atu odp ilością 0314 (lub po acolu)
-        @ 6 w kolor to pytanie o dubla lub damę 
-            @ 6 atu nie mam
-            @ 7 atu mam
+	4nt Blackwood
+		5c 0/3
+		5d 1/4
+		5h 2 bez damy
+		5s 2 z damą
+		@ nastepna zagrywka pyt o damę (pomijając powrót na atu)
+			@ kolor Q atu + dany król 
+			@ 5nt 2 króle z damą 
+			@ 6 atu brak damy
+		@ przeskok to pyt o króla/króle
+			@ w atu odp najmłodszym królem
+			@ w bez atu odp ilością 0314 (lub po acolu)
+		@ 6 w kolor to pytanie o dubla lub damę 
+			@ 6 atu nie mam
+			@ 7 atu mam
