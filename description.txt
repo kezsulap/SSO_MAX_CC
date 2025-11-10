@@ -2,15 +2,103 @@
 # @ to taki faktyczny wyświetlany na stronie komentarz
 & 2/1 z forsującym 1nt
 pass * oznacza alert
+_@ z trzeciej ręki otwarcia mogą być mocno naciągane
+_@ drury 3WDRD
+__1h otw
+___2c góra 4+!h
+____2d pełnoprawne otwarcie
+____2h naciągane było
+___2d góra 3!h
+__1s otw
+___2c góra 4+!s
+____2d pełnoprawne otwarcie
+____2s naciągane było
+___2d góra 3!s
 1c 11-21 lepszy młodszy
 1d 11-21 *mogą być 3 kara
 1h 11-21 5+!h
 1s 11-21 5+!s
 1nt (14)15-17 bal
-2c 11-14 5+!c bez 4!h/!s *
+#gdanski trefl
+2c 11-14 5+!c bez 4!h/!s *wszystko do alertu
+_@ W dalszej licytacji obowiązuje wywołanie końcowe oraz odzywka szlemowo-wywoławcza
+_@ http://brydz.wikidot.com/wywolanie-koncowe http://brydz.wikidot.com/osw 
+_2d relay GF
+__2h 3!h możliwe 3!s
+___2n GF
+____3c 6!c/3!h dół
+_____3d pyt o krótkość
+______3h singiel !d
+______3s singiel !s
+______3n brak krótkości
+____3d  2335/3325
+_____3h pyt o dubla
+______3s dubel !d
+______3n dubel !s
+____3h  1345/0346 dół
+_____3s pyt singiel/renons
+_____3n singiel !s
+_____4c renons !s
+____3s  1345/0346 góra
+_____3n pyt singiel/renons
+_____4c singiel !s
+_____4d renons !s
+____3n  6+!c/2326 góra
+__2s 3!s
+___2n NF
+____pass 3235 dół
+____3c 6!c/3!s dół
+_____3d pyt o krótkość
+______3h singiel !d
+______3s singiel !h
+______3n brak krótkości
+____3d  3235 góra
+____3h  3145/3046 dół
+_____3s pyt singiel/renons
+_____3n singiel !h
+_____4c renons !h
+____3s  3145/3046 góra
+_____3n pyt singiel/renons
+_____4c singiel !h
+_____4d renons !h
+____3n  6+!c/3226 góra
+__2n 6+!c dół
+___3d GF
+____3h 7+!c
+____3s 2236 11-pc
+____3n 2236 12-13pc
+__3c 5!c 4!d bez 3!h/!s
+__3d 6+!c 4!d bez 3!h/!s góra
+___3h pyt o singla
+____3s singiel !h
+____3n singiel !s
+__3h 6+!c góra krótkość !h
+__3s 6+!c góra krótkość !s
+__3n 6+!c góra monokolor
+#koniec
+_2h nat
+_2s nat
+_@ 2nt/3!d/!h/!s inv
+_3c signoff
 2d multi/Acol
 2h 5+!h 4+!c/!d
 2s 5+!s 4+!c/!d
 2n 20-21 bal
 @ wszystko na poz 3 to bloki
 3n gambling
+@ strefa szlemikowa
+_4nt Blackwood
+__5c 0/3
+__5d 1/4
+__5h 2 bez damy
+__5s 2 z damą
+__@ nastepna zagrywka pyt o damę (pomijając powrót na atu)
+___@ kolor Q atu + dany król 
+___@ 5nt 2 króle z damą 
+___@ 6 atu brak damy
+__@ przeskok to pyt o króla/króle
+___@ w atu odp najmłodszym królem
+___@ w bez atu odp ilością 0314 (lub po acolu)
+__@ 6 w kolor to pytanie o dubla lub damę 
+___@ 6 atu nie mam
+___@ 7 atu mam
