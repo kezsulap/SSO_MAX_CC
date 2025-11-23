@@ -756,6 +756,9 @@ function colour_shape(s) {
 	if (xes == 1) throw new ParsingError('Shape ' + s + ' containing exactly one x');
 	return '<span class="shape">' + r + "</span>";
 }
+let shape_regex = /\!\{([()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*)\}/g
+let raw_shape_regex = /((\!\{)?([()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*)\}?)/g
+
 function format_str(s) {
 	s = s.replaceAll(/♣|!c/g, club_string);
 	s = s.replaceAll(/♦|!d/g, diamond_string);
@@ -766,7 +769,6 @@ function format_str(s) {
 	for (let i = 1; i < hands.length; i += 2) hands[i] = parse_hand(hands[i])
 	s = hands.join("");
 	s = s.replaceAll(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>')
-	let shape_regex = /\!\{([()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*[0-9x][()]*)\}/g
 	let shapes = s.split(shape_regex);
 	for (let i = 1; i < shapes.length; i += 2) shapes[i] = colour_shape(shapes[i]);
 	s = shapes.join("");
@@ -881,25 +883,108 @@ function join_versions(versions) {
 	}
 	return ret.join(", ")
 }
+
+
+function splitWithMatches(str, regex) {
+  const out = [];
+  let lastIndex = 0;
+
+  // ensure global flag
+  const re = new RegExp(regex.source, regex.flags.includes("g") ? regex.flags : regex.flags + "g");
+
+  for (const m of str.matchAll(re)) {
+    out.push(str.slice(lastIndex, m.index));  // text before this match
+    out.push(m[0]);                           // entire match
+    lastIndex = m.index + m[0].length;
+  }
+
+  out.push(str.slice(lastIndex));             // trailing part
+  return out;
+}
+
+
 function diff_meanings(contents) { //[[version_name, value], ...]
+	function strip_shapes(s) {
+		if (s === undefined) return undefined;
+		return s.replace(shape_regex, '$1');
+	}
+	function unify_shapes(meanings) {
+		let N = meanings.length;
+		if (N == 1) return meanings[0]; //TODO: remove duplicated before this check (maybe that speeds it up)
+		let ret = [];
+		let indices = Array(N).fill(0);
+		while (true) { // TODO: don't crash too drastically on 4!{4144} vs !{4414}4
+			let any_opening = false, any_closing = false, any_left = false;
+			for (let i = 0; i < N; ++i) {
+				if (meanings[i][indices[i]] === '}') {
+					any_closing = true;
+				}
+			}
+			if (any_closing) {
+				ret.push('}');
+				for (let i = 0; i < N; ++i) {
+					if (meanings[i][indices[i]] === '}') {
+						indices[i]++;
+					}
+				}
+				continue;
+			}
+			for (let i = 0; i < N; ++i) {
+				if (meanings[i][indices[i]] === '!' && meanings[i][indices[i] + 1] == '{') {
+					any_opening = true;
+				}
+			}
+			if (any_opening) {
+				ret.push('!{');
+				for (let i = 0; i < N; ++i) {
+					if (meanings[i][indices[i]] === '!' && meanings[i][indices[i] + 1] == '{') {
+						indices[i] += 2;
+					}
+				}
+				continue;
+			}
+			if (indices[0] < meanings[0].length) {
+				ret.push(meanings[0][indices[0]]);
+				for (let i = 0; i < N; ++i) {
+					indices[i]++;
+				}
+			}
+			else break;
+		}
+		return ret.join('');
+	}
 	let len = contents.length;
-	let any_diff = false;
-	for (let i = 1; i < len; ++i) if (contents[i][1] != contents[0][1]) any_diff = true;
-	if (!any_diff) {return [false, contents[0][1]]}
 	let by_content = new Map();
+	let any_missing = false;
 	for (let [version, value] of contents) {
 		if (value !== undefined) {
 			if (!by_content.has(value)) {
-				by_content.set(value, [version])
+				by_content.set(strip_shapes(value), [[value, version]])
 			}
 			else {
-				by_content.get(value).push(version);
+				by_content.get(strip_shapes(value)).push([value, version]);
 			}
+		} else {
+			any_missing = true;
 		}
 	}
+	if (by_content.size == 0) { //Can only happen in the dummy top-level node
+		return [false, undefined];
+	}
+	if (by_content.size == 1 && !any_missing) {
+		let raw_meanings = [];
+		for (let x of contents)
+			raw_meanings.push(x[1]);
+		return [false, unify_shapes(raw_meanings)]
+	}
 	let diff_content = ''
-	for (let [content, versions] of by_content) {
-		diff_content += '<div class="version"><div class="version_id">' + join_versions(versions) + ':</div><div class="version_content">' + content + '</div></div>'
+	for (let [key, content_versions] of by_content.entries()) {
+		let versions = [], contents = [];
+		for (let [content, version] of content_versions) {
+			versions.push(version);
+			contents.push(content);
+		}
+		diff_content += '<div class="version"><div class="version_id">' + join_versions(versions) + ':</div><div class="version_content">' + unify_shapes(contents) + '</div></div>'
 	}
 	return [true, diff_content]
 }//[any_diff, content]
