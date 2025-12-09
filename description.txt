@@ -2402,7 +2402,7 @@ p 13+ PC, any distribution (but see 2♦ opening)
 			2s 4+♠, doesn't show extras
 	1n <ol><li>5+♣️4♦️, 0-12 PC </li><li> 5+♦️ short ♥/♠, 0-12 PC</li><li> 4♥️4♠️, 8-12PC</li></ol>
 		p no 4M
-		2c 4+♥ or 4+♥, no 4♦
+		2c 4+♥ or 4+♠, no 4♦
 			2d 5+♦
 			2h 4♥4♠ 8-12PC
 		2d 4+♥ or 4+♠, 4+♦
