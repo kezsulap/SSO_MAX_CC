@@ -556,6 +556,13 @@ body.education .spade-image:after {
 body.education .spade .suit-label {
 	font-size: 0;
 }
+/******************** Friday 13th *********************/
+body.friday13th .spade-image:after {
+	content: "\1f408\200d\2b1b"
+}
+body.friday13th .spade .suit-label {
+	font-size: 0;
+}
 /******************** Halloween *********************/
 body.halloween.dark {
 	background-image: url("./special-themes/dark-spider-web.svg");

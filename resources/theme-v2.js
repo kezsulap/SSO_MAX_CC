@@ -63,6 +63,9 @@ function pick_special_theme() {
 	let [easter_m, easter_d] = Easter(year)
 	let days_til_easter = (new Date(year + '-' + month + '-' + day).getTime() - new Date(year + '-' + easter_m + '-' + easter_d).getTime()) / (24 * 60 * 60 * 1000)
 	if (days_til_easter >= -2 && days_til_easter <= 1) return 'easter'
+	
+	//Give friday 13th lower priority than Easter
+	if (day == 13 && date.getDay() == 5) return 'friday13th';
 }
 function init_theme() {
 	theme(curr_theme)
